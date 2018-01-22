@@ -13,3 +13,11 @@ package fakten;
    }
 }
 */
+
+/*
+ * doppelte Eingaben in den Feldern
+ *
+ *  Feld/er nicht ausgefüllt
+ *
+ *  technische Probleme (z.B. keine Verbindung mit der Datenbank)
+ */
