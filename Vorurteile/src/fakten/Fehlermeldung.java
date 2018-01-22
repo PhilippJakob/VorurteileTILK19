@@ -23,5 +23,5 @@ package fakten;
  *
  *  Wenn man die Internetsuche benutzt : Keine Netzwerkverbindung
  *
- *
+ * Feindetail: bei zu wenigen bzw zu vielen Wörtern bei Inhalt/Vorurteil, wird eine Meldung angezeigt
  */
