@@ -20,4 +20,8 @@ package fakten;
  *  Feld/er nicht ausgefüllt
  *
  *  technische Probleme (z.B. keine Verbindung mit der Datenbank)
+ *
+ *  Wenn man die Internetsuche benutzt : Keine Netzwerkverbindung
+ *
+ *
  */
