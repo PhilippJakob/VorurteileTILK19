@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="130.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.InternetFakt_Controller">
+   <children>
+      <TextField fx:id="tfURL" layoutY="14.0" prefHeight="30.0" prefWidth="400.0" promptText="Link adresse" />
+      <Button fx:id="btPruefenURL" layoutY="44.0" mnemonicParsing="false" onAction="#pruefeURL" prefHeight="50.0" prefWidth="400.0" text="Link prüfen" />
+      <TextField fx:id="tfFehler" editable="false" layoutX="14.0" layoutY="94.0" prefHeight="25.0" prefWidth="381.0" />
+   </children>
+</AnchorPane>

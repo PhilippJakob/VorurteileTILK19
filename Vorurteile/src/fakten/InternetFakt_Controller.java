@@ -33,7 +33,7 @@ public class InternetFakt_Controller {
     	}
     	else
     	{
-    		textausgabe("Link nicht gültig! http/s:// hinzufügen, oder Endung ändern!");
+    		textausgabe("Link nicht gültig! https:// oder http:// hinzufügen, oder Endung ändern!");
     	}
 
     }
