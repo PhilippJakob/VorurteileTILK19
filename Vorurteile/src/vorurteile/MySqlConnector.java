@@ -4,7 +4,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.util.Properties;
 
-public class Vorurteile
+public class MySqlConnector
 {
 	private static final String cDatabaseDriver = "com.mysql.jdbc.Driver";
 	
