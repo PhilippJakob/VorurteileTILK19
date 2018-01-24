@@ -1,20 +1,64 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.*?>
 <?import javafx.scene.text.*?>
 <?import javafx.scene.control.*?>
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="780.0" prefWidth="584.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Separator layoutY="405.0" prefHeight="7.5" prefWidth="590.0" />
-      <TabPane layoutY="413.0" prefHeight="369.0" prefWidth="584.0" tabClosingPolicy="UNAVAILABLE">
+      <TabPane fx:id="tpFaktVorurteil" layoutY="395.0" prefHeight="387.0" prefWidth="584.0" tabClosingPolicy="UNAVAILABLE">
         <tabs>
           <Tab text="Fakt hinzufügen">
             <content>
-              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <AnchorPane layoutY="-10.0" prefHeight="369.0" prefWidth="584.0">
+                           <children>
+                              <TextField fx:id="tfFaktensuche" layoutX="36.0" layoutY="58.0" prefHeight="40.0" prefWidth="200.0" promptText="Faktensuche" />
+                              <Button fx:id="btFaktensuche" layoutX="268.0" layoutY="58.0" mnemonicParsing="false" onAction="#suchenFakt" prefHeight="40.0" prefWidth="48.0" text="Suche" />
+                              <Label fx:id="lbError" layoutX="36.0" layoutY="6.0" prefHeight="40.0" prefWidth="200.0" />
+                              <Button fx:id="btFaktAuswählen" graphicTextGap="0.0" layoutX="258.0" layoutY="167.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#auswählenFakt" prefHeight="25.0" prefWidth="68.0" text="→">
+                                 <font>
+                                    <Font size="36.0" />
+                                 </font>
+                                 <opaqueInsets>
+                                    <Insets />
+                                 </opaqueInsets>
+                                 <padding>
+                                    <Insets top="-15.0" />
+                                 </padding>
+                              </Button>
+                              <Button fx:id="btFaktNichtAuswählen" graphicTextGap="0.0" layoutX="258.0" layoutY="199.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#nichtAuswählenFakt" prefHeight="25.0" prefWidth="68.0" text="←">
+                                 <font>
+                                    <Font size="36.0" />
+                                 </font>
+                                 <opaqueInsets>
+                                    <Insets />
+                                 </opaqueInsets>
+                                 <padding>
+                                    <Insets top="-15.0" />
+                                 </padding>
+                              </Button>
+                              <Button fx:id="btRefresh" layoutX="258.0" layoutY="276.0" mnemonicParsing="false" onAction="#neuladenFenster" prefHeight="62.0" prefWidth="68.0" text="Refresh" />
+                              <Button fx:id="btFaktHinzufügen" layoutX="421.0" layoutY="58.0" mnemonicParsing="false" onAction="#hinzufügenFakt" prefHeight="40.0" prefWidth="127.0" text="Fakt hinzufügen" />
+                              <TableView fx:id="tvFaktenliste" layoutX="36.0" layoutY="124.0" prefHeight="200.0" prefWidth="200.0">
+                                 <columns>
+                                    <TableColumn fx:id="tcIDFaktenliste" prefWidth="37.0" resizable="false" text="ID" />
+                                    <TableColumn fx:id="tcTitelFaktenliste" prefWidth="162.0" resizable="false" text="Titel" />
+                                 </columns>
+                              </TableView>
+                              <TableView fx:id="tvFaktenlisteAusgewählt" layoutX="348.0" layoutY="124.0" prefHeight="200.0" prefWidth="200.0">
+                                 <columns>
+                                    <TableColumn fx:id="tcIDFaktenlisteAusgewählt" prefWidth="37.0" resizable="false" text="ID" />
+                                    <TableColumn fx:id="tcTitelFaktenlisteAusgewählt" prefWidth="162.0" resizable="false" text="Titel" />
+                                 </columns>
+                              </TableView>
+                           </children>
+                        </AnchorPane>
+                     </children></AnchorPane>
             </content>
           </Tab>
           <Tab text="Vorurteil hinzufügen">
@@ -24,13 +68,13 @@
           </Tab>
         </tabs>
       </TabPane>
-      <TextField layoutX="27.0" layoutY="20.0" prefHeight="32.0" prefWidth="530.0" promptText="Titel">
+      <TextField fx:id="tfTitel" layoutX="27.0" layoutY="20.0" prefHeight="32.0" prefWidth="530.0" promptText="Titel">
          <font>
             <Font size="18.0" />
          </font>
       </TextField>
-      <TextArea layoutX="27.0" layoutY="74.0" prefHeight="281.0" prefWidth="530.0" promptText="Hier ist platz für deine Hauptaussage" />
-      <Button layoutX="397.0" layoutY="367.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="160.0" text="Speichern">
+      <TextArea fx:id="taHauptaussage" layoutX="27.0" layoutY="71.0" prefHeight="273.0" prefWidth="530.0" promptText="Hier ist platz für deine Hauptaussage" />
+      <Button fx:id="btSpeichernVorurteil" layoutX="397.0" layoutY="354.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="160.0" text="Speichern">
          <font>
             <Font size="17.0" />
          </font>
