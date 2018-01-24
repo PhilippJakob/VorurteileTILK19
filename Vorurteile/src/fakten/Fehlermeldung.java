@@ -28,7 +28,7 @@ package fakten;
 
 
 /*
- * Feld/er nicht ausgefüllt:
+ * Feld/er nicht ausgefüllt (beispiel):
  *
 String w = "atgaagtctt";
 int anzahl = 0;
