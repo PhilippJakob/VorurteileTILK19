@@ -1,33 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.paint.*?>
-<?import javafx.scene.text.*?>
-<?import javafx.scene.control.*?>
-<?import java.lang.*?>
-<?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hierarchien.AnzeigeVorurteilsHierarchieController">
-   <children>
-      <TextField fx:id="tfVorVorurteil2" editable="false" layoutX="10.0" layoutY="190.0" />
-      <TextField fx:id="tfVorVorurteil3" editable="false" layoutX="10.0" layoutY="270.0" />
-      <TextField fx:id="tfVorVorurteil1" editable="false" layoutX="10.0" layoutY="110.0" />
-      <TextField fx:id="tfVorurteil1" editable="false" layoutX="170.0" layoutY="110.0" />
-      <TextField fx:id="tfVorurteil2" editable="false" layoutX="170.0" layoutY="190.0" />
-      <TextField fx:id="tfVorurteil3" editable="false" layoutX="170.0" layoutY="270.0" />
-      <Label layoutX="269.0" layoutY="14.0" text="Hierarchie">
-         <font>
-            <Font name="System Italic" size="24.0" />
-         </font>
-      </Label>
-      <TextField fx:id="tfFakt1" editable="false" layoutX="420.0" layoutY="85.0" />
-      <TextField fx:id="tfFakt2" editable="false" layoutX="420.0" layoutY="110.0" />
-      <TextField fx:id="tfFakt3" editable="false" layoutX="420.0" layoutY="135.0" />
-      <TextField fx:id="tfFakt4" editable="false" layoutX="420.0" layoutY="165.0" />
-      <TextField fx:id="tfFakt5" editable="false" layoutX="420.0" layoutY="190.0" />
-      <TextField fx:id="tfFakt6" editable="false" layoutX="420.0" layoutY="215.0" />
-      <TextField fx:id="tfFakt7" editable="false" layoutX="420.0" layoutY="245.0" />
-      <TextField fx:id="tfFakt8" editable="false" layoutX="420.0" layoutY="270.0" />
-      <TextField fx:id="tfFakt9" editable="false" layoutX="420.0" layoutY="295.0" />
-   </children>
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1">
+	<!-- TODO Add Nodes -->
 </AnchorPane>
+
