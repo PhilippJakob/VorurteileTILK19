@@ -1,10 +1,10 @@
-package vorurteile.mysql;
+package vorurteile;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.util.Properties;
 
-public class MySqlConnector
+public class Vorurteile
 {
 	private static final String cDatabaseDriver = "com.mysql.jdbc.Driver";
 	
@@ -21,11 +21,6 @@ public class MySqlConnector
    private Connection connection;
    private Properties properties;
    
-	public MySqlConnector() 
-	{
-		
-	}
-	
    public Connection getConnection() 
    {
       if (connection == null) 
