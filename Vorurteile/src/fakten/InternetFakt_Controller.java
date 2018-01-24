@@ -27,7 +27,8 @@ public class InternetFakt_Controller {
     	//URL Text Feld - return = true & nicht null
     	//Noch keine detaillierten Fehlermeldungen!
     	if(URLP.pruefeURL(tfURL.getText()) == true)
-    	{//
+    	{
+    		//
     		textausgabe("Link ist gültig!");
     	}
     	else

@@ -5,7 +5,7 @@ public class URL_Splitter {
 String[] endungen = {"com", "de"};
 	public boolean pruefeURL(String pURL)
 	{
-
+//
 		//Trenne URL von HTTPS://
 		String[] HTTP_URLsplit = pURL.split("://");
 		System.out.println("HTTP/S: '" + HTTP_URLsplit[0] + "' - Domain + Pfad: '" + HTTP_URLsplit[1] + "'");
