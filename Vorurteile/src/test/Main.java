@@ -14,12 +14,11 @@ public class Main
 		{
 			Connection lConnection = Datenbankverbindung.getConnection();
 			Statement lBefehl = lConnection.createStatement();
-			ResultSet lResult = lBefehl.executeQuery("SELECT id_einbindung FROM einbindung WHERE id_Vorurteile = 13");
+			ResultSet lResult = lBefehl.executeQuery("");
 			if(lResult.first())
-			{
-				int test = lResult.getInt(1);
-				System.out.println(test);
-			}
+				System.out.println("Ja");
+			else
+				System.out.println("Nein");
 		}
 		catch(SQLException ex)
 		{
