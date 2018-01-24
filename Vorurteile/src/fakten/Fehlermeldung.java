@@ -25,3 +25,15 @@ package fakten;
  *
  * Feindetail: bei zu wenigen bzw zu vielen Wörtern bei Inhalt/Vorurteil, wird eine Meldung angezeigt
  */
+
+
+/*
+ * Feld/er nicht ausgefüllt:
+ *
+String w = "atgaagtctt";
+int anzahl = 0;
+for (int i = 0; i < w.length(); i++) {
+   if (w.charAt(i) == 'a') anzahl++;
+}
+System.out.println("Anzahl der Vorkommen von a: " + anzahl);
+*/
