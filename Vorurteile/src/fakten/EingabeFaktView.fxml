@@ -41,6 +41,6 @@
             <Font size="18.0" />
          </font>
       </Text>
-      <Button fx:id="btSpeichern" layoutX="63.0" layoutY="399.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="145.0" text="Speichern" />
+      <Button fx:id="btSpeichern" layoutX="63.0" layoutY="399.0" mnemonicParsing="false" onAction="#speichernDaten" prefHeight="23.0" prefWidth="145.0" text="Speichern" />
    </children>
 </AnchorPane>
