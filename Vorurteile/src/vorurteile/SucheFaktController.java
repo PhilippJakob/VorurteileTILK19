@@ -12,7 +12,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.ListView;
+import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 
 public class SucheFaktController
@@ -30,7 +30,7 @@ public class SucheFaktController
 	
 	//Fakten auswählen
 	@FXML
-   private ListView<?> lvFaktenliste;
+   private TableView<?> lvFaktenliste;
 
    @FXML
    private Button btFaktAuswählen;
@@ -39,7 +39,7 @@ public class SucheFaktController
    private Button btFaktNichtAuswählen;
    
    @FXML
-   private ListView<?> lvFaktenlisteAusgewählt;
+   private TableView<?> lvFaktenlisteAusgewählt;
 
    //Fenster aktualisieren
    @FXML
