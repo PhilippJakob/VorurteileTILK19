@@ -1,8 +1,42 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane xmlns:fx="http://javafx.com/fxml/1">
-	<!-- TODO Add Nodes -->
-</AnchorPane>
 
+<AnchorPane prefHeight="359.0" prefWidth="584.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8">
+   <children>
+      <TextField layoutX="36.0" layoutY="58.0" prefHeight="40.0" prefWidth="200.0" promptText="Faktensuche" />
+      <Button layoutX="268.0" layoutY="58.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="48.0" text="Suche" />
+      <ListView layoutX="36.0" layoutY="124.0" prefHeight="200.0" prefWidth="200.0" />
+      <ListView layoutX="348.0" layoutY="124.0" prefHeight="200.0" prefWidth="200.0" />
+      <Button graphicTextGap="0.0" layoutX="258.0" layoutY="167.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="25.0" prefWidth="68.0" text="→">
+         <font>
+            <Font size="36.0" />
+         </font>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+         <padding>
+            <Insets top="-15.0" />
+         </padding>
+      </Button>
+      <Button layoutX="258.0" layoutY="276.0" mnemonicParsing="false" prefHeight="62.0" prefWidth="68.0" text="Refresh" />
+      <Button layoutX="421.0" layoutY="58.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="127.0" text="Fakt hinzufügen" />
+      <Button graphicTextGap="0.0" layoutX="258.0" layoutY="199.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="25.0" prefWidth="68.0" text="←">
+         <font>
+            <Font size="36.0" />
+         </font>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+         <padding>
+            <Insets top="-15.0" />
+         </padding>
+      </Button>
+   </children>
+</AnchorPane>
