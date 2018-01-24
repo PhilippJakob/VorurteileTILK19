@@ -4,6 +4,8 @@
 
 package hierarchien;
 
+import java.util.ArrayList;
+
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
 
@@ -11,6 +13,10 @@ public class AnzeigeVorurteilsHierarchieController
 {
 
 	Testklasse tk;
+
+	private ArrayList<TextField> vorurteile= new ArrayList<TextField>();
+	private ArrayList<TextField> vorVorurteile= new ArrayList<TextField>();
+	private ArrayList<TextField> fakten= new ArrayList<TextField>();
 
     @FXML
     private TextField tfVorurteil1, tfVorurteil2, tfVorurteil3;
@@ -21,7 +27,8 @@ public class AnzeigeVorurteilsHierarchieController
     @FXML
     private TextField tfFakt1, tfFakt2, tfFakt3, tfFakt4, tfFakt5,
     						 tfFakt6, tfFakt7, tfFakt8, tfFakt9;
-//
+
+
 //    public void test()
 //    {
 //   	 tk = new Testklasse("Alle Bäume sind braun");
@@ -45,5 +52,50 @@ public class AnzeigeVorurteilsHierarchieController
 //    }
 
 
+    public void anzeigenVorurteile(String[] pVorurteile)
+    {
+   	 int i =0;
+   	 for (String lVorurteil : pVorurteile)
+   	 {
+   		 vorurteile.get(i).setText(lVorurteil);
+   		 ++i;
+   	 }
+    }
+
+    public void anzeigenVorVorurteile(String[] pVorVorurteile)
+    {
+   	 int i =0;
+   	 for (String lVorurteil : pVorVorurteile)
+   	 {
+   		 vorVorurteile.get(i).setText(lVorurteil);
+   		 ++i;
+   	 }
+    }
+
+    public void anzeigenFakten(String[] pFakten)
+    {
+
+    }
+
+    public void hinzufügenZuArrays()
+    {
+   	 vorurteile.add(tfVorurteil1);
+   	 vorurteile.add(tfVorurteil2);
+   	 vorurteile.add(tfVorurteil3);
+
+   	 vorVorurteile.add(tfVorVorurteil1);
+   	 vorVorurteile.add(tfVorVorurteil2);
+   	 vorVorurteile.add(tfVorVorurteil3);
+
+   	 fakten.add(tfFakt1);
+   	 fakten.add(tfFakt2);
+   	 fakten.add(tfFakt3);
+   	 fakten.add(tfFakt4);
+   	 fakten.add(tfFakt5);
+   	 fakten.add(tfFakt6);
+   	 fakten.add(tfFakt7);
+   	 fakten.add(tfFakt8);
+   	 fakten.add(tfFakt9);
+    }
 
 }//end

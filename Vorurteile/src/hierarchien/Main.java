@@ -24,7 +24,11 @@ public class Main extends Application
 			Scene lSzene = new Scene(lPane);
 			primaryStage.setScene(lSzene);
 			primaryStage.show();
+			controller.hinzufügenZuArrays();
 //			controller.test();
+			String[] string = {"hey", "hi", "ho"};
+			controller.anzeigenVorurteile(string);
+			controller.anzeigenVorVorurteile(string);
 		}
 		catch(Exception e)
 		{
