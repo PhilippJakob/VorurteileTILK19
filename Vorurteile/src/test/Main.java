@@ -12,7 +12,7 @@ public class Main
 	{
 		try
 		{
-			Connection lConnection = Datenbankverbindung.herstellenVerbindung();
+			Connection lConnection = Datenbankverbindung.getConnection();
 			Statement lBefehl = lConnection.createStatement();
 			ResultSet lResult = lBefehl.executeQuery("SELECT id_einbindung FROM einbindung WHERE id_Vorurteile = 13");
 			if(lResult.first())
