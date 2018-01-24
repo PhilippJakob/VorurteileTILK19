@@ -23,21 +23,21 @@ public class MySqlConnector
    
    public Connection getConnection() 
    {
-      if (connection == null) 
-      {
-          try 
-          {
-              Class.forName(cDatabaseDriver).newInstance();
-              connection = DriverManager.getConnection(cDatabaseURL, this.getProperties());
-          } 
-          catch (Exception e) 
-          {
-              e.printStackTrace();
-          }
-      }
+       if (connection == null) 
+       {
+           try 
+           {
+               Class.forName(cDatabaseDriver).newInstance();
+               connection = DriverManager.getConnection(cDatabaseURL, this.getProperties());
+           } 
+           catch (Exception e) 
+           {
+               e.printStackTrace();
+           }
+       }
       
-      return connection;
-  }
+       return connection;
+   }
 	
    private Properties getProperties() 
    {
