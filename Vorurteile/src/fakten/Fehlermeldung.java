@@ -42,5 +42,5 @@ for (int i = 0; i < w.length(); i++) {
    System.out.Println("Bitte füllen Sie folgendes Feld aus:" + a);
    }
 }
-System.out.println("Anzahl der Vorkommen von a: " + anzahl);
+System.out.println("Anzahl der Buchstaben: " + anzahl);
 */
