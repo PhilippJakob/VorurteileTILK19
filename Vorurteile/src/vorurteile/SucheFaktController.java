@@ -66,7 +66,7 @@ public class SucheFaktController
    	}
    	else
    	{
-   		lbError.setText("Error");
+   		lbError.setText("Error: Suchbegriff eingeben");
    	}
    }
    
