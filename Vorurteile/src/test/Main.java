@@ -14,9 +14,12 @@ public class Main
 		{
 			Connection lConnection = Datenbankverbindung.getConnection();
 			Statement lBefehl = lConnection.createStatement();
-			ResultSet lResult = lBefehl.executeQuery("");
+			ResultSet lResult = lBefehl.executeQuery("SELECT titel FROM vorurteile WHERE autor = 'ich'");
 			if(lResult.first())
-				System.out.println("Ja");
+			{
+				String s = lResult.getString(1);
+				System.out.println(s);
+			}
 			else
 				System.out.println("Nein");
 		}
