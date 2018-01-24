@@ -1,4 +1,4 @@
-package Datenbank;
+package datenbank;
 
 import java.sql.*;
 
@@ -17,7 +17,6 @@ public class Datenbankverbindung
 		user = pUser;
 		password = pPassword;
 	}
-
 	public static Connection herstellenVerbindung()
 	{
 		if(connection == null)
@@ -29,7 +28,7 @@ public class Datenbankverbindung
 			}
 			catch(Exception ex)
 			{
-				System.out.println("Fehler beim Verbindungsaufbau. :c");
+				System.out.println("An error is occured while connecting to the database!");
 				return null;
 			}
 		}
