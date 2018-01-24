@@ -8,10 +8,15 @@
 
 package vorurteile;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 
@@ -30,7 +35,13 @@ public class SucheFaktController
 	
 	//Fakten auswählen
 	@FXML
-   private TableView<?> lvFaktenliste;
+   private TableView<?> tvFaktenliste;
+	
+	@FXML
+   private TableColumn<?, ?> tcIDFaktenliste;
+	
+	@FXML
+   private TableColumn<?, ?> tcTitelFaktenliste;
 
    @FXML
    private Button btFaktAuswählen;
@@ -39,7 +50,13 @@ public class SucheFaktController
    private Button btFaktNichtAuswählen;
    
    @FXML
-   private TableView<?> lvFaktenlisteAusgewählt;
+   private TableView<?> tvFaktenlisteAusgewählt;
+   
+   @FXML
+   private TableColumn<?, ?> tcIDFaktenlisteAusgewählt;
+
+   @FXML
+   private TableColumn<?, ?> tcTitelFaktenlisteAusgewählt;
 
    //Fenster aktualisieren
    @FXML
@@ -51,18 +68,40 @@ public class SucheFaktController
 
    /**
     * Falls tfFaktensuche nicht leer ist, wird nach dem entsprechendem String in der Datenbank gesucht
-    * Alle Ergebnisse werden in lvFaktenliste angezeigt
+    * Alle Ergebnisse werden in tvFaktenliste angezeigt
     * Ist tfFaktensuche leer, wird Fehler ausgegeben
     * @param event
     */
    @FXML
    public void suchenFakt(ActionEvent event)
    {
+   	int lID;
+   	String lTitel;
+   	
    	String lTFFaktensuche = tfFaktensuche.getText().trim();
    	
    	if(!lTFFaktensuche.isEmpty())
    	{
+   		MySqlConnector lConnector = new MySqlConnector();
    		
+   		try
+			{
+				Statement lStatement = lConnector.getConnection().createStatement();
+				ResultSet rs = lStatement.executeQuery("SELECT ID_Fakten, Titel FROM dbo_vorurteile.fakten WHERE Titel LIKE '%" + lTFFaktensuche + "%'");
+				
+				while(rs.next()) 
+				{
+					lID = rs.getInt(1);
+					lTitel = rs.getString(2);
+					
+					System.out.println(lID + "  " + lTitel);
+				}
+			}
+   		catch (SQLException e)
+			{
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
    	}
    	else
    	{
