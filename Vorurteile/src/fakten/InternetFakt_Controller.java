@@ -22,18 +22,18 @@ public class InternetFakt_Controller {
     void pruefeURL(ActionEvent event)
   {
 	  //Objekt erstellen
-    	URL_Splitter URLP = new URL_Splitter();
+    	UrlPrÃ¼fer urlp = new UrlPrÃ¼fer();
 
     	//URL Text Feld - return = true & nicht null
     	//Noch keine detaillierten Fehlermeldungen!
-    	if(URLP.pruefeURL(tfURL.getText()) == true)
+    	if(urlp.pruefeURL(tfURL.getText()) == true)
     	{
     		//
-    		textausgabe("Link ist gültig!");
+    		textausgabe("Link ist gï¿½ltig!");
     	}
     	else
     	{
-    		textausgabe("Link nicht gültig! https:// oder http:// hinzufügen, oder Endung ändern!");
+    		textausgabe("Link nicht gï¿½ltig! https:// oder http:// hinzufï¿½gen, oder Endung ï¿½ndern!");
     	}
 
     }
