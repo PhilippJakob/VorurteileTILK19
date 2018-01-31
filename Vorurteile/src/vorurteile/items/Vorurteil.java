@@ -1,9 +1,6 @@
-package vorurteile;
+package vorurteile.items;
 
-import java.sql.SQLException;
 import java.util.Date;
-
-import com.mysql.jdbc.PreparedStatement;
 
 public class Vorurteil
 {
@@ -11,19 +8,20 @@ public class Vorurteil
 	
 	private String titel;
 	private String autor;
-	private Date veröffentlichung;
+	private long veröffentlichung;
 	private String internetquelle;
 	private String link;
-	private Date zeitstempel;
+	private long zeitstempel;
 	
-	public Vorurteil(String pTitel, String pAutor, Date pVeröffentlichung, String pInternetQuelle, String pLink)
+	public Vorurteil(int pID, String pTitel, String pAutor, long pVeröffentlichung, String pInternetQuelle, String pLink)
 	{
+		this.setID(pID);
 		this.setTitel(pTitel);
 		this.setAutor(pAutor);
 		this.setVeröffentlichung(pVeröffentlichung);
 		this.setInternetquelle(pInternetQuelle);
 		this.setLink(pLink);
-		this.setZeitstempel(new Date());
+		this.setZeitstempel(new Date().getTime());
 	}
 	
 	/** Getter & Setter **/
@@ -58,12 +56,12 @@ public class Vorurteil
 		autor = pAutor;
 	}
 
-	public Date getVeröffentlichung()
+	public long getVeröffentlichung()
 	{
 		return veröffentlichung;
 	}
 
-	public void setVeröffentlichung(Date pVeröffentlichung)
+	public void setVeröffentlichung(long pVeröffentlichung)
 	{
 		veröffentlichung = pVeröffentlichung;
 	}
@@ -88,12 +86,12 @@ public class Vorurteil
 		link = pLink;
 	}
 
-	public Date getZeitstempel()
+	public long getZeitstempel()
 	{
 		return zeitstempel;
 	}
 
-	public void setZeitstempel(Date pZeitstempel)
+	public void setZeitstempel(long pZeitstempel)
 	{
 		zeitstempel = pZeitstempel;
 	}

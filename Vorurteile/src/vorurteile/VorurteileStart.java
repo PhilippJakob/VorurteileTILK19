@@ -9,6 +9,8 @@
 
 package vorurteile;
 
+import java.util.Date;
+
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.AnchorPane;
@@ -40,6 +42,8 @@ public class VorurteileStart extends Application
 		Scene lSzene = new Scene(this.getPane());
 		this.getBühne().setScene(lSzene);
 		this.getBühne().show();
+		
+		VorurteilManager.erstellenVorurteil("Baumrinde", "Dimaa", new Date().getTime(), "Keine Ahnung?", "https://dimaa.vip/");
 	}
 	
 	public static void main(String[] args)
@@ -56,7 +60,6 @@ public class VorurteileStart extends Application
 
 	public void setBühne(Stage bühne) {
 		this.bühne = bühne;
-
 	}
 
 	public AnchorPane getPane() {

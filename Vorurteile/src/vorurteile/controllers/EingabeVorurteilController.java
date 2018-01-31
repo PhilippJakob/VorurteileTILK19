@@ -1,4 +1,4 @@
-package vorurteile;
+package vorurteile.controllers;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
