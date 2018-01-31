@@ -11,7 +11,7 @@
    <children>
       <TabPane fx:id="tpFaktVorurteil" layoutY="395.0" prefHeight="387.0" prefWidth="584.0" tabClosingPolicy="UNAVAILABLE">
         <tabs>
-          <Tab text="Fakt hinzufügen">
+          <Tab text="Fakt verknüpfen">
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
@@ -43,7 +43,7 @@
                                  </padding>
                               </Button>
                               <Button fx:id="btRefresh" layoutX="258.0" layoutY="276.0" mnemonicParsing="false" onAction="#neuladenFenster" prefHeight="62.0" prefWidth="68.0" text="Refresh" />
-                              <Button fx:id="btFaktHinzufügen" layoutX="421.0" layoutY="58.0" mnemonicParsing="false" onAction="#hinzufügenFakt" prefHeight="40.0" prefWidth="127.0" text="Fakt hinzufügen" />
+                              <Button fx:id="btFaktHinzufügen" layoutX="421.0" layoutY="58.0" mnemonicParsing="false" onAction="#hinzufügenFakt" prefHeight="40.0" prefWidth="127.0" text="Neuer Fakt" />
                               <TableView fx:id="tvFaktenliste" layoutX="36.0" layoutY="124.0" prefHeight="200.0" prefWidth="200.0">
                                  <columns>
                                     <TableColumn fx:id="tcIDFaktenliste" prefWidth="37.0" resizable="false" text="ID" />
@@ -61,7 +61,7 @@
                      </children></AnchorPane>
             </content>
           </Tab>
-          <Tab text="Vorurteil hinzufügen">
+          <Tab text="Vorurteil verknüpfen">
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
             </content>
