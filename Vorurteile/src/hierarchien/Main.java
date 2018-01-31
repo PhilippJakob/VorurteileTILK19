@@ -18,7 +18,7 @@ public class Main extends Application
 		try
 		{
 			AnzeigeVorurteilsHierarchieController controller = new AnzeigeVorurteilsHierarchieController();
-			FXMLLoader lLoader = new FXMLLoader(getClass().getResource("AnzeigeVoruteilsHierarchieView.fxml"));
+			FXMLLoader lLoader = new FXMLLoader(getClass().getResource("AnzeigeVorurteilsHierarchieView.fxml"));
 			lLoader.setController(controller);
 			AnchorPane lPane = lLoader.load();
 			Scene lSzene = new Scene(lPane);
