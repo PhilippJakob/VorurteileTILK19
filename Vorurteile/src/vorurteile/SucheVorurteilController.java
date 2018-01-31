@@ -25,6 +25,7 @@ public class SucheVorurteilController {
     @FXML
     private TableColumn<?, ?> tcIDVorurteilslisteAusgewählt;
 
+    
     @FXML
     private Button btRefresh;
 
