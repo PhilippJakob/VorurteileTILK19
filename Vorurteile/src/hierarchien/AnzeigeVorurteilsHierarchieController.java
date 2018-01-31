@@ -58,7 +58,6 @@ public class AnzeigeVorurteilsHierarchieController
 
 	public void anzeigenFakten(String[] pString)
 	{
-
 	}
 
 }
