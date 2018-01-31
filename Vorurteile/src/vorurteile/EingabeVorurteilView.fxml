@@ -56,6 +56,26 @@
                                     <TableColumn fx:id="tcTitelFaktenlisteAusgewählt" prefWidth="162.0" resizable="false" text="Titel" />
                                  </columns>
                               </TableView>
+                              <Label layoutX="243.0" layoutY="71.0" text="?">
+                                 <tooltip>
+                                    <Tooltip text="Suchen Sie hier nach einem Fakt mit dem Sie Ihr Vorurteil verknüpfen möchten" />
+                                 </tooltip>
+                              </Label>
+                              <Label layoutX="553.0" layoutY="70.0" text="?">
+                                 <tooltip>
+                                    <Tooltip text="Speichern Sie hier ihre Fakten auf ihrem Beitrag" />
+                                 </tooltip>
+                              </Label>
+                              <Label layoutX="333.0" layoutY="191.0" text="?">
+                                 <tooltip>
+                                    <Tooltip text="Mit den Pfeilen können Sie auswählen, welche Fakten in ihrem Beitrag hinzugefügt werden sollen." />
+                                 </tooltip>
+                              </Label>
+                              <Label layoutX="333.0" layoutY="299.0" text="?">
+                                 <tooltip>
+                                    <Tooltip text="Aktualisieren Sie hier die neuesten Fakten" />
+                                 </tooltip>
+                              </Label>
                            </children>
                         </AnchorPane>
                      </children></AnchorPane>
@@ -79,5 +99,10 @@
             <Font size="17.0" />
          </font>
       </Button>
+      <Label layoutX="567.0" layoutY="31.0" text="?">
+         <tooltip>
+            <Tooltip text="Geben Sie hier einen Titel und einen Beitrag ein" />
+         </tooltip>
+      </Label>
    </children>
 </AnchorPane>
