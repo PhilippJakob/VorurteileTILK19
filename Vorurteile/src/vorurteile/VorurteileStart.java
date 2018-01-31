@@ -36,15 +36,18 @@ public class VorurteileStart extends Application
 		{
 			e.printStackTrace();
 		}
-		Scene Szene = new Scene(this.getPane());
-		this.getBühne().setScene(Szene);
+		
+		Scene lSzene = new Scene(this.getPane());
+		this.getBühne().setScene(lSzene);
 		this.getBühne().show();
 	}
-public static void main(String[] args)
-{
-	launch(args);
-}
-//Getters und Setters
+	
+	public static void main(String[] args)
+	{
+		launch(args);
+	}
+	
+	/** Getter & Setter **/
 
 	public Stage getBühne() {
 		return bühne;
@@ -64,5 +67,4 @@ public static void main(String[] args)
 	public void setPane(AnchorPane pane) {
 		this.pane = pane;
 	}
-
 }
