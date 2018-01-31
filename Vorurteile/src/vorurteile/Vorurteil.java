@@ -28,6 +28,16 @@ public class Vorurteil
 	
 	/** Getter & Setter **/
 
+	public int getID()
+	{
+		return id;
+	}
+
+	public void setID(int pID)
+	{
+		id = pID;
+	}
+
 	public String getTitel()
 	{
 		return titel;
