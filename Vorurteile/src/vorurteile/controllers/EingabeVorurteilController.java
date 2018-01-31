@@ -127,7 +127,7 @@ public class EingabeVorurteilController{
 	    }
 
 	    @FXML
-	    void neuladenFenster1(ActionEvent event) {
+	    void neuladenFensterF(ActionEvent event) {
 
 	    }
 
@@ -152,7 +152,7 @@ public class EingabeVorurteilController{
 	    }
 
 	    @FXML
-	    void neuladenFenster2(ActionEvent event) {
+	    void neuladenFensterV(ActionEvent event) {
 
 	    }
 
