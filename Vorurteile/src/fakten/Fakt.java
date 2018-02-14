@@ -77,7 +77,7 @@ public class Fakt
 		}
 	};
 	
-	public ResultSet suchenFakt(String pStatement)
+	public ResultSet suchenFakt(String pKriterium)
 	{
 		Connection lConnection = DatenbankVerbindungFakten.holen();
 		Statement lBefehl;
@@ -87,7 +87,7 @@ public class Fakt
 		{
 			lBefehl = lConnection.createStatement();
 			
-			lErgebnis = lBefehl.executeQuery("SELECT * FROM dbo_vorurteile.fakten " + pStatement);
+			lErgebnis = lBefehl.executeQuery("SELECT * FROM dbo_vorurteile.fakten " + pKriterium);
 			
 			return lErgebnis;
 		}
