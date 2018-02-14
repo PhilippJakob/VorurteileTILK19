@@ -4,6 +4,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.sql.Timestamp;
+import java.util.ArrayList;
 import java.util.Date;
 
 import com.mysql.jdbc.PreparedStatement;
@@ -70,14 +71,43 @@ public class VorurteilManager
 		
 		try
 		{
-			Statement lStatement = lConnector.getConnection().createStatement();
-			ResultSet lResult = lStatement.executeQuery("SELECT COUNT(`ID_Vorurteile`) FROM `vorurteile`;");
+			PreparedStatement lStatement = (PreparedStatement) lConnector.getConnection().prepareStatement("SELECT * FROM `vorurteile` WHERE `ID_Vorurteile` = ?;");
+			lStatement.setInt(1, pID);
+			ResultSet lResult = lStatement.executeQuery();
 			
 			if (lResult.next()) 
 			{
 				Vorurteil lVorurteil = new Vorurteil(lResult.getInt(1), lResult.getString(2), lResult.getString(3), lResult.getDate(4).getTime(), lResult.getString(5), lResult.getString(6));
 				return lVorurteil;
 			}
+		} 
+		catch (SQLException e)
+		{
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return null;
+	}
+	
+	public static ArrayList<Vorurteil> getVorurteile(String pTitel)
+	{
+		ArrayList<Vorurteil> lVorurteile = new ArrayList<Vorurteil>();
+		MySqlConnector lConnector = new MySqlConnector();
+		
+		try
+		{
+			PreparedStatement lStatement = (PreparedStatement) lConnector.getConnection().prepareStatement("SELECT * FROM `vorurteile` WHERE `Titel` LIKE ?");
+			lStatement.setString(1, "%" + pTitel + "%");
+			ResultSet lResult = lStatement.executeQuery();
+			
+			while (lResult.next()) 
+			{
+				Vorurteil lVorurteil = new Vorurteil(lResult.getInt(1), lResult.getString(2), lResult.getString(3), lResult.getDate(4).getTime(), lResult.getString(5), lResult.getString(6));
+				lVorurteile.add(lVorurteil);
+			}
+			
+			return lVorurteile;
 		} 
 		catch (SQLException e)
 		{
