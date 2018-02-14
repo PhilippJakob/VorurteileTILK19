@@ -1,7 +1,8 @@
-//Keine Subdomains werden erkannt! (bsp: mobile.youtube.com)
+	//Keine Subdomains werden erkannt! (bsp: mobile.youtube.com)
 package fakten;
 
 import java.io.IOException;
+import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 
@@ -12,23 +13,23 @@ public class UrlPrüfer
 	{
 		try
 		{
-			new URL(pURL).openStream().close();
-			//Danach ist gültig
-			System.out.println("Die URL: '" + pURL + "' ist gültig!");
+			URL url = new URL(pURL);
+			HttpURLConnection con = (HttpURLConnection) url.openConnection();
+			con.setRequestMethod("GET");
+			System.err.println(con.getResponseCode());
 			return true;
 		}
 		catch(MalformedURLException ex)
 		{
 			//Wenn ungüktig
-			System.out.println("Die URL: '" + pURL + "' ist nicht gültig!");
-
+			System.out.println("Bei der URL: '" + pURL + "' fehlt das Protokoll! (HTTP, HTTPS, FTP, ...)");
 			System.out.println(ex);
 			return false;
 		}
 		catch(IOException ex)
 		{
 			//Andere Fehler
-			System.out.println("Ein anderer Fehler ist aufgetreten!");
+			System.err.println("Ein anderer Fehler ist aufgetreten!");
 			System.out.println(ex);
 			return false;
 
