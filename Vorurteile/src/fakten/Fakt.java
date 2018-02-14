@@ -18,6 +18,7 @@ public class Fakt
     private String zeitStempel;
     private String aussage;
 
+
 	public Fakt(String pTitel, String pAutor, String pDatum, String pQuellenTyp, String pLink, String pZeitStempel, String pAussage)
 	{
 			this.titel = pTitel;
