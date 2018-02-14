@@ -13,6 +13,7 @@ public class UrlPrüfer
 	{
 		try
 		{
+
 			URL url = new URL(pURL);
 			HttpURLConnection con = (HttpURLConnection) url.openConnection();
 			con.setRequestMethod("GET");
