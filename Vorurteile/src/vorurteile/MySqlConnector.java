@@ -4,7 +4,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.util.Properties;
 
-public class Vorurteile
+public class MySqlConnector
 {
 	private static final String cDatabaseDriver = "com.mysql.jdbc.Driver";
 	
@@ -23,21 +23,21 @@ public class Vorurteile
    
    public Connection getConnection() 
    {
-      if (connection == null) 
-      {
-          try 
-          {
-              Class.forName(cDatabaseDriver).newInstance();
-              connection = DriverManager.getConnection(cDatabaseURL, this.getProperties());
-          } 
-          catch (Exception e) 
-          {
-              e.printStackTrace();
-          }
-      }
+       if (connection == null) 
+       {
+           try 
+           {
+               Class.forName(cDatabaseDriver).newInstance();
+               connection = DriverManager.getConnection(cDatabaseURL, this.getProperties());
+           } 
+           catch (Exception e) 
+           {
+               e.printStackTrace();
+           }
+       }
       
-      return connection;
-  }
+       return connection;
+   }
 	
    private Properties getProperties() 
    {
