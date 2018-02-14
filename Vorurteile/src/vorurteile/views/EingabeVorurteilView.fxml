@@ -169,7 +169,7 @@
             <Font size="18.0" />
          </font>
       </TextField>
-      <TextArea fx:id="taHauptaussage" layoutX="27.0" layoutY="71.0" prefHeight="273.0" prefWidth="530.0" promptText="Hier ist platz für deine Hauptaussage" />
+      <TextArea fx:id="taHauptaussage" layoutX="29.0" layoutY="71.0" prefHeight="273.0" prefWidth="530.0" promptText="Hier ist platz für deine Hauptaussage" />
       <Button fx:id="btSpeichernVorurteil" layoutX="397.0" layoutY="354.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="160.0" text="Speichern">
          <font>
             <Font size="17.0" />
