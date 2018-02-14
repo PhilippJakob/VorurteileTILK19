@@ -9,13 +9,11 @@
 
 package vorurteile;
 
-import java.util.Date;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-import vorurteile.items.Vorurteil;
 import javafx.scene.Scene;
 
 public class VorurteileStart extends Application
@@ -39,28 +37,28 @@ public class VorurteileStart extends Application
 		{
 			e.printStackTrace();
 		}
-		
+
 		Scene lSzene = new Scene(this.getPane());
 		this.getBühne().setScene(lSzene);
 		this.getBühne().show();
-		
+
 		/* Tutorial :) */
-		
+
 		// Erhält alle Vorurteile mit dem Titel "Baum"
-		/*for (Vorurteil lVorurteil : VorurteilManager.getVorurteile("Baum")) 
+		/*for (Vorurteil lVorurteil : VorurteilManager.getVorurteile("Baum"))
 		{
 			System.out.println(lVorurteil.getID());
 		}
-		
+
 		// Erstellt ein Vorurteil
 		VorurteilManager.erstellenVorurteil("Baumrinde", "Dimaa", new Date().getTime(), "Keine Ahnung?", "https://dimaa.vip/");*/
 	}
-	
+
 	public static void main(String[] args)
 	{
 		launch(args);
 	}
-	
+
 	/** Getter & Setter **/
 
 	public Stage getBühne() {
