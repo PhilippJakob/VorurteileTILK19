@@ -44,6 +44,9 @@ public class ControllerViewEingabe
     private Text txDatum;
 
     @FXML
+    private TextField tfLink;
+
+    @FXML
     private Button btAndere;
 
     @FXML
@@ -60,7 +63,7 @@ public class ControllerViewEingabe
 	@FXML
 	 public void speichernDaten(ActionEvent event)
 		{
-			Fakt lFakt = new Fakt(tfTitel.getText(),tfAutor.getText(),tfDatum.getText(),getQuellentyp(),tfQuellenAussage.getText(),tfZeitstempel.getText());
+			Fakt lFakt = new Fakt(tfTitel.getText(),tfAutor.getText(),tfDatum.getText(),getQuellentyp(),tfLink.getText(),tfZeitstempel.getText(),tfQuellenAussage.getText());
          lFakt.anlegen();
 		}
    @FXML

@@ -30,7 +30,7 @@
             <Font size="17.0" />
          </font>
       </Text>
-      <TextField fx:id="tfQuellenAussage" alignment="TOP_LEFT" layoutX="62.0" layoutY="334.0" prefHeight="131.0" prefWidth="319.0" />
+      <TextField fx:id="tfQuellenAussage" alignment="TOP_LEFT" layoutX="62.0" layoutY="334.0" prefHeight="131.0" prefWidth="319.0" promptText="Quellen_Aussgae/  INHALT" />
       <Text fx:id="txQuellenAussage" layoutX="59.0" layoutY="320.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Aussage der Quelle">
          <font>
             <Font size="17.0" />
@@ -51,5 +51,6 @@
             <Font size="17.0" />
          </font>
       </Text>
+      <TextField fx:id="tfLink" layoutX="57.0" layoutY="512.0" prefHeight="25.0" prefWidth="319.0" promptText="Link / http:" />
    </children>
 </AnchorPane>

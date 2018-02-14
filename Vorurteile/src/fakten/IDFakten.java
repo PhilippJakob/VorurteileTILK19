@@ -14,7 +14,7 @@ public class IDFakten
 {
     private static int aktuelleIDFakten = getAktuelleIDFakten(); //letzte vergebene FaktenID
 
-	private static int IDFakten =0;
+	private static int IDFakten =1;
 
 //  Konstruktoren
 
