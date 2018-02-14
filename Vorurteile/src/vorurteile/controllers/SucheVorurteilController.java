@@ -1,5 +1,9 @@
 package vorurteile.controllers;
 
+import java.util.ArrayList;
+
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -7,6 +11,8 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
+import vorurteile.items.Vorurteil;
 
 public class SucheVorurteilController {
 
@@ -17,13 +23,13 @@ public class SucheVorurteilController {
     private TextField tfVorurteilssuche;
 
     @FXML
-    private TableView<?> tvVorurteilliste;
+    private TableView<Vorurteil> tvVorurteilliste;
 
     @FXML
-    private TableColumn<?, ?> tcIDVorurteilsliste;
+    private TableColumn<Vorurteil, Integer> tcIDVorurteilsliste;
 
     @FXML
-    private TableColumn<?, ?> tcIDVorurteilslisteAusgewählt;
+    private TableColumn<Vorurteil, ?> tcIDVorurteilslisteAusgewählt;
 
     
     @FXML
@@ -33,7 +39,7 @@ public class SucheVorurteilController {
     private TableColumn<?, ?> tcTitelVorurteilslisteAusgewählt;
 
     @FXML
-    private TableColumn<?, ?> tcTitelVorurteilsliste;
+    private TableColumn<Vorurteil, String> tcTitelVorurteilsliste;
 
     @FXML
     private Button btVorurteilssuche;
@@ -51,10 +57,32 @@ public class SucheVorurteilController {
     private Button btVorurteilNichtAuswählen;
 
     @FXML
-    void suchenVorurteil(ActionEvent event) {
-
+    void suchenVorurteil(ActionEvent event) 
+    {
+   	erstellenTabelle();
+   	String lTitel = tfVorurteilssuche.getText().trim(); 
+   	ArrayList<Vorurteil> lVorurteil = vorurteile.VorurteilManager.getVorurteile(lTitel);
+   	for(Vorurteil l : lVorurteil )
+   	{
+   		//System.out.println(l.getID() + " " + l.getTitel());
+   		tvVorurteilliste.getItems().add(l); 
+   	}
     }
-
+    
+    private ObservableList<Vorurteil> getVorurteil()
+    {
+   	 ObservableList<Vorurteil> getVorurteil = FXCollections.observableArrayList();
+   	 return getVorurteil;
+    }
+    
+    public void erstellenTabelle()
+    {
+   	 tcIDVorurteilsliste.setCellValueFactory(new PropertyValueFactory<>("ID"));
+   	 tcTitelVorurteilsliste.setCellValueFactory(new PropertyValueFactory<>("titel"));
+   	 tvVorurteilliste.setItems(getVorurteil());
+   	 
+    }
+    
     @FXML
     void auswählenVorurteil(ActionEvent event) {
 
