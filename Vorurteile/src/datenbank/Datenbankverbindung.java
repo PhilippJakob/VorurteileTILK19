@@ -17,12 +17,11 @@ public class Datenbankverbindung
 		{
 			try
 			{
-				Class.forName("com.mysql.jdbc.Driver").newInstance();
 				connection = DriverManager.getConnection("jdbc:mysql://" + host + ":3306/" + database + "?user=" + user + "&password=" + password);
 			}
 			catch(Exception ex)
 			{
-				System.out.println("An error is occured while connecting to the database!");
+				ex.printStackTrace();
 				return null;
 			}
 		}
