@@ -47,7 +47,7 @@ public class InternetFakt_Controller {
  		try
 		{
 			b.start();
-		} catch (IOException e)
+		} catch (IOException e)				//ich hacke das Internet
 		{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
