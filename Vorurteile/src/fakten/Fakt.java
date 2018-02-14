@@ -53,4 +53,50 @@ public class Fakt
 		e.printStackTrace();
 	  }
 	}
+	
+	public ResultSet suchenFakt()
+	{
+		Connection lConnection = DatenbankVerbindungFakten.holen();
+		Statement lBefehl;
+		ResultSet lErgebnis;
+		
+		try
+		{
+			lBefehl = lConnection.createStatement();
+			
+			lErgebnis = lBefehl.executeQuery("SELECT * FROM dbo_vorurteile.fakten");
+			
+			return lErgebnis;
+		}
+		catch (SQLException e)
+		{
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			
+			return null;
+		}
+	};
+	
+	public ResultSet suchenFakt(String pStatement)
+	{
+		Connection lConnection = DatenbankVerbindungFakten.holen();
+		Statement lBefehl;
+		ResultSet lErgebnis;
+		
+		try
+		{
+			lBefehl = lConnection.createStatement();
+			
+			lErgebnis = lBefehl.executeQuery("SELECT * FROM dbo_vorurteile.fakten " + pStatement);
+			
+			return lErgebnis;
+		}
+		catch (SQLException e)
+		{
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			
+			return null;
+		}
+	};
 }
