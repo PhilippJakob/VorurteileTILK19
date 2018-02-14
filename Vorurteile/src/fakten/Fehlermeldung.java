@@ -25,7 +25,6 @@ package fakten;
  *
  * Feindetail: bei zu wenigen bzw zu vielen Wörtern bei Inhalt/Vorurteil, wird eine Meldung angezeigt
  */
-//hallo wie geht es
 
 /*
  * Feld/er nicht ausgefüllt (beispiel):
