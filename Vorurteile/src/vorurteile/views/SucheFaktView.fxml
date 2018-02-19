@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="359.0" prefWidth="584.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="vorurteile.ui.SucheFaktController">
+<AnchorPane prefHeight="359.0" prefWidth="584.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="vorurteile.controllers.SucheFaktController">
    <children>
       <TextField fx:id="tfFaktensuche" layoutX="36.0" layoutY="58.0" prefHeight="40.0" prefWidth="200.0" promptText="Faktensuche" />
       <Button fx:id="btFaktensuche" layoutX="268.0" layoutY="58.0" mnemonicParsing="false" onAction="#suchenFakt" prefHeight="40.0" prefWidth="48.0" text="Suche" />
