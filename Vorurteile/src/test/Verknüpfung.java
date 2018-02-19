@@ -6,11 +6,12 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import datenbank.Datenbankverbindung;
+import vorurteile.items.Vorurteil;
 
 public class Verknüpfung
 {
-	public static ArrayList<String> suchenUntergeordneteVorurteile(int pVorurteilID){
-		ArrayList<String> lListeVorurteile = new ArrayList<>();
+	public static ArrayList<Vorurteil> suchenUntergeordneteVorurteile(int pVorurteilID){
+		ArrayList<Vorurteil> lListeVorurteile = new ArrayList<>();
 		try
 		{
 			Connection lConnection = Datenbankverbindung.getConnection();
@@ -26,15 +27,15 @@ public class Verknüpfung
 			ex.printStackTrace();
 		}
 
-		for(String s : lListeVorurteile){
+		for(Vorurteil s : lListeVorurteile){
 			System.out.println(s);
 		}
 		return lListeVorurteile;
 
 	}
 
-	public static ArrayList<String> suchenÜbergeordneteVorurteile(int pVorurteilID){
-		ArrayList<String> lListeVorurteile = new ArrayList<>();
+	public static ArrayList<Vorurteil> suchenÜbergeordneteVorurteile(int pVorurteilID){
+		ArrayList<Vorurteil> lListeVorurteile = new ArrayList<>();
 		try
 		{
 			Connection lConnection = Datenbankverbindung.getConnection();
@@ -50,15 +51,15 @@ public class Verknüpfung
 			ex.printStackTrace();
 		}
 
-		for(String s : lListeVorurteile){
+		for(Vorurteil s : lListeVorurteile){
 			System.out.println(s);
 		}
 		return lListeVorurteile;
 
 	}
 
-	public static ArrayList<String> suchenUntergeordneteFakten(int pVorurteilID){
-		ArrayList<String> lListeFakten = new ArrayList<>();
+	public static ArrayList<Vorurteil> suchenUntergeordneteFakten(int pVorurteilID){
+		ArrayList<Vorurteil> lListeFakten = new ArrayList<>();
 		try
 		{
 			Connection lConnection = Datenbankverbindung.getConnection();
@@ -74,15 +75,15 @@ public class Verknüpfung
 			ex.printStackTrace();
 		}
 
-		for(String s : lListeFakten){
+		for(Vorurteil s : lListeFakten){
 			System.out.println(s);
 		}
 		return lListeFakten;
 
 	}
 
-	public static ArrayList<String> suchenVorurteileMitFakten(int pFaktenID){
-		ArrayList<String> lListeFakten = new ArrayList<>();
+	public static ArrayList<Vorurteil> suchenVorurteileMitFakten(int pFaktenID){
+		ArrayList<Vorurteil> lListeFakten = new ArrayList<>();
 		try
 		{
 			Connection lConnection = Datenbankverbindung.getConnection();
@@ -98,7 +99,7 @@ public class Verknüpfung
 			ex.printStackTrace();
 		}
 
-		for(String s : lListeFakten){
+		for(Vorurteil s : lListeFakten){
 			System.out.println(s);
 		}
 		return lListeFakten;
