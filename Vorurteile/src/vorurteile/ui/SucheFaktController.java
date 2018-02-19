@@ -6,7 +6,7 @@
 //  | ####################################### |Group Vorurteile [Ben / Ohan] | ###################################### |
 //  |_________________________________________|______________________________|________________________________________|
 
-package vorurteile.controllers;
+package vorurteile.ui;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;

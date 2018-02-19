@@ -1,4 +1,4 @@
-package vorurteile.controllers;
+package vorurteile.ui;
 
 import java.util.ArrayList;
 
