@@ -1,8 +1,56 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane xmlns:fx="http://javafx.com/fxml/1">
-	<!-- TODO Add Nodes -->
+<AnchorPane prefHeight="628.0" prefWidth="735.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fakten.ControllerViewEingabe">
+   <children>
+      <Label fx:id="txHinzufügen" layoutX="57.0" layoutY="113.0" prefHeight="34.0" prefWidth="123.0" text="Hinzufügen">
+         <font>
+            <Font size="23.0" />
+         </font></Label>
+      <TextField fx:id="tfTitel" layoutX="57.0" layoutY="209.0" promptText="Titel" />
+      <TextField fx:id="tfAutor" layoutX="58.0" layoutY="267.0" promptText="Autor" />
+      <TextField fx:id="tfDatum" layoutX="231.0" layoutY="209.0" promptText="Datum" />
+      <Text fx:id="txTitel" layoutX="57.0" layoutY="204.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Titel" wrappingWidth="73.13671875">
+         <font>
+            <Font size="17.0" />
+         </font>
+      </Text>
+      <Text fx:id="txAutor" layoutX="59.0" layoutY="260.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Autor">
+         <font>
+            <Font size="17.0" />
+         </font>
+      </Text>
+      <Text fx:id="txDatum" layoutX="231.0" layoutY="205.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Datum">
+         <font>
+            <Font size="17.0" />
+         </font>
+      </Text>
+      <TextField fx:id="tfQuellenAussage" alignment="TOP_LEFT" layoutX="62.0" layoutY="334.0" prefHeight="131.0" prefWidth="319.0" promptText="Quellen_Aussgae/  INHALT" />
+      <Text fx:id="txQuellenAussage" layoutX="59.0" layoutY="320.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Aussage der Quelle">
+         <font>
+            <Font size="17.0" />
+         </font>
+      </Text>
+      <Text fx:id="txBuchquelle" layoutX="57.0" layoutY="170.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Buchquelle">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Text>
+      <Button fx:id="btSpeichern" layoutX="62.0" layoutY="479.0" mnemonicParsing="false" onAction="#speichernDaten" prefHeight="23.0" prefWidth="145.0" text="Speichern" />
+      <Button fx:id="btInternet" layoutX="279.0" layoutY="151.0" mnemonicParsing="false" onAction="#auswählenInternet" prefHeight="25.0" prefWidth="100.0" text="Internet" />
+      <Button fx:id="btBuch" layoutX="279.0" layoutY="117.0" mnemonicParsing="false" onAction="#auswählenBuch" prefHeight="25.0" prefWidth="100.0" text="Buch" visible="false" />
+      <Button fx:id="btAndere" layoutX="279.0" layoutY="116.0" mnemonicParsing="false" onAction="#auswählenAndere" prefHeight="25.0" prefWidth="100.0" text="Andere" visible="false" />
+      <TextField fx:id="tfZeitstempel" layoutX="231.0" layoutY="267.0" onAction="#speichernUhrzeit" promptText="Zeitstempel" />
+      <Text layoutX="231.0" layoutY="260.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Zeitstempel" wrappingWidth="149.0">
+         <font>
+            <Font size="17.0" />
+         </font>
+      </Text>
+      <TextField fx:id="tfLink" layoutX="57.0" layoutY="512.0" prefHeight="25.0" prefWidth="319.0" promptText="Link / http:" />
+   </children>
 </AnchorPane>
-
