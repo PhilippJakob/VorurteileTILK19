@@ -63,7 +63,7 @@ public class ControllerViewEingabe
 	@FXML
 	 public void speichernDaten(ActionEvent event)
 		{
-			Fakt lFakt = new Fakt(tfTitel.getText(),tfAutor.getText(),tfDatum.getText(),getQuellentyp(),tfLink.getText(),tfZeitstempel.getText(),tfQuellenAussage.getText());
+			Fakt lFakt = new Fakt(tfTitel.getText(),tfAutor.getText(),tfDatum.getText(),getQuellentyp(),tfLink.getText(),tfQuellenAussage.getText());
          lFakt.anlegen();
 		}
    @FXML

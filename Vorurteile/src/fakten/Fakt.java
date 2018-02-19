@@ -15,11 +15,10 @@ public class Fakt
     private String autor;
     private String link;
     private String datum;
-    private String zeitStempel;
     private String aussage;
 
 
-	public Fakt(String pTitel, String pAutor, String pDatum, String pQuellenTyp, String pLink, String pZeitStempel, String pAussage)
+	public Fakt(String pTitel, String pAutor, String pDatum, String pQuellenTyp, String pLink, String pAussage)
 	{
 			this.titel = pTitel;
 			this.iDFakten = new IDFakten();
@@ -27,7 +26,6 @@ public class Fakt
 			this.autor = pAutor;
 			this.link = pLink;
 			this.datum = pDatum;
-			this.zeitStempel = pZeitStempel;
 			this.aussage = pAussage;
 	}
 
@@ -49,7 +47,7 @@ public class Fakt
 	  {
 		lBefehl = lConnection.createStatement();
 
-		lBefehl.execute("INSERT INTO dbo_vorurteile.fakten VALUES ("+iDFakten.getIDFakten()+",\""+titel+"\",\""+autor+"\",\""+datum+"\",\""+quellenTyp+"\",\""+link+"\",\""+zeitStempel+"\",\""+aussage+"\")");
+		lBefehl.execute("INSERT INTO dbo_vorurteile.fakten VALUES ("+iDFakten.getIDFakten()+",\""+titel+"\",\""+autor+"\",\""+datum+"\",\""+quellenTyp+"\",\""+link+"\",\""+aussage+"\")");
 	  } catch (SQLException e)
 	  {
 		// TODO Auto-generated catch block
