@@ -20,8 +20,8 @@ public class Main extends Application
 	{
     	this.grundStage = pPrimaryStage;
 	 	FXMLLoader lLoader = new FXMLLoader();
-        lLoader.setLocation(Main.class.getResource( FXML + ".fxml"));
-        grundPane = lLoader.load();
+        lLoader.setLocation(Main.class.getResource("EingabeFaktView.fxml"));
+        grundStage = lLoader.load();
         Scene lScene = new Scene(grundPane);
         grundStage.setScene(lScene);
         grundStage.show();
