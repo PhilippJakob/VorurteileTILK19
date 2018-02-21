@@ -16,6 +16,7 @@ public class Fakt
     private String link;
     private String datum;
     private String aussage;
+    private int IDFakten;
 
 
 	public Fakt(String pTitel, String pAutor, String pDatum, String pQuellenTyp, String pLink, String pAussage)
@@ -29,6 +30,16 @@ public class Fakt
 			this.aussage = pAussage;
 	}
 
+	public Fakt(int pID,String pTitel, String pAutor, String pDatum, String pQuellenTyp, String pLink, String pAussage)
+	{
+		   this.IDFakten = pID;
+			this.titel = pTitel;
+			this.quellenTyp = pQuellenTyp;
+			this.autor = pAutor;
+			this.link = pLink;
+			this.datum = pDatum;
+			this.aussage = pAussage;
+	}
 
 
 	public void anlegen()
