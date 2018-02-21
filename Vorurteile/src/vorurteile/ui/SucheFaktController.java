@@ -26,21 +26,19 @@ public class SucheFaktController
 	//Errorlabel
 	@FXML
    private Label lbError;
-	
+
 	//Faktensuche
 	@FXML
 	private TextField tfFaktensuche;
-   
+
 	@FXML
    private Button btFaktensuche;
-	
+
 	//Fakten auswählen
 	@FXML
    private TableView<?> tvFaktenliste;
-	
-	@FXML
-   private TableColumn<?, ?> tcIDFaktenliste;
-	
+
+
 	@FXML
    private TableColumn<?, ?> tcTitelFaktenliste;
 
@@ -49,12 +47,9 @@ public class SucheFaktController
 
    @FXML
    private Button btFaktNichtAuswählen;
-   
+
    @FXML
    private TableView<?> tvFaktenlisteAusgewählt;
-   
-   @FXML
-   private TableColumn<?, ?> tcIDFaktenlisteAusgewählt;
 
    @FXML
    private TableColumn<?, ?> tcTitelFaktenlisteAusgewählt;
@@ -62,7 +57,7 @@ public class SucheFaktController
    //Fenster aktualisieren
    @FXML
    private Button btRefresh;
-    
+
    //Fakt hinzufügen
    @FXML
    private Button btFaktHinzufügen;
@@ -79,23 +74,23 @@ public class SucheFaktController
    	/*
    	int lID;
    	String lTitel;
-   	
+
    	String lTFFaktensuche = tfFaktensuche.getText().trim();
-   	
+
    	if(!lTFFaktensuche.isEmpty())
    	{
    		MySqlConnector lConnector = new MySqlConnector();
-   		
+
    		try
 			{
 				Statement lStatement = lConnector.getConnection().createStatement();
 				ResultSet rs = lStatement.executeQuery("SELECT ID_Fakten, Titel FROM dbo_vorurteile.fakten WHERE Titel LIKE '%" + lTFFaktensuche + "%'");
-				
-				while(rs.next()) 
+
+				while(rs.next())
 				{
 					lID = rs.getInt(1);
 					lTitel = rs.getString(2);
-					
+
 					System.out.println(lID + "  " + lTitel);
 				};
 			}
@@ -111,11 +106,11 @@ public class SucheFaktController
    	};
    	*/
    };
-   
+
    @FXML
    public void auswählenFakt(ActionEvent event)
    {
-   	
+
    };
 
    @FXML
@@ -127,7 +122,7 @@ public class SucheFaktController
    @FXML
    public void neuladenFenster(ActionEvent event)
    {
-   	
+
    };
 
    @FXML

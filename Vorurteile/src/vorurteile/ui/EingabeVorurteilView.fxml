@@ -57,14 +57,12 @@
                               <Button fx:id="btFaktHinzufügen" layoutX="421.0" layoutY="58.0" mnemonicParsing="false" onAction="#hinzufügenFakt" prefHeight="40.0" prefWidth="127.0" text="Neuer Fakt" />
                               <TableView fx:id="tvFaktenliste" layoutX="36.0" layoutY="124.0" prefHeight="200.0" prefWidth="200.0">
                                  <columns>
-                                    <TableColumn fx:id="tcIDFaktenliste" prefWidth="37.0" resizable="false" text="ID" />
-                                    <TableColumn fx:id="tcTitelFaktenliste" prefWidth="162.0" resizable="false" text="Titel" />
+                                    <TableColumn fx:id="tcTitelFaktenliste" prefWidth="199.0" resizable="false" text="Titel" />
                                  </columns>
                               </TableView>
                               <TableView fx:id="tvFaktenlisteAusgewählt" layoutX="348.0" layoutY="124.0" prefHeight="200.0" prefWidth="200.0">
                                  <columns>
-                                    <TableColumn fx:id="tcIDFaktenlisteAusgewählt" prefWidth="37.0" resizable="false" text="ID" />
-                                    <TableColumn fx:id="tcTitelFaktenlisteAusgewählt" prefWidth="162.0" resizable="false" text="Titel" />
+                                    <TableColumn fx:id="tcTitelFaktenlisteAusgewählt" prefWidth="199.0" resizable="false" text="Titel" />
                                  </columns>
                               </TableView>
                               <Label layoutX="243.0" layoutY="64.0" prefHeight="26.0" prefWidth="6.0" text="?">
@@ -138,14 +136,12 @@
                               <Button fx:id="btVorurteilHinzufügen" layoutX="421.0" layoutY="48.0" mnemonicParsing="false" onAction="#hinzufügenVorurteil" prefHeight="40.0" prefWidth="127.0" text="Neues Vorurteil" />
                               <TableView fx:id="tvVorurteilliste" layoutX="36.0" layoutY="114.0" prefHeight="200.0" prefWidth="200.0">
                                  <columns>
-                                    <TableColumn fx:id="tcIDVorurteilsliste" prefWidth="37.0" resizable="false" text="ID" />
-                                    <TableColumn fx:id="tcTitelVorurteilsliste" prefWidth="162.0" resizable="false" text="Titel" />
+                                    <TableColumn fx:id="tcTitelVorurteilsliste" prefWidth="199.0" resizable="false" text="Titel" />
                                  </columns>
                               </TableView>
                               <TableView fx:id="tvVorurteillisteAusgewählt" layoutX="348.0" layoutY="114.0" prefHeight="200.0" prefWidth="200.0">
                                  <columns>
-                                    <TableColumn fx:id="tcIDVorurteilslisteAusgewählt" prefWidth="37.0" resizable="false" text="ID" />
-                                    <TableColumn fx:id="tcTitelVorurteilslisteAusgewählt" prefWidth="162.0" resizable="false" text="Titel" />
+                                    <TableColumn fx:id="tcTitelVorurteilslisteAusgewählt" prefWidth="199.0" resizable="false" text="Titel" />
                                  </columns>
                               </TableView>
                               <Label layoutX="243.0" layoutY="54.0" prefHeight="17.0" prefWidth="0.0" text="?">
