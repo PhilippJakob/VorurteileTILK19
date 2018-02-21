@@ -18,8 +18,6 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
-
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="780.0" prefWidth="584.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="vorurteile.ui.EingabeVorurteilController">
    <children>
       <TabPane fx:id="tpFaktVorurteil" layoutY="395.0" prefHeight="387.0" prefWidth="584.0" tabClosingPolicy="UNAVAILABLE">
@@ -71,7 +69,7 @@
                               </TableView>
                               <Label layoutX="243.0" layoutY="64.0" prefHeight="26.0" prefWidth="6.0" text="?">
                                  <tooltip>
-                                    <Tooltip text="Suchen Sie hier nach einem Fakt mit dem Sie Ihr Vorurteil verknüpfen möchten" />
+                                    <Tooltip text="Suchen Sie hier nach einem Fakt, mit dem Sie Ihr Vorurteil verknüpfen möchten." />
                                  </tooltip>
                                  <font>
                                     <Font name="System Bold" size="17.0" />
@@ -79,23 +77,23 @@
                               </Label>
                               <Label layoutX="553.0" layoutY="64.0" prefHeight="25.0" prefWidth="6.0" text="?">
                                  <tooltip>
-                                    <Tooltip text="Speichern Sie hier ihre Fakten auf ihrem Beitrag" />
+                                    <Tooltip text="Fügen Sie hier Ihre Fakten der Datenbank hinzu." />
                                  </tooltip>
                                  <font>
                                     <Font name="System Bold" size="17.0" />
                                  </font>
                               </Label>
-                              <Label layoutX="333.0" layoutY="191.0" text="?">
+                              <Label layoutX="333.0" layoutY="183.0" text="?">
                                  <tooltip>
-                                    <Tooltip text="Mit den Pfeilen können Sie auswählen, welche Fakten in ihrem Beitrag hinzugefügt werden sollen." />
+                                    <Tooltip text="Mit den Pfeilen können Sie auswählen, welche Fakten zu Ihrem Beitrag hinzugefügt werden sollen." />
                                  </tooltip>
                                  <font>
                                     <Font name="System Bold" size="17.0" />
                                  </font>
                               </Label>
-                              <Label layoutX="333.0" layoutY="299.0" text="?">
+                              <Label layoutX="333.0" layoutY="294.0" text="?">
                                  <tooltip>
-                                    <Tooltip text="Aktualisieren Sie hier die neuesten Fakten" />
+                                    <Tooltip text="Aktualisieren Sie hier die neuesten Fakten." />
                                  </tooltip>
                                  <font>
                                     <Font name="System Bold" size="17.0" />
@@ -201,9 +199,9 @@
             <Font size="17.0" />
          </font>
       </Button>
-      <Label layoutX="567.0" layoutY="30.0" text="?">
+      <Label layoutX="566.0" layoutY="53.0" text="?">
          <tooltip>
-            <Tooltip text="Geben Sie hier einen Titel und einen Beitrag ein" />
+            <Tooltip text="Geben Sie hier einen Titel und einen Beitrag ein." />
          </tooltip>
          <font>
             <Font name="System Bold" size="17.0" />
