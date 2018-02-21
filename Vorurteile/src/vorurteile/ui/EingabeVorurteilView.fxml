@@ -133,7 +133,6 @@
                                  </padding>
                               </Button>
                               <Button fx:id="btRefresh1" layoutX="258.0" layoutY="266.0" mnemonicParsing="false" onAction="#neuladenFensterV" prefHeight="62.0" prefWidth="68.0" text="Refresh" />
-                              <Button fx:id="btVorurteilHinzufügen" layoutX="421.0" layoutY="48.0" mnemonicParsing="false" onAction="#hinzufügenVorurteil" prefHeight="40.0" prefWidth="127.0" text="Neues Vorurteil" />
                               <TableView fx:id="tvVorurteilliste" layoutX="36.0" layoutY="114.0" prefHeight="200.0" prefWidth="200.0">
                                  <columns>
                                     <TableColumn fx:id="tcTitelVorurteilsliste" prefWidth="199.0" resizable="false" text="Titel" />
@@ -155,14 +154,6 @@
                               <Label layoutX="333.0" layoutY="181.0" text="?">
                                  <tooltip>
                                     <Tooltip text="Mit den Pfeilen können Sie auswählen, welche Vorurteile in ihrem Beitrag hinzugefügt werden sollen." />
-                                 </tooltip>
-                                 <font>
-                                    <Font name="System Bold" size="17.0" />
-                                 </font>
-                              </Label>
-                              <Label layoutX="553.0" layoutY="54.0" text="?">
-                                 <tooltip>
-                                    <Tooltip text="Speichern Sie hier ihre Vorurteile auf ihrem Beitrag" />
                                  </tooltip>
                                  <font>
                                     <Font name="System Bold" size="17.0" />

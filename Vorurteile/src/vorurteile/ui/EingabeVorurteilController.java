@@ -82,9 +82,6 @@ public class EingabeVorurteilController{
 	    private Button btVorurteilssuche;
 
 	    @FXML
-	    private Button btVorurteilHinzufügen;
-
-	    @FXML
 	    private Button btRefresh1;
 
 	    @FXML
@@ -147,8 +144,4 @@ public class EingabeVorurteilController{
 
 	    }
 
-	    @FXML
-	    void hinzufügenVorurteil(ActionEvent event) {
-
-	    }
 }
