@@ -144,4 +144,24 @@ public class EingabeVorurteilController{
 
 	    }
 
+	    @FXML
+	    void speichernVorurteil(ActionEvent event) {
+	   	 überprüfenFelder();
+
+	    }
+
+	    private void überprüfenFelder() {
+	   	if (taHauptaussage.getText().isEmpty() || tfTitel.getText().isEmpty())
+	   	{
+	   		lbError.setText("Error: Bitte alle Felder ausfüllen");
+	   		//System.out.println("Error: Bitte die Hauptaussage ausfüllen");
+	   	}
+	   	
+	   	else
+	   	{
+	   		lbError.setText("");
+   	}
+
+	    }
+
 }
