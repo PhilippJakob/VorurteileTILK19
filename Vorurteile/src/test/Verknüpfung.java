@@ -19,7 +19,8 @@ public class Verknüpfung
 			ResultSet lResult = lBefehl.executeQuery("SELECT vu.Titel, vu.ID_Vorurteile FROM dbo_vorurteile.vorurteile vo, dbo_vorurteile.vorurteile vu, dbo_vorurteile.verbindung_v_v vv WHERE vv.ID_Untergeordnetes_Vorurteil = vu.ID_Vorurteile AND vv.ID_Vorurteil = vo.ID_Vorurteile AND vo.ID_Vorurteile=" + pVorurteilID + ";");
 			while(lResult.next())
 			{
-				lListeVorurteile.add(lResult.getString("Titel"));
+				lListeVorurteile.add(new Vorurteil(lResult.getInt("vu.ID_Vorurteile"), lResult.getString("vu.Titel"), "", 0, "", ""));
+
 			}
 		}
 		catch(SQLException ex)
@@ -28,7 +29,7 @@ public class Verknüpfung
 		}
 
 		for(Vorurteil s : lListeVorurteile){
-			System.out.println(s);
+			System.out.println(s.getTitel());
 		}
 		return lListeVorurteile;
 
@@ -43,7 +44,8 @@ public class Verknüpfung
 			ResultSet lResult = lBefehl.executeQuery("SELECT vo.Titel, vo.ID_Vorurteile FROM dbo_vorurteile.vorurteile vo, dbo_vorurteile.vorurteile vu, dbo_vorurteile.verbindung_v_v vv WHERE vv.ID_Untergeordnetes_Vorurteil = vu.ID_Vorurteile AND vv.ID_Vorurteil = vo.ID_Vorurteile AND vu.ID_Vorurteile=" + pVorurteilID + ";");
 			while(lResult.next())
 			{
-				lListeVorurteile.add(lResult.getString("Titel"));
+				lListeVorurteile.add(new Vorurteil(lResult.getInt("vo.ID_Vorurteile"), lResult.getString("vo.Titel"), "", 0, "", ""));
+
 			}
 		}
 		catch(SQLException ex)
@@ -67,7 +69,7 @@ public class Verknüpfung
 			ResultSet lResult = lBefehl.executeQuery("SELECT f.Titel, f.ID_Fakten FROM dbo_vorurteile.fakten f, dbo_vorurteile.verbindung ve, dbo_vorurteile.vorurteile vo WHERE vo.ID_Vorurteile = ve.ID_Vorurteile AND ve.ID_Fakten = f.ID_Fakten AND vo.ID_Vorurteile=" + pVorurteilID + ";");
 			while(lResult.next())
 			{
-				lListeFakten.add(lResult.getString("Titel"));
+
 			}
 		}
 		catch(SQLException ex)
@@ -83,7 +85,7 @@ public class Verknüpfung
 	}
 
 	public static ArrayList<Vorurteil> suchenVorurteileMitFakten(int pFaktenID){
-		ArrayList<Vorurteil> lListeFakten = new ArrayList<>();
+		ArrayList<Vorurteil> lListeVorurteile = new ArrayList<>();
 		try
 		{
 			Connection lConnection = Datenbankverbindung.getConnection();
@@ -91,7 +93,8 @@ public class Verknüpfung
 			ResultSet lResult = lBefehl.executeQuery("SELECT vo.Titel, vo.ID_Vorurteile FROM dbo_vorurteile.fakten f, dbo_vorurteile.verbindung ve, dbo_vorurteile.vorurteile vo WHERE vo.ID_Vorurteile = ve.ID_Vorurteile AND ve.ID_Fakten = f.ID_Fakten AND f.ID_Fakten=" + pFaktenID + ";");
 			while(lResult.next())
 			{
-				lListeFakten.add(lResult.getString("Titel"));
+				lListeVorurteile.add(new Vorurteil(lResult.getInt("vo.ID_Vorurteile"), lResult.getString("vo.Titel"), "", 0, "", ""));
+
 			}
 		}
 		catch(SQLException ex)
@@ -99,10 +102,10 @@ public class Verknüpfung
 			ex.printStackTrace();
 		}
 
-		for(Vorurteil s : lListeFakten){
+		for(Vorurteil s : lListeVorurteile){
 			System.out.println(s);
 		}
-		return lListeFakten;
+		return lListeVorurteile;
 	}
 
 
