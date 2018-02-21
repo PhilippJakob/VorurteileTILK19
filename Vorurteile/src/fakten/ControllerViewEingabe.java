@@ -10,12 +10,6 @@ import javafx.scene.text.Text;
 public class ControllerViewEingabe
 	{
 
-	 @FXML
-    private TextField tfDatum;
-
-    @FXML
-    private Text txQuellenAussage;
-
     @FXML
     private Button btSpeichern;
 
@@ -26,10 +20,25 @@ public class ControllerViewEingabe
     private Label txHinzufügen;
 
     @FXML
-    private Text txBuchquelle;
+    private Button btInternet;
 
     @FXML
     private Text txTitel;
+
+    @FXML
+    private Text txDatum;
+
+    @FXML
+    private TextField tfDatum;
+
+    @FXML
+    private Text txQuellenAussage;
+
+    @FXML
+    private Button btBuch;
+
+    @FXML
+    private Text txQuelle;
 
     @FXML
     private TextField tfQuellenAussage;
@@ -41,22 +50,10 @@ public class ControllerViewEingabe
     private TextField tfAutor;
 
     @FXML
-    private Text txDatum;
-
-    @FXML
-    private TextField tfLink;
-
-    @FXML
     private Button btAndere;
 
     @FXML
-    private Button btBuch;
-
-    @FXML
-    private Button btInternet;
-
-    @FXML
-    private TextField tfZeitstempel;
+    private TextField tfLink;
 
     private String Quellentyp;
 
@@ -72,6 +69,7 @@ public class ControllerViewEingabe
    		btAndere.setVisible(true);
    		btInternet.setVisible(false);
    		setQuellentyp("Internet");
+   		txQuelle.setText("Internetquelle");
    	}
 
 	@FXML
@@ -80,6 +78,7 @@ public class ControllerViewEingabe
    		btBuch.setVisible(false);
    		btInternet.setVisible(true);
    		setQuellentyp("Buch");
+   		txQuelle.setText("Buchquelle");
    	}
 
    @FXML
@@ -88,6 +87,8 @@ public class ControllerViewEingabe
    		btBuch.setVisible(true);
    		btAndere.setVisible(false);
    		setQuellentyp("Andere");
+   		txQuelle.setText("Andere Quelle");
+
    	}
 
    @FXML

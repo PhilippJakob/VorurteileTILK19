@@ -55,6 +55,7 @@ public class Fakt
 	  }
 	}
 
+
 	public ResultSet suchenFakt()
 	{
 		Connection lConnection = DatenbankVerbindungFakten.holen();
