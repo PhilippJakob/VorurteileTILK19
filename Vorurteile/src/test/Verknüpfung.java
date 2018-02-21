@@ -54,7 +54,7 @@ public class Verknüpfung
 		}
 
 		for(Vorurteil s : lListeVorurteile){
-			System.out.println(s);
+			System.out.println(s.getTitel());
 		}
 		return lListeVorurteile;
 
