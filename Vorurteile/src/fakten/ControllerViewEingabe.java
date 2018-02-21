@@ -1,6 +1,7 @@
 package fakten;
 
 import javafx.event.ActionEvent;
+import javafx.scene.control.DatePicker;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -47,6 +48,12 @@ public class ControllerViewEingabe
     private Text txAutor;
 
     @FXML
+    private Text txLink;
+
+    @FXML
+    private DatePicker dpDatum;
+
+    @FXML
     private TextField tfAutor;
 
     @FXML
@@ -60,7 +67,7 @@ public class ControllerViewEingabe
 	@FXML
 	 public void speichernDaten(ActionEvent event)
 		{
-			Fakt lFakt = new Fakt(tfTitel.getText(),tfAutor.getText(),tfDatum.getText(),getQuellentyp(),tfLink.getText(),tfQuellenAussage.getText());
+			Fakt lFakt = new Fakt(tfTitel.getText(),tfAutor.getText(),dpDatum.getValue(),getQuellentyp(),tfLink.getText(),tfQuellenAussage.getText());
          lFakt.anlegen();
 		}
    @FXML

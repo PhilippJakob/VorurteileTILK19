@@ -4,6 +4,10 @@
 package fakten;
 
 import java.time.LocalDate;
+import java.util.Calendar;
+import java.util.Date;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.sql.*;
 
@@ -14,12 +18,13 @@ public class Fakt
     private String quellenTyp;
     private String autor;
     private String link;
-    private String datum;
+    private LocalDate datum;
     private String aussage;
     private int IDFakten;
+    Calendar ccalendar;
 
 
-	public Fakt(String pTitel, String pAutor, String pDatum, String pQuellenTyp, String pLink, String pAussage)
+	public Fakt(String pTitel, String pAutor, LocalDate pDatum, String pQuellenTyp, String pLink, String pAussage)
 	{
 			this.titel = pTitel;
 			this.iDFakten = new IDFakten();
@@ -30,7 +35,7 @@ public class Fakt
 			this.aussage = pAussage;
 	}
 
-	public Fakt(int pID,String pTitel, String pAutor, String pDatum, String pQuellenTyp, String pLink, String pAussage)
+	public Fakt(int pID,String pTitel, String pAutor, LocalDate pDatum, String pQuellenTyp, String pLink, String pAussage)
 	{
 		   this.IDFakten = pID;
 			this.titel = pTitel;
@@ -46,6 +51,7 @@ public class Fakt
 	{
 		speichernFakt();
 		System.out.println(iDFakten.getIDFakten());
+
 	}
 
 	public void speichernFakt()
@@ -57,8 +63,9 @@ public class Fakt
 	  try
 	  {
 		lBefehl = lConnection.createStatement();
-
-		lBefehl.execute("INSERT INTO dbo_vorurteile.fakten VALUES ("+iDFakten.getIDFakten()+",\""+titel+"\",\""+autor+"\",\""+datum+"\",\""+quellenTyp+"\",\""+link+"\",\""+aussage+"\")");
+      LocalDate datumStempel;
+      datumStempel= LocalDate.now();
+		lBefehl.execute("INSERT INTO dbo_vorurteile.fakten VALUES ("+iDFakten.getIDFakten()+",\""+titel+"\",\""+autor+"\",\""+datum+"\",\""+quellenTyp+"\",\""+link+"\",\""+aussage+"\",\""+datumStempel+"\")");
 	  } catch (SQLException e)
 	  {
 		// TODO Auto-generated catch block
