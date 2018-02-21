@@ -16,10 +16,35 @@ public class Verknüpfung
 		{
 			Connection lConnection = Datenbankverbindung.getConnection();
 			Statement lBefehl = lConnection.createStatement();
-			ResultSet lResult = lBefehl.executeQuery("SELECT vu.Titel, vu.ID_Vorurteile FROM dbo_vorurteile.vorurteile vo, dbo_vorurteile.vorurteile vu, dbo_vorurteile.verbindung_v_v vv WHERE vv.ID_Untergeordnetes_Vorurteil = vu.ID_Vorurteile AND vv.ID_Vorurteil = vo.ID_Vorurteile AND vo.ID_Vorurteile=" + pVorurteilID + ";");
+			ResultSet lResult = lBefehl.executeQuery("SELECT vu.Titel, vu.ID_Vorurteile, vu.Autor, vu.Internetquelle_Ja_Nein, vu.Link FROM dbo_vorurteile.vorurteile vo, dbo_vorurteile.vorurteile vu, dbo_vorurteile.verbindung_v_v vv WHERE vv.ID_Untergeordnetes_Vorurteil = vu.ID_Vorurteile AND vv.ID_Vorurteil = vo.ID_Vorurteile AND vo.ID_Vorurteile=" + pVorurteilID + ";");
 			while(lResult.next())
 			{
-				lListeVorurteile.add(new Vorurteil(lResult.getInt("vu.ID_Vorurteile"), lResult.getString("vu.Titel"), "", 0, "", ""));
+				lListeVorurteile.add(new Vorurteil(lResult.getInt("vu.ID_Vorurteile"), lResult.getString("vu.Titel"), lResult.getString("vu.Autor"), 0, lResult.getString("vu.Internetquelle_Ja_Nein"), lResult.getString("vu.Link")));
+
+			}
+		}
+		catch(SQLException ex)
+		{
+			ex.printStackTrace();
+		}
+
+		for(Vorurteil s : lListeVorurteile){
+			System.out.println(s.getTitel());
+		}
+		return lListeVorurteile;
+
+	}
+
+	public static ArrayList<Vorurteil> suchenVorurteil(int pVorurteilID){
+		ArrayList<Vorurteil> lListeVorurteile = new ArrayList<>();
+		try
+		{
+			Connection lConnection = Datenbankverbindung.getConnection();
+			Statement lBefehl = lConnection.createStatement();
+			ResultSet lResult = lBefehl.executeQuery("SELECT Titel, Autor, Internetquelle_Ja_Nein, Link FROM dbo_vorurteile.vorurteile vu WHERE ID_Vorurteile=" + pVorurteilID + ";");
+			while(lResult.next())
+			{
+				lListeVorurteile.add(new Vorurteil(pVorurteilID, lResult.getString("Titel"), lResult.getString("Autor"), 0, lResult.getString("Internetquelle_Ja_Nein"), lResult.getString("Link")));
 
 			}
 		}
@@ -41,11 +66,10 @@ public class Verknüpfung
 		{
 			Connection lConnection = Datenbankverbindung.getConnection();
 			Statement lBefehl = lConnection.createStatement();
-			ResultSet lResult = lBefehl.executeQuery("SELECT vo.Titel, vo.ID_Vorurteile FROM dbo_vorurteile.vorurteile vo, dbo_vorurteile.vorurteile vu, dbo_vorurteile.verbindung_v_v vv WHERE vv.ID_Untergeordnetes_Vorurteil = vu.ID_Vorurteile AND vv.ID_Vorurteil = vo.ID_Vorurteile AND vu.ID_Vorurteile=" + pVorurteilID + ";");
+			ResultSet lResult = lBefehl.executeQuery("SELECT vo.Titel, vo.ID_Vorurteile, vo.Autor, vo.Internetquelle_Ja_Nein, vo.Link FROM dbo_vorurteile.vorurteile vo, dbo_vorurteile.vorurteile vu, dbo_vorurteile.verbindung_v_v vv WHERE vv.ID_Untergeordnetes_Vorurteil = vu.ID_Vorurteile AND vv.ID_Vorurteil = vo.ID_Vorurteile AND vu.ID_Vorurteile=" + pVorurteilID + ";");
 			while(lResult.next())
 			{
-				lListeVorurteile.add(new Vorurteil(lResult.getInt("vo.ID_Vorurteile"), lResult.getString("vo.Titel"), "", 0, "", ""));
-
+				lListeVorurteile.add(new Vorurteil(lResult.getInt("vo.ID_Vorurteile"), lResult.getString("vo.Titel"), lResult.getString("vo.Autor"), 0, lResult.getString("vo.Internetquelle_Ja_Nein"), lResult.getString("vo.Link")));
 			}
 		}
 		catch(SQLException ex)
@@ -91,10 +115,10 @@ public class Verknüpfung
 		{
 			Connection lConnection = Datenbankverbindung.getConnection();
 			Statement lBefehl = lConnection.createStatement();
-			ResultSet lResult = lBefehl.executeQuery("SELECT vo.Titel, vo.ID_Vorurteile FROM dbo_vorurteile.fakten f, dbo_vorurteile.verbindung ve, dbo_vorurteile.vorurteile vo WHERE vo.ID_Vorurteile = ve.ID_Vorurteile AND ve.ID_Fakten = f.ID_Fakten AND f.ID_Fakten=" + pFaktenID + ";");
+			ResultSet lResult = lBefehl.executeQuery("SELECT vo.Titel, vo.ID_Vorurteile, vo.Autor, vo.Internetquelle_Ja_Nein, vo.Link FROM dbo_vorurteile.fakten f, dbo_vorurteile.verbindung ve, dbo_vorurteile.vorurteile vo WHERE vo.ID_Vorurteile = ve.ID_Vorurteile AND ve.ID_Fakten = f.ID_Fakten AND f.ID_Fakten=" + pFaktenID + ";");
 			while(lResult.next())
 			{
-				lListeVorurteile.add(new Vorurteil(lResult.getInt("vo.ID_Vorurteile"), lResult.getString("vo.Titel"), "", 0, "", ""));
+				lListeVorurteile.add(new Vorurteil(lResult.getInt("vo.ID_Vorurteile"), lResult.getString("vo.Titel"), lResult.getString("vo.Autor"), 0, lResult.getString("vo.Internetquelle_Ja_Nein"), lResult.getString("vo.Link")));
 
 			}
 		}
@@ -104,7 +128,7 @@ public class Verknüpfung
 		}
 
 		for(Vorurteil s : lListeVorurteile){
-			System.out.println(s);
+			System.out.println(s.getTitel());
 		}
 		return lListeVorurteile;
 	}
