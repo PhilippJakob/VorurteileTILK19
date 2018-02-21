@@ -10,6 +10,8 @@
 package vorurteile;
 
 
+import java.time.LocalDateTime;
+
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.AnchorPane;
@@ -51,7 +53,7 @@ public class VorurteileStart extends Application
 		}
 
 		// Erstellt ein Vorurteil
-		VorurteilManager.erstellenVorurteil("Baumrinde", "Dimaa", new Date().getTime(), "Keine Ahnung?", "https://dimaa.vip/");*/
+		VorurteilManager.erstellenVorurteil("Rindenbaum", "Dimaa", LocalDateTime.now(), "Keine Ahnung?", "https://dimaa.vip/");*/
 	}
 
 	public static void main(String[] args)

@@ -1,6 +1,6 @@
 package vorurteile.items;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 
 public class Vorurteil
 {
@@ -8,12 +8,12 @@ public class Vorurteil
 	
 	private String titel;
 	private String autor;
-	private long veröffentlichung;
+	private LocalDateTime veröffentlichung;
 	private String internetquelle;
 	private String link;
-	private long zeitstempel;
+	private LocalDateTime zeitstempel;
 	
-	public Vorurteil(int pID, String pTitel, String pAutor, long pVeröffentlichung, String pInternetQuelle, String pLink)
+	public Vorurteil(int pID, String pTitel, String pAutor, LocalDateTime pVeröffentlichung, String pInternetQuelle, String pLink)
 	{
 		this.setID(pID);
 		this.setTitel(pTitel);
@@ -21,7 +21,7 @@ public class Vorurteil
 		this.setVeröffentlichung(pVeröffentlichung);
 		this.setInternetquelle(pInternetQuelle);
 		this.setLink(pLink);
-		this.setZeitstempel(new Date().getTime());
+		this.setZeitstempel(LocalDateTime.now());
 	}
 	
 	/** Getter & Setter **/
@@ -56,12 +56,12 @@ public class Vorurteil
 		autor = pAutor;
 	}
 
-	public long getVeröffentlichung()
+	public LocalDateTime getVeröffentlichung()
 	{
 		return veröffentlichung;
 	}
 
-	public void setVeröffentlichung(long pVeröffentlichung)
+	public void setVeröffentlichung(LocalDateTime pVeröffentlichung)
 	{
 		veröffentlichung = pVeröffentlichung;
 	}
@@ -86,12 +86,12 @@ public class Vorurteil
 		link = pLink;
 	}
 
-	public long getZeitstempel()
+	public LocalDateTime getZeitstempel()
 	{
 		return zeitstempel;
 	}
 
-	public void setZeitstempel(long pZeitstempel)
+	public void setZeitstempel(LocalDateTime pZeitstempel)
 	{
 		zeitstempel = pZeitstempel;
 	}
