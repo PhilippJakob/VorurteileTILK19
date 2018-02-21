@@ -76,6 +76,7 @@ public class SucheFaktController
    @FXML
    public void suchenFakt(ActionEvent event)
    {
+   	/*
    	int lID;
    	String lTitel;
    	
@@ -96,41 +97,42 @@ public class SucheFaktController
 					lTitel = rs.getString(2);
 					
 					System.out.println(lID + "  " + lTitel);
-				}
+				};
 			}
    		catch (SQLException e)
 			{
 				// TODO Auto-generated catch block
 				e.printStackTrace();
-			}
+			};
    	}
    	else
    	{
    		lbError.setText("Error: Suchbegriff eingeben");
-   	}
-   }
+   	};
+   	*/
+   };
    
    @FXML
    public void auswählenFakt(ActionEvent event)
    {
    	
-   }
+   };
 
    @FXML
    public void nichtAuswählenFakt(ActionEvent event)
    {
 
-   }
+   };
 
    @FXML
    public void neuladenFenster(ActionEvent event)
    {
    	
-   }
+   };
 
    @FXML
    public void hinzufügenFakt(ActionEvent event)
    {
 
-   }
-}
+   };
+};
