@@ -28,7 +28,7 @@
                      <children>
                         <AnchorPane layoutY="-10.0" prefHeight="369.0" prefWidth="584.0">
                            <children>
-                              <TextField fx:id="tfFaktensuche" layoutX="36.0" layoutY="58.0" prefHeight="40.0" prefWidth="200.0" promptText="Faktensuche" />
+                              <TextField fx:id="tfFaktensuche" layoutX="36.0" layoutY="58.0" onAction="#suchenFakt" prefHeight="40.0" prefWidth="200.0" promptText="Faktensuche" />
                               <Button fx:id="btFaktensuche" layoutX="268.0" layoutY="58.0" mnemonicParsing="false" onAction="#suchenFakt" prefHeight="40.0" prefWidth="48.0" text="Suche" />
                               <Label fx:id="lbError" layoutX="36.0" layoutY="14.0" prefHeight="40.0" prefWidth="514.0" />
                               <Button fx:id="btFaktAuswählen" graphicTextGap="0.0" layoutX="258.0" layoutY="167.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#auswählenFakt" prefHeight="25.0" prefWidth="68.0" text="→">
@@ -108,7 +108,7 @@
                      <children>
                         <AnchorPane prefHeight="369.0" prefWidth="584.0">
                            <children>
-                              <TextField fx:id="tfVorurteilssuche" layoutX="36.0" layoutY="48.0" prefHeight="40.0" prefWidth="200.0" promptText="Vorurteilssuche" />
+                              <TextField fx:id="tfVorurteilssuche" layoutX="36.0" layoutY="48.0" onAction="#suchenVorurteil" prefHeight="40.0" prefWidth="200.0" promptText="Vorurteilssuche" />
                               <Button fx:id="btVorurteilssuche" layoutX="268.0" layoutY="48.0" mnemonicParsing="false" onAction="#suchenVorurteil" prefHeight="40.0" prefWidth="48.0" text="Suche" />
                               <Button fx:id="btVorurteilAuswählen" graphicTextGap="0.0" layoutX="258.0" layoutY="157.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#auswählenVorurteil" prefHeight="25.0" prefWidth="68.0" text="→">
                                  <font>
@@ -145,23 +145,23 @@
                               </TableView>
                               <Label layoutX="243.0" layoutY="54.0" prefHeight="17.0" prefWidth="0.0" text="?">
                                  <tooltip>
-                                    <Tooltip text="Suchen sieh nach Vorurteilen mit denen sie ihre Fakten verknüpfen wollen" />
+                                    <Tooltip text="Suchen Sie nach Vorurteilen, mit denen Sie Ihre Fakten verknüpfen wollen." />
                                  </tooltip>
                                  <font>
                                     <Font name="System Bold" size="17.0" />
                                  </font>
                               </Label>
-                              <Label layoutX="333.0" layoutY="181.0" text="?">
+                              <Label layoutX="333.0" layoutY="173.0" text="?">
                                  <tooltip>
-                                    <Tooltip text="Mit den Pfeilen können Sie auswählen, welche Vorurteile in ihrem Beitrag hinzugefügt werden sollen." />
+                                    <Tooltip text="Mit den Pfeilen können Sie auswählen, welche Vorurteile in Ihrem Beitrag hinzugefügt werden sollen." />
                                  </tooltip>
                                  <font>
                                     <Font name="System Bold" size="17.0" />
                                  </font>
                               </Label>
-                              <Label layoutX="333.0" layoutY="289.0" text="?">
+                              <Label layoutX="333.0" layoutY="284.0" text="?">
                                  <tooltip>
-                                    <Tooltip text="Aktualisieren Sie hier die neuesten Vorurteilen" />
+                                    <Tooltip text="Aktualisieren Sie hier die neuesten Vorurteile." />
                                  </tooltip>
                                  <font>
                                     <Font name="System Bold" size="17.0" />
