@@ -156,7 +156,7 @@ public class EingabeVorurteilController{
 	   		lbError.setText("Error: Bitte alle Felder ausfüllen");
 	   		//System.out.println("Error: Bitte die Hauptaussage ausfüllen");
 	   	}
-	   	
+
 	   	else
 	   	{
 	   		lbError.setText("");
