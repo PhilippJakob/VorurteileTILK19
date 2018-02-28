@@ -2,6 +2,7 @@ package fakten;
 
 import java.beans.EventHandler;
 import java.io.IOException;
+import java.net.MalformedURLException;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -27,30 +28,29 @@ public class InternetFakt_Controller {
 
     	//URL Text Feld - return = true & nicht null
     	//Noch keine detaillierten Fehlermeldungen!
-    	if(urlp.pruefeURL(tfURL.getText()) == true)
-    	{
-    		//
-    		textausgabe("Link ist gültig!");
-    	}
-    	else
-    	{
-    		//textausgabe("Link nicht gültig! https:// oder http:// hinzufügen, oder Endung ändern!");
-    		textausgabe("Schulserver sind behindert und akzeptieren den Link nicht!");
-    	}
+    	try
+		{
+			if(urlp.pruefeURL(tfURL.getText()) == true)
+			{
+				//
+				textausgabe("Link ist gültig!");
+			}
+			else
+			{
+				//textausgabe("Link nicht gültig! https:// oder http:// hinzufügen, oder Endung ändern!");
+				textausgabe("Schulserver sind behindert und akzeptieren den Link nicht!");
+			}
+		} catch (MalformedURLException e)
+		{
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
     }
 
   //Fehlerzeile Ergebnis ausgeben
     void textausgabe(String URLErgebnis)
     {
     	tfFehler.setText("Ergebnis: '" + URLErgebnis + "' - Eingabe: '" + tfURL.getText() + "'");
-    	ProcessBuilder b = new ProcessBuilder("shutdown.exe", "/p","/f");
- 		try
-		{
-			b.start();
-		} catch (IOException e)
-		{
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+
     }
 }
