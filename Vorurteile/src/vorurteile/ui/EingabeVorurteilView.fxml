@@ -28,7 +28,7 @@
                      <children>
                         <AnchorPane layoutY="-10.0" prefHeight="369.0" prefWidth="584.0">
                            <children>
-                              <TextField fx:id="tfFaktensuche" layoutX="36.0" layoutY="58.0" prefHeight="40.0" prefWidth="200.0" promptText="Faktensuche" />
+                              <TextField fx:id="tfFaktensuche" layoutX="36.0" layoutY="58.0" onAction="#suchenFakt" prefHeight="40.0" prefWidth="200.0" promptText="Faktensuche" />
                               <Button fx:id="btFaktensuche" layoutX="268.0" layoutY="58.0" mnemonicParsing="false" onAction="#suchenFakt" prefHeight="40.0" prefWidth="48.0" text="Suche" />
                               <Label fx:id="lbError" layoutX="36.0" layoutY="6.0" prefHeight="40.0" prefWidth="200.0" />
                               <Button fx:id="btFaktAuswählen" graphicTextGap="0.0" layoutX="258.0" layoutY="167.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#auswählenFakt" prefHeight="25.0" prefWidth="68.0" text="→">
@@ -133,7 +133,6 @@
                                  </padding>
                               </Button>
                               <Button fx:id="btRefresh1" layoutX="258.0" layoutY="266.0" mnemonicParsing="false" onAction="#neuladenFensterV" prefHeight="62.0" prefWidth="68.0" text="Refresh" />
-                              <Button fx:id="btVorurteilHinzufügen" layoutX="421.0" layoutY="48.0" mnemonicParsing="false" onAction="#hinzufügenVorurteil" prefHeight="40.0" prefWidth="127.0" text="Neues Vorurteil" />
                               <TableView fx:id="tvVorurteilliste" layoutX="36.0" layoutY="114.0" prefHeight="200.0" prefWidth="200.0">
                                  <columns>
                                     <TableColumn fx:id="tcTitelVorurteilsliste" prefWidth="199.0" resizable="false" text="Titel" />
@@ -155,14 +154,6 @@
                               <Label layoutX="333.0" layoutY="181.0" text="?">
                                  <tooltip>
                                     <Tooltip text="Mit den Pfeilen können Sie auswählen, welche Vorurteile in ihrem Beitrag hinzugefügt werden sollen." />
-                                 </tooltip>
-                                 <font>
-                                    <Font name="System Bold" size="17.0" />
-                                 </font>
-                              </Label>
-                              <Label layoutX="553.0" layoutY="54.0" text="?">
-                                 <tooltip>
-                                    <Tooltip text="Speichern Sie hier ihre Vorurteile auf ihrem Beitrag" />
                                  </tooltip>
                                  <font>
                                     <Font name="System Bold" size="17.0" />

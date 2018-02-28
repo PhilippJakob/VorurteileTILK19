@@ -41,9 +41,6 @@ public class SucheVorurteilController {
     private Label lbError;
 
     @FXML
-    private Button btVorurteilHinzufügen;
-
-    @FXML
     private Button btVorurteilAuswählen;
 
     @FXML
@@ -87,11 +84,6 @@ public class SucheVorurteilController {
 
     @FXML
     void neuladenFenster(ActionEvent event) {
-
-    }
-
-    @FXML
-    void hinzufügenVorurteil(ActionEvent event) {
 
     }
 
