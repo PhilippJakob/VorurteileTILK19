@@ -1,11 +1,14 @@
 package vorurteile.ui;
 
+import java.net.URL;
 import java.util.ArrayList;
+import java.util.ResourceBundle;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TabPane;
@@ -16,7 +19,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import vorurteile.items.Vorurteil;
 
-public class EingabeVorurteilController
+public class EingabeVorurteilController implements Initializable
 {
 	@FXML
 	private TextField tfTitel;
@@ -93,6 +96,33 @@ public class EingabeVorurteilController
 	@FXML
    private TabPane tpFaktVorurteil;
 
+	public ObservableList<Vorurteil> getVorurteil()
+   {
+   	ObservableList<Vorurteil> lListe =FXCollections.observableArrayList();
+   	
+		return lListe;
+   };
+   
+   private void erstellenTabellen()
+   {
+   	tcTitelFaktenliste.setCellValueFactory(new PropertyValueFactory<>("titel"));
+   	tvFaktenliste.setItems(getVorurteil());
+   	
+   	tcTitelFaktenlisteAusgewählt.setCellValueFactory(new PropertyValueFactory<>("titel"));
+   	tvFaktenlisteAusgewählt.setItems(getVorurteil());
+   	
+   	tcTitelVorurteilsliste.setCellValueFactory(new PropertyValueFactory<>("titel"));
+   	tvVorurteilliste.setItems(getVorurteil());
+   	
+   	tcTitelVorurteilslisteAusgewählt.setCellValueFactory(new PropertyValueFactory<>("titel"));
+   	tvVorurteillisteAusgewählt.setItems(getVorurteil());
+   };
+   
+   public void erstellenTabelle()
+	{
+
+	};
+	
 	@FXML
 	void suchenFakt(ActionEvent event)
 	{
@@ -102,13 +132,25 @@ public class EingabeVorurteilController
 	@FXML
 	void auswählenFakt(ActionEvent event)
 	{
-
+		Vorurteil lVorurteil = tvFaktenliste.getSelectionModel().getSelectedItem();
+    	
+    	if(lVorurteil != null)
+    	{
+	    	tvFaktenliste.getItems().remove(lVorurteil);
+	    	tvFaktenlisteAusgewählt.getItems().add(lVorurteil);
+    	};
 	};
 
 	@FXML
 	void nichtAuswählenFakt(ActionEvent event)
 	{
-
+		Vorurteil lVorurteil = tvFaktenlisteAusgewählt.getSelectionModel().getSelectedItem();
+    	
+    	if(lVorurteil != null)
+    	{
+	    	tvFaktenlisteAusgewählt.getItems().remove(lVorurteil);
+	    	tvFaktenliste.getItems().add(lVorurteil);
+    	};
 	};
 
 	@FXML
@@ -136,29 +178,28 @@ public class EingabeVorurteilController
 		};
 	};
 
-	private ObservableList<Vorurteil> getVorurteil()
-	{
-		ObservableList<Vorurteil> getVorurteil = FXCollections.observableArrayList();
-		return getVorurteil;
-	};
-
-	public void erstellenTabelle()
-	{
-		tcTitelVorurteilsliste.setCellValueFactory(new PropertyValueFactory<>("titel"));
-		tvVorurteilliste.setItems(getVorurteil());
-
-	};
-
 	@FXML
 	void auswählenVorurteil(ActionEvent event)
 	{
-
+		Vorurteil lVorurteil = tvVorurteilliste.getSelectionModel().getSelectedItem();
+    	
+    	if(lVorurteil != null)
+    	{
+    		tvVorurteilliste.getItems().remove(lVorurteil);
+    		tvVorurteillisteAusgewählt.getItems().add(lVorurteil);
+    	};
 	};
 
 	@FXML
 	void nichtAuswählenVorurteil(ActionEvent event)
 	{
-
+		Vorurteil lVorurteil = tvVorurteillisteAusgewählt.getSelectionModel().getSelectedItem();
+    	
+    	if(lVorurteil != null)
+    	{
+    		tvVorurteillisteAusgewählt.getItems().remove(lVorurteil);
+    		tvVorurteilliste.getItems().add(lVorurteil);
+    	};
 	};
 
 	@FXML
@@ -185,4 +226,10 @@ public class EingabeVorurteilController
 			lbErrorF.setText("");
 		};
 	};
+	
+	@Override
+   public void initialize(URL location, ResourceBundle resources)
+   {
+   	erstellenTabellen();
+   };
 };
