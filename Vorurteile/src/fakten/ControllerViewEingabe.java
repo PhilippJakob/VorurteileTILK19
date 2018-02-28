@@ -109,16 +109,22 @@ public class ControllerViewEingabe
    	}
    }
 
-   public boolean prüfenLink()
+   public boolean istGültigLink()
    {
-   	if(tfLink.getText().startsWith("http"))
+   	if(istVorhandenLink())
    	{
+   		// TODO: link prüfen
    		return true;
    	}
    	else
    	{
-   		return false;
+   		return true;
    	}
+   }
+
+   public boolean istVorhandenLink()
+   {
+   	 return tfLink.getText().length() == 0;
 
    }
 
