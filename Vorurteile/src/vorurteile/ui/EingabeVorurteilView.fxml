@@ -30,7 +30,7 @@
                            <children>
                               <TextField fx:id="tfFaktensuche" layoutX="36.0" layoutY="58.0" onAction="#suchenFakt" prefHeight="40.0" prefWidth="200.0" promptText="Faktensuche" />
                               <Button fx:id="btFaktensuche" layoutX="268.0" layoutY="58.0" mnemonicParsing="false" onAction="#suchenFakt" prefHeight="40.0" prefWidth="48.0" text="Suche" />
-                              <Label fx:id="lbError" layoutX="36.0" layoutY="14.0" prefHeight="40.0" prefWidth="514.0" />
+                              <Label fx:id="lbErrorF" layoutX="36.0" layoutY="14.0" prefHeight="40.0" prefWidth="514.0" />
                               <Button fx:id="btFaktAuswählen" graphicTextGap="0.0" layoutX="258.0" layoutY="167.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#auswählenFakt" prefHeight="25.0" prefWidth="68.0" text="→">
                                  <font>
                                     <Font size="36.0" />
@@ -53,7 +53,7 @@
                                     <Insets top="-15.0" />
                                  </padding>
                               </Button>
-                              <Button fx:id="btRefresh" layoutX="258.0" layoutY="276.0" mnemonicParsing="false" onAction="#neuladenFensterF" prefHeight="62.0" prefWidth="68.0" text="Refresh" />
+                              <Button fx:id="btRefreshF" layoutX="258.0" layoutY="276.0" mnemonicParsing="false" onAction="#neuladenFensterF" prefHeight="62.0" prefWidth="68.0" text="Refresh" />
                               <Button fx:id="btFaktHinzufügen" layoutX="421.0" layoutY="58.0" mnemonicParsing="false" onAction="#hinzufügenFakt" prefHeight="40.0" prefWidth="127.0" text="Neuer Fakt" />
                               <TableView fx:id="tvFaktenliste" layoutX="36.0" layoutY="124.0" prefHeight="200.0" prefWidth="200.0">
                                  <columns>
@@ -132,7 +132,7 @@
                                     <Insets top="-15.0" />
                                  </padding>
                               </Button>
-                              <Button fx:id="btRefresh1" layoutX="258.0" layoutY="266.0" mnemonicParsing="false" onAction="#neuladenFensterV" prefHeight="62.0" prefWidth="68.0" text="Refresh" />
+                              <Button fx:id="btRefreshV" layoutX="258.0" layoutY="266.0" mnemonicParsing="false" onAction="#neuladenFensterV" prefHeight="62.0" prefWidth="68.0" text="Refresh" />
                               <TableView fx:id="tvVorurteilliste" layoutX="36.0" layoutY="114.0" prefHeight="200.0" prefWidth="200.0">
                                  <columns>
                                     <TableColumn fx:id="tcTitelVorurteilsliste" prefWidth="199.0" resizable="false" text="Titel" />
@@ -167,7 +167,7 @@
                                     <Font name="System Bold" size="17.0" />
                                  </font>
                               </Label>
-                              <Label fx:id="lbError1" layoutX="43.0" prefHeight="40.0" prefWidth="200.0" />
+                              <Label fx:id="lbErrorV" layoutX="36.0" layoutY="4.0" prefHeight="40.0" prefWidth="514.0" />
                            </children>
                         </AnchorPane>
                      </children></AnchorPane>
@@ -196,4 +196,3 @@
       </Label>
    </children>
 </AnchorPane>
-
