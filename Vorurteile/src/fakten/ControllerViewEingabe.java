@@ -74,8 +74,19 @@ public class ControllerViewEingabe
 	@FXML
 	 public void speichernDaten(ActionEvent event)
 		{
+		   if(prüfenEingabe() ==true)
+		   {
 			Fakt lFakt = new Fakt(tfTitel.getText(),tfAutor.getText(),dpDatum.getValue(),getQuellentyp(),tfLink.getText(),tfQuellenAussage.getText());
          lFakt.anlegen();
+	   	txMeldungen.setText("Speichern erfolgreich");
+	   	txMeldungen.setVisible(true);
+
+		   }
+		   else
+		   {
+		   	txMeldungen.setText("Bitte tätigen sie eine Eingabe beim Titel und der Aussage");
+	   		txMeldungen.setVisible(true);
+		   }
 		}
    @FXML
    public void auswählenInternet(ActionEvent event)
@@ -85,6 +96,31 @@ public class ControllerViewEingabe
    		setQuellentyp("Internet");
    		txQuelle.setText("Internetquelle");
    	}
+
+   public boolean prüfenEingabe()
+   {
+   	if(tfTitel.getText().length() == 0 || tfQuellenAussage.getText().length() == 0)
+   	{
+   		return false;
+   	}
+   	else
+   	{
+   		return true;
+   	}
+   }
+
+   public boolean prüfenLink()
+   {
+   	if(tfLink.getText().startsWith("http"))
+   	{
+   		return true;
+   	}
+   	else
+   	{
+   		return false;
+   	}
+
+   }
 
 	@FXML
    public void auswählenBuch(ActionEvent event)
