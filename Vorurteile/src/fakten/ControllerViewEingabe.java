@@ -95,6 +95,8 @@ public class ControllerViewEingabe
    		btInternet.setVisible(false);
    		setQuellentyp("Internet");
    		txQuelle.setText("Internetquelle");
+   		txLink.setVisible(true);
+   		tfLink.setVisible(true);
    	}
 
    public boolean prüfenEingabe()
@@ -129,6 +131,8 @@ public class ControllerViewEingabe
    		btInternet.setVisible(true);
    		setQuellentyp("Buch");
    		txQuelle.setText("Buchquelle");
+   		txLink.setVisible(false);
+   		tfLink.setVisible(false);
    	}
 
    @FXML
@@ -138,6 +142,8 @@ public class ControllerViewEingabe
    		btAndere.setVisible(false);
    		setQuellentyp("Andere");
    		txQuelle.setText("Andere Quelle");
+   		txLink.setVisible(false);
+   		tfLink.setVisible(false);
    	}
 
    public String getQuellentyp()
@@ -149,4 +155,5 @@ public class ControllerViewEingabe
 		{
 			Quellentyp = pQuellentyp;
 		}
+
 	}

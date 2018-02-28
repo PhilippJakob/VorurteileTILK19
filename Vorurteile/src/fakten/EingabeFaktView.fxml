@@ -44,9 +44,9 @@
       <Button fx:id="btInternet" layoutX="282.0" layoutY="55.0" mnemonicParsing="false" onAction="#auswählenInternet" prefHeight="25.0" prefWidth="100.0" text="Internet" />
       <Button fx:id="btBuch" layoutX="282.0" layoutY="55.0" mnemonicParsing="false" onAction="#auswählenBuch" prefHeight="25.0" prefWidth="100.0" text="Buch" visible="false" />
       <Button fx:id="btAndere" layoutX="282.0" layoutY="55.0" mnemonicParsing="false" onAction="#auswählenAndere" prefHeight="25.0" prefWidth="100.0" text="Andere Quellen" visible="false" />
-      <TextField fx:id="tfLink" layoutX="56.0" layoutY="422.0" prefHeight="25.0" prefWidth="319.0" promptText="http:" />
+      <TextField fx:id="tfLink" layoutX="56.0" layoutY="422.0" prefHeight="25.0" prefWidth="319.0" promptText="http:" visible="false" />
       <DatePicker fx:id="dpDatum" layoutX="232.0" layoutY="117.0" />
-      <Text fx:id="txLink" layoutX="57.0" layoutY="415.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Link">
+      <Text fx:id="txLink" layoutX="57.0" layoutY="415.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Link" visible="false">
          <font>
             <Font size="17.0" />
          </font>
