@@ -1,5 +1,9 @@
 package fakten;
 
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.Statement;
+
 import javafx.event.ActionEvent;
 import javafx.scene.control.DatePicker;
 import javafx.fxml.FXML;
@@ -19,6 +23,9 @@ public class ControllerViewEingabe
 
     @FXML
     private Label txHinzufügen;
+
+    @FXML
+    private Label txMeldungen;
 
     @FXML
     private Button btInternet;
@@ -95,14 +102,6 @@ public class ControllerViewEingabe
    		btAndere.setVisible(false);
    		setQuellentyp("Andere");
    		txQuelle.setText("Andere Quelle");
-
-   	}
-
-   @FXML
-   public void speichernUhrzeit(ActionEvent event)
-   	{
-
-
    	}
 
    public String getQuellentyp()
@@ -114,5 +113,4 @@ public class ControllerViewEingabe
 		{
 			Quellentyp = pQuellentyp;
 		}
-
 	}
