@@ -108,7 +108,7 @@
                      <children>
                         <AnchorPane prefHeight="369.0" prefWidth="584.0">
                            <children>
-                              <TextField fx:id="tfVorurteilssuche" layoutX="36.0" layoutY="48.0" prefHeight="40.0" prefWidth="200.0" promptText="Vorurteilssuche" />
+                              <TextField fx:id="tfVorurteilssuche" layoutX="36.0" layoutY="48.0" onAction="#suchenVorurteil" prefHeight="40.0" prefWidth="200.0" promptText="Vorurteilssuche" />
                               <Button fx:id="btVorurteilssuche" layoutX="268.0" layoutY="48.0" mnemonicParsing="false" onAction="#suchenVorurteil" prefHeight="40.0" prefWidth="48.0" text="Suche" />
                               <Button fx:id="btVorurteilAuswählen" graphicTextGap="0.0" layoutX="258.0" layoutY="157.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#auswählenVorurteil" prefHeight="25.0" prefWidth="68.0" text="→">
                                  <font>
@@ -151,7 +151,7 @@
                                     <Font name="System Bold" size="17.0" />
                                  </font>
                               </Label>
-                              <Label layoutX="333.0" layoutY="181.0" text="?">
+                              <Label layoutX="333.0" layoutY="173.0" text="?">
                                  <tooltip>
                                     <Tooltip text="Mit den Pfeilen können Sie auswählen, welche Vorurteile in ihrem Beitrag hinzugefügt werden sollen." />
                                  </tooltip>
@@ -159,7 +159,7 @@
                                     <Font name="System Bold" size="17.0" />
                                  </font>
                               </Label>
-                              <Label layoutX="333.0" layoutY="289.0" text="?">
+                              <Label layoutX="333.0" layoutY="284.0" text="?">
                                  <tooltip>
                                     <Tooltip text="Aktualisieren Sie hier die neuesten Vorurteilen" />
                                  </tooltip>
