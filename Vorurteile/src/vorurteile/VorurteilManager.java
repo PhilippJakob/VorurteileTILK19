@@ -54,10 +54,10 @@ public class VorurteilManager
 	}
 	
 	/**
-	 * Speichert das gegebene Vorurteil in der Datenbank ab.
+	 * Aktualisiert das gegebene Vorurteil in der Datenbank.
 	 * @param pVorurteil
 	 */
-	public static void speichernVorurteil(Vorurteil pVorurteil) 
+	public static void aktualisiertVorurteil(Vorurteil pVorurteil) 
 	{
 		MySqlConnector lConnector = new MySqlConnector();
 			
@@ -81,7 +81,7 @@ public class VorurteilManager
 	}
 	
 	/**
-	 * Prüft, ob Titel in der Datenbank schon vorhanden ist.
+	 * Prüft, ob Titel vom Vorurteil in der Datenbank schon vorhanden ist.
 	 * @param pTitel
 	 * @return
 	 */
