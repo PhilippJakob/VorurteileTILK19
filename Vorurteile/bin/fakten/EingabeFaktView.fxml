@@ -6,17 +6,6 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<<<<<<< HEAD
-<AnchorPane  fx:id="txGespeichert" onMouseClicked="#speichernDaten" prefHeight="543.0" prefWidth="464.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fakten.ControllerViewEingabe">
-   <children>
-      <Label fx:id="txHinzufügen" layoutX="57.0" layoutY="22.0" prefHeight="34.0" prefWidth="123.0" text="Hinzufügen">
-         <font>
-            <Font size="23.0" />
-         </font></Label>
-      <TextField fx:id="tfTitel" layoutX="56.0" layoutY="117.0" />
-      <TextField fx:id="tfAutor" layoutX="56.0" layoutY="184.0" />
-      <Text fx:id="txTitel" layoutX="58.0" layoutY="111.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Titel" wrappingWidth="73.13671875">
-=======
 <AnchorPane prefHeight="628.0" prefWidth="735.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fakten.InternetFakt_Controller">
    <children>
       <Label layoutX="300.0" layoutY="141.0" text="Eingabe Fakt" />
@@ -29,58 +18,31 @@
       <TextField fx:id="tfAutor" layoutX="60.0" layoutY="198.0" promptText="Autor" />
       <TextField fx:id="tfDatum" layoutX="231.0" layoutY="198.0" promptText="Datum" />
       <Text fx:id="txTitel" layoutX="60.0" layoutY="138.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Titel" wrappingWidth="73.13671875">
->>>>>>> origin/faktZweig
          <font>
             <Font size="17.0" />
          </font>
       </Text>
-<<<<<<< HEAD
-      <Text fx:id="txAutor" layoutX="59.0" layoutY="177.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Autor">
-=======
       <Text fx:id="txAutor" layoutX="62.0" layoutY="191.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Autor">
->>>>>>> origin/faktZweig
          <font>
             <Font size="17.0" />
          </font>
       </Text>
-<<<<<<< HEAD
-      <Text fx:id="txDatum" layoutX="231.0" layoutY="110.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Datum">
-=======
       <Text fx:id="txDatum" layoutX="231.0" layoutY="190.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Datum">
->>>>>>> origin/faktZweig
          <font>
             <Font size="17.0" />
          </font>
       </Text>
-<<<<<<< HEAD
-      <TextField fx:id="tfQuellenAussage" alignment="TOP_LEFT" layoutX="56.0" layoutY="249.0" prefHeight="131.0" prefWidth="319.0" promptText=" Inhalt" />
-      <Text fx:id="txQuellenAussage" layoutX="58.0" layoutY="235.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Aussage der Quelle">
-=======
       <TextField fx:id="tfQuellenAussage" alignment="TOP_LEFT" layoutX="62.0" layoutY="255.0" prefHeight="131.0" prefWidth="319.0" />
       <Text fx:id="txQuellenAussage" layoutX="62.0" layoutY="248.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Aussage der Quelle">
->>>>>>> origin/faktZweig
          <font>
             <Font size="17.0" />
          </font>
       </Text>
-<<<<<<< HEAD
-      <Text fx:id="txQuelle" layoutX="57.0" layoutY="75.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Buchquelle">
-=======
       <Text fx:id="txBuchquelle" layoutX="60.0" layoutY="107.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Buchquelle">
->>>>>>> origin/faktZweig
          <font>
             <Font size="18.0" />
          </font>
       </Text>
-<<<<<<< HEAD
-      <Button fx:id="btSpeichern" layoutX="58.0" layoutY="464.0" mnemonicParsing="false" onAction="#speichernDaten" prefHeight="23.0" prefWidth="145.0" text="Speichern" />
-      <Button fx:id="btInternet" layoutX="282.0" layoutY="55.0" mnemonicParsing="false" onAction="#auswählenInternet" prefHeight="25.0" prefWidth="100.0" text="Internet" />
-      <Button fx:id="btBuch" layoutX="282.0" layoutY="55.0" mnemonicParsing="false" onAction="#auswählenBuch" prefHeight="25.0" prefWidth="100.0" text="Buch" visible="false" />
-      <Button fx:id="btAndere" layoutX="282.0" layoutY="55.0" mnemonicParsing="false" onAction="#auswählenAndere" prefHeight="25.0" prefWidth="100.0" text="Andere Quellen" visible="false" />
-      <TextField fx:id="tfLink" layoutX="56.0" layoutY="422.0" prefHeight="25.0" prefWidth="319.0" promptText="http:" visible="false" />
-      <DatePicker fx:id="dpDatum" layoutX="232.0" layoutY="117.0" />
-      <Text fx:id="txLink" layoutX="57.0" layoutY="415.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Link" visible="false">
-=======
       <Button fx:id="btSpeichern" layoutX="63.0" layoutY="399.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="145.0" text="Speichern" />
       <Label fx:id="txHinzufügen" layoutX="62.0" layoutY="54.0" prefHeight="34.0" prefWidth="123.0" text="Hinzufügen">
          <font>
@@ -100,18 +62,10 @@
          </font>
       </Text>
       <Text fx:id="txDatum" layoutX="231.0" layoutY="190.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Datum">
->>>>>>> origin/faktZweig
          <font>
             <Font size="17.0" />
          </font>
       </Text>
-<<<<<<< HEAD
-      <Label fx:id="txMeldungen" layoutX="60.0" layoutY="503.0" text="Label" visible="false">
-         <font>
-            <Font size="17.0" />
-         </font>
-      </Label>
-=======
       <TextField fx:id="tfQuellenAussage" alignment="TOP_LEFT" layoutX="62.0" layoutY="255.0" prefHeight="131.0" prefWidth="319.0" />
       <Text fx:id="txQuellenAussage" layoutX="62.0" layoutY="248.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Aussage der Quelle">
          <font>
@@ -158,6 +112,5 @@
          </font>
       </Text>
       <Button fx:id="btSpeichern" layoutX="63.0" layoutY="399.0" mnemonicParsing="false" onAction="#speichernDaten" prefHeight="23.0" prefWidth="145.0" text="Speichern" />
->>>>>>> origin/faktZweig
    </children>
 </AnchorPane>
