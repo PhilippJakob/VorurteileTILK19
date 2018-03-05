@@ -23,101 +23,104 @@ public class EingabeVorurteilController implements Initializable
 {
 	@FXML
 	private TextField tfTitel;
-	
+
 	@FXML
    private TextArea taHauptaussage;
-	
+
 	@FXML
    private Button btSpeichernVorurteil;
-	
+
 	@FXML
    private TextField tfFaktensuche;
-	
+
 	@FXML
    private Button btFaktensuche;
-	
+
 	@FXML
    private Button btFaktHinzufügen;
-	
+
 	@FXML
    private TableView<Vorurteil> tvFaktenliste;
-	
+
 	@FXML
    private TableColumn<Vorurteil, String> tcTitelFaktenliste;
-	
+
 	@FXML
    private Button btFaktAuswählen;
-	
+
 	@FXML
    private Button btFaktNichtAuswählen;
-	
+
 	@FXML
    private Button btRefreshF;
-	
+
 	@FXML
    private TableView<Vorurteil> tvFaktenlisteAusgewählt;
-	
+
 	@FXML
    private TableColumn<Vorurteil, String> tcTitelFaktenlisteAusgewählt;
-	
+
 	@FXML
    private TextField tfVorurteilssuche;
-	
+
 	@FXML
    private Button btVorurteilssuche;
-	
+
 	@FXML
    private TableView<Vorurteil> tvVorurteilliste;
-	
+
 	@FXML
    private TableColumn<Vorurteil, String> tcTitelVorurteilsliste;
-	
+
 	@FXML
    private Button btVorurteilAuswählen;
-	
+
 	@FXML
    private Button btVorurteilNichtAuswählen;
-	
+
 	@FXML
    private Button btRefreshV;
-	
+
 	@FXML
    private TableView<Vorurteil> tvVorurteillisteAusgewählt;
-	
+
 	@FXML
    private TableColumn<Vorurteil, String> tcTitelVorurteilslisteAusgewählt;
-	
+
 	@FXML
    private Label lbErrorF;
-	
+
+   @FXML
+   private Label lbSafeError;
+
 	@FXML
    private Label lbErrorV;
-	
+
 	@FXML
    private TabPane tpFaktVorurteil;
 
 	public ObservableList<Vorurteil> getVorurteil()
    {
    	ObservableList<Vorurteil> lListe =FXCollections.observableArrayList();
-   	
+
 		return lListe;
    };
-   
+
    private void erstellenTabellen()
    {
    	tcTitelFaktenliste.setCellValueFactory(new PropertyValueFactory<>("titel"));
    	tvFaktenliste.setItems(getVorurteil());
-   	
+
    	tcTitelFaktenlisteAusgewählt.setCellValueFactory(new PropertyValueFactory<>("titel"));
    	tvFaktenlisteAusgewählt.setItems(getVorurteil());
-   	
+
    	tcTitelVorurteilsliste.setCellValueFactory(new PropertyValueFactory<>("titel"));
    	tvVorurteilliste.setItems(getVorurteil());
-   	
+
    	tcTitelVorurteilslisteAusgewählt.setCellValueFactory(new PropertyValueFactory<>("titel"));
    	tvVorurteillisteAusgewählt.setItems(getVorurteil());
    };
-	
+
 	@FXML
 	void suchenFakt(ActionEvent event)
 	{
@@ -128,7 +131,7 @@ public class EingabeVorurteilController implements Initializable
 	void auswählenFakt(ActionEvent event)
 	{
 		Vorurteil lVorurteil = tvFaktenliste.getSelectionModel().getSelectedItem();
-    	
+
     	if(lVorurteil != null)
     	{
 	    	tvFaktenliste.getItems().remove(lVorurteil);
@@ -140,7 +143,7 @@ public class EingabeVorurteilController implements Initializable
 	void nichtAuswählenFakt(ActionEvent event)
 	{
 		Vorurteil lVorurteil = tvFaktenlisteAusgewählt.getSelectionModel().getSelectedItem();
-    	
+
     	if(lVorurteil != null)
     	{
 	    	tvFaktenlisteAusgewählt.getItems().remove(lVorurteil);
@@ -177,7 +180,7 @@ public class EingabeVorurteilController implements Initializable
 	void auswählenVorurteil(ActionEvent event)
 	{
 		Vorurteil lVorurteil = tvVorurteilliste.getSelectionModel().getSelectedItem();
-    	
+
     	if(lVorurteil != null)
     	{
     		tvVorurteilliste.getItems().remove(lVorurteil);
@@ -189,7 +192,7 @@ public class EingabeVorurteilController implements Initializable
 	void nichtAuswählenVorurteil(ActionEvent event)
 	{
 		Vorurteil lVorurteil = tvVorurteillisteAusgewählt.getSelectionModel().getSelectedItem();
-    	
+
     	if(lVorurteil != null)
     	{
     		tvVorurteillisteAusgewählt.getItems().remove(lVorurteil);
@@ -209,19 +212,19 @@ public class EingabeVorurteilController implements Initializable
 		überprüfenFelder();
 	};
 
-	private void überprüfenFelder()
-	{
-		if (taHauptaussage.getText().isEmpty() || tfTitel.getText().isEmpty())
-		{
-			lbErrorF.setText("Error: Bitte alle Felder ausfüllen");
-			//System.out.println("Error: Bitte die Hauptaussage ausfüllen");
-		}
-		else
-		{
-			lbErrorF.setText("");
-		};
-	};
-	
+   private void überprüfenFelder() {
+  	if (taHauptaussage.getText().isEmpty() || tfTitel.getText().isEmpty())
+  	{
+  		lbSafeError.setText("Error: Bitte alle Felder ausfüllen");
+  	}
+
+  	else
+  	{
+  		lbSafeError.setText("");
+	}
+
+   }
+
 	@Override
    public void initialize(URL location, ResourceBundle resources)
    {

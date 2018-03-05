@@ -194,5 +194,6 @@
             <Font name="System Bold" size="17.0" />
          </font>
       </Label>
+      <Label fx:id="lbSafeError" layoutX="181.0" layoutY="344.0" prefHeight="51.0" prefWidth="210.0" textFill="RED" />
    </children>
 </AnchorPane>
