@@ -4,6 +4,8 @@ import java.util.ArrayList;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
+import test.Verknüpfung;
+import vorurteile.items.Vorurteil;
 
 public class AnzeigeVorurteilsHierarchieController
 {
@@ -11,9 +13,10 @@ public class AnzeigeVorurteilsHierarchieController
 	@FXML
 	TextField tfFakt1, tfFakt2, tfFakt3, tfFakt4,tfFakt5,tfFakt6,tfFakt7,tfFakt8,tfFakt9;
 	@FXML
-	TextField tfVorurteil1,tfVorurteil2,tfVorurteil3;
+	TextField tfVorurteil1;
 	@FXML
 	TextField tfVorVorurteil1, tfVorVorurteil2, tfVorVorurteil3;
+
 
 	private ArrayList<TextField> vorVorurteile = new ArrayList<TextField>();
 	private ArrayList<TextField> vorurteile = new ArrayList<TextField>();
@@ -26,8 +29,6 @@ public class AnzeigeVorurteilsHierarchieController
 		vorVorurteile.add(tfVorVorurteil3);
 
 		vorurteile.add(tfVorurteil1);
-		vorurteile.add(tfVorurteil2);
-		vorurteile.add(tfVorurteil3);
 
 		fakten.add(tfFakt1);
 		fakten.add(tfFakt2);
@@ -40,24 +41,65 @@ public class AnzeigeVorurteilsHierarchieController
 		fakten.add(tfFakt9);
 	}
 
-	public void anzeigenVorurteile(String[] pString)
+	
+	
+	public void anzeigenVorurteil(int pVorurteilsID)
 	{
-		for(int i =0; i<3;i++)
+		ArrayList<Vorurteil> lVorurteilsListe = Verknüpfung.suchenVorurteil(pVorurteilsID);
+		vorurteile.get(0).setText(lVorurteilsListe.get(0).getTitel());
+		
+		anzeigenVorVorurteile2(lVorurteilsListe.get(0).getID());
+		anzeigenFakten2(lVorurteilsListe.get(0).getID());
+	}
+
+	public void anzeigenVorVorurteile(int pVorVorurteilsID)
+	{
+		ArrayList<Vorurteil> lVorVorurteilsListe = Verknüpfung.suchenÜbergeordneteVorurteile(pVorVorurteilsID);
+		for(int i =0;i<3;i++)
 		{
-			vorurteile.get(i).setText(pString[i]);
+			vorVorurteile.get(i).setText(lVorVorurteilsListe.get(i).getTitel());
+		}
+		
+		anzeigenVorurteil2(lVorVorurteilsListe.get(0).getID());
+		anzeigenFakten2(lVorVorurteilsListe.get(0).getID());
+	}
+
+	public void anzeigenFakten(int pFaktenID)
+	{
+		ArrayList<Vorurteil> lFaktenListe = Verknüpfung.suchenUntergeordneteFakten(pFaktenID);
+		for(int i = 0;i<3;i++)
+		{
+			fakten.get(i).setText(lFaktenListe.get(i).getTitel());
+		}
+		
+		anzeigenVorurteil2(lFaktenListe.get(0).getID());
+		anzeigenVorVorurteile2(lFaktenListe.get(0).getID());
+	}
+
+	
+	
+	private void anzeigenVorurteil2(int pVorurteilsID)
+	{
+		ArrayList<Vorurteil> lVorurteilsListe = Verknüpfung.suchenVorurteil(pVorurteilsID);
+		
+		vorurteile.get(0).setText(lVorurteilsListe.get(0).getTitel());
+	}
+	
+	private void anzeigenVorVorurteile2(int pVorVorurteilsID)
+	{
+			ArrayList<Vorurteil> lVorVorurteilsListe = Verknüpfung.suchenÜbergeordneteVorurteile(pVorVorurteilsID);
+			for(int i=0;i<3;i++)
+			{
+				vorVorurteile.get(i).setText(lVorVorurteilsListe.get(i).getTitel());
+			}
+	}
+	
+	private void anzeigenFakten2(int pFaktenID)
+	{
+		ArrayList<Vorurteil> lFaktenListe = Verknüpfung.suchenUntergeordneteFakten(pFaktenID);
+		for(int i=0;i<3;i++)
+		{
+			fakten.get(i+3).setText(lFaktenListe.get(i).getTitel());
 		}
 	}
-
-	public void anzeigenVorVorurteile(String[] pString)
-	{
-		for(int i =0; i<3;i++)
-		{
-			vorVorurteile.get(i).setText(pString[i]);
-		}
-	}
-
-	public void anzeigenFakten(String[] pString)
-	{
-	}
-
 }
