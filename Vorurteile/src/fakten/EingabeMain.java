@@ -10,7 +10,7 @@ public class EingabeMain extends Application
   {
 
 	@Override
-	public void start(Stage pGrundStage)
+	public void  start(Stage pGrundStage)
 	 {
 		 try
 		 {

@@ -71,6 +71,7 @@ public class ControllerViewEingabe
 
     private String Quellentyp;
 
+    //Methode zum Speichern der eingegebenen Daten.
 	@FXML
 	 public void speichernDaten(ActionEvent event)
 		{
