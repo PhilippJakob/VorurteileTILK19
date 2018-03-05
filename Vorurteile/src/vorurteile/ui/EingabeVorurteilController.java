@@ -212,18 +212,17 @@ public class EingabeVorurteilController implements Initializable
 		überprüfenFelder();
 	};
 
-   private void überprüfenFelder() {
-  	if (taHauptaussage.getText().isEmpty() || tfTitel.getText().isEmpty())
-  	{
-  		lbSafeError.setText("Error: Bitte alle Felder ausfüllen");
-  	}
-
-  	else
-  	{
-  		lbSafeError.setText("");
-	}
-
-   }
+   private void überprüfenFelder()
+   {
+     	if (taHauptaussage.getText().isEmpty() || tfTitel.getText().isEmpty())
+     	{
+     		lbSafeError.setText("Error: Bitte alle Felder ausfüllen");
+     	}
+     	else
+     	{
+     		lbSafeError.setText("");
+   	};
+   };
 
 	@Override
    public void initialize(URL location, ResourceBundle resources)
