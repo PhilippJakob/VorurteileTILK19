@@ -117,11 +117,6 @@ public class EingabeVorurteilController implements Initializable
    	tcTitelVorurteilslisteAusgewählt.setCellValueFactory(new PropertyValueFactory<>("titel"));
    	tvVorurteillisteAusgewählt.setItems(getVorurteil());
    };
-   
-   public void erstellenTabelle()
-	{
-
-	};
 	
 	@FXML
 	void suchenFakt(ActionEvent event)
@@ -168,7 +163,7 @@ public class EingabeVorurteilController implements Initializable
 	@FXML
 	void suchenVorurteil(ActionEvent event)
 	{
-		erstellenTabelle();
+		erstellenTabellen();
 		String lTitel = tfVorurteilssuche.getText().trim();
 		ArrayList<Vorurteil> lVorurteil = vorurteile.VorurteilManager.getVorurteile(lTitel);
 		for(Vorurteil l : lVorurteil )
