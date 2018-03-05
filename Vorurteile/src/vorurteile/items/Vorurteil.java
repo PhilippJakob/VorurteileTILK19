@@ -1,6 +1,10 @@
 package vorurteile.items;
 
+<<<<<<< HEAD
 import java.time.LocalDateTime;
+=======
+import java.util.Date;
+>>>>>>> master
 
 public class Vorurteil
 {
@@ -8,12 +12,21 @@ public class Vorurteil
 	
 	private String titel;
 	private String autor;
+<<<<<<< HEAD
 	private LocalDateTime veröffentlichung;
 	private String internetquelle;
 	private String link;
 	private LocalDateTime zeitstempel;
 	
 	public Vorurteil(int pID, String pTitel, String pAutor, LocalDateTime pVeröffentlichung, String pInternetQuelle, String pLink)
+=======
+	private long veröffentlichung;
+	private String internetquelle;
+	private String link;
+	private long zeitstempel;
+	
+	public Vorurteil(int pID, String pTitel, String pAutor, long pVeröffentlichung, String pInternetQuelle, String pLink)
+>>>>>>> master
 	{
 		this.setID(pID);
 		this.setTitel(pTitel);
@@ -21,7 +34,11 @@ public class Vorurteil
 		this.setVeröffentlichung(pVeröffentlichung);
 		this.setInternetquelle(pInternetQuelle);
 		this.setLink(pLink);
+<<<<<<< HEAD
 		this.setZeitstempel(LocalDateTime.now());
+=======
+		this.setZeitstempel(new Date().getTime());
+>>>>>>> master
 	}
 	
 	/** Getter & Setter **/
@@ -56,12 +73,20 @@ public class Vorurteil
 		autor = pAutor;
 	}
 
+<<<<<<< HEAD
 	public LocalDateTime getVeröffentlichung()
+=======
+	public long getVeröffentlichung()
+>>>>>>> master
 	{
 		return veröffentlichung;
 	}
 
+<<<<<<< HEAD
 	public void setVeröffentlichung(LocalDateTime pVeröffentlichung)
+=======
+	public void setVeröffentlichung(long pVeröffentlichung)
+>>>>>>> master
 	{
 		veröffentlichung = pVeröffentlichung;
 	}
@@ -86,12 +111,20 @@ public class Vorurteil
 		link = pLink;
 	}
 
+<<<<<<< HEAD
 	public LocalDateTime getZeitstempel()
+=======
+	public long getZeitstempel()
+>>>>>>> master
 	{
 		return zeitstempel;
 	}
 
+<<<<<<< HEAD
 	public void setZeitstempel(LocalDateTime pZeitstempel)
+=======
+	public void setZeitstempel(long pZeitstempel)
+>>>>>>> master
 	{
 		zeitstempel = pZeitstempel;
 	}
