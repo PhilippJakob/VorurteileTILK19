@@ -25,11 +25,8 @@ public class VorurteilManager
 	 * }
 	 * 
 	 * Erstellt ein Vorurteil
-	 * 
-	 * 
+	 *	VorurteilManager.erstellenVorurteil("Baumrinde", "Dimaa", LocalDateTime.now(), true, "https://dimaa.vip/", "Die beste Seite der Welt.");
 	 */
-
-	// Erstellt ein Vorurteil
 	
 	
 	/**
@@ -39,6 +36,7 @@ public class VorurteilManager
 	 * @param pVeröffentlichung
 	 * @param pInternetquelle
 	 * @param pLink
+	 * @param pHauptaussage
 	 * @return
 	 */
 	public static Vorurteil erstellenVorurteil(String pTitel, String pAutor, LocalDateTime pVeröffentlichung, boolean pInternetquelle, String pLink, String pHauptaussage) 
