@@ -91,7 +91,7 @@ public class Verknüpfung
 		{
 			Connection lConnection = Datenbankverbindung.getConnection();
 			Statement lBefehl = lConnection.createStatement();
-			ResultSet lResult = lBefehl.executeQuery("SELECT f.Titel, f.ID_Fakten FROM dbo_vorurteile.fakten f, dbo_vorurteile.verbindung ve, dbo_vorurteile.vorurteile vo WHERE vo.ID_Vorurteile = ve.ID_Vorurteile AND ve.ID_Fakten = f.ID_Fakten AND vo.ID_Vorurteile=" + pVorurteilID + ";");
+			ResultSet lResult = lBefehl.executeQuery("SELECT f.Titel, f.ID_Fakten FROM dbo_vorurteile.fakten f, dbo_vorurteile.verbindung_f_v ve, dbo_vorurteile.vorurteile vo WHERE vo.ID_Vorurteile = ve.ID_Vorurteile AND ve.ID_Fakten = f.ID_Fakten AND vo.ID_Vorurteile=" + pVorurteilID + ";");
 			while(lResult.next())
 			{
 
@@ -115,7 +115,7 @@ public class Verknüpfung
 		{
 			Connection lConnection = Datenbankverbindung.getConnection();
 			Statement lBefehl = lConnection.createStatement();
-			ResultSet lResult = lBefehl.executeQuery("SELECT vo.Titel, vo.ID_Vorurteile, vo.Autor, vo.Internetquelle_Ja_Nein, vo.Link FROM dbo_vorurteile.fakten f, dbo_vorurteile.verbindung ve, dbo_vorurteile.vorurteile vo WHERE vo.ID_Vorurteile = ve.ID_Vorurteile AND ve.ID_Fakten = f.ID_Fakten AND f.ID_Fakten=" + pFaktenID + ";");
+			ResultSet lResult = lBefehl.executeQuery("SELECT vo.Titel, vo.ID_Vorurteile, vo.Autor, vo.Internetquelle_Ja_Nein, vo.Link FROM dbo_vorurteile.fakten f, dbo_vorurteile.verbindung_f_v ve, dbo_vorurteile.vorurteile vo WHERE vo.ID_Vorurteile = ve.ID_Vorurteile AND ve.ID_Fakten = f.ID_Fakten AND f.ID_Fakten=" + pFaktenID + ";");
 			while(lResult.next())
 			{
 				lListeVorurteile.add(new Vorurteil(lResult.getInt("vo.ID_Vorurteile"), lResult.getString("vo.Titel"), lResult.getString("vo.Autor"), 0, lResult.getString("vo.Internetquelle_Ja_Nein"), lResult.getString("vo.Link")));
