@@ -25,10 +25,8 @@ public class Main extends Application
 			primaryStage.setScene(lSzene);
 			primaryStage.show();
 			controller.hinzufügenZuArrays();
-//			controller.test();
-			String[] string = {"hey", "hi", "ho"};
-			controller.anzeigenVorurteile(string);
-			controller.anzeigenVorVorurteile(string);
+			
+			controller.anzeigenVorurteil(1);
 		}
 		catch(Exception e)
 		{
