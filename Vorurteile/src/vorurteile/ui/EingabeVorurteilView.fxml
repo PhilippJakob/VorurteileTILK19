@@ -42,7 +42,7 @@
                                     <Insets top="-15.0" />
                                  </padding>
                               </Button>
-                              <Button fx:id="btFaktNichtAuswählen" graphicTextGap="0.0" layoutX="258.0" layoutY="199.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#nichtAuswählenFakt" prefHeight="25.0" prefWidth="68.0" text="←">
+                              <Button fx:id="btFaktNichtAuswählen" graphicTextGap="0.0" layoutX="258.0" layoutY="199.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#machenNichtAuswählenFakt" prefHeight="25.0" prefWidth="68.0" text="←">
                                  <font>
                                     <Font size="36.0" />
                                  </font>
@@ -121,7 +121,7 @@
                                     <Insets top="-15.0" />
                                  </padding>
                               </Button>
-                              <Button fx:id="btVorurteilNichtAuswählen" graphicTextGap="0.0" layoutX="258.0" layoutY="189.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#nichtAuswählenVorurteil" prefHeight="25.0" prefWidth="68.0" text="←">
+                              <Button fx:id="btVorurteilNichtAuswählen" graphicTextGap="0.0" layoutX="258.0" layoutY="189.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#machenNichtAuswählenVorurteil" prefHeight="25.0" prefWidth="68.0" text="←">
                                  <font>
                                     <Font size="36.0" />
                                  </font>

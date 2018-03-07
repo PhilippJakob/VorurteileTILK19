@@ -136,7 +136,7 @@ public class EingabeVorurteilController implements Initializable
    }
 
 	@FXML
-	void suchenFakt(ActionEvent event)
+	private void suchenFakt(ActionEvent event)
 	{
 		
 	}
@@ -148,7 +148,7 @@ public class EingabeVorurteilController implements Initializable
 	 * @param event
 	 */
 	@FXML
-	void auswählenFakt(ActionEvent event)
+	private void auswählenFakt(ActionEvent event)
 	{
 		Vorurteil lFakt = tvFaktenliste.getSelectionModel().getSelectedItem();
 
@@ -166,7 +166,7 @@ public class EingabeVorurteilController implements Initializable
 	 * @param event
 	 */
 	@FXML
-	void nichtAuswählenFakt(ActionEvent event)
+	private void machenNichtAuswählenFakt(ActionEvent event)
 	{
 		Vorurteil lFakt = tvFaktenlisteAusgewählt.getSelectionModel().getSelectedItem();
 
@@ -178,19 +178,19 @@ public class EingabeVorurteilController implements Initializable
 	}
 
 	@FXML
-	void neuladenFensterF(ActionEvent event)
+	private void neuladenFensterF(ActionEvent event)
 	{
 
 	}
 
 	@FXML
-	void hinzufügenFakt(ActionEvent event)
+	private void hinzufügenFakt(ActionEvent event)
 	{
 
 	}
 	
 	@FXML
-	void suchenVorurteil(ActionEvent event)
+	private void suchenVorurteil(ActionEvent event)
 	{
 //		erstellenTabellen();
 		tvVorurteilliste.getItems().clear();
@@ -210,7 +210,7 @@ public class EingabeVorurteilController implements Initializable
 	 * @param event
 	 */
 	@FXML
-	void auswählenVorurteil(ActionEvent event)
+	private void auswählenVorurteil(ActionEvent event)
 	{
 		Vorurteil lVorurteil = tvVorurteilliste.getSelectionModel().getSelectedItem();
 
@@ -228,7 +228,7 @@ public class EingabeVorurteilController implements Initializable
 	 * @param event
 	 */
 	@FXML
-	void nichtAuswählenVorurteil(ActionEvent event)
+	private void machenNichtAuswählenVorurteil(ActionEvent event)
 	{
 		Vorurteil lVorurteil = tvVorurteillisteAusgewählt.getSelectionModel().getSelectedItem();
 
@@ -240,13 +240,13 @@ public class EingabeVorurteilController implements Initializable
 	}
 
 	@FXML
-	void neuladenFensterV(ActionEvent event)
+	private void neuladenFensterV(ActionEvent event)
 	{
 
 	}
 
 	@FXML
-	void speichernVorurteil(ActionEvent event)
+	private void speichernVorurteil(ActionEvent event)
 	{
 		überprüfenFelder();
 	}
