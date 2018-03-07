@@ -3,6 +3,7 @@ package fakten;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.stage.Stage;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 
@@ -14,7 +15,7 @@ public class EingabeMain extends Application
 	 {
 		 try
 		 {
-			 AnchorPane lGrundPane = (AnchorPane)FXMLLoader.load(getClass().getResource("EingabeFaktView.fxml"));
+			 Parent lGrundPane = FXMLLoader.load(getClass().getResource("EingabeFaktView.fxml"));
 			 Scene lScene = new Scene(lGrundPane,600,600);
 			 pGrundStage.setScene(lScene);
 			 pGrundStage.show();
