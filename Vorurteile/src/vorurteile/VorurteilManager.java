@@ -1,3 +1,10 @@
+/**
+ * @author Dimaa, 31. Januar 2018
+ * @description Greift auf die Vorurteil Tabelle in der Datenbank zu
+ * @changelog
+ * | 31. Januar 2018: Dimaa 「erstellenVorurteil(), aktualisiertVorurteil(), istTitelVorhanden(), getVorurteil(), getVorurteile(), getNewID()」
+ */
+
 package vorurteile;
 
 import java.sql.ResultSet;
@@ -31,13 +38,6 @@ public class VorurteilManager
 	
 	/**
 	 * Erstellt ein neues Vorurteil
-	 * @param pTitel
-	 * @param pAutor
-	 * @param pVeröffentlichung
-	 * @param pInternetquelle
-	 * @param pLink
-	 * @param pHauptaussage
-	 * @return
 	 */
 	public static Vorurteil erstellenVorurteil(String pTitel, String pAutor, LocalDateTime pVeröffentlichung, boolean pInternetquelle, String pLink, String pHauptaussage) 
 	{		
@@ -72,7 +72,6 @@ public class VorurteilManager
 	
 	/**
 	 * Aktualisiert das gegebene Vorurteil in der Datenbank.
-	 * @param pVorurteil
 	 */
 	public static void aktualisiertVorurteil(Vorurteil pVorurteil) 
 	{
@@ -100,8 +99,6 @@ public class VorurteilManager
 	
 	/**
 	 * Prüft, ob Titel vom Vorurteil in der Datenbank schon vorhanden ist.
-	 * @param pTitel
-	 * @return
 	 */
 	public static boolean istTitelVorhanden(String pTitel) 
 	{
@@ -120,8 +117,6 @@ public class VorurteilManager
 	
 	/**
 	 * Gibt ein Vorurteil mit der eingegebenen ID aus.
-	 * @param pID
-	 * @return
 	 */
 	public static Vorurteil getVorurteil(int pID) 
 	{
@@ -150,8 +145,6 @@ public class VorurteilManager
 	
 	/**
 	 * Gibt eine Vorurteil-Liste mit dem gewünschten Titel aus.
-	 * @param pTitel
-	 * @return
 	 */
 	public static ArrayList<Vorurteil> getVorurteile(String pTitel)
 	{
@@ -183,7 +176,6 @@ public class VorurteilManager
 	
 	/**
 	 * Erstellt eine nächsthöhere ID, die in der Datenbank noch nicht existiert.
-	 * @return
 	 */
 	public static int getNewID()
 	{

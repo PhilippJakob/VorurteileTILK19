@@ -1,5 +1,6 @@
 package vorurteile.ui;
 
+import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -87,17 +88,51 @@ public class EingabeVorurteilController
 	    @FXML
 	    void speichernVorurteil(ActionEvent event) 
 	    {
+	   	 ArrayList<Vorurteil> lVorurteile = VorurteilManager.getVorurteile(this.tfTitel.getText());
+	   	 
+	   	 for (Vorurteil lVorurteil : lVorurteile)
+	   	 {
+	   		 if (lVorurteil.getTitel().equals(this.tfTitel.getText()))
+	   		 {
+	   			 lbError.setText("Titel ist bereits vorhanden");
+	   			 return;
+	   		 }
+	   	 }
+	   	 
+	   	 Vorurteil lVorurteil = VorurteilManager.erstellenVorurteil(this.tfTitel.getText(), null, LocalDateTime.now(), false, null, this.taHauptaussage.getText());
+	   	 
 	   	 //ArrayList<Fakt> lFakten = tvFaktenlisteAusgewählt.getItems();
-	   	 ArrayList<Vorurteil> lVorurteile = (ArrayList<Vorurteil>) tvVorurteillisteAusgewählt.getItems();
+	   	 lVorurteile = (ArrayList<Vorurteil>) this.tvVorurteillisteAusgewählt.getItems();
 	   		 
 	   	 if ((!lVorurteile.isEmpty()) /*|| (!lFakten.isEmpty())*/) 
 	   	 {
-	   		 /*MySqlConnector lConnector = new MySqlConnector();
-	   		 PreparedStatement lStatement = (PreparedStatement) lConnector.getConnection().prepareStatement("INSERT INTO `vorurteile` (`ID_Vorurteile`, `Titel`, `Autor`, `Veröffentlichung`, `InternetQuelle_Ja_Nein`, `Link`, `Zeitstempel`) VALUES (?, ?, ?, ?, ?, ?, ?);");
-	 			lStatement.setInt(1, lVorurteil.getID());
-				lStatement.setString(2, lVorurteil.getTitel());
-				lStatement.setString(3, lVorurteil.getAutor());
-				lStatement.executeUpdate();*/
+	   		 MySqlConnector lConnector = new MySqlConnector();
+
+				 try
+				 {
+					 /*for (Fakt lUnterfakt : lFakten)
+					 {
+						 PreparedStatement lStatement;
+						 lStatement = (PreparedStatement) lConnector.getConnection().prepareStatement("INSERT INTO `vorurteile_f_v` (`ID_Untergeordneter_Fakt`, `ID_Verbindung_v_f`) VALUES (?, ?);");
+						 lStatement.setInt(1, lUnterfakt.getID());
+						 lStatement.setInt(2, lVorurteil.getID());
+						 lStatement.executeUpdate();
+	   		 	 }*/
+					 
+					 for (Vorurteil lUntervorurteil : lVorurteile)
+					 {
+						 PreparedStatement lStatement;
+						 lStatement = (PreparedStatement) lConnector.getConnection().prepareStatement("INSERT INTO `vorurteile_v_v` (`ID_Untergeordnetes_Vorurteil`, `ID_Verbindung_v_v`) VALUES (?, ?);");
+						 lStatement.setInt(1, lUntervorurteil.getID());
+						 lStatement.setInt(2, lVorurteil.getID());
+						 lStatement.executeUpdate();
+	   		 	 }
+				 } 
+				 catch (SQLException e)
+				 {
+				 	 // TODO Auto-generated catch block
+					 e.printStackTrace();
+				 }
 	   		 
 	   		 this.leerenEingaben();
 	   	 }
