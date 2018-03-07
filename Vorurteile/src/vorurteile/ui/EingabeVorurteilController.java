@@ -156,8 +156,8 @@ public class EingabeVorurteilController implements Initializable
     	{
 	    	tvFaktenliste.getItems().remove(lFakt);
 	    	tvFaktenlisteAusgewählt.getItems().add(lFakt);
-    	};
-	};
+    	}
+	}
 	
 	/**
 	 * Erkennt den ausgewählten Tabelleneintrag (lFakt).
@@ -174,8 +174,8 @@ public class EingabeVorurteilController implements Initializable
     	{
 	    	tvFaktenlisteAusgewählt.getItems().remove(lFakt);
 	    	tvFaktenliste.getItems().add(lFakt);
-    	};
-	};
+    	}
+	}
 
 	@FXML
 	void neuladenFensterF(ActionEvent event)
@@ -187,7 +187,7 @@ public class EingabeVorurteilController implements Initializable
 	void hinzufügenFakt(ActionEvent event)
 	{
 
-	};
+	}
 	
 	@FXML
 	void suchenVorurteil(ActionEvent event)
