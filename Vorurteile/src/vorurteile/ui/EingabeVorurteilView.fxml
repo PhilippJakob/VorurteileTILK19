@@ -67,7 +67,7 @@
                               </TableView>
                               <Label layoutX="243.0" layoutY="64.0" prefHeight="26.0" prefWidth="6.0" text="?">
                                  <tooltip>
-                                    <Tooltip text="Suchen Sie hier nach einem Fakt, mit dem Sie Ihr Vorurteil verknüpfen möchten." />
+                                    <Tooltip text="Suchen Sie hier nach einem Fakt, den Sie verknüpfen wollen." />
                                  </tooltip>
                                  <font>
                                     <Font name="System Bold" size="17.0" />
@@ -75,7 +75,7 @@
                               </Label>
                               <Label layoutX="553.0" layoutY="64.0" prefHeight="25.0" prefWidth="6.0" text="?">
                                  <tooltip>
-                                    <Tooltip text="Fügen Sie hier Ihre Fakten der Datenbank hinzu." />
+                                    <Tooltip text="Fügen Sie der Datenbank neue Fakten hinzu." />
                                  </tooltip>
                                  <font>
                                     <Font name="System Bold" size="17.0" />
@@ -83,7 +83,7 @@
                               </Label>
                               <Label layoutX="333.0" layoutY="183.0" text="?">
                                  <tooltip>
-                                    <Tooltip text="Mit den Pfeilen können Sie auswählen, welche Fakten zu Ihrem Beitrag hinzugefügt werden sollen." />
+                                    <Tooltip text="Verknüpfen Sie die ausgewählten Fakten." />
                                  </tooltip>
                                  <font>
                                     <Font name="System Bold" size="17.0" />
@@ -91,7 +91,7 @@
                               </Label>
                               <Label layoutX="333.0" layoutY="294.0" text="?">
                                  <tooltip>
-                                    <Tooltip text="Aktualisieren Sie hier die neuesten Fakten." />
+                                    <Tooltip text="Aktualisieren Sie hier die Fakten." />
                                  </tooltip>
                                  <font>
                                     <Font name="System Bold" size="17.0" />
@@ -145,7 +145,7 @@
                               </TableView>
                               <Label layoutX="243.0" layoutY="54.0" prefHeight="17.0" prefWidth="0.0" text="?">
                                  <tooltip>
-                                    <Tooltip text="Suchen Sie nach Vorurteilen, mit denen Sie Ihre Fakten verknüpfen wollen." />
+                                    <Tooltip text="Suchen Sie nach Vorurteilen, die Sie verknüpfen wollen." />
                                  </tooltip>
                                  <font>
                                     <Font name="System Bold" size="17.0" />
@@ -153,7 +153,7 @@
                               </Label>
                               <Label layoutX="333.0" layoutY="173.0" text="?">
                                  <tooltip>
-                                    <Tooltip text="Mit den Pfeilen können Sie auswählen, welche Vorurteile in Ihrem Beitrag hinzugefügt werden sollen." />
+                                    <Tooltip text="Verknüpfen Sie die ausgewählten Vorurteile." />
                                  </tooltip>
                                  <font>
                                     <Font name="System Bold" size="17.0" />
@@ -161,7 +161,7 @@
                               </Label>
                               <Label layoutX="333.0" layoutY="284.0" text="?">
                                  <tooltip>
-                                    <Tooltip text="Aktualisieren Sie hier die neuesten Vorurteile." />
+                                    <Tooltip text="Aktualisieren Sie die Vorurteile." />
                                  </tooltip>
                                  <font>
                                     <Font name="System Bold" size="17.0" />
@@ -188,7 +188,7 @@
       </Button>
       <Label layoutX="566.0" layoutY="53.0" text="?">
          <tooltip>
-            <Tooltip text="Geben Sie hier einen Titel und einen Beitrag ein." />
+            <Tooltip text="Geben Sie hier einen Titel und eine Hauptaussage ein." />
          </tooltip>
          <font>
             <Font name="System Bold" size="17.0" />
