@@ -180,7 +180,7 @@
             <Font size="18.0" />
          </font>
       </TextField>
-      <TextArea fx:id="taHauptaussage" layoutX="27.0" layoutY="71.0" prefHeight="273.0" prefWidth="530.0" promptText="Hier ist platz für deine Hauptaussage" />
+      <TextArea fx:id="taHauptaussage" layoutX="27.0" layoutY="71.0" prefHeight="174.0" prefWidth="530.0" promptText="Hier ist platz für deine Hauptaussage" />
       <Button fx:id="btSpeichernVorurteil" layoutX="397.0" layoutY="354.0" mnemonicParsing="false" onAction="#speichernVorurteil" prefHeight="25.0" prefWidth="160.0" text="Speichern">
          <font>
             <Font size="17.0" />
@@ -195,5 +195,9 @@
          </font>
       </Label>
       <Label fx:id="lbSafeError" layoutX="181.0" layoutY="344.0" prefHeight="51.0" prefWidth="210.0" textFill="RED" />
+      <TextField layoutX="119.0" layoutY="274.0" promptText="Autor" />
+      <TextField layoutX="119.0" layoutY="319.0" promptText="Quelle" />
+      <CheckBox layoutX="282.0" layoutY="323.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="51.0" text="Link" />
+      <TextField layoutX="328.0" layoutY="274.0" promptText="Veröffentlichung" />
    </children>
 </AnchorPane>
