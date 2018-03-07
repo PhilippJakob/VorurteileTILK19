@@ -220,7 +220,7 @@ public class EingabeVorurteilController implements Initializable
   		 }
   	 }
   	 
-  	 Vorurteil lVorurteil = VorurteilManager.erstellenVorurteil(this.tfTitel.getText(), null, LocalDateTime.now(), false, null, this.taHauptaussage.getText());
+  	 Vorurteil lVorurteil = VorurteilManager.erstellenVorurteil(this.tfTitel.getText(), "", LocalDateTime.now(), false, "", this.taHauptaussage.getText());
   	 
   	 //ArrayList<Fakt> lFakten = tvFaktenlisteAusgewählt.getItems();
   	 lVorurteile = (ArrayList<Vorurteil>) this.tvVorurteillisteAusgewählt.getItems();
