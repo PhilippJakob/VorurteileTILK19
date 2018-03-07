@@ -162,7 +162,4 @@ public class Hierarchie
 		return lListeVorurteile;
 	}
 
-
-	
-	
 }
