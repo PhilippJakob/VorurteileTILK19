@@ -2,6 +2,7 @@ package hierarchien;
 
 import java.util.ArrayList;
 
+import hierarchie.Hierarchie;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
 import test.Verknüpfung;
@@ -45,7 +46,7 @@ public class AnzeigeVorurteilsHierarchieController
 	
 	public void anzeigenVorurteil(int pVorurteilsID)
 	{
-		ArrayList<Vorurteil> lVorurteilsListe = Verknüpfung.suchenVorurteil(pVorurteilsID);
+		ArrayList<Vorurteil> lVorurteilsListe = Hierarchie.suchenVorurteil(pVorurteilsID);
 		vorurteile.get(0).setText(lVorurteilsListe.get(0).getTitel());
 		
 		anzeigenVorVorurteile2(lVorurteilsListe.get(0).getID());
@@ -54,7 +55,7 @@ public class AnzeigeVorurteilsHierarchieController
 
 	public void anzeigenVorVorurteile(int pVorVorurteilsID)
 	{
-		ArrayList<Vorurteil> lVorVorurteilsListe = Verknüpfung.suchenÜbergeordneteVorurteile(pVorVorurteilsID);
+		ArrayList<Vorurteil> lVorVorurteilsListe = Hierarchie.suchenÜbergeordneteVorurteile(pVorVorurteilsID);
 		for(int i =0;i<3;i++)
 		{
 			vorVorurteile.get(i).setText(lVorVorurteilsListe.get(i).getTitel());
@@ -66,7 +67,7 @@ public class AnzeigeVorurteilsHierarchieController
 
 	public void anzeigenFakten(int pFaktenID)
 	{
-		ArrayList<Vorurteil> lFaktenListe = Verknüpfung.suchenUntergeordneteFakten(pFaktenID);
+		ArrayList<Vorurteil> lFaktenListe = Hierarchie.suchenUntergeordneteFakten(pFaktenID);
 		for(int i = 0;i<3;i++)
 		{
 			fakten.get(i).setText(lFaktenListe.get(i).getTitel());
@@ -80,14 +81,14 @@ public class AnzeigeVorurteilsHierarchieController
 	
 	private void anzeigenVorurteil2(int pVorurteilsID)
 	{
-		ArrayList<Vorurteil> lVorurteilsListe = Verknüpfung.suchenVorurteil(pVorurteilsID);
+		ArrayList<Vorurteil> lVorurteilsListe = Hierarchie.suchenVorurteil(pVorurteilsID);
 		
 		vorurteile.get(0).setText(lVorurteilsListe.get(0).getTitel());
 	}
 	
 	private void anzeigenVorVorurteile2(int pVorVorurteilsID)
 	{
-			ArrayList<Vorurteil> lVorVorurteilsListe = Verknüpfung.suchenÜbergeordneteVorurteile(pVorVorurteilsID);
+			ArrayList<Vorurteil> lVorVorurteilsListe = Hierarchie.suchenÜbergeordneteVorurteile(pVorVorurteilsID);
 			for(int i=0;i<3;i++)
 			{
 				vorVorurteile.get(i).setText(lVorVorurteilsListe.get(i).getTitel());
@@ -96,7 +97,7 @@ public class AnzeigeVorurteilsHierarchieController
 	
 	private void anzeigenFakten2(int pFaktenID)
 	{
-		ArrayList<Vorurteil> lFaktenListe = Verknüpfung.suchenUntergeordneteFakten(pFaktenID);
+		ArrayList<Vorurteil> lFaktenListe = Hierarchie.suchenUntergeordneteFakten(pFaktenID);
 		for(int i=0;i<3;i++)
 		{
 			fakten.get(i+3).setText(lFaktenListe.get(i).getTitel());
