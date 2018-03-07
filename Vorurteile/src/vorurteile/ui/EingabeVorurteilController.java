@@ -1,12 +1,9 @@
-//  ___________________________________________________________________________________________________________________
-//  | ####################################### |   Name VorurteileStart.java  | ###################################### |
-//  | ####################################### |Origin = Jonas N. Henle V 0.1 | ###################################### |
-//  | ####################################### |   @Author = Jonas N. Henle   | ###################################### |
-//  | ####################################### |        Version 0.1.3         | ###################################### |
-//  | ####################################### |     Date; 25.01.18   14:20   | ###################################### |
-//  | ####################################### |Group Vorurteile [Ben / Ohan] | ###################################### |
-//  |_________________________________________|______________________________|________________________________________|
-//
+/**
+ * @author Jonas N. Henle, 25.01.2018
+ * Beschreibung: Dient der Eingabe von neuen Vorurteilen.
+ * 
+ * 07.03.2018 Nico Fliskowski: getVorurteil(); erstellenTabellen(); auswählenFakt(); nichtAuswählenFakt(); suchenVorurteil(); auswählenVorurteil(); nichtAuswählenVorurteil(); initialize();
+ */
 
 package vorurteile.ui;
 
@@ -111,7 +108,7 @@ public class EingabeVorurteilController implements Initializable
 
 	public ObservableList<Vorurteil> getVorurteil()
    {
-   	ObservableList<Vorurteil> lListe =FXCollections.observableArrayList();
+   	ObservableList<Vorurteil> lListe = FXCollections.observableArrayList();
 
 		return lListe;
    };
