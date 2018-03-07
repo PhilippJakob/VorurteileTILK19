@@ -56,7 +56,7 @@ public class VorurteilManager
 			lStatement.setBoolean(5, lVorurteil.getInternetquelle());
 			lStatement.setString(6, lVorurteil.getLink());
 			lStatement.setTimestamp(7, Timestamp.valueOf(lAktuellesDatum));
-			lStatement.setString(6, lVorurteil.getHauptaussage());
+			lStatement.setString(8, lVorurteil.getHauptaussage());
 			lStatement.executeUpdate();
 			
 			return lVorurteil;

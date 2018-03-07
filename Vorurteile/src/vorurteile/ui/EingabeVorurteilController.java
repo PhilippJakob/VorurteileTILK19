@@ -211,7 +211,7 @@ public class EingabeVorurteilController implements Initializable
 	 * Erstellt ein neues Vorurteil und speichert es in der Datenbank ab.
 	 */
    @FXML
-   void speichernVorurteil(ActionEvent event) 
+   void speichernVorurteil(ActionEvent event) throws Exception
    {
   	 ArrayList<Vorurteil> lVorurteile = VorurteilManager.getVorurteile(this.tfTitel.getText());
   	 
@@ -219,12 +219,12 @@ public class EingabeVorurteilController implements Initializable
   	 {
   		 if (lVorurteil.getTitel().equals(this.tfTitel.getText()))
   		 {
-  			 lbErrorV.setText("Titel ist bereits vorhanden");
+  			 lbSafeError.setText("Titel ist bereits vorhanden");
   			 return;
   		 }
   	 }
   	 
-  	 Vorurteil lVorurteil = VorurteilManager.erstellenVorurteil(this.tfTitel.getText(), null, LocalDateTime.now(), false, null, this.taHauptaussage.getText());
+  	 Vorurteil lVorurteil = VorurteilManager.erstellenVorurteil(this.tfTitel.getText(), this.tfAutor.getText(), LocalDateTime.now(), this.cbLink.isSelected(), this.tfQuelle.getText(), this.taHauptaussage.getText());
   	 
   	 //ArrayList<Fakt> lFakten = tvFaktenlisteAusgewählt.getItems();
   	 lVorurteile = (ArrayList<Vorurteil>) this.tvVorurteillisteAusgewählt.getItems();
