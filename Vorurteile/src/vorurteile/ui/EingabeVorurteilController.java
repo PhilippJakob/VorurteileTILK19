@@ -166,7 +166,8 @@ public class EingabeVorurteilController implements Initializable
 	@FXML
 	void suchenVorurteil(ActionEvent event)
 	{
-		erstellenTabellen();
+//		erstellenTabellen();
+		tvVorurteilliste.getItems().clear();
 		String lTitel = tfVorurteilssuche.getText().trim();
 		ArrayList<Vorurteil> lVorurteil = vorurteile.VorurteilManager.getVorurteile(lTitel);
 		for(Vorurteil l : lVorurteil )
