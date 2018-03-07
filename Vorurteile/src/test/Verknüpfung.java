@@ -12,6 +12,7 @@ import java.sql.Statement;
 import datenbank.Datenbankverbindung;
 import vorurteile.items.Vorurteil;
 
+
 public class Verknüpfung
 {	
 	
