@@ -9,7 +9,8 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 /**
- * Anglegt: 05.03.2018, Chantal Mielenz
+ * Angelegt: 05.03.2018, Chantal Mielenz
+ * Geändert: 07.03.2018, Chantal Mielenz, Methode hinzugefügt
  */
 public class SucheController 
 {
@@ -31,8 +32,9 @@ public class SucheController
     {
    	 
    	 if(tfSuchleiste.getText() != null)
-   	 {
-   		 tcVorurteilsliste.setText("Fehler! Bitte gebe du was in die Suchleiste in.");
+   	 {		
+   		 //sinnvolle Fehlermeldung hier hinzufügen 
+   		 tcVorurteilsliste.setText("Fehler! Bitte gebe du was in die Suchleiste in. ;)");
    	 }
    	 else
    	 {

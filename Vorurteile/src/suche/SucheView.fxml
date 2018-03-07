@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <!-- Angelegt: 05.03.2018, Chantal Mielenz, View Datei zur Suchleistenoberfläche -->
+<!-- Geändert: 07.03.2018, Chantal Mielenz -->
 
 <?import javafx.scene.control.*?>
 <?import java.lang.*?>
