@@ -9,19 +9,25 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-
-public class SucheMain extends Application {
+/**
+ * Angelegt: 07.03.2018, Chantal Mielenz, Testen der Oberfläche
+ *
+ */
+public class SucheMain extends Application 
+{
 	
 	
 	@Override
-	public void start(Stage pPrimaryStage) throws IOException {
+	public void start(Stage pPrimaryStage) throws IOException 
+	{
 		Parent lParent = FXMLLoader.load(getClass().getResource("SucheView.fxml"));
 		pPrimaryStage.setScene(new Scene(lParent));
 		pPrimaryStage.setTitle("Suche der Vorurteile");
 		pPrimaryStage.show();
 	}
 
-	public static void main(String[] args) {
+	public static void main(String[] args) 
+	{
 		launch(args);
 		
 	}
