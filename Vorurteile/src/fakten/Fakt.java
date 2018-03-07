@@ -35,7 +35,7 @@ public class Fakt
 			this.aussage = pAussage;
 	}
 
-	public Fakt(int pID,String pTitel, String pAutor, LocalDate pDatum, String pQuellenTyp, String pLink, String pAussage)
+	public Fakt(int pID, String pTitel, String pAutor, LocalDate pDatum, String pQuellenTyp, String pLink, String pAussage)
 	{
 		   this.IDFakten = pID;
 			this.titel = pTitel;

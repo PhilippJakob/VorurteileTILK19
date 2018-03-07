@@ -180,7 +180,7 @@ public class ControllerViewEingabe
    		setQuellentyp("Andere");
    		txQuelle.setText("Andere Quelle");
    		txLink.setVisible(false);
-   		tfLink.setVisible(false);
+   		tfLink.setVisible(false) ;
    	}
 
    public String getQuellentyp()
