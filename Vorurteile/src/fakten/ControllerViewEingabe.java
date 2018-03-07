@@ -71,6 +71,42 @@ public class ControllerViewEingabe
 
     private String Quellentyp;
 
+ 	@FXML
+   private Button btWechselnHinzufügen;
+
+   @FXML
+   private Button btWechselnBearbeiten;
+
+   @FXML
+   private Button btWechselnSuchen;
+
+   @FXML
+   private Button btWechselnLöschen;
+
+   @FXML
+   void wechselnSceneHinzufügen(ActionEvent event)
+   {
+  	 EingabeStart.wechselnSceneHinzufügen();
+   }
+
+   @FXML
+   void wechselnSceneBearbeiten(ActionEvent event)
+   {
+   	EingabeStart.wechselnSceneBearbeiten();
+   }
+
+   @FXML
+   void wechselnSceneSuchen(ActionEvent event)
+   {
+   	EingabeStart.wechselnSceneSuchen();
+   }
+
+   @FXML
+   void wechselnSceneLöschen(ActionEvent event)
+   {
+   	EingabeStart.wechselnSceneLöschen();
+   }
+
     //Methode zum Speichern der eingegebenen Daten.
 	@FXML
 	 public void speichernDaten(ActionEvent event)
