@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <TextField fx:id="tfVorVorurteil2" editable="false" layoutX="10.0" layoutY="190.0" />
+      <TextField fx:id="tfVorVorurteil3" editable="false" layoutX="10.0" layoutY="270.0" />
+      <TextField fx:id="tfVorVorurteil1" editable="false" layoutX="10.0" layoutY="110.0" />
+      <TextField fx:id="tfVorurteil2" editable="false" layoutX="226.0" layoutY="190.0" />
+      <Label layoutX="266.0" layoutY="14.0" text="Hierarchie">
+         <font>
+            <Font name="System Italic" size="24.0" />
+         </font>
+      </Label>
+      <TextField fx:id="tfFakt1" editable="false" layoutX="420.0" layoutY="85.0" />
+      <TextField fx:id="tfFakt2" editable="false" layoutX="420.0" layoutY="110.0" />
+      <TextField fx:id="tfFakt3" editable="false" layoutX="420.0" layoutY="135.0" />
+      <TextField fx:id="tfFakt4" editable="false" layoutX="420.0" layoutY="165.0" />
+      <TextField fx:id="tfFakt5" editable="false" layoutX="420.0" layoutY="190.0" />
+      <TextField fx:id="tfFakt6" editable="false" layoutX="420.0" layoutY="215.0" />
+      <TextField fx:id="tfFakt7" editable="false" layoutX="420.0" layoutY="245.0" />
+      <TextField fx:id="tfFakt8" editable="false" layoutX="420.0" layoutY="270.0" />
+      <TextField fx:id="tfFakt9" editable="false" layoutX="420.0" layoutY="295.0" />
+      <Label layoutX="27.0" layoutY="66.0" text="Vorgesetzte Vorurteile">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Label>
+      <Label layoutX="286.0" layoutY="67.0" text="Vorurteil">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Label>
+      <Label layoutX="481.0" layoutY="67.0" text="Fakten">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>
