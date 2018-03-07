@@ -115,7 +115,7 @@ public class EingabeVorurteilController implements Initializable
    	ObservableList<Vorurteil> lListe = FXCollections.observableArrayList();
 
 		return lListe;
-   };
+   }
 
    /**
     * Erstellt alle Tabellen, um die Items verwalten zu können.
@@ -133,13 +133,13 @@ public class EingabeVorurteilController implements Initializable
 
    	tcTitelVorurteilslisteAusgewählt.setCellValueFactory(new PropertyValueFactory<>("titel"));
    	tvVorurteillisteAusgewählt.setItems(getVorurteil());
-   };
+   }
 
 	@FXML
 	void suchenFakt(ActionEvent event)
 	{
 		
-	};
+	}
 
 	/**
 	 * Erkennt den ausgewählten Tabelleneintrag (lFakt).
@@ -156,9 +156,9 @@ public class EingabeVorurteilController implements Initializable
     	{
 	    	tvFaktenliste.getItems().remove(lFakt);
 	    	tvFaktenlisteAusgewählt.getItems().add(lFakt);
-    	};
-	};
-
+    	}
+	}
+	
 	/**
 	 * Erkennt den ausgewählten Tabelleneintrag (lFakt).
 	 * Entfernt lFakt aus tvFaktenlisteAusgewählt.
@@ -174,33 +174,34 @@ public class EingabeVorurteilController implements Initializable
     	{
 	    	tvFaktenlisteAusgewählt.getItems().remove(lFakt);
 	    	tvFaktenliste.getItems().add(lFakt);
-    	};
-	};
+    	}
+	}
 
 	@FXML
 	void neuladenFensterF(ActionEvent event)
 	{
 
-	};
+	}
 
 	@FXML
 	void hinzufügenFakt(ActionEvent event)
 	{
 
-	};
+	}
 	
 	@FXML
 	void suchenVorurteil(ActionEvent event)
 	{
-		erstellenTabellen();
+//		erstellenTabellen();
+		tvVorurteilliste.getItems().clear();
 		String lTitel = tfVorurteilssuche.getText().trim();
 		ArrayList<Vorurteil> lVorurteil = vorurteile.VorurteilManager.getVorurteile(lTitel);
 		for(Vorurteil l : lVorurteil )
 		{
 			//System.out.println(l.getID() + " " + l.getTitel());
 			tvVorurteilliste.getItems().add(l);
-		};
-	};
+		}
+	}
 
 	/**
 	 * Erkennt den ausgewählten Tabelleneintrag (lVorurteil).
@@ -217,8 +218,8 @@ public class EingabeVorurteilController implements Initializable
     	{
     		tvVorurteilliste.getItems().remove(lVorurteil);
     		tvVorurteillisteAusgewählt.getItems().add(lVorurteil);
-    	};
-	};
+    	}
+	}
 
 	/**
 	 * Erkennt den ausgewählten Tabelleneintrag (lVorurteil).
@@ -235,20 +236,20 @@ public class EingabeVorurteilController implements Initializable
     	{
     		tvVorurteillisteAusgewählt.getItems().remove(lVorurteil);
     		tvVorurteilliste.getItems().add(lVorurteil);
-    	};
-	};
+    	}
+	}
 
 	@FXML
 	void neuladenFensterV(ActionEvent event)
 	{
 
-	};
+	}
 
 	@FXML
 	void speichernVorurteil(ActionEvent event)
 	{
 		überprüfenFelder();
-	};
+	}
 
    private void überprüfenFelder()
    {
@@ -259,8 +260,8 @@ public class EingabeVorurteilController implements Initializable
      	else
      	{
      		lbSafeError.setText("");
-   	};
-   };
+   	}
+   }
 
    /**
     * Ruft nach Start des Programmes erstellenTabellen() auf.
@@ -269,5 +270,5 @@ public class EingabeVorurteilController implements Initializable
    public void initialize(URL location, ResourceBundle resources)
    {
    	erstellenTabellen();
-   };
-};
+   }
+}
