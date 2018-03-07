@@ -195,9 +195,9 @@
          </font>
       </Label>
       <Label fx:id="lbSafeError" layoutX="181.0" layoutY="344.0" prefHeight="51.0" prefWidth="210.0" textFill="RED" />
-      <TextField layoutX="119.0" layoutY="274.0" promptText="Autor" />
-      <TextField layoutX="119.0" layoutY="319.0" promptText="Quelle" />
-      <CheckBox layoutX="282.0" layoutY="323.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="51.0" text="Link" />
-      <TextField layoutX="328.0" layoutY="274.0" promptText="Veröffentlichung" />
+      <TextField fx:id="tfAutor" layoutX="119.0" layoutY="274.0" promptText="Autor" />
+      <TextField fx:id="tfQuelle" layoutX="119.0" layoutY="319.0" promptText="Quelle" />
+      <CheckBox fx:id="cbLink" layoutX="328.0" layoutY="323.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="51.0" text="Link" />
+      <TextField fx:id="tfVeröffentlichung" layoutX="328.0" layoutY="274.0" promptText="Veröffentlichung" />
    </children>
 </AnchorPane>
