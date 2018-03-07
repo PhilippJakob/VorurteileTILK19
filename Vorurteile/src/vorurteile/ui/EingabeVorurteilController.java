@@ -22,6 +22,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TabPane;
 import javafx.scene.control.TableColumn;
@@ -36,7 +37,7 @@ import vorurteile.items.Vorurteil;
 public class EingabeVorurteilController implements Initializable
 {
 	@FXML
-	private TextField tfTitel, tfFaktensuche, tfVorurteilssuche;
+	private TextField tfTitel, tfFaktensuche, tfVorurteilssuche, tfAutor, tfQuelle, tfVeröffentlichung;
 
 	@FXML
    private TextArea taHauptaussage;
@@ -54,6 +55,9 @@ public class EingabeVorurteilController implements Initializable
 
 	@FXML
    private Label lbErrorF, lbSafeError, lbErrorV;
+	
+	@FXML
+	private CheckBox cbLink;
 
 	@FXML
    private TabPane tpFaktVorurteil;
