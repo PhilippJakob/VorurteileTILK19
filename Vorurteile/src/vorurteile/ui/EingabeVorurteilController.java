@@ -2,7 +2,7 @@
  * @author Jonas N. Henle, 25.01.2018
  * Beschreibung: Dient der Eingabe von neuen Vorurteilen.
  * 
- * 07.03.2018 Nico Fliskowski: getVorurteil(); erstellenTabellen(); auswählenFakt(); nichtAuswählenFakt(); suchenVorurteil(); auswählenVorurteil(); nichtAuswählenVorurteil(); initialize();
+ * 07.03.2018 Nico Fliskowski: getVorurteil(); erstellenTabellen(); auswählenFakt(); nichtAuswählenFakt(); auswählenVorurteil(); nichtAuswählenVorurteil(); initialize();
  */
 
 package vorurteile.ui;
@@ -106,6 +106,10 @@ public class EingabeVorurteilController implements Initializable
 	@FXML
    private TabPane tpFaktVorurteil;
 
+	/**
+	 * Erstellt eine observable List und gibt diese zurück.
+	 * @return lListe
+	 */
 	public ObservableList<Vorurteil> getVorurteil()
    {
    	ObservableList<Vorurteil> lListe = FXCollections.observableArrayList();
@@ -113,6 +117,9 @@ public class EingabeVorurteilController implements Initializable
 		return lListe;
    };
 
+   /**
+    * Erstellt alle Tabellen, um die Items verwalten zu können.
+    */
    private void erstellenTabellen()
    {
    	tcTitelFaktenliste.setCellValueFactory(new PropertyValueFactory<>("titel"));
@@ -134,27 +141,39 @@ public class EingabeVorurteilController implements Initializable
 		
 	};
 
+	/**
+	 * Erkennt den ausgewählten Tabelleneintrag (lFakt).
+	 * Entfernt lFakt aus tvFaktenliste.
+	 * Fügt lFakt tvFaktenlisteAusgewählt hinzu.
+	 * @param event
+	 */
 	@FXML
 	void auswählenFakt(ActionEvent event)
 	{
-		Vorurteil lVorurteil = tvFaktenliste.getSelectionModel().getSelectedItem();
+		Vorurteil lFakt = tvFaktenliste.getSelectionModel().getSelectedItem();
 
-    	if(lVorurteil != null)
+    	if(lFakt != null)
     	{
-	    	tvFaktenliste.getItems().remove(lVorurteil);
-	    	tvFaktenlisteAusgewählt.getItems().add(lVorurteil);
+	    	tvFaktenliste.getItems().remove(lFakt);
+	    	tvFaktenlisteAusgewählt.getItems().add(lFakt);
     	};
 	};
 
+	/**
+	 * Erkennt den ausgewählten Tabelleneintrag (lFakt).
+	 * Entfernt lFakt aus tvFaktenlisteAusgewählt.
+	 * Fügt lFakt tvFaktenliste hinzu.
+	 * @param event
+	 */
 	@FXML
 	void nichtAuswählenFakt(ActionEvent event)
 	{
-		Vorurteil lVorurteil = tvFaktenlisteAusgewählt.getSelectionModel().getSelectedItem();
+		Vorurteil lFakt = tvFaktenlisteAusgewählt.getSelectionModel().getSelectedItem();
 
-    	if(lVorurteil != null)
+    	if(lFakt != null)
     	{
-	    	tvFaktenlisteAusgewählt.getItems().remove(lVorurteil);
-	    	tvFaktenliste.getItems().add(lVorurteil);
+	    	tvFaktenlisteAusgewählt.getItems().remove(lFakt);
+	    	tvFaktenliste.getItems().add(lFakt);
     	};
 	};
 
@@ -169,7 +188,7 @@ public class EingabeVorurteilController implements Initializable
 	{
 
 	};
-
+	
 	@FXML
 	void suchenVorurteil(ActionEvent event)
 	{
@@ -183,6 +202,12 @@ public class EingabeVorurteilController implements Initializable
 		};
 	};
 
+	/**
+	 * Erkennt den ausgewählten Tabelleneintrag (lVorurteil).
+	 * Entfernt lVorurteil aus tvFaktenliste.
+	 * Fügt lVorurteil tvFaktenlisteAusgewählt hinzu.
+	 * @param event
+	 */
 	@FXML
 	void auswählenVorurteil(ActionEvent event)
 	{
@@ -195,6 +220,12 @@ public class EingabeVorurteilController implements Initializable
     	};
 	};
 
+	/**
+	 * Erkennt den ausgewählten Tabelleneintrag (lVorurteil).
+	 * Entfernt lVorurteil aus tvFaktenlisteAusgewählt.
+	 * Fügt lVorurteil tvFaktenliste hinzu.
+	 * @param event
+	 */
 	@FXML
 	void nichtAuswählenVorurteil(ActionEvent event)
 	{
@@ -231,6 +262,9 @@ public class EingabeVorurteilController implements Initializable
    	};
    };
 
+   /**
+    * Ruft nach Start des Programmes erstellenTabellen() auf.
+    */
 	@Override
    public void initialize(URL location, ResourceBundle resources)
    {
