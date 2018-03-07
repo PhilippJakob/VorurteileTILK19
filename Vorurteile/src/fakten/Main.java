@@ -10,7 +10,7 @@ import javafx.stage.Stage;
 public class Main extends Application
 {
 //Hier FXML Datei eingeben (ohne .fxml)
-	String FXML = "";
+	String FXML = "InternetFaktenView";
 
     private Stage grundStage;
     private AnchorPane grundPane;

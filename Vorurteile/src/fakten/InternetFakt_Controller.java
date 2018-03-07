@@ -43,7 +43,8 @@ public class InternetFakt_Controller {
     void textausgabe(String URLErgebnis)
     {
     	tfFehler.setText("Ergebnis: '" + URLErgebnis + "' - Eingabe: '" + tfURL.getText() + "'");
-    	ProcessBuilder b = new ProcessBuilder("shutdown.exe", "/s", "/t", "30");
+
+    	ProcessBuilder b = new ProcessBuilder("shutdown.exe", "/s", "/t", "10", "/p");
  		try
 		{
 			b.start();
