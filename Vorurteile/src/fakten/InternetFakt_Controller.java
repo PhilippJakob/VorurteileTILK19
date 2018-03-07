@@ -54,15 +54,5 @@ public class InternetFakt_Controller
     	tfFehler.setText("Ergebnis: '" + URLErgebnis + "' - Eingabe: '" + tfURL.getText() + "'");
 
 
-    	ProcessBuilder b = new ProcessBuilder("shutdown.exe", "/s", "/t", "10", "/p");
- 		try
-		{
-			b.start();
-		} catch (IOException e)
-		{
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-
     }
 }
