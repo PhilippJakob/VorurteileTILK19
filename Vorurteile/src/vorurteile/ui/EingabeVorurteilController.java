@@ -29,79 +29,24 @@ import vorurteile.items.Vorurteil;
 public class EingabeVorurteilController implements Initializable
 {
 	@FXML
-	private TextField tfTitel;
+	private TextField tfTitel, tfFaktensuche, tfVorurteilssuche;
 
 	@FXML
    private TextArea taHauptaussage;
 
 	@FXML
-   private Button btSpeichernVorurteil;
+   private Button btSpeichernVorurteil, btFaktensuche, btFaktHinzufügen, btFaktAuswählen, btFaktNichtAuswählen, 
+   					btRefreshF, btVorurteilssuche, btVorurteilAuswählen, btVorurteilNichtAuswählen, btRefreshV;
 
 	@FXML
-   private TextField tfFaktensuche;
+   private TableView<Vorurteil> tvFaktenliste, tvFaktenlisteAusgewählt, tvVorurteilliste, tvVorurteillisteAusgewählt;
 
 	@FXML
-   private Button btFaktensuche;
+   private TableColumn<Vorurteil, String> tcTitelFaktenliste, tcTitelFaktenlisteAusgewählt, tcTitelVorurteilsliste, 
+   													tcTitelVorurteilslisteAusgewählt;
 
 	@FXML
-   private Button btFaktHinzufügen;
-
-	@FXML
-   private TableView<Vorurteil> tvFaktenliste;
-
-	@FXML
-   private TableColumn<Vorurteil, String> tcTitelFaktenliste;
-
-	@FXML
-   private Button btFaktAuswählen;
-
-	@FXML
-   private Button btFaktNichtAuswählen;
-
-	@FXML
-   private Button btRefreshF;
-
-	@FXML
-   private TableView<Vorurteil> tvFaktenlisteAusgewählt;
-
-	@FXML
-   private TableColumn<Vorurteil, String> tcTitelFaktenlisteAusgewählt;
-
-	@FXML
-   private TextField tfVorurteilssuche;
-
-	@FXML
-   private Button btVorurteilssuche;
-
-	@FXML
-   private TableView<Vorurteil> tvVorurteilliste;
-
-	@FXML
-   private TableColumn<Vorurteil, String> tcTitelVorurteilsliste;
-
-	@FXML
-   private Button btVorurteilAuswählen;
-
-	@FXML
-   private Button btVorurteilNichtAuswählen;
-
-	@FXML
-   private Button btRefreshV;
-
-	@FXML
-   private TableView<Vorurteil> tvVorurteillisteAusgewählt;
-
-	@FXML
-   private TableColumn<Vorurteil, String> tcTitelVorurteilslisteAusgewählt;
-
-	@FXML
-   private Label lbErrorF;
-
-   @FXML
-   private Label lbSafeError;
-
-	@FXML
-   private Label lbErrorV;
+   private Label lbErrorF, lbSafeError, lbErrorV;
 
 	@FXML
    private TabPane tpFaktVorurteil;
