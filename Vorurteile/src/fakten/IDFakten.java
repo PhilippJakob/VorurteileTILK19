@@ -14,7 +14,7 @@ public class IDFakten
 {
     private static int aktuelleIDFakten = getAktuelleIDFakten(); //letzte vergebene FaktenID
 
-	private static int IDFakten =0;
+	private static int IDFakten =1;
 
 //  Konstruktoren
 
@@ -60,12 +60,12 @@ public class IDFakten
 
     	try {
     		lBefehl = lConnection.createStatement();
-    		lErgebnis= lBefehl.executeQuery("SELECT MAX(IDFakten) FROM dbo_vorurteile.fakt");
+    		lErgebnis= lBefehl.executeQuery("SELECT MAX(ID_Fakten) FROM dbo_vorurteile.fakten");
     		lErgebnis.first();
 
     		while(! lErgebnis.isAfterLast())
     		{
-    			lIDFakten = new IDFakten (lErgebnis.getInt(7));
+    			lIDFakten = new IDFakten (lErgebnis.getInt(1));
     			lIDFaktenListe.add(lIDFakten);
       			return lIDFakten;
     		}
