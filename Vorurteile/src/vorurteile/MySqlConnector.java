@@ -47,6 +47,7 @@ public class MySqlConnector
           properties.setProperty("user", cBenutzername);
           properties.setProperty("password", cPasswort);
           properties.setProperty("MaxPooledStatements", "250");
+          properties.setProperty("useSSL", "false");
       }
       
       return properties;

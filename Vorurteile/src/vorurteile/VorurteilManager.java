@@ -1,3 +1,10 @@
+/**
+ * @author Dimaa, 31. Januar 2018
+ * @description Greift auf die Vorurteil Tabelle in der Datenbank zu
+ * @changelog
+ * | 31. Januar 2018: Dimaa 「erstellenVorurteil(), aktualisiertVorurteil(), istTitelVorhanden(), getVorurteil(), getVorurteile(), getNewID()」
+ */
+
 package vorurteile;
 
 import java.sql.ResultSet;
@@ -15,31 +22,41 @@ import vorurteile.items.Vorurteil;
 
 public class VorurteilManager
 {
+	/*
+	 * Tutorial :)
+	 * 
+	 * Gibt alle Vorurteile mit dem Titel "Baum" aus
+	 * for (Vorurteil lVorurteil : VorurteilManager.getVorurteile("Baum"))
+	 * {
+	 * 	System.out.println(lVorurteil.getID());
+	 * }
+	 * 
+	 * Erstellt ein Vorurteil
+	 *	VorurteilManager.erstellenVorurteil("Baumrinde", "Dimaa", LocalDateTime.now(), true, "https://dimaa.vip/", "Die beste Seite der Welt.");
+	 */
+	
+	
 	/**
 	 * Erstellt ein neues Vorurteil
-	 * @param pTitel
-	 * @param pAutor
-	 * @param pVeröffentlichung
-	 * @param pInternetquelle
-	 * @param pLink
-	 * @return
 	 */
-	public static Vorurteil erstellenVorurteil(String pTitel, String pAutor, LocalDateTime pVeröffentlichung, String pInternetquelle, String pLink) 
+	public static Vorurteil erstellenVorurteil(String pTitel, String pAutor, LocalDateTime pVeröffentlichung, boolean pInternetquelle, String pLink, String pHauptaussage) 
 	{		
 		MySqlConnector lConnector = new MySqlConnector();
 		
 		try
 		{			
-			Vorurteil lVorurteil = new Vorurteil(VorurteilManager.getNewID(), pTitel, pAutor, pVeröffentlichung, pInternetquelle, pLink);
+			LocalDateTime lAktuellesDatum = LocalDateTime.now();
+			Vorurteil lVorurteil = new Vorurteil(VorurteilManager.getNewID(), pTitel, pAutor, pVeröffentlichung, pInternetquelle, pLink, lAktuellesDatum, pHauptaussage);
 			
-			PreparedStatement lStatement = (PreparedStatement) lConnector.getConnection().prepareStatement("INSERT INTO `vorurteile` (`ID_Vorurteile`, `Titel`, `Autor`, `Veröffentlichung`, `InternetQuelle_Ja_Nein`, `Link`, `Zeitstempel`) VALUES (?, ?, ?, ?, ?, ?, ?);");
+			PreparedStatement lStatement = (PreparedStatement) lConnector.getConnection().prepareStatement("INSERT INTO `vorurteile` (`ID_Vorurteile`, `Titel`, `Autor`, `Veröffentlichung`, `InternetQuelle_Ja_Nein`, `Link`, `Zeitstempel`, `Vorurteil_Text`) VALUES (?, ?, ?, ?, ?, ?, ?, ?);");
 			lStatement.setInt(1, lVorurteil.getID());
 			lStatement.setString(2, lVorurteil.getTitel());
 			lStatement.setString(3, lVorurteil.getAutor());
 			lStatement.setTimestamp(4, Timestamp.valueOf(lVorurteil.getVeröffentlichung()));
-			lStatement.setString(5, lVorurteil.getInternetquelle());
+			lStatement.setBoolean(5, lVorurteil.getInternetquelle());
 			lStatement.setString(6, lVorurteil.getLink());
-			lStatement.setTimestamp(7, Timestamp.valueOf(LocalDateTime.now()));
+			lStatement.setTimestamp(7, Timestamp.valueOf(lAktuellesDatum));
+			lStatement.setString(6, lVorurteil.getHauptaussage());
 			lStatement.executeUpdate();
 			
 			return lVorurteil;
@@ -55,7 +72,6 @@ public class VorurteilManager
 	
 	/**
 	 * Aktualisiert das gegebene Vorurteil in der Datenbank.
-	 * @param pVorurteil
 	 */
 	public static void aktualisiertVorurteil(Vorurteil pVorurteil) 
 	{
@@ -63,14 +79,15 @@ public class VorurteilManager
 			
 		try
 		{
-			PreparedStatement lStatement = (PreparedStatement) lConnector.getConnection().prepareStatement("UPDATE `vorurteile` SET `Titel` = ?, `Autor` = ?, `Veröffentlichung` = ?, `InternetQuelle_Ja_Nein` = ?, `Link` = ?, `Zeitstempel` = ? WHERE `ID_Vorurteile` = ?;");
+			PreparedStatement lStatement = (PreparedStatement) lConnector.getConnection().prepareStatement("UPDATE `vorurteile` SET `Titel` = ?, `Autor` = ?, `Veröffentlichung` = ?, `InternetQuelle_Ja_Nein` = ?, `Link` = ?, `Zeitstempel` = ?, `Vorurteil_Text` = ? WHERE `ID_Vorurteile` = ?;");
 			lStatement.setString(1, pVorurteil.getTitel());
 			lStatement.setString(2, pVorurteil.getAutor());
 			lStatement.setTimestamp(3, Timestamp.valueOf(pVorurteil.getVeröffentlichung()));
-			lStatement.setString(4, pVorurteil.getInternetquelle());
+			lStatement.setBoolean(4, pVorurteil.getInternetquelle());
 			lStatement.setString(5, pVorurteil.getLink());
 			lStatement.setTimestamp(6, Timestamp.valueOf(pVorurteil.getZeitstempel()));
-			lStatement.setInt(7, pVorurteil.getID());
+			lStatement.setString(7, pVorurteil.getHauptaussage());
+			lStatement.setInt(8, pVorurteil.getID());
 			lStatement.executeUpdate();
 		} 
 		catch (SQLException e)
@@ -82,8 +99,6 @@ public class VorurteilManager
 	
 	/**
 	 * Prüft, ob Titel vom Vorurteil in der Datenbank schon vorhanden ist.
-	 * @param pTitel
-	 * @return
 	 */
 	public static boolean istTitelVorhanden(String pTitel) 
 	{
@@ -102,8 +117,6 @@ public class VorurteilManager
 	
 	/**
 	 * Gibt ein Vorurteil mit der eingegebenen ID aus.
-	 * @param pID
-	 * @return
 	 */
 	public static Vorurteil getVorurteil(int pID) 
 	{
@@ -117,7 +130,7 @@ public class VorurteilManager
 			
 			if (lResult.next()) 
 			{
-				Vorurteil lVorurteil = new Vorurteil(lResult.getInt(1), lResult.getString(2), lResult.getString(3), LocalDateTime.ofInstant(Instant.ofEpochMilli(lResult.getDate(4).getTime()), TimeZone.getDefault().toZoneId()), lResult.getString(5), lResult.getString(6));
+				Vorurteil lVorurteil = new Vorurteil(lResult.getInt(1), lResult.getString(2), lResult.getString(3), LocalDateTime.ofInstant(Instant.ofEpochMilli(lResult.getDate(4).getTime()), TimeZone.getDefault().toZoneId()), lResult.getBoolean(5), lResult.getString(6), LocalDateTime.ofInstant(Instant.ofEpochMilli(lResult.getDate(7).getTime()), TimeZone.getDefault().toZoneId()), lResult.getString(8));
 				return lVorurteil;
 			}
 		} 
@@ -132,8 +145,6 @@ public class VorurteilManager
 	
 	/**
 	 * Gibt eine Vorurteil-Liste mit dem gewünschten Titel aus.
-	 * @param pTitel
-	 * @return
 	 */
 	public static ArrayList<Vorurteil> getVorurteile(String pTitel)
 	{
@@ -142,13 +153,13 @@ public class VorurteilManager
 		
 		try
 		{
-			PreparedStatement lStatement = (PreparedStatement) lConnector.getConnection().prepareStatement("SELECT * FROM `vorurteile` WHERE `Titel` LIKE ?");
+			PreparedStatement lStatement = (PreparedStatement) lConnector.getConnection().prepareStatement("SELECT * FROM `vorurteile` WHERE `Titel` LIKE ?;");
 			lStatement.setString(1, "%" + pTitel + "%");
 			ResultSet lResult = lStatement.executeQuery();
 			
 			while (lResult.next()) 
 			{
-				Vorurteil lVorurteil = new Vorurteil(lResult.getInt(1), lResult.getString(2), lResult.getString(3), LocalDateTime.ofInstant(Instant.ofEpochMilli(lResult.getDate(4).getTime()), TimeZone.getDefault().toZoneId()), lResult.getString(5), lResult.getString(6));
+				Vorurteil lVorurteil = new Vorurteil(lResult.getInt(1), lResult.getString(2), lResult.getString(3), LocalDateTime.ofInstant(Instant.ofEpochMilli(lResult.getDate(4).getTime()), TimeZone.getDefault().toZoneId()), lResult.getBoolean(5), lResult.getString(6), LocalDateTime.ofInstant(Instant.ofEpochMilli(lResult.getDate(7).getTime()), TimeZone.getDefault().toZoneId()), lResult.getString(8));
 				lVorurteile.add(lVorurteil);
 			}
 			
@@ -165,7 +176,6 @@ public class VorurteilManager
 	
 	/**
 	 * Erstellt eine nächsthöhere ID, die in der Datenbank noch nicht existiert.
-	 * @return
 	 */
 	public static int getNewID()
 	{
