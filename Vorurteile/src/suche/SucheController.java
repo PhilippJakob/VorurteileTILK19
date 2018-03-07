@@ -22,4 +22,5 @@ public class SucheController {
     @FXML
     private TableColumn<?, ?> tcVorurteilsliste;
 
+    
 }
