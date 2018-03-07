@@ -1,15 +1,20 @@
 /**
  * @author Jonas N. Henle, 25.01.2018
- * Beschreibung: Dient der Eingabe von neuen Vorurteilen.
- * 
- * 07.03.2018 Nico Fliskowski: getVorurteil(); erstellenTabellen(); auswählenFakt(); nichtAuswählenFakt(); auswählenVorurteil(); nichtAuswählenVorurteil(); initialize();
+ * @description Beschreibung: Dient der Eingabe von neuen Vorurteilen.
+ * @changelog
+ * | 07. Mrz 2018: Nico Fliskowski 「getVorurteil(); erstellenTabellen(); auswählenFakt(); nichtAuswählenFakt(); auswählenVorurteil(); nichtAuswählenVorurteil(); initialize();」
+ * | 07. Mrz 2018: Dimaa 「speichernVorurteil()」
  */
 
 package vorurteile.ui;
 
 import java.net.URL;
+import java.sql.SQLException;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
+
+import com.mysql.jdbc.PreparedStatement;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -24,84 +29,31 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import vorurteile.MySqlConnector;
+import vorurteile.VorurteilManager;
 import vorurteile.items.Vorurteil;
 
 public class EingabeVorurteilController implements Initializable
 {
 	@FXML
-	private TextField tfTitel;
+	private TextField tfTitel, tfFaktensuche, tfVorurteilssuche;
 
 	@FXML
    private TextArea taHauptaussage;
 
 	@FXML
-   private Button btSpeichernVorurteil;
+   private Button btSpeichernVorurteil, btFaktensuche, btFaktHinzufügen, btFaktAuswählen, btFaktNichtAuswählen,
+   					btRefreshF, btVorurteilssuche, btVorurteilAuswählen, btVorurteilNichtAuswählen, btRefreshV;
 
 	@FXML
-   private TextField tfFaktensuche;
+   private TableView<Vorurteil> tvFaktenliste, tvFaktenlisteAusgewählt, tvVorurteilliste, tvVorurteillisteAusgewählt;
 
 	@FXML
-   private Button btFaktensuche;
+   private TableColumn<Vorurteil, String> tcTitelFaktenliste, tcTitelFaktenlisteAusgewählt, tcTitelVorurteilsliste,
+   													tcTitelVorurteilslisteAusgewählt;
 
 	@FXML
-   private Button btFaktHinzufügen;
-
-	@FXML
-   private TableView<Vorurteil> tvFaktenliste;
-
-	@FXML
-   private TableColumn<Vorurteil, String> tcTitelFaktenliste;
-
-	@FXML
-   private Button btFaktAuswählen;
-
-	@FXML
-   private Button btFaktNichtAuswählen;
-
-	@FXML
-   private Button btRefreshF;
-
-	@FXML
-   private TableView<Vorurteil> tvFaktenlisteAusgewählt;
-
-	@FXML
-   private TableColumn<Vorurteil, String> tcTitelFaktenlisteAusgewählt;
-
-	@FXML
-   private TextField tfVorurteilssuche;
-
-	@FXML
-   private Button btVorurteilssuche;
-
-	@FXML
-   private TableView<Vorurteil> tvVorurteilliste;
-
-	@FXML
-   private TableColumn<Vorurteil, String> tcTitelVorurteilsliste;
-
-	@FXML
-   private Button btVorurteilAuswählen;
-
-	@FXML
-   private Button btVorurteilNichtAuswählen;
-
-	@FXML
-   private Button btRefreshV;
-
-	@FXML
-   private TableView<Vorurteil> tvVorurteillisteAusgewählt;
-
-	@FXML
-   private TableColumn<Vorurteil, String> tcTitelVorurteilslisteAusgewählt;
-
-	@FXML
-   private Label lbErrorF;
-
-   @FXML
-   private Label lbSafeError;
-
-	@FXML
-   private Label lbErrorV;
+   private Label lbErrorF, lbSafeError, lbErrorV;
 
 	@FXML
    private TabPane tpFaktVorurteil;
@@ -136,9 +88,9 @@ public class EingabeVorurteilController implements Initializable
    }
 
 	@FXML
-	void suchenFakt(ActionEvent event)
+	private void suchenFakt(ActionEvent event)
 	{
-		
+
 	}
 
 	/**
@@ -148,7 +100,7 @@ public class EingabeVorurteilController implements Initializable
 	 * @param event
 	 */
 	@FXML
-	void auswählenFakt(ActionEvent event)
+	private void auswählenFakt(ActionEvent event)
 	{
 		Vorurteil lFakt = tvFaktenliste.getSelectionModel().getSelectedItem();
 
@@ -158,7 +110,7 @@ public class EingabeVorurteilController implements Initializable
 	    	tvFaktenlisteAusgewählt.getItems().add(lFakt);
     	}
 	}
-	
+
 	/**
 	 * Erkennt den ausgewählten Tabelleneintrag (lFakt).
 	 * Entfernt lFakt aus tvFaktenlisteAusgewählt.
@@ -166,7 +118,7 @@ public class EingabeVorurteilController implements Initializable
 	 * @param event
 	 */
 	@FXML
-	void nichtAuswählenFakt(ActionEvent event)
+	private void machenNichtAuswählenFakt(ActionEvent event)
 	{
 		Vorurteil lFakt = tvFaktenlisteAusgewählt.getSelectionModel().getSelectedItem();
 
@@ -178,28 +130,36 @@ public class EingabeVorurteilController implements Initializable
 	}
 
 	@FXML
-	void neuladenFensterF(ActionEvent event)
+	private void neuladenFensterF(ActionEvent event)
 	{
 
 	}
 
 	@FXML
-	void hinzufügenFakt(ActionEvent event)
+	private void hinzufügenFakt(ActionEvent event)
 	{
 
 	}
-	
+
 	@FXML
 	void suchenVorurteil(ActionEvent event)
 	{
-//		erstellenTabellen();
 		tvVorurteilliste.getItems().clear();
 		String lTitel = tfVorurteilssuche.getText().trim();
-		ArrayList<Vorurteil> lVorurteil = vorurteile.VorurteilManager.getVorurteile(lTitel);
-		for(Vorurteil l : lVorurteil )
+		ArrayList<Vorurteil> lVorurteile = vorurteile.VorurteilManager.getVorurteile(lTitel);
+		ArrayList<Integer>	lVorurteileIDs = new ArrayList<>();
+
+		for (Vorurteil lVorurteil : tvVorurteillisteAusgewählt.getItems())
 		{
-			//System.out.println(l.getID() + " " + l.getTitel());
-			tvVorurteilliste.getItems().add(l);
+			lVorurteileIDs.add(lVorurteil.getID());
+		}
+
+		for(Vorurteil lVorurteil : lVorurteile)
+		{
+			if (!lVorurteileIDs.contains(lVorurteil.getID()))
+			{
+			  tvVorurteilliste.getItems().add(lVorurteil);
+			}
 		}
 	}
 
@@ -210,7 +170,7 @@ public class EingabeVorurteilController implements Initializable
 	 * @param event
 	 */
 	@FXML
-	void auswählenVorurteil(ActionEvent event)
+	private void auswählenVorurteil(ActionEvent event)
 	{
 		Vorurteil lVorurteil = tvVorurteilliste.getSelectionModel().getSelectedItem();
 
@@ -228,7 +188,7 @@ public class EingabeVorurteilController implements Initializable
 	 * @param event
 	 */
 	@FXML
-	void nichtAuswählenVorurteil(ActionEvent event)
+	private void machenNichtAuswählenVorurteil(ActionEvent event)
 	{
 		Vorurteil lVorurteil = tvVorurteillisteAusgewählt.getSelectionModel().getSelectedItem();
 
@@ -240,16 +200,89 @@ public class EingabeVorurteilController implements Initializable
 	}
 
 	@FXML
-	void neuladenFensterV(ActionEvent event)
+	private void neuladenFensterV(ActionEvent event)
 	{
 
 	}
 
-	@FXML
-	void speichernVorurteil(ActionEvent event)
+	/*@FXML
+	private void speichernVorurteil(ActionEvent event)
 	{
 		überprüfenFelder();
-	}
+	}*/
+
+	/**
+	 * Erstellt ein neues Vorurteil und speichert es in der Datenbank ab.
+	 */
+   @FXML
+   void speichernVorurteil(ActionEvent event)
+   {
+  	 ArrayList<Vorurteil> lVorurteile = VorurteilManager.getVorurteile(this.tfTitel.getText());
+
+  	 for (Vorurteil lVorurteil : lVorurteile)
+  	 {
+  		 if (lVorurteil.getTitel().equals(this.tfTitel.getText()))
+  		 {
+  			 lbErrorV.setText("Titel ist bereits vorhanden");
+  			 return;
+  		 }
+  	 }
+
+  	 Vorurteil lVorurteil = VorurteilManager.erstellenVorurteil(this.tfTitel.getText(), null, LocalDateTime.now(), false, null, this.taHauptaussage.getText());
+
+  	 //ArrayList<Fakt> lFakten = tvFaktenlisteAusgewählt.getItems();
+  	 lVorurteile = (ArrayList<Vorurteil>) this.tvVorurteillisteAusgewählt.getItems();
+
+  	 if ((!lVorurteile.isEmpty()) /*|| (!lFakten.isEmpty())*/)
+  	 {
+  		 MySqlConnector lConnector = new MySqlConnector();
+
+			 try
+			 {
+				 /*for (Fakt lUnterfakt : lFakten)
+				 {
+					 PreparedStatement lStatement;
+					 lStatement = (PreparedStatement) lConnector.getConnection().prepareStatement("INSERT INTO `vorurteile_f_v` (`ID_Untergeordneter_Fakt`, `ID_Verbindung_v_f`) VALUES (?, ?);");
+					 lStatement.setInt(1, lUnterfakt.getID());
+					 lStatement.setInt(2, lVorurteil.getID());
+					 lStatement.executeUpdate();
+  		 	 }*/
+
+				 for (Vorurteil lUntervorurteil : lVorurteile)
+				 {
+					 PreparedStatement lStatement;
+					 lStatement = (PreparedStatement) lConnector.getConnection().prepareStatement("INSERT INTO `vorurteile_v_v` (`ID_Untergeordnetes_Vorurteil`, `ID_Verbindung_v_v`) VALUES (?, ?);");
+					 lStatement.setInt(1, lUntervorurteil.getID());
+					 lStatement.setInt(2, lVorurteil.getID());
+					 lStatement.executeUpdate();
+  		 	 	 }
+			 }
+			 catch (SQLException e)
+			 {
+			 	 // TODO Auto-generated catch block
+				 e.printStackTrace();
+			 }
+
+  		 this.leerenEingaben();
+  	 }
+   }
+
+   private void leerenEingaben()
+   {
+  	 /* 「Vorurteil」  */
+  	 this.tfTitel.clear();
+  	 this.taHauptaussage.clear();
+
+  	 /* 「Fakt verknüpfen」 Tab */
+  	 this.tfFaktensuche.clear();
+  	 this.tvFaktenliste.getItems().clear();
+  	 this.tvFaktenlisteAusgewählt.getItems().clear();
+
+  	 /* 「Vorurteil verknüpfen」 Tab */
+  	 this.tfVorurteilssuche.clear();
+  	 this.tvVorurteilliste.getItems().clear();
+  	 this.tvVorurteillisteAusgewählt.getItems().clear();
+   }
 
    private void überprüfenFelder()
    {

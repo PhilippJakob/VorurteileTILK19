@@ -1,3 +1,10 @@
+/**
+ * @author Dimaa, 31. Januar 2018
+ * @description Objekt Vorurteil
+ * @changelog
+ * | 31. Januar 2018: Dimaa 「Vorurteil(), Getter & Setter」
+ */
+
 package vorurteile.items;
 
 import java.time.LocalDateTime;
@@ -9,11 +16,12 @@ public class Vorurteil
 	private String titel;
 	private String autor;
 	private LocalDateTime veröffentlichung;
-	private String internetquelle;
+	private boolean internetquelle;
 	private String link;
 	private LocalDateTime zeitstempel;
+	private String hauptaussage;
 	
-	public Vorurteil(int pID, String pTitel, String pAutor, LocalDateTime pVeröffentlichung, String pInternetQuelle, String pLink)
+	public Vorurteil(int pID, String pTitel, String pAutor, LocalDateTime pVeröffentlichung, boolean pInternetQuelle, String pLink, LocalDateTime pZeitstempel, String pHauptaussage)
 	{
 		this.setID(pID);
 		this.setTitel(pTitel);
@@ -21,7 +29,8 @@ public class Vorurteil
 		this.setVeröffentlichung(pVeröffentlichung);
 		this.setInternetquelle(pInternetQuelle);
 		this.setLink(pLink);
-		this.setZeitstempel(LocalDateTime.now());
+		this.setZeitstempel(pZeitstempel);
+		this.setHauptaussage(pHauptaussage);
 	}
 	
 	/** Getter & Setter **/
@@ -66,12 +75,12 @@ public class Vorurteil
 		veröffentlichung = pVeröffentlichung;
 	}
 
-	public String getInternetquelle()
+	public boolean getInternetquelle()
 	{
 		return internetquelle;
 	}
 
-	public void setInternetquelle(String pInternetquelle)
+	public void setInternetquelle(boolean pInternetquelle)
 	{
 		internetquelle = pInternetquelle;
 	}
@@ -94,5 +103,15 @@ public class Vorurteil
 	public void setZeitstempel(LocalDateTime pZeitstempel)
 	{
 		zeitstempel = pZeitstempel;
+	}
+
+	public String getHauptaussage()
+	{
+		return hauptaussage;
+	}
+
+	public void setHauptaussage(String pHauptaussage)
+	{
+		hauptaussage = pHauptaussage;
 	}
 }
