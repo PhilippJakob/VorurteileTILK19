@@ -1,9 +1,9 @@
-package test;
+package hierarchie;
 
 public class Main
 {
 	public static void main(String[] args)
 	{
-		Verknüpfung.suchenUntergeordneteVorurteile(1);
+		Hierarchie.suchenUntergeordneteVorurteile(1);
 	}
 }

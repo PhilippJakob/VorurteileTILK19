@@ -1,9 +1,11 @@
-package test;
+package hierarchie;
+
 /**
   * Angelegt: 10.01.2018, Chantal Mielenz & Florian Henderkes, Zweck: Methoden zum auslesen von Informationen aus der Datenbank
   * Geändert: Januar & Anfang Februar, Chantal Mielenz, Methoden hinzugefügt und abgeändert
   * Geändert: 07.03.2018, Chantal Mielenz, Namenskonventionen
   */
+
 import java.util.ArrayList;
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -12,8 +14,7 @@ import java.sql.Statement;
 import datenbank.Datenbankverbindung;
 import vorurteile.items.Vorurteil;
 
-
-public class Verknüpfung
+public class Hierarchie
 {	
 	
 	/**
