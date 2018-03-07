@@ -211,7 +211,7 @@ public class EingabeVorurteilController implements Initializable
 	@FXML
 	void neuladenFensterV(ActionEvent event)
 	{
-
+		suchenVorurteil(event);
 	}
 
 	@FXML
