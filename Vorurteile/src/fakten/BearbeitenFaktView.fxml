@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="545.0" prefWidth="565.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fakten.ControllerViewBearbeiten">
+   <children>
+      <Button fx:id="btWechselnHinzufügen" layoutX="445.0" layoutY="80.0" mnemonicParsing="false" onAction="#wechselnSceneHinzufügen" prefHeight="25.0" prefWidth="80.0" text="Hinzufügen" />
+      <Button fx:id="btWechselnBearbeiten" disable="true" layoutX="445.0" layoutY="109.0" mnemonicParsing="false" onAction="#wechselnSceneBearbeiten" prefHeight="25.0" prefWidth="80.0" text="Bearbeiten" />
+      <Button fx:id="btWechselnSuchen" layoutX="445.0" layoutY="138.0" mnemonicParsing="false" onAction="#wechselnSceneSuchen" prefHeight="25.0" prefWidth="80.0" text="Suchen" />
+      <Button fx:id="btWechselnLöschen" layoutX="445.0" layoutY="167.0" mnemonicParsing="false" onAction="#wechselnSceneLöschen" prefHeight="25.0" prefWidth="80.0" text="Löschen" />
+   </children>
+</AnchorPane>
