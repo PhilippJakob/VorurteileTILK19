@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.Tooltip?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="780.0" prefWidth="584.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="vorurteile.ui.EingabeVorurteilController">
+   <children>
+      <TabPane fx:id="tpFaktVorurteil" layoutY="395.0" prefHeight="387.0" prefWidth="584.0" tabClosingPolicy="UNAVAILABLE">
+        <tabs>
+          <Tab text="Fakt verknüpfen">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <AnchorPane layoutY="-10.0" prefHeight="369.0" prefWidth="584.0">
+                           <children>
+                              <TextField fx:id="tfFaktensuche" layoutX="36.0" layoutY="58.0" onAction="#suchenFakt" prefHeight="40.0" prefWidth="200.0" promptText="Faktensuche" />
+                              <Button fx:id="btFaktensuche" layoutX="268.0" layoutY="58.0" mnemonicParsing="false" onAction="#suchenFakt" prefHeight="40.0" prefWidth="48.0" text="Suche" />
+                              <Label fx:id="lbErrorF" layoutX="36.0" layoutY="14.0" prefHeight="40.0" prefWidth="514.0" />
+                              <Button fx:id="btFaktAuswählen" graphicTextGap="0.0" layoutX="258.0" layoutY="167.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#auswählenFakt" prefHeight="25.0" prefWidth="68.0" text="→">
+                                 <font>
+                                    <Font size="36.0" />
+                                 </font>
+                                 <opaqueInsets>
+                                    <Insets />
+                                 </opaqueInsets>
+                                 <padding>
+                                    <Insets top="-15.0" />
+                                 </padding>
+                              </Button>
+                              <Button fx:id="btFaktNichtAuswählen" graphicTextGap="0.0" layoutX="258.0" layoutY="199.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#machenNichtAuswählenFakt" prefHeight="25.0" prefWidth="68.0" text="←">
+                                 <font>
+                                    <Font size="36.0" />
+                                 </font>
+                                 <opaqueInsets>
+                                    <Insets />
+                                 </opaqueInsets>
+                                 <padding>
+                                    <Insets top="-15.0" />
+                                 </padding>
+                              </Button>
+                              <Button fx:id="btRefreshF" layoutX="258.0" layoutY="276.0" mnemonicParsing="false" onAction="#neuladenFensterF" prefHeight="62.0" prefWidth="68.0" text="Refresh" />
+                              <Button fx:id="btFaktHinzufügen" layoutX="421.0" layoutY="58.0" mnemonicParsing="false" onAction="#hinzufügenFakt" prefHeight="40.0" prefWidth="127.0" text="Neuer Fakt" />
+                              <TableView fx:id="tvFaktenliste" layoutX="36.0" layoutY="124.0" prefHeight="200.0" prefWidth="200.0">
+                                 <columns>
+                                    <TableColumn fx:id="tcTitelFaktenliste" prefWidth="199.0" resizable="false" text="Titel" />
+                                 </columns>
+                              </TableView>
+                              <TableView fx:id="tvFaktenlisteAusgewählt" layoutX="348.0" layoutY="124.0" prefHeight="200.0" prefWidth="200.0">
+                                 <columns>
+                                    <TableColumn fx:id="tcTitelFaktenlisteAusgewählt" prefWidth="199.0" resizable="false" text="Titel" />
+                                 </columns>
+                              </TableView>
+                              <Label layoutX="243.0" layoutY="64.0" prefHeight="26.0" prefWidth="6.0" text="?">
+                                 <tooltip>
+                                    <Tooltip text="Suchen Sie hier nach einem Fakt, den Sie verknüpfen wollen." />
+                                 </tooltip>
+                                 <font>
+                                    <Font name="System Bold" size="17.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="553.0" layoutY="64.0" prefHeight="25.0" prefWidth="6.0" text="?">
+                                 <tooltip>
+                                    <Tooltip text="Fügen Sie der Datenbank neue Fakten hinzu." />
+                                 </tooltip>
+                                 <font>
+                                    <Font name="System Bold" size="17.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="333.0" layoutY="183.0" text="?">
+                                 <tooltip>
+                                    <Tooltip text="Verknüpfen Sie die ausgewählten Fakten." />
+                                 </tooltip>
+                                 <font>
+                                    <Font name="System Bold" size="17.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="333.0" layoutY="294.0" text="?">
+                                 <tooltip>
+                                    <Tooltip text="Aktualisieren Sie hier die Fakten." />
+                                 </tooltip>
+                                 <font>
+                                    <Font name="System Bold" size="17.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </AnchorPane>
+                     </children></AnchorPane>
+            </content>
+          </Tab>
+          <Tab text="Vorurteil verknüpfen">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <AnchorPane prefHeight="369.0" prefWidth="584.0">
+                           <children>
+                              <TextField fx:id="tfVorurteilssuche" layoutX="36.0" layoutY="48.0" onAction="#suchenVorurteil" prefHeight="40.0" prefWidth="200.0" promptText="Vorurteilssuche" />
+                              <Button fx:id="btVorurteilssuche" layoutX="268.0" layoutY="48.0" mnemonicParsing="false" onAction="#suchenVorurteil" prefHeight="40.0" prefWidth="48.0" text="Suche" />
+                              <Button fx:id="btVorurteilAuswählen" graphicTextGap="0.0" layoutX="258.0" layoutY="157.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#auswählenVorurteil" prefHeight="25.0" prefWidth="68.0" text="→">
+                                 <font>
+                                    <Font size="36.0" />
+                                 </font>
+                                 <opaqueInsets>
+                                    <Insets />
+                                 </opaqueInsets>
+                                 <padding>
+                                    <Insets top="-15.0" />
+                                 </padding>
+                              </Button>
+                              <Button fx:id="btVorurteilNichtAuswählen" graphicTextGap="0.0" layoutX="258.0" layoutY="189.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#machenNichtAuswählenVorurteil" prefHeight="25.0" prefWidth="68.0" text="←">
+                                 <font>
+                                    <Font size="36.0" />
+                                 </font>
+                                 <opaqueInsets>
+                                    <Insets />
+                                 </opaqueInsets>
+                                 <padding>
+                                    <Insets top="-15.0" />
+                                 </padding>
+                              </Button>
+                              <Button fx:id="btRefreshV" layoutX="258.0" layoutY="266.0" mnemonicParsing="false" onAction="#neuladenFensterV" prefHeight="62.0" prefWidth="68.0" text="Refresh" />
+                              <TableView fx:id="tvVorurteilliste" layoutX="36.0" layoutY="114.0" prefHeight="200.0" prefWidth="200.0">
+                                 <columns>
+                                    <TableColumn fx:id="tcTitelVorurteilsliste" prefWidth="199.0" resizable="false" text="Titel" />
+                                 </columns>
+                              </TableView>
+                              <TableView fx:id="tvVorurteillisteAusgewählt" layoutX="348.0" layoutY="114.0" prefHeight="200.0" prefWidth="200.0">
+                                 <columns>
+                                    <TableColumn fx:id="tcTitelVorurteilslisteAusgewählt" prefWidth="199.0" resizable="false" text="Titel" />
+                                 </columns>
+                              </TableView>
+                              <Label layoutX="243.0" layoutY="54.0" prefHeight="17.0" prefWidth="0.0" text="?">
+                                 <tooltip>
+                                    <Tooltip text="Suchen Sie nach Vorurteilen, die Sie verknüpfen wollen." />
+                                 </tooltip>
+                                 <font>
+                                    <Font name="System Bold" size="17.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="333.0" layoutY="173.0" text="?">
+                                 <tooltip>
+                                    <Tooltip text="Verknüpfen Sie die ausgewählten Vorurteile." />
+                                 </tooltip>
+                                 <font>
+                                    <Font name="System Bold" size="17.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="333.0" layoutY="284.0" text="?">
+                                 <tooltip>
+                                    <Tooltip text="Aktualisieren Sie die Vorurteile." />
+                                 </tooltip>
+                                 <font>
+                                    <Font name="System Bold" size="17.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="lbErrorV" layoutX="36.0" layoutY="4.0" prefHeight="40.0" prefWidth="514.0" />
+                           </children>
+                        </AnchorPane>
+                     </children></AnchorPane>
+            </content>
+          </Tab>
+        </tabs>
+      </TabPane>
+      <TextField fx:id="tfTitel" layoutX="27.0" layoutY="20.0" prefHeight="32.0" prefWidth="530.0" promptText="Titel">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </TextField>
+      <TextArea fx:id="taHauptaussage" layoutX="27.0" layoutY="71.0" prefHeight="174.0" prefWidth="530.0" promptText="Hier ist platz für deine Hauptaussage" />
+      <Button fx:id="btSpeichernVorurteil" layoutX="397.0" layoutY="354.0" mnemonicParsing="false" onAction="#speichernVorurteil" prefHeight="25.0" prefWidth="160.0" text="Speichern">
+         <font>
+            <Font size="17.0" />
+         </font>
+      </Button>
+      <Label layoutX="566.0" layoutY="53.0" text="?">
+         <tooltip>
+            <Tooltip text="Geben Sie hier einen Titel und eine Hauptaussage ein." />
+         </tooltip>
+         <font>
+            <Font name="System Bold" size="17.0" />
+         </font>
+      </Label>
+      <Label fx:id="lbSafeError" layoutX="181.0" layoutY="344.0" prefHeight="51.0" prefWidth="210.0" textFill="RED" />
+      <TextField fx:id="tfAutor" layoutX="119.0" layoutY="274.0" promptText="Autor" />
+      <TextField fx:id="tfQuelle" layoutX="119.0" layoutY="319.0" promptText="Quelle" />
+      <CheckBox fx:id="cbLink" layoutX="328.0" layoutY="323.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="51.0" text="Link" />
+      <TextField fx:id="tfVeröffentlichung" layoutX="328.0" layoutY="274.0" promptText="Veröffentlichung" />
+   </children>
+</AnchorPane>
