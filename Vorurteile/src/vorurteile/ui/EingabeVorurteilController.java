@@ -2,8 +2,9 @@
  * @author Jonas N. Henle, 25.01.2018
  * @description Beschreibung: Dient der Eingabe von neuen Vorurteilen.
  * @changelog
- * | 07. Mrz 2018: Nico Fliskowski "getVorurteil(); erstellenTabellen(); auswählenFakt(); nichtAuswählenFakt(); auswählenVorurteil(); nichtAuswählenVorurteil(); initialize();"
- * | 07. Mrz 2018: Dimaa "speichernVorurteil()"
+ * | 07. März 2018: Nico Fliskowski "getVorurteil(); erstellenTabellen(); auswählenFakt(); nichtAuswählenFakt(); auswählenVorurteil(); nichtAuswählenVorurteil(); initialize();"
+ * | 07. März 2018: Dimaa "speichernVorurteil() erstellt"
+ * | 14. März 2018: Dimaa "speichernVorurteil() Fehler behoben 'java.util.ArrayList cannot be cast to javafx.collections.ObservableList'"
  */
 
 package vorurteile.ui;
@@ -12,6 +13,7 @@ import java.net.URL;
 import java.sql.SQLException;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
 
 import com.mysql.jdbc.PreparedStatement;
@@ -30,9 +32,9 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
-import vorurteile.MySqlConnector;
+import vorurteile.Verbinder;
+import vorurteile.Vorurteil;
 import vorurteile.VorurteilManager;
-import vorurteile.items.Vorurteil;
 
 public class EingabeVorurteilController implements Initializable
 {
@@ -214,81 +216,85 @@ public class EingabeVorurteilController implements Initializable
 	{
 		überprüfenFelder();
 	}*/
-
+	
 	/**
 	 * Erstellt ein neues Vorurteil und speichert es in der Datenbank ab.
 	 */
    @FXML
    void speichernVorurteil(ActionEvent event) throws Exception
    {
-   	if(überprüfenFelder())
-   	{
-   		ArrayList<Vorurteil> lVorurteile = VorurteilManager.getVorurteile(this.tfTitel.getText());
+  	 List<Vorurteil> lVorurteile = VorurteilManager.getVorurteile(this.tfTitel.getText());
+  	 
+  	 for (Vorurteil lVorurteil : lVorurteile)
+  	 {
+  		 if (lVorurteil.getTitel().equals(this.tfTitel.getText()))
+  		 {
+  			 lbSafeError.setText("Titel ist bereits vorhanden");
+  			 return;
+  		 }
+  	 }
+  	 
+  	 Vorurteil lVorurteil = VorurteilManager.erstellenVorurteil(this.tfTitel.getText(), this.tfAutor.getText(), LocalDateTime.now(), this.cbLink.isSelected(), this.tfQuelle.getText(), this.taHauptaussage.getText());
+  	 
+  	 //ArrayList<Fakt> lFakten = tvFaktenlisteAusgewählt.getItems();
+  	 lVorurteile = this.tvVorurteillisteAusgewählt.getItems();
+  		 
+  	 if ((!lVorurteile.isEmpty()) /*|| (!lFakten.isEmpty())*/) 
+  	 {
+  		 Verbinder lVerbinder = new Verbinder();
 
-     	 	for (Vorurteil lVorurteil : lVorurteile)
-     	 	{
-     	 		if (lVorurteil.getTitel().equals(this.tfTitel.getText()))
-     	 		{
-        			 lbSafeError.setText("Titel ist bereits vorhanden");
-        			 return;
-        		}
-     	 	}
+			 try
+			 {
+				 /*for (Fakt lUnterfakt : lFakten)
+				 {
+					 PreparedStatement lStatement;
+					 lStatement = (PreparedStatement) lVerbinder.getConnection().prepareStatement("INSERT INTO `vorurteile_f_v` (`ID_Untergeordneter_Fakt`, `ID_Verbindung_v_f`) VALUES (?, ?);");
+					 lStatement.setInt(1, lUnterfakt.getID());
+					 lStatement.setInt(2, lVorurteil.getID());
+					 lStatement.executeUpdate();
+  		 	 }*/
+				 
+				 for (Vorurteil lUntervorurteil : lVorurteile)
+				 {
+					 PreparedStatement lStatement;
+					 lStatement = (PreparedStatement) lVerbinder.getConnection().prepareStatement("INSERT INTO `vorurteile_v_v` (`ID_Untergeordnetes_Vorurteil`, `ID_Verbindung_v_v`) VALUES (?, ?);");
+					 lStatement.setInt(1, lUntervorurteil.getID());
+					 lStatement.setInt(2, lVorurteil.getID());
+					 lStatement.executeUpdate();
+  		 	 	 }
+			 } 
+			 catch (SQLException e)
+			 {
+			 	 // TODO Auto-generated catch block
+				 e.printStackTrace();
+			 }
+  	    }
 
-        	 Vorurteil lVorurteil = VorurteilManager.erstellenVorurteil(this.tfTitel.getText(), this.tfAutor.getText(), LocalDateTime.now(), this.cbLink.isSelected(), this.tfQuelle.getText(), this.taHauptaussage.getText());
-
-        	 //ArrayList<Fakt> lFakten = tvFaktenlisteAusgewählt.getItems();
-        	 lVorurteile = (ArrayList<Vorurteil>) this.tvVorurteillisteAusgewählt.getItems();
-
-        	 if ((!lVorurteile.isEmpty()) /*|| (!lFakten.isEmpty())*/)
-        	 {
-        		 MySqlConnector lConnector = new MySqlConnector();
-
-      			 try
-      			 {
-      				 /*for (Fakt lUnterfakt : lFakten)
-      				 {
-      					 PreparedStatement lStatement;
-      					 lStatement = (PreparedStatement) lConnector.getConnection().prepareStatement("INSERT INTO `vorurteile_f_v` (`ID_Untergeordneter_Fakt`, `ID_Verbindung_v_f`) VALUES (?, ?);");
-      					 lStatement.setInt(1, lUnterfakt.getID());
-      					 lStatement.setInt(2, lVorurteil.getID());
-      					 lStatement.executeUpdate();
-        		 	 }*/
-
-      				 for (Vorurteil lUntervorurteil : lVorurteile)
-      				 {
-      					 PreparedStatement lStatement;
-      					 lStatement = (PreparedStatement) lConnector.getConnection().prepareStatement("INSERT INTO `vorurteile_v_v` (`ID_Untergeordnetes_Vorurteil`, `ID_Verbindung_v_v`) VALUES (?, ?);");
-      					 lStatement.setInt(1, lUntervorurteil.getID());
-      					 lStatement.setInt(2, lVorurteil.getID());
-      					 lStatement.executeUpdate();
-        		 	 	 }
-      			 }
-      			 catch (SQLException e)
-      			 {
-      			 	 // TODO Auto-generated catch block
-      				 e.printStackTrace();
-      			 }
-
-        		 this.leerenEingaben();
-        	 }
-   	}
+		 this.leerenEingaben();
    }
 
+	/**
+	 * Leert alle Eingaben.
+	 */
    private void leerenEingaben()
    {
-  	 /* 「Vorurteil」  */
-  	 this.tfTitel.clear();
-  	 this.taHauptaussage.clear();
-
-  	 /* 「Fakt verknüpfen」 Tab */
-  	 this.tfFaktensuche.clear();
-  	 this.tvFaktenliste.getItems().clear();
-  	 this.tvFaktenlisteAusgewählt.getItems().clear();
-
-  	 /* 「Vorurteil verknüpfen」 Tab */
-  	 this.tfVorurteilssuche.clear();
-  	 this.tvVorurteilliste.getItems().clear();
-  	 this.tvVorurteillisteAusgewählt.getItems().clear();
+  	 	/* 「Vorurteil」  */
+  	 	this.tfTitel.clear();
+     	this.taHauptaussage.clear();
+     	this.tfAutor.clear();
+     	this.cbLink.setSelected(false);
+     	this.tfQuelle.clear();
+     	this.taHauptaussage.clear();
+     	 
+     	/* 「Fakt verknüpfen」 Tab */
+     	this.tfFaktensuche.clear();
+     	this.tvFaktenliste.getItems().clear();
+     	this.tvFaktenlisteAusgewählt.getItems().clear();
+   
+     	/* 「Vorurteil verknüpfen」 Tab */
+     	this.tfVorurteilssuche.clear();
+     	this.tvVorurteilliste.getItems().clear();
+     	this.tvVorurteillisteAusgewählt.getItems().clear();
    }
 
    private boolean überprüfenFelder()

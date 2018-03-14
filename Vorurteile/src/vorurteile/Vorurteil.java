@@ -2,10 +2,10 @@
  * @author Dimaa, 31. Januar 2018
  * @description Objekt Vorurteil
  * @changelog
- * | 31. Januar 2018: Dimaa "Vorurteil(), Getter & Setter"
+ * | 31. Januar 2018: Dimaa "Vorurteil()"
  */
 
-package vorurteile.items;
+package vorurteile;
 
 import java.time.LocalDateTime;
 

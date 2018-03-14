@@ -3,6 +3,7 @@
  * @description Greift auf die Vorurteil Tabelle in der Datenbank zu
  * @changelog
  * | 31. Januar 2018: Dimaa "erstellenVorurteil(), aktualisiertVorurteil(), istTitelVorhanden(), getVorurteil(), getVorurteile(), getNewID()"
+ * | 14. März 2018:   Dimaa "lConnector -> lVerbinder"
  */
 
 package vorurteile;
@@ -17,8 +18,6 @@ import java.util.ArrayList;
 import java.util.TimeZone;
 
 import com.mysql.jdbc.PreparedStatement;
-
-import vorurteile.items.Vorurteil;
 
 public class VorurteilManager
 {
@@ -41,14 +40,14 @@ public class VorurteilManager
 	 */
 	public static Vorurteil erstellenVorurteil(String pTitel, String pAutor, LocalDateTime pVeröffentlichung, boolean pInternetquelle, String pLink, String pHauptaussage) 
 	{		
-		MySqlConnector lConnector = new MySqlConnector();
+		Verbinder lVerbinder = new Verbinder();
 		
 		try
 		{			
 			LocalDateTime lAktuellesDatum = LocalDateTime.now();
 			Vorurteil lVorurteil = new Vorurteil(VorurteilManager.getNewID(), pTitel, pAutor, pVeröffentlichung, pInternetquelle, pLink, lAktuellesDatum, pHauptaussage);
 			
-			PreparedStatement lStatement = (PreparedStatement) lConnector.getConnection().prepareStatement("INSERT INTO `vorurteile` (`ID_Vorurteile`, `Titel`, `Autor`, `Veröffentlichung`, `InternetQuelle_Ja_Nein`, `Link`, `Zeitstempel`, `Vorurteil_Text`) VALUES (?, ?, ?, ?, ?, ?, ?, ?);");
+			PreparedStatement lStatement = (PreparedStatement) lVerbinder.getConnection().prepareStatement("INSERT INTO `vorurteile` (`ID_Vorurteile`, `Titel`, `Autor`, `Veröffentlichung`, `InternetQuelle_Ja_Nein`, `Link`, `Zeitstempel`, `Vorurteil_Text`) VALUES (?, ?, ?, ?, ?, ?, ?, ?);");
 			lStatement.setInt(1, lVorurteil.getID());
 			lStatement.setString(2, lVorurteil.getTitel());
 			lStatement.setString(3, lVorurteil.getAutor());
@@ -75,11 +74,11 @@ public class VorurteilManager
 	 */
 	public static void aktualisiertVorurteil(Vorurteil pVorurteil) 
 	{
-		MySqlConnector lConnector = new MySqlConnector();
+		Verbinder lVerbinder = new Verbinder();
 			
 		try
 		{
-			PreparedStatement lStatement = (PreparedStatement) lConnector.getConnection().prepareStatement("UPDATE `vorurteile` SET `Titel` = ?, `Autor` = ?, `Veröffentlichung` = ?, `InternetQuelle_Ja_Nein` = ?, `Link` = ?, `Zeitstempel` = ?, `Vorurteil_Text` = ? WHERE `ID_Vorurteile` = ?;");
+			PreparedStatement lStatement = (PreparedStatement) lVerbinder.getConnection().prepareStatement("UPDATE `vorurteile` SET `Titel` = ?, `Autor` = ?, `Veröffentlichung` = ?, `InternetQuelle_Ja_Nein` = ?, `Link` = ?, `Zeitstempel` = ?, `Vorurteil_Text` = ? WHERE `ID_Vorurteile` = ?;");
 			lStatement.setString(1, pVorurteil.getTitel());
 			lStatement.setString(2, pVorurteil.getAutor());
 			lStatement.setTimestamp(3, Timestamp.valueOf(pVorurteil.getVeröffentlichung()));
@@ -120,11 +119,11 @@ public class VorurteilManager
 	 */
 	public static Vorurteil getVorurteil(int pID) 
 	{
-		MySqlConnector lConnector = new MySqlConnector();
+		Verbinder lVerbinder = new Verbinder();
 		
 		try
 		{
-			PreparedStatement lStatement = (PreparedStatement) lConnector.getConnection().prepareStatement("SELECT * FROM `vorurteile` WHERE `ID_Vorurteile` = ?;");
+			PreparedStatement lStatement = (PreparedStatement) lVerbinder.getConnection().prepareStatement("SELECT * FROM `vorurteile` WHERE `ID_Vorurteile` = ?;");
 			lStatement.setInt(1, pID);
 			ResultSet lResult = lStatement.executeQuery();
 			
@@ -149,11 +148,11 @@ public class VorurteilManager
 	public static ArrayList<Vorurteil> getVorurteile(String pTitel)
 	{
 		ArrayList<Vorurteil> lVorurteile = new ArrayList<Vorurteil>();
-		MySqlConnector lConnector = new MySqlConnector();
+		Verbinder lVerbinder = new Verbinder();
 		
 		try
 		{
-			PreparedStatement lStatement = (PreparedStatement) lConnector.getConnection().prepareStatement("SELECT * FROM `vorurteile` WHERE `Titel` LIKE ?;");
+			PreparedStatement lStatement = (PreparedStatement) lVerbinder.getConnection().prepareStatement("SELECT * FROM `vorurteile` WHERE `Titel` LIKE ?;");
 			lStatement.setString(1, "%" + pTitel + "%");
 			ResultSet lResult = lStatement.executeQuery();
 			
@@ -179,11 +178,11 @@ public class VorurteilManager
 	 */
 	public static int getNewID()
 	{
-		MySqlConnector lConnector = new MySqlConnector();
+		Verbinder lVerbinder = new Verbinder();
 		
 		try
 		{
-			Statement lStatement = lConnector.getConnection().createStatement();
+			Statement lStatement = lVerbinder.getConnection().createStatement();
 			ResultSet lResult = lStatement.executeQuery("SELECT MAX(`ID_Vorurteile`) FROM `vorurteile`;");
 			
 			if (lResult.next()) 

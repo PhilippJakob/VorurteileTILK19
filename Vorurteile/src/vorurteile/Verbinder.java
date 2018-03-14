@@ -1,10 +1,18 @@
+/**
+ * @author Dimaa, 31. Januar 2018
+ * @description Stellt eine Verbindung zur Datenbank her
+ * @changelog
+ * | 31. Januar 2018: Dimaa "getConnection(), getProperties()"
+ * | 14. März 2018:   Dimaa "MySqlConnector -> Verbinder"
+ */
+
 package vorurteile;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.util.Properties;
 
-public class MySqlConnector
+public class Verbinder
 {
 	private static final String cDatabaseDriver = "com.mysql.jdbc.Driver";
 	
@@ -23,12 +31,12 @@ public class MySqlConnector
    
    public Connection getConnection() 
    {
-       if (connection == null) 
+       if (this.connection == null) 
        {
            try 
            {
                Class.forName(cDatabaseDriver).newInstance();
-               connection = DriverManager.getConnection(cDatabaseURL, this.getProperties());
+               this.connection = DriverManager.getConnection(cDatabaseURL, this.getProperties());
            } 
            catch (Exception e) 
            {
@@ -41,15 +49,15 @@ public class MySqlConnector
 	
    private Properties getProperties() 
    {
-      if (properties == null) 
+      if (this.properties == null) 
       {
-          properties = new Properties();
-          properties.setProperty("user", cBenutzername);
-          properties.setProperty("password", cPasswort);
-          properties.setProperty("MaxPooledStatements", "250");
-          properties.setProperty("useSSL", "false");
+      	this.properties = new Properties();
+      	this.properties.setProperty("user", cBenutzername);
+      	this.properties.setProperty("password", cPasswort);
+      	this.properties.setProperty("MaxPooledStatements", "250");
+      	this.properties.setProperty("useSSL", "false");
       }
       
-      return properties;
+      return this.properties;
    }
 }
