@@ -1,3 +1,6 @@
+/** 
+ * Hier ist keiner verantwortlich
+ */
 package vorurteile.items;
 
 import java.util.Date;
