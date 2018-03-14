@@ -14,12 +14,12 @@ public class Fakt
     private String quellenTyp;
     private String autor;
     private String link;
-    private String datum;
+    private LocalDate datum;
     private String zeitStempel;
     private String aussage;
 
 
-	public Fakt(String pTitel, String pAutor, String pDatum, String pQuellenTyp, String pLink, String pZeitStempel, String pAussage)
+	public Fakt(String pTitel, String pAutor, LocalDate pDatum, String pQuellenTyp, String pLink, String pZeitStempel, String pAussage)
 	{
 			this.titel = pTitel;
 			this.iDFakten = new IDFakten();
@@ -102,5 +102,71 @@ public class Fakt
 
 			return null;
 		}
+	}
+	//Getter und setter
+
+	public String getTitel() {
+		return titel;
+	}
+
+	public void setTitel(String titel) {
+		this.titel = titel;
+	}
+
+	public IDFakten getiDFakten() {
+		return iDFakten;
+	}
+
+	public void setiDFakten(IDFakten iDFakten) {
+		this.iDFakten = iDFakten;
+	}
+
+	public String getQuellenTyp() {
+		return quellenTyp;
+	}
+
+	public void setQuellenTyp(String quellenTyp) {
+		this.quellenTyp = quellenTyp;
+	}
+
+	public String getAutor() {
+		return autor;
+	}
+
+	public void setAutor(String autor) {
+		this.autor = autor;
+	}
+
+	public String getLink() {
+		return link;
+	}
+
+	public void setLink(String link) {
+		this.link = link;
+	}
+
+	public LocalDate getDatum() {
+		return datum;
+	}
+
+	public void setDatum(LocalDate datum) {
+		this.datum = datum;
+	}
+
+	public String getAussage() {
+		return aussage;
+	}
+
+	public void setAussage(String aussage) {
+		this.aussage = aussage;
+	}
+
+	public IDFakten getIDFakten() {
+		return iDFakten;
+	}
+
+	public void setIDFakten(IDFakten piDFakten) {
+		iDFakten = piDFakten;
+		
 	};
 }
