@@ -1,5 +1,5 @@
 /**
- *  bearbeitet von Gracjan Flik und Tobias Neubert am 22.01.2018
+ *  Bearbeitet von Gracjan Flik und Tobias Neubert am 22.01.2018
  */
 package hierarchien;
 
