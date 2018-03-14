@@ -1,17 +1,21 @@
 package hierarchie;
 
-/**
-  * Angelegt: 10.01.2018, Chantal Mielenz & Florian Henderkes, Zweck: Methoden zum auslesen von Informationen aus der Datenbank
-  * Geändert: Januar & Anfang Februar, Chantal Mielenz, Methoden hinzugefügt und abgeändert
-  * Geändert: 07.03.2018, Chantal Mielenz, Namenskonventionen
-  */
-
-import java.util.ArrayList;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+
+/**
+  * Angelegt: 10.01.2018, Chantal Mielenz & Florian Henderkes, Zweck: Methoden zum auslesen von Informationen aus der Datenbank
+  * Geändert: Januar & Anfang Februar, Chantal Mielenz, Methoden hinzugefügt und abgeändert
+  * Geändert: 07.03.2018, Chantal Mielenz, Namenskonventionen
+  * 14.3.2018 Tobias suchenUntergeordneteFakten Vorurteil zu Fakt geändert und methode temporär erweitert
+  */
+
+import java.util.ArrayList;
+
 import datenbank.Datenbankverbindung;
+import fakten.Fakt;
 import vorurteile.items.Vorurteil;
 
 public class Hierarchie
@@ -112,9 +116,9 @@ public class Hierarchie
 	 * @param pVorurteilID
 	 * @return
 	 */
-	public static ArrayList<Vorurteil> suchenUntergeordneteFakten(int pVorurteilID)
+	public static ArrayList<Fakt> suchenUntergeordneteFakten(int pVorurteilID)
 	{
-		ArrayList<Vorurteil> lListeFakten = new ArrayList<>();
+		ArrayList<Fakt> lListeFakten = new ArrayList<>();
 		try
 		{
 			Connection lVerbindung = Datenbankverbindung.getConnection();
@@ -122,7 +126,7 @@ public class Hierarchie
 			ResultSet lErgebnis = lBefehl.executeQuery("SELECT f.Titel, f.ID_Fakten FROM dbo_vorurteile.fakten f, dbo_vorurteile.verbindung_f_v ve, dbo_vorurteile.vorurteile vo WHERE vo.ID_Vorurteile = ve.ID_Vorurteile AND ve.ID_Fakten = f.ID_Fakten AND vo.ID_Vorurteile=" + pVorurteilID + ";");
 			while(lErgebnis.next())
 			{
-
+				lListeFakten.add(new Fakt(lErgebnis.getString("f.Titel"), lErgebnis.getString("f.Autor"), null, null, null, null, null));
 			}
 		}
 		catch(SQLException ex)
