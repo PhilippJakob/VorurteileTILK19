@@ -1,3 +1,6 @@
+/** 
+ * Hier ist keiner verantwortlich
+ */
 package vorurteile.items;
 
 import java.util.Date;
@@ -96,3 +99,4 @@ public class Vorurteil
 		zeitstempel = pZeitstempel;
 	}
 }
+
