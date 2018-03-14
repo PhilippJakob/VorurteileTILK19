@@ -185,5 +185,6 @@ public class Fakt
 
 	public void setIDFakten(int iDFakten) {
 		IDFakten = iDFakten;
+		
 	};
 }
