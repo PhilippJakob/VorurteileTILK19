@@ -43,19 +43,19 @@ public class EingabeVorurteilController implements Initializable
    private TextArea taHauptaussage;
 
 	@FXML
-   private Button btSpeichernVorurteil, btFaktensuche, btFaktHinzufügen, btFaktAuswählen, btFaktNichtAuswählen, 
+   private Button btSpeichernVorurteil, btFaktensuche, btFaktHinzufügen, btFaktAuswählen, btFaktNichtAuswählen,
    					btRefreshF, btVorurteilssuche, btVorurteilAuswählen, btVorurteilNichtAuswählen, btRefreshV;
 
 	@FXML
    private TableView<Vorurteil> tvFaktenliste, tvFaktenlisteAusgewählt, tvVorurteilliste, tvVorurteillisteAusgewählt;
 
 	@FXML
-   private TableColumn<Vorurteil, String> tcTitelFaktenliste, tcTitelFaktenlisteAusgewählt, tcTitelVorurteilsliste, 
+   private TableColumn<Vorurteil, String> tcTitelFaktenliste, tcTitelFaktenlisteAusgewählt, tcTitelVorurteilsliste,
    													tcTitelVorurteilslisteAusgewählt;
 
 	@FXML
    private Label lbErrorF, lbSafeError, lbErrorV;
-	
+
 	@FXML
 	private CheckBox cbLink;
 
@@ -94,7 +94,7 @@ public class EingabeVorurteilController implements Initializable
 	@FXML
 	private void suchenFakt(ActionEvent event)
 	{
-		
+
 	}
 
 	/**
@@ -114,7 +114,7 @@ public class EingabeVorurteilController implements Initializable
 	    	tvFaktenlisteAusgewählt.getItems().add(lFakt);
     	}
 	}
-	
+
 	/**
 	 * Erkennt den ausgewählten Tabelleneintrag (lFakt).
 	 * Entfernt lFakt aus tvFaktenlisteAusgewählt.
@@ -144,18 +144,26 @@ public class EingabeVorurteilController implements Initializable
 	{
 
 	}
-	
+
 	@FXML
-	private void suchenVorurteil(ActionEvent event)
+	void suchenVorurteil(ActionEvent event)
 	{
-//		erstellenTabellen();
 		tvVorurteilliste.getItems().clear();
 		String lTitel = tfVorurteilssuche.getText().trim();
-		ArrayList<Vorurteil> lVorurteil = vorurteile.VorurteilManager.getVorurteile(lTitel);
-		for(Vorurteil l : lVorurteil )
+		ArrayList<Vorurteil> lVorurteile = vorurteile.VorurteilManager.getVorurteile(lTitel);
+		ArrayList<Integer>	lVorurteileIDs = new ArrayList<>();
+
+		for (Vorurteil lVorurteil : tvVorurteillisteAusgewählt.getItems())
 		{
-			//System.out.println(l.getID() + " " + l.getTitel());
-			tvVorurteilliste.getItems().add(l);
+			lVorurteileIDs.add(lVorurteil.getID());
+		}
+
+		for(Vorurteil lVorurteil : lVorurteile)
+		{
+			if (!lVorurteileIDs.contains(lVorurteil.getID()))
+			{
+			  tvVorurteilliste.getItems().add(lVorurteil);
+			}
 		}
 	}
 
@@ -206,7 +214,7 @@ public class EingabeVorurteilController implements Initializable
 	{
 		überprüfenFelder();
 	}*/
-	
+
 	/**
 	 * Erstellt ein neues Vorurteil und speichert es in der Datenbank ab.
 	 */
@@ -216,7 +224,7 @@ public class EingabeVorurteilController implements Initializable
    	if(überprüfenFelder())
    	{
    		ArrayList<Vorurteil> lVorurteile = VorurteilManager.getVorurteile(this.tfTitel.getText());
-     	 
+
      	 	for (Vorurteil lVorurteil : lVorurteile)
      	 	{
      	 		if (lVorurteil.getTitel().equals(this.tfTitel.getText()))
@@ -224,17 +232,17 @@ public class EingabeVorurteilController implements Initializable
         			 lbSafeError.setText("Titel ist bereits vorhanden");
         			 return;
         		}
-     	 	} 
-     	 
+     	 	}
+
         	 Vorurteil lVorurteil = VorurteilManager.erstellenVorurteil(this.tfTitel.getText(), this.tfAutor.getText(), LocalDateTime.now(), this.cbLink.isSelected(), this.tfQuelle.getText(), this.taHauptaussage.getText());
-        	 
+
         	 //ArrayList<Fakt> lFakten = tvFaktenlisteAusgewählt.getItems();
         	 lVorurteile = (ArrayList<Vorurteil>) this.tvVorurteillisteAusgewählt.getItems();
-        		 
-        	 if ((!lVorurteile.isEmpty()) /*|| (!lFakten.isEmpty())*/) 
+
+        	 if ((!lVorurteile.isEmpty()) /*|| (!lFakten.isEmpty())*/)
         	 {
         		 MySqlConnector lConnector = new MySqlConnector();
-      
+
       			 try
       			 {
       				 /*for (Fakt lUnterfakt : lFakten)
@@ -245,7 +253,7 @@ public class EingabeVorurteilController implements Initializable
       					 lStatement.setInt(2, lVorurteil.getID());
       					 lStatement.executeUpdate();
         		 	 }*/
-      				 
+
       				 for (Vorurteil lUntervorurteil : lVorurteile)
       				 {
       					 PreparedStatement lStatement;
@@ -254,24 +262,24 @@ public class EingabeVorurteilController implements Initializable
       					 lStatement.setInt(2, lVorurteil.getID());
       					 lStatement.executeUpdate();
         		 	 	 }
-      			 } 
+      			 }
       			 catch (SQLException e)
       			 {
       			 	 // TODO Auto-generated catch block
       				 e.printStackTrace();
       			 }
-        		 
+
         		 this.leerenEingaben();
         	 }
    	}
    }
-   
-   private void leerenEingaben() 
+
+   private void leerenEingaben()
    {
   	 /* 「Vorurteil」  */
   	 this.tfTitel.clear();
   	 this.taHauptaussage.clear();
-  	 
+
   	 /* 「Fakt verknüpfen」 Tab */
   	 this.tfFaktensuche.clear();
   	 this.tvFaktenliste.getItems().clear();
