@@ -2,7 +2,7 @@
  * @author Dimaa, 31. Januar 2018
  * @description Greift auf die Vorurteil Tabelle in der Datenbank zu
  * @changelog
- * | 31. Januar 2018: Dimaa 「erstellenVorurteil(), aktualisiertVorurteil(), istTitelVorhanden(), getVorurteil(), getVorurteile(), getNewID()」
+ * | 31. Januar 2018: Dimaa "erstellenVorurteil(), aktualisiertVorurteil(), istTitelVorhanden(), getVorurteil(), getVorurteile(), getNewID()"
  */
 
 package vorurteile;
