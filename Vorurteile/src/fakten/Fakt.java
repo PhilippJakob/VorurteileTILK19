@@ -103,6 +103,7 @@ public class Fakt
 		Connection lConnection = DatenbankVerbindungFakten.holen();
 		Statement lBefehl;
 		ResultSet lErgebnis;
+		
 
 		try
 		{
