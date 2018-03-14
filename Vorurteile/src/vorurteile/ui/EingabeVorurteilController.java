@@ -215,54 +215,54 @@ public class EingabeVorurteilController implements Initializable
    {
    	if(überprüfenFelder())
    	{
-     	 ArrayList<Vorurteil> lVorurteile = VorurteilManager.getVorurteile(this.tfTitel.getText());
+   		ArrayList<Vorurteil> lVorurteile = VorurteilManager.getVorurteile(this.tfTitel.getText());
      	 
-     	 for (Vorurteil lVorurteil : lVorurteile)
-     	 {
-     		 if (lVorurteil.getTitel().equals(this.tfTitel.getText()))
-     		 {
-     			 lbSafeError.setText("Titel ist bereits vorhanden");
-     			 return;
-     		 }
-     	 }
+     	 	for (Vorurteil lVorurteil : lVorurteile)
+     	 	{
+     	 		if (lVorurteil.getTitel().equals(this.tfTitel.getText()))
+     	 		{
+        			 lbSafeError.setText("Titel ist bereits vorhanden");
+        			 return;
+        		}
+     	 	} 
      	 
-     	 Vorurteil lVorurteil = VorurteilManager.erstellenVorurteil(this.tfTitel.getText(), this.tfAutor.getText(), LocalDateTime.now(), this.cbLink.isSelected(), this.tfQuelle.getText(), this.taHauptaussage.getText());
-     	 
-     	 //ArrayList<Fakt> lFakten = tvFaktenlisteAusgewählt.getItems();
-     	 lVorurteile = (ArrayList<Vorurteil>) this.tvVorurteillisteAusgewählt.getItems();
-     		 
-     	 if ((!lVorurteile.isEmpty()) /*|| (!lFakten.isEmpty())*/) 
-     	 {
-     		 MySqlConnector lConnector = new MySqlConnector();
-   
-   			 try
-   			 {
-   				 /*for (Fakt lUnterfakt : lFakten)
-   				 {
-   					 PreparedStatement lStatement;
-   					 lStatement = (PreparedStatement) lConnector.getConnection().prepareStatement("INSERT INTO `vorurteile_f_v` (`ID_Untergeordneter_Fakt`, `ID_Verbindung_v_f`) VALUES (?, ?);");
-   					 lStatement.setInt(1, lUnterfakt.getID());
-   					 lStatement.setInt(2, lVorurteil.getID());
-   					 lStatement.executeUpdate();
-     		 	 }*/
-   				 
-   				 for (Vorurteil lUntervorurteil : lVorurteile)
-   				 {
-   					 PreparedStatement lStatement;
-   					 lStatement = (PreparedStatement) lConnector.getConnection().prepareStatement("INSERT INTO `vorurteile_v_v` (`ID_Untergeordnetes_Vorurteil`, `ID_Verbindung_v_v`) VALUES (?, ?);");
-   					 lStatement.setInt(1, lUntervorurteil.getID());
-   					 lStatement.setInt(2, lVorurteil.getID());
-   					 lStatement.executeUpdate();
-     		 	 	 }
-   			 } 
-   			 catch (SQLException e)
-   			 {
-   			 	 // TODO Auto-generated catch block
-   				 e.printStackTrace();
-   			 }
-     		 
-     		 this.leerenEingaben();
-     	 	}
+        	 Vorurteil lVorurteil = VorurteilManager.erstellenVorurteil(this.tfTitel.getText(), this.tfAutor.getText(), LocalDateTime.now(), this.cbLink.isSelected(), this.tfQuelle.getText(), this.taHauptaussage.getText());
+        	 
+        	 //ArrayList<Fakt> lFakten = tvFaktenlisteAusgewählt.getItems();
+        	 lVorurteile = (ArrayList<Vorurteil>) this.tvVorurteillisteAusgewählt.getItems();
+        		 
+        	 if ((!lVorurteile.isEmpty()) /*|| (!lFakten.isEmpty())*/) 
+        	 {
+        		 MySqlConnector lConnector = new MySqlConnector();
+      
+      			 try
+      			 {
+      				 /*for (Fakt lUnterfakt : lFakten)
+      				 {
+      					 PreparedStatement lStatement;
+      					 lStatement = (PreparedStatement) lConnector.getConnection().prepareStatement("INSERT INTO `vorurteile_f_v` (`ID_Untergeordneter_Fakt`, `ID_Verbindung_v_f`) VALUES (?, ?);");
+      					 lStatement.setInt(1, lUnterfakt.getID());
+      					 lStatement.setInt(2, lVorurteil.getID());
+      					 lStatement.executeUpdate();
+        		 	 }*/
+      				 
+      				 for (Vorurteil lUntervorurteil : lVorurteile)
+      				 {
+      					 PreparedStatement lStatement;
+      					 lStatement = (PreparedStatement) lConnector.getConnection().prepareStatement("INSERT INTO `vorurteile_v_v` (`ID_Untergeordnetes_Vorurteil`, `ID_Verbindung_v_v`) VALUES (?, ?);");
+      					 lStatement.setInt(1, lUntervorurteil.getID());
+      					 lStatement.setInt(2, lVorurteil.getID());
+      					 lStatement.executeUpdate();
+        		 	 	 }
+      			 } 
+      			 catch (SQLException e)
+      			 {
+      			 	 // TODO Auto-generated catch block
+      				 e.printStackTrace();
+      			 }
+        		 
+        		 this.leerenEingaben();
+        	 }
    	}
    }
    
