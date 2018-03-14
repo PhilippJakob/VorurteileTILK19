@@ -1,34 +1,61 @@
+/**
+ * @author Dimaa, 31. Januar 2018
+ * @description Greift auf die Vorurteil Tabelle in der Datenbank zu
+ * @changelog
+ * | 31. Januar 2018: Dimaa "erstellenVorurteil(), aktualisiertVorurteil(), istTitelVorhanden(), getVorurteil(), getVorurteile(), getNewID()"
+ * | 14. März 2018:   Dimaa "lConnector -> lVerbinder"
+ */
+
 package vorurteile;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.sql.Timestamp;
+import java.time.Instant;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.util.Date;
+import java.util.TimeZone;
 
 import com.mysql.jdbc.PreparedStatement;
 
-import vorurteile.items.Vorurteil;
-
 public class VorurteilManager
 {
-	public static Vorurteil erstellenVorurteil(String pTitel, String pAutor, long pVeröffentlichung, String pInternetquelle, String pLink) 
+	/*
+	 * Tutorial :)
+	 * 
+	 * Gibt alle Vorurteile mit dem Titel "Baum" aus
+	 * for (Vorurteil lVorurteil : VorurteilManager.getVorurteile("Baum"))
+	 * {
+	 * 	System.out.println(lVorurteil.getID());
+	 * }
+	 * 
+	 * Erstellt ein Vorurteil
+	 *	VorurteilManager.erstellenVorurteil("Baumrinde", "Dimaa", LocalDateTime.now(), true, "https://dimaa.vip/", "Die beste Seite der Welt.");
+	 */
+	
+	
+	/**
+	 * Erstellt ein neues Vorurteil
+	 */
+	public static Vorurteil erstellenVorurteil(String pTitel, String pAutor, LocalDateTime pVeröffentlichung, boolean pInternetquelle, String pLink, String pHauptaussage) 
 	{		
-		MySqlConnector lConnector = new MySqlConnector();
+		Verbinder lVerbinder = new Verbinder();
 		
 		try
-		{
-			Vorurteil lVorurteil = new Vorurteil(VorurteilManager.getNewID(), pTitel, pAutor, pVeröffentlichung, pInternetquelle, pLink);
+		{			
+			LocalDateTime lAktuellesDatum = LocalDateTime.now();
+			Vorurteil lVorurteil = new Vorurteil(VorurteilManager.getNewID(), pTitel, pAutor, pVeröffentlichung, pInternetquelle, pLink, lAktuellesDatum, pHauptaussage);
 			
-			PreparedStatement lStatement = (PreparedStatement) lConnector.getConnection().prepareStatement("INSERT INTO `vorurteile` (`ID_Vorurteile`, `Titel`, `Autor`, `Veröffentlichung`, `InternetQuelle_Ja_Nein`, `Link`, `Zeitstempel`) VALUES (?, ?, ?, ?, ?, ?, ?);");
+			PreparedStatement lStatement = (PreparedStatement) lVerbinder.getConnection().prepareStatement("INSERT INTO `vorurteile` (`ID_Vorurteile`, `Titel`, `Autor`, `Veröffentlichung`, `InternetQuelle_Ja_Nein`, `Link`, `Zeitstempel`, `Vorurteil_Text`) VALUES (?, ?, ?, ?, ?, ?, ?, ?);");
 			lStatement.setInt(1, lVorurteil.getID());
 			lStatement.setString(2, lVorurteil.getTitel());
 			lStatement.setString(3, lVorurteil.getAutor());
-			lStatement.setTimestamp(4, new Timestamp(lVorurteil.getVeröffentlichung()));
-			lStatement.setString(5, lVorurteil.getInternetquelle());
+			lStatement.setTimestamp(4, Timestamp.valueOf(lVorurteil.getVeröffentlichung()));
+			lStatement.setBoolean(5, lVorurteil.getInternetquelle());
 			lStatement.setString(6, lVorurteil.getLink());
-			lStatement.setTimestamp(7, new Timestamp(new Date().getTime()));
+			lStatement.setTimestamp(7, Timestamp.valueOf(lAktuellesDatum));
+			lStatement.setString(8, lVorurteil.getHauptaussage());
 			lStatement.executeUpdate();
 			
 			return lVorurteil;
@@ -42,20 +69,24 @@ public class VorurteilManager
 		return null;
 	}
 	
-	public static void speichernVorurteil(Vorurteil pVorurteil) 
+	/**
+	 * Aktualisiert das gegebene Vorurteil in der Datenbank.
+	 */
+	public static void aktualisiertVorurteil(Vorurteil pVorurteil) 
 	{
-		MySqlConnector lConnector = new MySqlConnector();
+		Verbinder lVerbinder = new Verbinder();
 			
 		try
 		{
-			PreparedStatement lStatement = (PreparedStatement) lConnector.getConnection().prepareStatement("UPDATE `vorurteile` SET `Titel` = ?, `Autor` = ?, `Veröffentlichung` = ?, `InternetQuelle_Ja_Nein` = ?, `Link` = ?, `Zeitstempel` = ? WHERE `ID_Vorurteile` = ?;");
+			PreparedStatement lStatement = (PreparedStatement) lVerbinder.getConnection().prepareStatement("UPDATE `vorurteile` SET `Titel` = ?, `Autor` = ?, `Veröffentlichung` = ?, `InternetQuelle_Ja_Nein` = ?, `Link` = ?, `Zeitstempel` = ?, `Vorurteil_Text` = ? WHERE `ID_Vorurteile` = ?;");
 			lStatement.setString(1, pVorurteil.getTitel());
 			lStatement.setString(2, pVorurteil.getAutor());
-			lStatement.setTimestamp(3, new Timestamp(pVorurteil.getVeröffentlichung()));
-			lStatement.setString(4, pVorurteil.getInternetquelle());
+			lStatement.setTimestamp(3, Timestamp.valueOf(pVorurteil.getVeröffentlichung()));
+			lStatement.setBoolean(4, pVorurteil.getInternetquelle());
 			lStatement.setString(5, pVorurteil.getLink());
-			lStatement.setTimestamp(6, new Timestamp(pVorurteil.getZeitstempel()));
-			lStatement.setInt(7, pVorurteil.getID());
+			lStatement.setTimestamp(6, Timestamp.valueOf(pVorurteil.getZeitstempel()));
+			lStatement.setString(7, pVorurteil.getHauptaussage());
+			lStatement.setInt(8, pVorurteil.getID());
 			lStatement.executeUpdate();
 		} 
 		catch (SQLException e)
@@ -65,19 +96,40 @@ public class VorurteilManager
 		}
 	}
 	
+	/**
+	 * Prüft, ob Titel vom Vorurteil in der Datenbank schon vorhanden ist.
+	 */
+	public static boolean istTitelVorhanden(String pTitel) 
+	{
+		ArrayList<Vorurteil> lVorurteile = VorurteilManager.getVorurteile(pTitel);
+		
+		for(Vorurteil lVorurteil : lVorurteile) 
+		{
+			if (lVorurteil.getTitel().trim().equals(pTitel.trim())) 
+			{
+				return true;
+			}
+		}
+		
+		return false;
+	}
+	
+	/**
+	 * Gibt ein Vorurteil mit der eingegebenen ID aus.
+	 */
 	public static Vorurteil getVorurteil(int pID) 
 	{
-		MySqlConnector lConnector = new MySqlConnector();
+		Verbinder lVerbinder = new Verbinder();
 		
 		try
 		{
-			PreparedStatement lStatement = (PreparedStatement) lConnector.getConnection().prepareStatement("SELECT * FROM `vorurteile` WHERE `ID_Vorurteile` = ?;");
+			PreparedStatement lStatement = (PreparedStatement) lVerbinder.getConnection().prepareStatement("SELECT * FROM `vorurteile` WHERE `ID_Vorurteile` = ?;");
 			lStatement.setInt(1, pID);
 			ResultSet lResult = lStatement.executeQuery();
 			
 			if (lResult.next()) 
 			{
-				Vorurteil lVorurteil = new Vorurteil(lResult.getInt(1), lResult.getString(2), lResult.getString(3), lResult.getDate(4).getTime(), lResult.getString(5), lResult.getString(6));
+				Vorurteil lVorurteil = new Vorurteil(lResult.getInt(1), lResult.getString(2), lResult.getString(3), LocalDateTime.ofInstant(Instant.ofEpochMilli(lResult.getDate(4).getTime()), TimeZone.getDefault().toZoneId()), lResult.getBoolean(5), lResult.getString(6), LocalDateTime.ofInstant(Instant.ofEpochMilli(lResult.getDate(7).getTime()), TimeZone.getDefault().toZoneId()), lResult.getString(8));
 				return lVorurteil;
 			}
 		} 
@@ -90,20 +142,23 @@ public class VorurteilManager
 		return null;
 	}
 	
+	/**
+	 * Gibt eine Vorurteil-Liste mit dem gewünschten Titel aus.
+	 */
 	public static ArrayList<Vorurteil> getVorurteile(String pTitel)
 	{
 		ArrayList<Vorurteil> lVorurteile = new ArrayList<Vorurteil>();
-		MySqlConnector lConnector = new MySqlConnector();
+		Verbinder lVerbinder = new Verbinder();
 		
 		try
 		{
-			PreparedStatement lStatement = (PreparedStatement) lConnector.getConnection().prepareStatement("SELECT * FROM `vorurteile` WHERE `Titel` LIKE ?");
+			PreparedStatement lStatement = (PreparedStatement) lVerbinder.getConnection().prepareStatement("SELECT * FROM `vorurteile` WHERE `Titel` LIKE ?;");
 			lStatement.setString(1, "%" + pTitel + "%");
 			ResultSet lResult = lStatement.executeQuery();
 			
 			while (lResult.next()) 
 			{
-				Vorurteil lVorurteil = new Vorurteil(lResult.getInt(1), lResult.getString(2), lResult.getString(3), lResult.getDate(4).getTime(), lResult.getString(5), lResult.getString(6));
+				Vorurteil lVorurteil = new Vorurteil(lResult.getInt(1), lResult.getString(2), lResult.getString(3), LocalDateTime.ofInstant(Instant.ofEpochMilli(lResult.getDate(4).getTime()), TimeZone.getDefault().toZoneId()), lResult.getBoolean(5), lResult.getString(6), LocalDateTime.ofInstant(Instant.ofEpochMilli(lResult.getDate(7).getTime()), TimeZone.getDefault().toZoneId()), lResult.getString(8));
 				lVorurteile.add(lVorurteil);
 			}
 			
@@ -118,14 +173,17 @@ public class VorurteilManager
 		return null;
 	}
 	
+	/**
+	 * Erstellt eine nächsthöhere ID, die in der Datenbank noch nicht existiert.
+	 */
 	public static int getNewID()
 	{
-		MySqlConnector lConnector = new MySqlConnector();
+		Verbinder lVerbinder = new Verbinder();
 		
 		try
 		{
-			Statement lStatement = lConnector.getConnection().createStatement();
-			ResultSet lResult = lStatement.executeQuery("SELECT COUNT(`ID_Vorurteile`) FROM `vorurteile`;");
+			Statement lStatement = lVerbinder.getConnection().createStatement();
+			ResultSet lResult = lStatement.executeQuery("SELECT MAX(`ID_Vorurteile`) FROM `vorurteile`;");
 			
 			if (lResult.next()) 
 			{
