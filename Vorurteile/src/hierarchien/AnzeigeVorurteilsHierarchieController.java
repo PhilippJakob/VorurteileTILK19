@@ -61,6 +61,7 @@ public class AnzeigeVorurteilsHierarchieController
 			vorVorurteile.get(i).setText(lVorVorurteilsListe.get(i).getTitel());
 		}
 		
+		
 		anzeigenVorurteil2(lVorVorurteilsListe.get(0).getID());
 		anzeigenFakten2(lVorVorurteilsListe.get(0).getID());
 	}
