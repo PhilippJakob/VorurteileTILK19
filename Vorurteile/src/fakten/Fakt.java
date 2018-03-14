@@ -1,5 +1,6 @@
 /*
  * angelegt von  Fin Pohle am 17.1.18
+ * Tobias 14.03.2018 getter und setter methoden hinzugefügt
  */
 package fakten;
 
@@ -14,7 +15,7 @@ import java.sql.*;
 public class Fakt
 {
 	 private String titel;
-    IDFakten iDFakten;
+	 private IDFakten iDFakten;
     private String quellenTyp;
     private String autor;
     private String link;
@@ -118,5 +119,70 @@ public class Fakt
 
 			return null;
 		}
+	}
+	//Getter und setter
+
+	public String getTitel() {
+		return titel;
+	}
+
+	public void setTitel(String titel) {
+		this.titel = titel;
+	}
+
+	public IDFakten getiDFakten() {
+		return iDFakten;
+	}
+
+	public void setiDFakten(IDFakten iDFakten) {
+		this.iDFakten = iDFakten;
+	}
+
+	public String getQuellenTyp() {
+		return quellenTyp;
+	}
+
+	public void setQuellenTyp(String quellenTyp) {
+		this.quellenTyp = quellenTyp;
+	}
+
+	public String getAutor() {
+		return autor;
+	}
+
+	public void setAutor(String autor) {
+		this.autor = autor;
+	}
+
+	public String getLink() {
+		return link;
+	}
+
+	public void setLink(String link) {
+		this.link = link;
+	}
+
+	public LocalDate getDatum() {
+		return datum;
+	}
+
+	public void setDatum(LocalDate datum) {
+		this.datum = datum;
+	}
+
+	public String getAussage() {
+		return aussage;
+	}
+
+	public void setAussage(String aussage) {
+		this.aussage = aussage;
+	}
+
+	public int getIDFakten() {
+		return IDFakten;
+	}
+
+	public void setIDFakten(int iDFakten) {
+		IDFakten = iDFakten;
 	};
 }
