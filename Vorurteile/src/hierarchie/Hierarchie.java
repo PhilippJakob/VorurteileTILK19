@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.time.LocalDate;
 
 /**
   * Angelegt: 10.01.2018, Chantal Mielenz & Florian Henderkes, Zweck: Methoden zum auslesen von Informationen aus der Datenbank
@@ -128,7 +129,7 @@ public class Hierarchie
 			{
 				
 				lListeFakten.add(new Fakt(lErgebnis.getString("f.Titel"), lErgebnis.getString("f.Autor"),
-							lErgebnis.getString("f.Veröffentlichung"),
+							LocalDate.parse(lErgebnis.getString("f.Veröffentlichung")),
 							lErgebnis.getString("f.Quellen_Typ"),lErgebnis.getString("f.Link"),
 							lErgebnis.getString("f.Datum_Stempel"),lErgebnis.getString("f.Aussage")));
 			}
