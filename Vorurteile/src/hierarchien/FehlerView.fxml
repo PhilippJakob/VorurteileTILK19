@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="216.0" prefWidth="558.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hierarchien.FehlermeldungController">
+   <children>
+      <TextField fx:id="tfFehlermeldung" layoutX="14.0" layoutY="24.0" prefHeight="127.0" prefWidth="538.0" />
+      <Button fx:id="btOk" layoutX="259.0" layoutY="165.0" mnemonicParsing="false" onAction="#fensterSchliessen" text="Okay" />
+   </children>
+</Pane>
