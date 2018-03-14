@@ -20,6 +20,12 @@ public class ControllerViewBearbeiten
    private Button btWechselnLöschen;
 
    @FXML
+   void ändernOberfläche(ActionEvent event)
+   {
+
+   }
+
+   @FXML
    void wechselnSceneHinzufügen(ActionEvent event)
    {
   	 	EingabeStart.wechselnSceneHinzufügen();

@@ -1,3 +1,6 @@
+/**
+ * angelegt von Maximilian am 14.03.2018
+ */
 package fakten;
 
 import java.sql.Connection;
@@ -25,19 +28,16 @@ public class ControllerViewEingabe
     private Label txHinzufügen;
 
     @FXML
-    private Label txMeldungen;
-
-    @FXML
     private Button btInternet;
 
     @FXML
     private Text txTitel;
+    
+    @FXML
+    private Text txMeldungen;
 
     @FXML
     private Text txDatum;
-
-    @FXML
-    private TextField tfDatum;
 
     @FXML
     private Text txQuellenAussage;
@@ -84,6 +84,12 @@ public class ControllerViewEingabe
    private Button btWechselnLöschen;
 
    @FXML
+   void ändernOberfläche(ActionEvent event)
+   {
+
+   }
+
+   @FXML
    void wechselnSceneHinzufügen(ActionEvent event)
    {
   	 EingabeStart.wechselnSceneHinzufügen();
@@ -115,12 +121,14 @@ public class ControllerViewEingabe
 		   {
 			Fakt lFakt = new Fakt(tfTitel.getText(),tfAutor.getText(),dpDatum.getValue(),getQuellentyp(),tfLink.getText(),tfQuellenAussage.getText());
          lFakt.anlegen();
+	   	txMeldungen.setStyle("-fx-fill: green");
 	   	txMeldungen.setText("Speichern erfolgreich");
 	   	txMeldungen.setVisible(true);
 
 		   }
 		   else
 		   {
+		   	txMeldungen.setStyle("-fx-fill: red");
 		   	txMeldungen.setText("Bitte tätigen sie eine Eingabe beim Titel und der Aussage");
 	   		txMeldungen.setVisible(true);
 		   }
