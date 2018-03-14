@@ -2,8 +2,8 @@
  * @author Jonas N. Henle, 25.01.2018
  * @description Beschreibung: Dient der Eingabe von neuen Vorurteilen.
  * @changelog
- * | 07. Mrz 2018: Nico Fliskowski 「getVorurteil(); erstellenTabellen(); auswählenFakt(); nichtAuswählenFakt(); auswählenVorurteil(); nichtAuswählenVorurteil(); initialize();」
- * | 07. Mrz 2018: Dimaa 「speichernVorurteil()」
+ * | 07. Mrz 2018: Nico Fliskowski "getVorurteil(); erstellenTabellen(); auswählenFakt(); nichtAuswählenFakt(); auswählenVorurteil(); nichtAuswählenVorurteil(); initialize();"
+ * | 07. Mrz 2018: Dimaa "speichernVorurteil()"
  */
 
 package vorurteile.ui;
