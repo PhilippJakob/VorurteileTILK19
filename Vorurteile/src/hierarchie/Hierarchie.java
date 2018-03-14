@@ -126,7 +126,11 @@ public class Hierarchie
 			ResultSet lErgebnis = lBefehl.executeQuery("SELECT f.Titel, f.ID_Fakten FROM dbo_vorurteile.fakten f, dbo_vorurteile.verbindung_f_v ve, dbo_vorurteile.vorurteile vo WHERE vo.ID_Vorurteile = ve.ID_Vorurteile AND ve.ID_Fakten = f.ID_Fakten AND vo.ID_Vorurteile=" + pVorurteilID + ";");
 			while(lErgebnis.next())
 			{
-				lListeFakten.add(new Fakt(lErgebnis.getString("f.Titel"), lErgebnis.getString("f.Autor"), null, null, null, null, null));
+				
+				lListeFakten.add(new Fakt(lErgebnis.getString("f.Titel"), lErgebnis.getString("f.Autor"),
+							lErgebnis.getString("f.Veröffentlichung"),
+							lErgebnis.getString("f.Quellen_Typ"),lErgebnis.getString("f.Link"),
+							lErgebnis.getString("f.Datum_Stempel"),lErgebnis.getString("f.Aussage")));
 			}
 		}
 		catch(SQLException ex)
