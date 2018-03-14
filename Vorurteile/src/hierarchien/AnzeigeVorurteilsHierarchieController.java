@@ -2,10 +2,10 @@ package hierarchien;
 
 import java.util.ArrayList;
 
+import fakten.Fakt;
 import hierarchie.Hierarchie;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
-import test.Verknüpfung;
 import vorurteile.items.Vorurteil;
 
 public class AnzeigeVorurteilsHierarchieController
@@ -68,7 +68,7 @@ public class AnzeigeVorurteilsHierarchieController
 
 	public void anzeigenFakten(int pFaktenID)
 	{
-		ArrayList<Vorurteil> lFaktenListe = Hierarchie.suchenUntergeordneteFakten(pFaktenID);
+		ArrayList<Fakt> lFaktenListe = Hierarchie.suchenUntergeordneteFakten(pFaktenID);
 		for(int i = 0;i<3;i++)
 		{
 			fakten.get(i).setText(lFaktenListe.get(i).getTitel());
@@ -98,7 +98,7 @@ public class AnzeigeVorurteilsHierarchieController
 	
 	private void anzeigenFakten2(int pFaktenID)
 	{
-		ArrayList<Vorurteil> lFaktenListe = Hierarchie.suchenUntergeordneteFakten(pFaktenID);
+		ArrayList<Fakt> lFaktenListe = Hierarchie.suchenUntergeordneteFakten(pFaktenID);
 		for(int i=0;i<3;i++)
 		{
 			fakten.get(i+3).setText(lFaktenListe.get(i).getTitel());
