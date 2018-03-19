@@ -124,7 +124,7 @@ public class Hierarchie
 		{
 			Connection lVerbindung = Datenbankverbindung.getConnection();
 			Statement lBefehl = lVerbindung.createStatement();
-			ResultSet lErgebnis = lBefehl.executeQuery("SELECT f.Titel, f.ID_Fakten FROM dbo_vorurteile.fakten f, dbo_vorurteile.verbindung_f_v ve, dbo_vorurteile.vorurteile vo WHERE vo.ID_Vorurteile = ve.ID_Vorurteile AND ve.ID_Fakten = f.ID_Fakten AND vo.ID_Vorurteile=" + pVorurteilID + ";");
+			ResultSet lErgebnis = lBefehl.executeQuery("SELECT f.Titel, f.ID_Fakten, f.Autor, f.Veröffentlichung, f.Quellen_Typ, f.Link, f.Datum_Stempel, f.Aussage FROM dbo_vorurteile.fakten f, dbo_vorurteile.verbindung_f_v ve, dbo_vorurteile.vorurteile vo WHERE vo.ID_Vorurteile = ve.ID_Vorurteile AND ve.ID_Fakten = f.ID_Fakten AND vo.ID_Vorurteile=" + pVorurteilID + ";");
 			while(lErgebnis.next())
 			{
 				

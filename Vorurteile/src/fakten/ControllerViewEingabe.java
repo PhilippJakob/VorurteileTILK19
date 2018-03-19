@@ -1,5 +1,7 @@
 package fakten;
 
+import java.time.LocalDate;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -63,7 +65,7 @@ public class ControllerViewEingabe
 	@FXML
 	 public void speichernDaten(ActionEvent event)
 		{
-			Fakt lFakt = new Fakt(tfTitel.getText(),tfAutor.getText(),tfDatum.getText(),getQuellentyp(),tfLink.getText(),tfZeitstempel.getText(),tfQuellenAussage.getText());
+			Fakt lFakt = new Fakt(tfTitel.getText(),tfAutor.getText(),LocalDate.parse(tfDatum.getText()),getQuellentyp(),tfLink.getText(),tfZeitstempel.getText(),tfQuellenAussage.getText());
          lFakt.anlegen();
 		}
    @FXML
