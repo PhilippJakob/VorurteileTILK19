@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="628.0" prefWidth="574.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fakten.ControllerViewLöschen">
+   <children>
+      <Button fx:id="btWechselnHinzufügen" layoutX="436.0" layoutY="145.0" mnemonicParsing="false" onAction="#wechselnSceneHinzufügen" prefHeight="25.0" prefWidth="87.0" text="Hinzufügen" />
+      <Button fx:id="btWechselnBearbeiten" layoutX="436.0" layoutY="174.0" mnemonicParsing="false" onAction="#wechselnSceneBearbeiten" prefHeight="25.0" prefWidth="87.0" text="Bearbeiten" />
+      <Button fx:id="btWechselnSuchen" layoutX="436.0" layoutY="203.0" mnemonicParsing="false" onAction="#wechselnSceneSuchen" prefHeight="25.0" prefWidth="87.0" text="Suchen" />
+      <Button fx:id="btWechselnLöschen" disable="true" layoutX="436.0" layoutY="232.0" mnemonicParsing="false" onAction="#wechselnSceneLöschen" prefHeight="25.0" prefWidth="87.0" text="Löschen" />
+      <Text layoutX="458.0" layoutY="137.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Menü">
+         <font>
+            <Font size="17.0" />
+         </font>
+      </Text>
+   </children>
+</AnchorPane>
