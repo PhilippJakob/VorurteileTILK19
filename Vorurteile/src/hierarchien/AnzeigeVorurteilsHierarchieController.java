@@ -1,3 +1,4 @@
+//22.01.2018 Erstellt von Gracjan und Tobias am 
 package hierarchien;
 
 import java.util.ArrayList;
@@ -62,7 +63,7 @@ public class AnzeigeVorurteilsHierarchieController
 		}
 		
 		
-		anzeigenVorurteil2(lVorVorurteilsListe.get(0).getID());
+		anzeigenVorurteilÜberVorVorurteil(lVorVorurteilsListe.get(0).getID());
 		anzeigenFakten2(lVorVorurteilsListe.get(0).getID());
 	}
 
@@ -71,7 +72,7 @@ public class AnzeigeVorurteilsHierarchieController
 		ArrayList<Fakt> lFaktenListe = Hierarchie.suchenUntergeordneteFakten(pFaktenID);
 		for(int i = 0;i<3;i++)
 		{
-			fakten.get(i).setText(lFaktenListe.get(i).getTitel());
+			fakten.get(i+3).setText(lFaktenListe.get(i).getTitel());
 		}
 		
 		anzeigenVorurteil2(lFaktenListe.get(0).getIDFakten().getIDFakten());
@@ -79,6 +80,13 @@ public class AnzeigeVorurteilsHierarchieController
 	}
 
 	
+	
+	private void anzeigenVorurteilÜberVorVorurteil(int pVorurteilsID)
+	{
+		ArrayList<Vorurteil> lVorurteilsListe = Hierarchie.suchenUntergeordneteVorurteile(pVorurteilsID);
+		
+		vorurteile.get(0).setText(lVorurteilsListe.get(0).getTitel());
+	}
 	
 	private void anzeigenVorurteil2(int pVorurteilsID)
 	{

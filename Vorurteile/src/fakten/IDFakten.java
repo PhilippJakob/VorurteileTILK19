@@ -3,11 +3,9 @@
  */
 package fakten;
 
-import java.lang.reflect.Array;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
-import java.text.Normalizer.Form;
 import java.util.ArrayList;
 
 public class IDFakten
@@ -60,7 +58,7 @@ public class IDFakten
 
     	try {
     		lBefehl = lConnection.createStatement();
-    		lErgebnis= lBefehl.executeQuery("SELECT MAX(IDFakten) FROM dbo_vorurteile.fakt");
+    		lErgebnis= lBefehl.executeQuery("SELECT MAX(IDFakten) FRM dbo_vorurteile.fakt");
     		lErgebnis.first();
 
     		while(! lErgebnis.isAfterLast())
