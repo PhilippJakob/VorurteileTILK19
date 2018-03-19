@@ -198,6 +198,6 @@
       <TextField fx:id="tfAutor" layoutX="119.0" layoutY="274.0" promptText="Autor" />
       <TextField fx:id="tfQuelle" layoutX="119.0" layoutY="319.0" promptText="Quelle" />
       <CheckBox fx:id="cbLink" layoutX="328.0" layoutY="323.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="51.0" text="Link" />
-      <DatePicker layoutX="328.0" layoutY="274.0" />
+      <DatePicker fx:id="dpDatum" layoutX="328.0" layoutY="274.0" />
    </children>
 </AnchorPane>

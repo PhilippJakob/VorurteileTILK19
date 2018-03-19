@@ -25,6 +25,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.TabPane;
 import javafx.scene.control.TableColumn;
@@ -38,6 +39,10 @@ import vorurteile.VorurteilManager;
 
 public class EingabeVorurteilController implements Initializable
 {
+
+   @FXML
+   private DatePicker dpDatum;
+   
 	@FXML
 	private TextField tfTitel, tfFaktensuche, tfVorurteilssuche, tfAutor, tfQuelle, tfVeröffentlichung;
 
