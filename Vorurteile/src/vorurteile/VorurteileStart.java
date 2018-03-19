@@ -28,11 +28,11 @@ public class VorurteileStart extends Application
 	{
 		FXMLLoader lLoader = new FXMLLoader();
 		this.setBühne(pPrimaryStage);
-		this.getBühne().setTitle("Hinzufügen eines Vorurteils");
+		this.getBühne().setTitle("PROTOTYP - Anzeigen aller Vorurteile");
 
 		try
 		{
-			lLoader.setLocation(VorurteileStart.class.getResource("ui/EingabeVorurteilView.fxml"));
+			lLoader.setLocation(VorurteileStart.class.getResource("ui/PrototypView.fxml"));
 			this.setPane(lLoader.load());
 		}
 		catch(Exception e)
