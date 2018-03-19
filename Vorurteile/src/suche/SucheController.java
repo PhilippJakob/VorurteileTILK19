@@ -11,6 +11,7 @@ import javafx.scene.control.TextField;
 /**
  * Angelegt: 05.03.2018, Chantal Mielenz
  * Geändert: 07.03.2018, Chantal Mielenz, Methode hinzugefügt
+ * Geändert: 19.03.2018, Chantal Mielenz, Methode verändert / erweitert
  */
 public class SucheController 
 {
@@ -31,16 +32,20 @@ public class SucheController
     void suchenVorurteile(ActionEvent event) 
     {
    	 
-   	 if(tfSuchleiste.getText() != null)
+   	 if(tfSuchleiste.getText() == null)
    	 {		
    		 //sinnvolle Fehlermeldung hier hinzufügen 
-   		 tcVorurteilsliste.setText("Fehler! Bitte gebe du was in die Suchleiste in. ;)");
+   		 tcVorurteilsliste.setText("Fehler!");
    	 }
    	 else
    	 {
    		 String lSuche = tfSuchleiste.getText();
+   		 String[] lSuchwörter = lSuche.split(" ");
    		 
-   		 
+   		 for(String s : lSuchwörter){
+   			 
+   			 
+   		 }
    		 
    	 }
    	 
