@@ -10,11 +10,14 @@
 package vorurteile.ui;
 
 import java.net.URL;
+import java.nio.channels.ShutdownChannelGroupException;
 import java.sql.SQLException;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
+
+import javax.swing.GroupLayout.Alignment;
 
 import com.mysql.jdbc.PreparedStatement;
 
@@ -23,6 +26,8 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.geometry.Pos;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
@@ -32,9 +37,16 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.VBox;
+import javafx.scene.text.Font;
+import javafx.scene.text.Text;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
+import javafx.stage.Window;
 import vorurteile.Verbinder;
 import vorurteile.Vorurteil;
 import vorurteile.VorurteilManager;
+
 
 public class EingabeVorurteilController implements Initializable
 {
@@ -211,12 +223,7 @@ public class EingabeVorurteilController implements Initializable
 
 	}
 
-	/*@FXML
-	private void speichernVorurteil(ActionEvent event)
-	{
-		überprüfenFelder();
-	}*/
-	
+
 	/**
 	 * Erstellt ein neues Vorurteil und speichert es in der Datenbank ab.
 	 */
@@ -226,7 +233,6 @@ public class EingabeVorurteilController implements Initializable
    	if(überprüfenFelder())
    	{
    		List<Vorurteil> lVorurteile = VorurteilManager.getVorurteile(this.tfTitel.getText());
-     	 
         	 for (Vorurteil lVorurteil : lVorurteile)
         	 {
         		 if (lVorurteil.getTitel().equals(this.tfTitel.getText()))
@@ -235,16 +241,16 @@ public class EingabeVorurteilController implements Initializable
         			 return;
         		 }
         	 }
-        	 
+
         	 Vorurteil lVorurteil = VorurteilManager.erstellenVorurteil(this.tfTitel.getText(), this.tfAutor.getText(), LocalDateTime.now(), this.cbLink.isSelected(), this.tfQuelle.getText(), this.taHauptaussage.getText());
-        	 
+
         	 //ArrayList<Fakt> lFakten = tvFaktenlisteAusgewählt.getItems();
         	 lVorurteile = this.tvVorurteillisteAusgewählt.getItems();
-        		 
-        	 if ((!lVorurteile.isEmpty()) /*|| (!lFakten.isEmpty())*/) 
+
+        	 if ((!lVorurteile.isEmpty()) /*|| (!lFakten.isEmpty())*/)
         	 {
         		 Verbinder lVerbinder = new Verbinder();
-      
+
       			 try
       			 {
       				 /*for (Fakt lUnterfakt : lFakten)
@@ -255,7 +261,7 @@ public class EingabeVorurteilController implements Initializable
       					 lStatement.setInt(2, lVorurteil.getID());
       					 lStatement.executeUpdate();
         		 	 }*/
-      				 
+
       				 for (Vorurteil lUntervorurteil : lVorurteile)
       				 {
       					 PreparedStatement lStatement;
@@ -264,16 +270,17 @@ public class EingabeVorurteilController implements Initializable
       					 lStatement.setInt(2, lVorurteil.getID());
       					 lStatement.executeUpdate();
         		 	 	 }
-      			 } 
+      			 }
       			 catch (SQLException e)
       			 {
       			 	 // TODO Auto-generated catch block
       				 e.printStackTrace();
       			 }
         	    }
-      
+
       		 this.leerenEingaben();
    	}
+   	anzeigenSpeicherFenster(null);
    }
 
 	/**
@@ -288,12 +295,12 @@ public class EingabeVorurteilController implements Initializable
      	this.cbLink.setSelected(false);
      	this.tfQuelle.clear();
      	this.taHauptaussage.clear();
-     	 
+
      	/* 「Fakt verknüpfen」 Tab */
      	this.tfFaktensuche.clear();
      	this.tvFaktenliste.getItems().clear();
      	this.tvFaktenlisteAusgewählt.getItems().clear();
-   
+
      	/* 「Vorurteil verknüpfen」 Tab */
      	this.tfVorurteilssuche.clear();
      	this.tvVorurteilliste.getItems().clear();
@@ -322,4 +329,25 @@ public class EingabeVorurteilController implements Initializable
    {
    	erstellenTabellen();
    }
+
+	public void anzeigenSpeicherFenster(Window primaryStage)
+	{
+   	final Stage dialog = new Stage();
+      dialog.initModality(Modality.APPLICATION_MODAL);
+      dialog.initOwner(primaryStage);
+      VBox dialogVbox = new VBox(20);
+      dialogVbox.setAlignment(Pos.CENTER);
+      Label lText = new Label("Gespeichert");
+      dialogVbox.getChildren().add(lText);
+      lText.setFont(new Font(20));
+      Scene dialogScene = new Scene(dialogVbox, 150, 100);
+      dialog.setScene(dialogScene);
+      Button lButton = new Button("Ok");
+      dialogVbox.getChildren().add(lButton);
+      lButton.setFont(new Font(15));
+      dialog.show();
+      lButton.setOnAction(e -> dialog.hide());
+
+	}
+
 }
