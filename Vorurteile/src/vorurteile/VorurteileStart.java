@@ -28,7 +28,7 @@ public class VorurteileStart extends Application
 	{
 		FXMLLoader lLoader = new FXMLLoader();
 		this.setBühne(pPrimaryStage);
-		this.getBühne().setTitle("PROTOTYP - Anzeigen aller Vorurteile");
+		this.getBühne().setTitle("Hinzufügen eines Vorurteils");
 
 		try
 		{
