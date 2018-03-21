@@ -3,11 +3,9 @@
  */
 package fakten;
 
-import java.lang.reflect.Array;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
-import java.text.Normalizer.Form;
 import java.util.ArrayList;
 
 public class IDFakten
@@ -60,12 +58,12 @@ public class IDFakten
 
     	try {
     		lBefehl = lConnection.createStatement();
-    		lErgebnis= lBefehl.executeQuery("SELECT MAX(ID_Fakten) FROM dbo_vorurteile.fakten");
+    		lErgebnis= lBefehl.executeQuery("SELECT MAX(IDFakten) FRM dbo_vorurteile.fakt");
     		lErgebnis.first();
 
     		while(! lErgebnis.isAfterLast())
     		{
-    			lIDFakten = new IDFakten (lErgebnis.getInt(1));
+    			lIDFakten = new IDFakten (lErgebnis.getInt(7));
     			lIDFaktenListe.add(lIDFakten);
       			return lIDFakten;
     		}

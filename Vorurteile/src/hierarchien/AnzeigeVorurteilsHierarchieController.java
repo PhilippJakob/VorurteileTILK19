@@ -1,7 +1,9 @@
+//22.01.2018 Erstellt von Gracjan und Tobias am 
 package hierarchien;
 
 import java.util.ArrayList;
 
+import fakten.Fakt;
 import hierarchie.Hierarchie;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
@@ -60,23 +62,31 @@ public class AnzeigeVorurteilsHierarchieController
 			vorVorurteile.get(i).setText(lVorVorurteilsListe.get(i).getTitel());
 		}
 		
-		anzeigenVorurteil2(lVorVorurteilsListe.get(0).getID());
+		
+		anzeigenVorurteilÜberVorVorurteil(lVorVorurteilsListe.get(0).getID());
 		anzeigenFakten2(lVorVorurteilsListe.get(0).getID());
 	}
 
 	public void anzeigenFakten(int pFaktenID)
 	{
-		ArrayList<Vorurteil> lFaktenListe = Hierarchie.suchenUntergeordneteFakten(pFaktenID);
+		ArrayList<Fakt> lFaktenListe = Hierarchie.suchenUntergeordneteFakten(pFaktenID);
 		for(int i = 0;i<3;i++)
 		{
-			fakten.get(i).setText(lFaktenListe.get(i).getTitel());
+			fakten.get(i+3).setText(lFaktenListe.get(i).getTitel());
 		}
 		
-		anzeigenVorurteil2(lFaktenListe.get(0).getID());
-		anzeigenVorVorurteile2(lFaktenListe.get(0).getID());
+		anzeigenVorurteil2(lFaktenListe.get(0).getIDFakten().getIDFakten());
+		anzeigenVorVorurteile2(lFaktenListe.get(0).getIDFakten().getIDFakten());
 	}
 
 	
+	
+	private void anzeigenVorurteilÜberVorVorurteil(int pVorurteilsID)
+	{
+		ArrayList<Vorurteil> lVorurteilsListe = Hierarchie.suchenUntergeordneteVorurteile(pVorurteilsID);
+		
+		vorurteile.get(0).setText(lVorurteilsListe.get(0).getTitel());
+	}
 	
 	private void anzeigenVorurteil2(int pVorurteilsID)
 	{
@@ -96,7 +106,7 @@ public class AnzeigeVorurteilsHierarchieController
 	
 	private void anzeigenFakten2(int pFaktenID)
 	{
-		ArrayList<Vorurteil> lFaktenListe = Hierarchie.suchenUntergeordneteFakten(pFaktenID);
+		ArrayList<Fakt> lFaktenListe = Hierarchie.suchenUntergeordneteFakten(pFaktenID);
 		for(int i=0;i<3;i++)
 		{
 			fakten.get(i+3).setText(lFaktenListe.get(i).getTitel());
