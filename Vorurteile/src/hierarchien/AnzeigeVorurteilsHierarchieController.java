@@ -1,4 +1,4 @@
-//22.01.2018 Erstellt von Gracjan und Tobias am 
+//22.01.2018 Erstellt von Gracjan und Tobias
 package hierarchien;
 
 import java.util.ArrayList;

@@ -1,3 +1,9 @@
+/**
+  * Angelegt: 10.01.2018, Chantal Mielenz & Florian Henderkes, Zweck: Methoden zum auslesen von Informationen aus der Datenbank
+  * Geändert: Januar & Anfang Februar, Chantal Mielenz, Methoden hinzugefügt und abgeändert
+  * Geändert: 07.03.2018, Chantal Mielenz, Namenskonventionen
+  * 14.3.2018 Tobias suchenUntergeordneteFakten Vorurteil zu Fakt geändert und methode temporär erweitert
+  */
 package hierarchie;
 
 import java.sql.Connection;
@@ -5,13 +11,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.time.LocalDate;
-
-/**
-  * Angelegt: 10.01.2018, Chantal Mielenz & Florian Henderkes, Zweck: Methoden zum auslesen von Informationen aus der Datenbank
-  * Geändert: Januar & Anfang Februar, Chantal Mielenz, Methoden hinzugefügt und abgeändert
-  * Geändert: 07.03.2018, Chantal Mielenz, Namenskonventionen
-  * 14.3.2018 Tobias suchenUntergeordneteFakten Vorurteil zu Fakt geändert und methode temporär erweitert
-  */
 
 import java.util.ArrayList;
 
