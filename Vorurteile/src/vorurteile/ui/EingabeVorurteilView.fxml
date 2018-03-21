@@ -199,5 +199,13 @@
       <TextField fx:id="tfQuelle" layoutX="119.0" layoutY="319.0" promptText="Quelle" />
       <CheckBox fx:id="cbLink" layoutX="328.0" layoutY="323.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="51.0" text="Link" />
       <DatePicker layoutX="328.0" layoutY="274.0" />
+      <Label layoutX="375.0" layoutY="319.0" prefHeight="26.0" prefWidth="8.0" text="?">
+         <font>
+            <Font name="System Bold" size="17.0" />
+         </font>
+         <tooltip>
+            <Tooltip text="Setzen Sie ein Haken, wenn Ihre Quelle ein Link ist" />
+         </tooltip>
+      </Label>
    </children>
 </AnchorPane>
