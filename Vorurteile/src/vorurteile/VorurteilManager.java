@@ -16,6 +16,9 @@ import java.time.Instant;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.TimeZone;
+=======
+import java.util.ArrayList;
+import java.util.Date;
 
 import com.mysql.jdbc.PreparedStatement;
 
@@ -39,6 +42,7 @@ public class VorurteilManager
 	 * Erstellt ein neues Vorurteil
 	 */
 	public static Vorurteil erstellenVorurteil(String pTitel, String pAutor, LocalDateTime pVeröffentlichung, boolean pInternetquelle, String pLink, String pHauptaussage) 
+	public static Vorurteil erstellenVorurteil(String pTitel, String pAutor, long pVeröffentlichung, String pInternetquelle, String pLink) 
 	{		
 		Verbinder lVerbinder = new Verbinder();
 		
@@ -56,6 +60,7 @@ public class VorurteilManager
 			lStatement.setString(6, lVorurteil.getLink());
 			lStatement.setTimestamp(7, Timestamp.valueOf(lAktuellesDatum));
 			lStatement.setString(8, lVorurteil.getHauptaussage());
+
 			lStatement.executeUpdate();
 			
 			return lVorurteil;
