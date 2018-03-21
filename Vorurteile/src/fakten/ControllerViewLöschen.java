@@ -1,10 +1,13 @@
+/**
+ * Angelegt von Adrian Schupke am 14.03.2018
+ */
 package fakten;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 
-public class ControllerViewBearbeiten
+public class ControllerViewLöschen
 {
 
 	@FXML
@@ -18,6 +21,12 @@ public class ControllerViewBearbeiten
 
    @FXML
    private Button btWechselnLöschen;
+
+   @FXML
+   void ändernOberfläche(ActionEvent event)
+   {
+
+   }
 
    @FXML
    void wechselnSceneHinzufügen(ActionEvent event)

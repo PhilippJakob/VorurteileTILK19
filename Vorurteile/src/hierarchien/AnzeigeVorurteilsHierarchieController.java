@@ -1,4 +1,4 @@
-//22.01.2018 Erstellt von Gracjan und Tobias am 
+//22.01.2018 Erstellt von Gracjan und Tobias
 package hierarchien;
 
 import java.util.ArrayList;
@@ -7,7 +7,8 @@ import fakten.Fakt;
 import hierarchie.Hierarchie;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
-import vorurteile.items.Vorurteil;
+import vorurteile.Vorurteil;
+import vorurteile.VorurteilManager;
 
 public class AnzeigeVorurteilsHierarchieController
 {
@@ -47,11 +48,13 @@ public class AnzeigeVorurteilsHierarchieController
 	
 	public void anzeigenVorurteil(int pVorurteilsID)
 	{
-		ArrayList<Vorurteil> lVorurteilsListe = Hierarchie.suchenVorurteil(pVorurteilsID);
-		vorurteile.get(0).setText(lVorurteilsListe.get(0).getTitel());
+		Vorurteil lVorurteilsListe = VorurteilManager.getVorurteil(pVorurteilsID);
+		vorurteile.get(0).setText(lVorurteilsListe.getTitel());
 		
-		anzeigenVorVorurteile2(lVorurteilsListe.get(0).getID());
-		anzeigenFakten2(lVorurteilsListe.get(0).getID());
+		anzeigenVorVorurteile2(lVorurteilsListe.getID());
+		anzeigenFakten2(lVorurteilsListe.getID());
+		ausblendenUngenutztesTextFeld();
+		
 	}
 
 	public void anzeigenVorVorurteile(int pVorVorurteilsID)
@@ -65,6 +68,7 @@ public class AnzeigeVorurteilsHierarchieController
 		
 		anzeigenVorurteilÜberVorVorurteil(lVorVorurteilsListe.get(0).getID());
 		anzeigenFakten2(lVorVorurteilsListe.get(0).getID());
+		ausblendenUngenutztesTextFeld();
 	}
 
 	public void anzeigenFakten(int pFaktenID)
@@ -75,8 +79,9 @@ public class AnzeigeVorurteilsHierarchieController
 			fakten.get(i+3).setText(lFaktenListe.get(i).getTitel());
 		}
 		
-		anzeigenVorurteil2(lFaktenListe.get(0).getIDFakten().getIDFakten());
-		anzeigenVorVorurteile2(lFaktenListe.get(0).getIDFakten().getIDFakten());
+		anzeigenVorurteil2(lFaktenListe.get(0).getIDFakten());
+		anzeigenVorVorurteile2(lFaktenListe.get(0).getIDFakten());
+		ausblendenUngenutztesTextFeld();
 	}
 
 	
@@ -90,9 +95,9 @@ public class AnzeigeVorurteilsHierarchieController
 	
 	private void anzeigenVorurteil2(int pVorurteilsID)
 	{
-		ArrayList<Vorurteil> lVorurteilsListe = Hierarchie.suchenVorurteil(pVorurteilsID);
+		Vorurteil lVorurteilsListe = VorurteilManager.getVorurteil(pVorurteilsID);
 		
-		vorurteile.get(0).setText(lVorurteilsListe.get(0).getTitel());
+		vorurteile.get(0).setText(lVorurteilsListe.getTitel());
 	}
 	
 	private void anzeigenVorVorurteile2(int pVorVorurteilsID)
@@ -112,4 +117,35 @@ public class AnzeigeVorurteilsHierarchieController
 			fakten.get(i+3).setText(lFaktenListe.get(i).getTitel());
 		}
 	}
+	
+	private void ausblendenUngenutztesTextFeld()
+	{
+		for(TextField tf:vorVorurteile)
+		{
+			tf.setVisible(true);
+			if(tf.getText().matches(""))
+			{
+				tf.setVisible(false);
+			}
+		}
+		
+		for(TextField tf:vorurteile)
+		{
+			tf.setVisible(true);
+			if(tf.getText().matches(""))
+			{
+				tf.setVisible(false);
+			}
+		}
+		
+		for(TextField tf:fakten)
+		{
+			tf.setVisible(true);
+			if(tf.getText().matches(""))
+			{
+				tf.setVisible(false);
+			}
+		}
+	}
+	
 }
