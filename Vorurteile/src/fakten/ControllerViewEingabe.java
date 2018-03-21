@@ -3,6 +3,8 @@ package fakten;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.time.LocalDate;
+import java.time.chrono.ChronoLocalDate;
 
 import javafx.event.ActionEvent;
 import javafx.scene.control.DatePicker;
@@ -73,21 +75,22 @@ public class ControllerViewEingabe
 
 	@FXML
 	 public void speichernDaten(ActionEvent event)
-		{
-		   if(prüfenEingabe() ==true)
-		   {
+	{
+		   if(prüfenEingabe() ==true )
+		  {
+
 			Fakt lFakt = new Fakt(tfTitel.getText(),tfAutor.getText(),dpDatum.getValue(),getQuellentyp(),tfLink.getText(),tfQuellenAussage.getText());
          lFakt.anlegen();
 	   	txMeldungen.setText("Speichern erfolgreich");
 	   	txMeldungen.setVisible(true);
-
-		   }
+		  }
 		   else
-		   {
+		  {
 		   	txMeldungen.setText("Bitte tätigen sie eine Eingabe beim Titel und der Aussage");
 	   		txMeldungen.setVisible(true);
-		   }
-		}
+		  }
+	}
+	
    @FXML
    public void auswählenInternet(ActionEvent event)
    	{
@@ -99,7 +102,7 @@ public class ControllerViewEingabe
 
    public boolean prüfenEingabe()
    {
-   	if(tfTitel.getText().length() == 0 || tfQuellenAussage.getText().length() == 0)
+   	if(tfTitel.getText().length() == 0 || tfQuellenAussage.getText().length() == 0 || dpDatum.getValue())
    	{
    		return false;
    	}
@@ -109,25 +112,33 @@ public class ControllerViewEingabe
    	}
    }
 
+  /* public void istLinkKorrekt()
+   {
+   	if(istGültigLink()==true)
+   	{
+
+   	}
+   }
+
    public boolean istGültigLink()
    {
-   	if(istVorhandenLink())
+   	if(istVorhandenLink()&& tfLink.getText().startsWith("http"))
    	{
-   		// TODO: link prüfen
+
    		return true;
    	}
    	else
    	{
-   		return true;
+   		return false;
    	}
    }
 
    public boolean istVorhandenLink()
    {
-   	 return tfLink.getText().length() == 0;
+   	 return tfLink.getText().length() != 0;
 
    }
-
+*/
 	@FXML
    public void auswählenBuch(ActionEvent event)
    	{

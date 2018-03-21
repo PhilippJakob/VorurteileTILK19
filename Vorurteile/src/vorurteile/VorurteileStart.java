@@ -1,14 +1,9 @@
-//  ___________________________________________________________________________________________________________________
-//  | ####################################### |   Name VorurteileStart.java  | ###################################### |
-//  | ####################################### |Origin = Jonas N. Henle V 0.1 | ###################################### |
-//  | ####################################### |   @Author = Jonas N. Henle   | ###################################### |
-//  | ####################################### |        Version 0.1.3         | ###################################### |
-//  | ####################################### |     Date; 25.01.18   14:20   | ###################################### |
-//  | ####################################### |Group Vorurteile [Ben / Ohan] | ###################################### |
-//  |_________________________________________|______________________________|________________________________________|
+/**
+ * @author Jonas, 31. Januar 2018
+ * @description Startklasse der Vorurteile
+ */
 
 package vorurteile;
-
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -41,17 +36,6 @@ public class VorurteileStart extends Application
 		Scene lSzene = new Scene(this.getPane());
 		this.getBühne().setScene(lSzene);
 		this.getBühne().show();
-
-		/* Tutorial :) */
-
-		// Erhält alle Vorurteile mit dem Titel "Baum"
-		/*for (Vorurteil lVorurteil : VorurteilManager.getVorurteile("Baum"))
-		{
-			System.out.println(lVorurteil.getID());
-		}
-
-		// Erstellt ein Vorurteil
-		VorurteilManager.erstellenVorurteil("Baumrinde", "Dimaa", new Date().getTime(), "Keine Ahnung?", "https://dimaa.vip/");*/
 	}
 
 	public static void main(String[] args)
