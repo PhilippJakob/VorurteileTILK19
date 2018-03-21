@@ -52,6 +52,8 @@ public class AnzeigeVorurteilsHierarchieController
 		
 		anzeigenVorVorurteile2(lVorurteilsListe.get(0).getID());
 		anzeigenFakten2(lVorurteilsListe.get(0).getID());
+		ausblendenUngenutztesTextFeld();
+		
 	}
 
 	public void anzeigenVorVorurteile(int pVorVorurteilsID)
@@ -65,6 +67,7 @@ public class AnzeigeVorurteilsHierarchieController
 		
 		anzeigenVorurteilÜberVorVorurteil(lVorVorurteilsListe.get(0).getID());
 		anzeigenFakten2(lVorVorurteilsListe.get(0).getID());
+		ausblendenUngenutztesTextFeld();
 	}
 
 	public void anzeigenFakten(int pFaktenID)
@@ -77,6 +80,7 @@ public class AnzeigeVorurteilsHierarchieController
 		
 		anzeigenVorurteil2(lFaktenListe.get(0).getIDFakten().getIDFakten());
 		anzeigenVorVorurteile2(lFaktenListe.get(0).getIDFakten().getIDFakten());
+		ausblendenUngenutztesTextFeld();
 	}
 
 	
@@ -112,4 +116,35 @@ public class AnzeigeVorurteilsHierarchieController
 			fakten.get(i+3).setText(lFaktenListe.get(i).getTitel());
 		}
 	}
+	
+	private void ausblendenUngenutztesTextFeld()
+	{
+		for(TextField tf:vorVorurteile)
+		{
+			tf.setVisible(true);
+			if(tf.getText().matches(""))
+			{
+				tf.setVisible(false);
+			}
+		}
+		
+		for(TextField tf:vorurteile)
+		{
+			tf.setVisible(true);
+			if(tf.getText().matches(""))
+			{
+				tf.setVisible(false);
+			}
+		}
+		
+		for(TextField tf:fakten)
+		{
+			tf.setVisible(true);
+			if(tf.getText().matches(""))
+			{
+				tf.setVisible(false);
+			}
+		}
+	}
+	
 }
