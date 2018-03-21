@@ -42,6 +42,7 @@ public class VorurteileStart extends Application
 
 		Scene lSzene = new Scene(this.getPane());
 		this.getBühne().setScene(lSzene);
+		this.getBühne().setResizable(false);
 		this.getBühne().show();
 
 		/* Tutorial :) */

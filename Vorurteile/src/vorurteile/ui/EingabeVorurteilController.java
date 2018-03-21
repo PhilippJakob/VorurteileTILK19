@@ -246,8 +246,9 @@ public class EingabeVorurteilController implements Initializable
         			 return;
         		 }
         	 }
-
-        	 Vorurteil lVorurteil = VorurteilManager.erstellenVorurteil(this.tfTitel.getText(), this.tfAutor.getText(), LocalDateTime.now(), this.cbLink.isSelected(), this.tfQuelle.getText(), this.taHauptaussage.getText());
+System.out.println(dpDatum.getValue());
+        	 Vorurteil lVorurteil = VorurteilManager.erstellenVorurteil(this.tfTitel.getText(), this.tfAutor.getText(), this.dpDatum.getValue().atStartOfDay(), this.cbLink.isSelected(), this.tfQuelle.getText(), this.taHauptaussage.getText());
+        	 //Vorurteil lVorurteil = VorurteilManager.erstellenVorurteil(this.tfTitel.getText(), this.tfAutor.getText(), LocalDateTime.parse(dpDatum.getValue() + "T00:00:00"), this.cbLink.isSelected(), this.tfQuelle.getText(), this.taHauptaussage.getText());
 
         	 //ArrayList<Fakt> lFakten = tvFaktenlisteAusgewählt.getItems();
         	 lVorurteile = this.tvVorurteillisteAusgewählt.getItems();
@@ -284,8 +285,8 @@ public class EingabeVorurteilController implements Initializable
         	    }
 
       		 this.leerenEingaben();
+      		 anzeigenSpeicherFenster(null);
    	}
-   	anzeigenSpeicherFenster(null);
    }
 
 	/**
@@ -300,6 +301,7 @@ public class EingabeVorurteilController implements Initializable
      	this.cbLink.setSelected(false);
      	this.tfQuelle.clear();
      	this.taHauptaussage.clear();
+     	this.dpDatum.setValue(null);
 
      	/* 「Fakt verknüpfen」 Tab */
      	this.tfFaktensuche.clear();
@@ -314,7 +316,7 @@ public class EingabeVorurteilController implements Initializable
 
    private boolean überprüfenFelder()
    {
-     	if (taHauptaussage.getText().isEmpty() || tfTitel.getText().isEmpty())
+     	if (taHauptaussage.getText().isEmpty() || tfTitel.getText().isEmpty())// dpDatum.getValue() == null)
      	{
      		lbSafeError.setText("Error: Bitte alle Felder ausfüllen");
      		return false;
