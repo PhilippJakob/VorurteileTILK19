@@ -13,5 +13,6 @@
          </columns>
       </TableView>
       <Button fx:id="btBearbeiten" layoutX="123.0" layoutY="278.0" mnemonicParsing="false" onAction="#btBearbeiten" prefHeight="59.0" prefWidth="124.0" text="Bearbeiten" />
+      <Label fx:id="lbError" layoutX="85.0" layoutY="8.0" prefHeight="53.0" prefWidth="200.0" text="Label" />
    </children>
 </AnchorPane>

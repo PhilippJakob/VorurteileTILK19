@@ -23,6 +23,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -30,6 +31,9 @@ import vorurteile.Vorurteil;
 
 public class PrototypController implements Initializable
 {
+	@FXML
+   private Label lbError;
+	
    @FXML
    private TableView<Vorurteil> tvVorurteilliste;
 
@@ -77,7 +81,16 @@ public class PrototypController implements Initializable
 	@FXML
    private void btBearbeiten(ActionEvent event)
 	{
-       new FensterÖffnen();
+		Vorurteil lVorurteil = tvVorurteilliste.getSelectionModel().getSelectedItem();
+
+    	if(lVorurteil != null)
+    	{
+    		new FensterÖffnen();
+    	}
+    	else
+    	{
+    		lbError.setText("Erst auswählen");
+    	}
    }
 	
 	/**

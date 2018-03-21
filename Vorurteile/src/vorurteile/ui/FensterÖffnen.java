@@ -11,6 +11,8 @@ public class FensterÖffnen extends Stage
 {
 	private Stage bühne;
 	
+	
+	
    public FensterÖffnen()
    {
    	bühne = this;
