@@ -54,7 +54,7 @@ public class EingabeVorurteilController implements Initializable
 
    @FXML
    private DatePicker dpDatum;
-   
+
 	@FXML
 	private TextField tfTitel, tfFaktensuche, tfVorurteilssuche, tfAutor, tfQuelle, tfVeröffentlichung;
 
@@ -337,7 +337,7 @@ public class EingabeVorurteilController implements Initializable
    		//Importiere die ganzen Felder
    	}
    }
-   
+
    /**
     * Ruft nach Start des Programmes erstellenTabellen() auf.
     */
