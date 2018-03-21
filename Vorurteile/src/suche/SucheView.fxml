@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- Angelegt: 05.03.2018, Chantal Mielenz, View Datei zur Suchleistenoberfläche -->
+<!-- Geändert: 07.03.2018, Chantal Mielenz -->
+
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="685.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="suche.SucheController">
+   <children>
+      <TextField fx:id="tfSuchleiste" layoutX="41.0" layoutY="38.0" prefHeight="25.0" prefWidth="401.0" AnchorPane.leftAnchor="25.0" AnchorPane.rightAnchor="175.0" AnchorPane.topAnchor="25.0" />
+      <Button fx:id="btSuche" layoutX="433.0" layoutY="25.0" mnemonicParsing="false" onAction="#suchenVorurteile" prefHeight="25.0" prefWidth="125.0" text="Suche" AnchorPane.rightAnchor="25.0" AnchorPane.topAnchor="25.0" />
+      <TableView fx:id="tvVorurteilsliste" layoutX="25.0" layoutY="72.0" prefHeight="597.0" prefWidth="555.0" AnchorPane.bottomAnchor="25.0" AnchorPane.leftAnchor="25.0" AnchorPane.rightAnchor="25.0" AnchorPane.topAnchor="75.0">
+        <columns>
+          <TableColumn fx:id="tcVorurteilsliste" prefWidth="549.0" />
+        </columns>
+      </TableView>
+   </children>
+</AnchorPane>
