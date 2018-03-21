@@ -319,6 +319,18 @@ public class EingabeVorurteilController implements Initializable
    	}
    }
 
+   public void bearbeitenVorurteil(String pVorurteil)
+   {
+   	if(!pVorurteil.isEmpty())
+   	{
+   		//Gebe Fehler aus o.Ä.
+   	}
+   	else
+   	{
+   		//Importiere die ganzen Felder
+   	}
+   }
+   
    /**
     * Ruft nach Start des Programmes erstellenTabellen() auf.
     */
@@ -326,5 +338,6 @@ public class EingabeVorurteilController implements Initializable
    public void initialize(URL location, ResourceBundle resources)
    {
    	erstellenTabellen();
+   	//bearbeitenVorurteil();
    }
 }
