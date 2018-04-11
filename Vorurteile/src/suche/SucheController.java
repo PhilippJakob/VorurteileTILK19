@@ -7,6 +7,7 @@ import java.sql.Statement;
 import datenbank.Datenbankverbindung;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.collections.ObservableSet;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -25,40 +26,48 @@ import vorurteile.items.Vorurteil;
 
 public class SucheController 
 {
+	@FXML
+	private TextField tfSuchleiste;
 
-    @FXML
-    private TextField tfSuchleiste;
+	@FXML
+	private Button btSuche;
 
-    @FXML
-    private Button btSuche;
+	@FXML
+	private TableView<Vorurteil> tvVorurteilsliste;
 
-    @FXML
-    private TableView<?> tvVorurteilsliste;
+	@FXML
+	private TableColumn<Vorurteil, String> tcVorurteilsliste;
 
-    @FXML
-    private TableColumn<?, ?> tcVorurteilsliste;
-    
-    @FXML
-    void suchenVorurteile(ActionEvent event) 
-    {
-   	 	if(tfSuchleiste.getText().isEmpty())
-   	 	{
-   	 		tcVorurteilsliste.setText("Fehler!");
-   	 	}
-   	 	else
-   	 	{
-   	 		System.out.println(tfSuchleiste.getText());
-   	 		String lSuche = tfSuchleiste.getText();
-   	 		String[] lSuchwörter = lSuche.split(" ");
-   	 		ObservableList<Vorurteil> lVorurteile = FXCollections.observableArrayList();
-   	 		for(String suchwort : lSuchwörter)
-   	 		{
-   	 			lVorurteile = suchenVorurteileNachSuchwort(suchwort);
-   	 		}
-   	 		//tcVorurteilsliste.setCellValueFactory(new PropertyValueFactory<Vorurteil, String>("titel"));
-   	 	}
-    }
-    
+	@FXML
+	void suchenVorurteile(ActionEvent event)
+	{
+		if(tfSuchleiste.getText().isEmpty())
+			tcVorurteilsliste.setText("Fehler!");
+		else
+		{
+			System.out.println(tfSuchleiste.getText());
+			String lSuche = tfSuchleiste.getText();
+			ObservableList<Vorurteil> lVorurteile = FXCollections.observableArrayList();
+			String[] lSuchwörter = lSuche.split(" ");
+			for(String suchwort : lSuchwörter)
+				for(Vorurteil v : suchenVorurteileNachSuchwort(suchwort))
+					if(!(lVorurteile.contains(v)))
+						lVorurteile.add(v);
+			for(int i = 0; i < lVorurteile.size(); i++)
+			{
+				for(int j = i + 1; j < lVorurteile.size(); j++)
+				{
+					if(lVorurteile.get(i).getTitel().equals(lVorurteile.get(j).getTitel()))
+					{
+						lVorurteile.remove(j);
+					}
+				}
+			}
+			tcVorurteilsliste.setCellValueFactory(new PropertyValueFactory<Vorurteil, String>("titel"));
+			tvVorurteilsliste.setItems(lVorurteile);
+		}
+	}
+
     public static ObservableList<Vorurteil> suchenVorurteileNachSuchwort(String pSuchwort)
 	{
 		ObservableList<Vorurteil> lListeVorurteile = FXCollections.observableArrayList();
