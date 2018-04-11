@@ -338,6 +338,16 @@ public class EingabeVorurteilController implements Initializable
    	}
    }
 
+   private void setzenFelder(Vorurteil pAusgewähltesVorurteil)
+   {
+   	tfTitel.setText(pAusgewähltesVorurteil.getTitel());
+   	taHauptaussage.setText(pAusgewähltesVorurteil.getHauptaussage());
+   	tfAutor.setText(pAusgewähltesVorurteil.getAutor());
+   	dpDatum.setValue(pAusgewähltesVorurteil.getZeitstempel().toLocalDate());
+   	tfQuelle.setText(pAusgewähltesVorurteil.getLink());
+   	cbLink.setSelected(pAusgewähltesVorurteil.getInternetquelle());
+   }
+   
    /**
     * Ruft nach Start des Programmes erstellenTabellen() auf.
     */
@@ -347,13 +357,12 @@ public class EingabeVorurteilController implements Initializable
    	erstellenTabellen();
    	//bearbeitenVorurteil();
    	
-   	PrototypController lPrototypController = new PrototypController();
-   	
-   	Vorurteil lAusgewähltesVorurteil = lPrototypController.getAusgewähltesVorurteil();
+   	//Ruft das Objekt "ausgewähltesVorurteil" aus dem PrototypController auf
+   	Vorurteil lAusgewähltesVorurteil = PrototypController.getAusgewähltesVorurteil();
    	
    	if(lAusgewähltesVorurteil != null)
    	{
-   		System.out.println(lAusgewähltesVorurteil.getTitel());
+   		setzenFelder(lAusgewähltesVorurteil);
    	}
    }
 

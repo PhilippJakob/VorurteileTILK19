@@ -77,14 +77,14 @@ public class PrototypController implements Initializable
 	/**
 	 * 
 	 */
-	private Vorurteil ausgewähltesVorurteil = null;
+	private static Vorurteil ausgewähltesVorurteil = null;
 	
-	public Vorurteil getAusgewähltesVorurteil()
+	public static Vorurteil getAusgewähltesVorurteil()
 	{
 		return ausgewähltesVorurteil;
 	}
 
-	public void setAusgewähltesVorurteil(Vorurteil pAusgewähltesVorurteil)
+	public static void setAusgewähltesVorurteil(Vorurteil pAusgewähltesVorurteil)
 	{
 		ausgewähltesVorurteil = pAusgewähltesVorurteil;
 	}
