@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import fakten.Fakt;
 import hierarchie.Hierarchie;
 import javafx.fxml.FXML;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import vorurteile.items.Vorurteil;
 
@@ -18,6 +19,8 @@ public class AnzeigeVorurteilsHierarchieController
 	TextField tfVorurteil1;
 	@FXML
 	TextField tfVorVorurteil1, tfVorVorurteil2, tfVorVorurteil3;
+	@FXML
+	Label lbFakten;
 
 
 	private ArrayList<TextField> vorVorurteile = new ArrayList<TextField>();
@@ -110,10 +113,28 @@ public class AnzeigeVorurteilsHierarchieController
 	
 	private void anzeigenFakten2(int pFaktenID)
 	{
-		ArrayList<Fakt> lFaktenListe = Hierarchie.suchenUntergeordneteFakten(pFaktenID);
-		for(int i=0;i<3;i++)
+		ArrayList<Vorurteil> lUntergeordnetesVorurteilListe = Hierarchie.suchenUntergeordneteVorurteile(pFaktenID);
+		if(lUntergeordnetesVorurteilListe.isEmpty())
 		{
-			fakten.get(i+3).setText(lFaktenListe.get(i).getTitel());
+			lbFakten.setText("Fakten");
+			ArrayList<Fakt> lFaktenListe = Hierarchie.suchenUntergeordneteFakten(pFaktenID);
+			for(int i=0;i<3;i++)
+			{
+				fakten.get(i+3).setText(lFaktenListe.get(i).getTitel());
+			}
+		}
+		else
+		{
+			lbFakten.setText("Untergeordnete Vorurteile");
+			try{
+				for(int i=0;i<3;i++)
+				{
+					fakten.get(i+3).setText(lUntergeordnetesVorurteilListe.get(i).getTitel());
+				}
+			}catch(IndexOutOfBoundsException e)
+			{
+				System.out.println("keine weiteren untergeordenten Vorurteile gefunden");
+			}
 		}
 	}
 	

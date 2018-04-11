@@ -1,11 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <TextField fx:id="tfVorVorurteil2" editable="false" layoutX="10.0" layoutY="190.0" />
       <TextField fx:id="tfVorVorurteil3" editable="false" layoutX="10.0" layoutY="270.0" />
@@ -35,7 +39,7 @@
             <Font size="13.0" />
          </font>
       </Label>
-      <Label layoutX="481.0" layoutY="67.0" text="Fakten">
+      <Label fx:id="lbFakten" alignment="CENTER" layoutX="376.0" layoutY="67.0" prefHeight="19.0" prefWidth="225.0" text="Fakten">
          <font>
             <Font size="13.0" />
          </font>
