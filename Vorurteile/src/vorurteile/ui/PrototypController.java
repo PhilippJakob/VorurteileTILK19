@@ -75,6 +75,21 @@ public class PrototypController implements Initializable
 	}
 	
 	/**
+	 * 
+	 */
+	private Vorurteil ausgewähltesVorurteil = null;
+	
+	public Vorurteil getAusgewähltesVorurteil()
+	{
+		return ausgewähltesVorurteil;
+	}
+
+	public void setAusgewähltesVorurteil(Vorurteil pAusgewähltesVorurteil)
+	{
+		ausgewähltesVorurteil = pAusgewähltesVorurteil;
+	}
+
+	/**
 	 * Öffnet nach Klick auf "Bearbeiten" das Fenster EingabeVorurteilView
 	 * @param event
 	 */
@@ -85,6 +100,8 @@ public class PrototypController implements Initializable
 
     	if(lVorurteil != null)
     	{
+    		setAusgewähltesVorurteil(lVorurteil);
+    		
     		new FensterÖffnen();
     	}
     	else

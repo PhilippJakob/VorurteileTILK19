@@ -32,7 +32,7 @@ public class VorurteileStart extends Application
 
 		try
 		{
-			lLoader.setLocation(VorurteileStart.class.getResource("ui/EingabeVorurteilView.fxml"));
+			lLoader.setLocation(VorurteileStart.class.getResource("ui/PrototypView.fxml"));
 			this.setPane(lLoader.load());
 		}
 		catch(Exception e)

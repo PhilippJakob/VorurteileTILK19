@@ -346,6 +346,15 @@ public class EingabeVorurteilController implements Initializable
    {
    	erstellenTabellen();
    	//bearbeitenVorurteil();
+   	
+   	PrototypController lPrototypController = new PrototypController();
+   	
+   	Vorurteil lAusgewähltesVorurteil = lPrototypController.getAusgewähltesVorurteil();
+   	
+   	if(lAusgewähltesVorurteil != null)
+   	{
+   		System.out.println(lAusgewähltesVorurteil.getTitel());
+   	}
    }
 
 	public void anzeigenSpeicherFenster(Window primaryStage)
