@@ -5,6 +5,7 @@
 
 package vorurteile;
 
+import java.util.Locale;
 import java.util.ResourceBundle;
 
 import javafx.application.Application;
@@ -15,37 +16,76 @@ import javafx.scene.Scene;
 
 public class VorurteileStart extends Application
 {
-	private Stage bühne;
-	private AnchorPane pane;
-
-	@Override
-	public void start(Stage pPrimaryStage)
+	private static volatile VorurteileStart _instance;
+	private static Object syncRoot = new Object();
+	
+	public static VorurteileStart getInstance() 
 	{
-		ResourceBundle lBundle;
-		FXMLLoader lLoader = new FXMLLoader();
+		if (_instance != null)
+		{
+			return _instance;
+		}
+		
+		synchronized (syncRoot) 
+		{
+			if (_instance == null)
+			{
+				_instance = new VorurteileStart();
+			}
+			
+			return _instance;
+		}
+	}
+	
+	public void Initialize(Stage pPrimaryStage)
+	{
 		this.setBühne(pPrimaryStage);
 
 		try
 		{
-			lBundle = ResourceBundle.getBundle("vorurteile/ui/resources/oberfläche");
-			lLoader.setResources(lBundle);
-			lLoader.setLocation(this.getClass().getResource("ui/EingabeVorurteilView.fxml"));
-			this.setPane(lLoader.load(lLoader.getLocation().openStream()));
+			this.loadView(Locale.GERMAN);
 		}
 		catch(Exception e)
 		{
 			e.printStackTrace();
 		}
-
-		Scene lSzene = new Scene(this.getPane());
-		this.getBühne().setScene(lSzene);
-		this.getBühne().show();
 	}
+	
+	private Stage bühne;
+	private AnchorPane pane = new AnchorPane();
 
-	public static void main(String[] args)
+	@Override
+	public void start(Stage pPrimaryStage)
 	{
-		launch(args);
+		getInstance().Initialize(pPrimaryStage);
 	}
+	
+	public void loadView(Locale pLocale)
+	{
+		ResourceBundle lBundle;
+		FXMLLoader lLoader = new FXMLLoader();
+			
+		try
+		{				
+			lBundle = ResourceBundle.getBundle("vorurteile/ui/resources/oberfläche", pLocale);
+			lLoader.setResources(lBundle);
+			lLoader.setLocation(this.getClass().getResource("ui/EingabeVorurteilView.fxml"));
+			this.setPane(lLoader.load(lLoader.getLocation().openStream()));
+				
+			Scene lSzene = new Scene(this.getPane());
+			this.getBühne().setScene(lSzene);
+			this.getBühne().show();
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+		}
+	}
+
+   public static void main(String[] args) 
+   {
+       launch(args);
+   }
 
 	/** Getter & Setter **/
 

@@ -4,6 +4,7 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuButton?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
 <?import javafx.scene.control.TableColumn?>
@@ -174,13 +175,13 @@
           </Tab>
         </tabs>
       </TabPane>
-      <TextField fx:id="tfTitel" layoutX="27.0" layoutY="20.0" prefHeight="32.0" prefWidth="530.0" promptText="%tf.titel">
+      <TextField fx:id="tfTitel" layoutX="27.0" layoutY="48.0" prefHeight="32.0" prefWidth="530.0" promptText="%tf.titel">
          <font>
             <Font size="18.0" />
          </font>
       </TextField>
-      <TextArea fx:id="taHauptaussage" layoutX="27.0" layoutY="71.0" prefHeight="174.0" prefWidth="530.0" promptText="%ta.hauptaussage" />
-      <Button fx:id="btSpeichernVorurteil" layoutX="397.0" layoutY="354.0" mnemonicParsing="false" onAction="#speichernVorurteil" prefHeight="25.0" prefWidth="160.0" text="%btn.speichern">
+      <TextArea fx:id="taHauptaussage" layoutX="27.0" layoutY="99.0" prefHeight="174.0" prefWidth="530.0" promptText="%ta.hauptaussage" />
+      <Button fx:id="btSpeichernVorurteil" layoutX="397.0" layoutY="350.0" mnemonicParsing="false" onAction="#speichernVorurteil" prefHeight="25.0" prefWidth="160.0" text="%btn.speichern">
          <font>
             <Font size="17.0" />
          </font>
@@ -198,5 +199,6 @@
       <TextField fx:id="tfQuelle" layoutX="119.0" layoutY="319.0" promptText="%tf.quelle" />
       <CheckBox fx:id="cbLink" layoutX="328.0" layoutY="323.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="72.0" text="%cb.link" />
       <TextField fx:id="tfVeröffentlichung" layoutX="328.0" layoutY="274.0" promptText="%dp.veröffentlichung" />
+      <MenuButton fx:id="mbSprachenliste" layoutX="413.0" layoutY="14.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="141.0" text="%mb.sprache" />
    </children>
 </AnchorPane>
