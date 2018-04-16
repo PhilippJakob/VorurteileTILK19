@@ -62,14 +62,18 @@ public class AnzeigeVorurteilsHierarchieController
 	public void anzeigenVorVorurteile(int pVorVorurteilsID)
 	{
 		ArrayList<Vorurteil> lVorVorurteilsListe = Hierarchie.suchenÜbergeordneteVorurteile(pVorVorurteilsID);
-		for(int i =0;i<3;i++)
+		try{
+   			for(int i =0;i<3;i++)
+      		{
+      			vorVorurteile.get(i).setText(lVorVorurteilsListe.get(i).getTitel());
+      		}
+      		anzeigenVorurteilÜberVorVorurteil(lVorVorurteilsListe.get(0).getID());
+      		anzeigenFakten2(lVorVorurteilsListe.get(0).getID());
+		}catch(IndexOutOfBoundsException e)
 		{
-			vorVorurteile.get(i).setText(lVorVorurteilsListe.get(i).getTitel());
+			System.out.println("Es wurden keine Vorgesetzten Vorurteile gefunden");
 		}
 		
-		
-		anzeigenVorurteilÜberVorVorurteil(lVorVorurteilsListe.get(0).getID());
-		anzeigenFakten2(lVorVorurteilsListe.get(0).getID());
 		ausblendenUngenutztesTextFeld();
 	}
 
@@ -105,10 +109,18 @@ public class AnzeigeVorurteilsHierarchieController
 	private void anzeigenVorVorurteile2(int pVorVorurteilsID)
 	{
 			ArrayList<Vorurteil> lVorVorurteilsListe = Hierarchie.suchenÜbergeordneteVorurteile(pVorVorurteilsID);
-			for(int i=0;i<3;i++)
+			try
+   		{
+				for(int i=0;i<3;i++)
+   			{
+   				vorVorurteile.get(i).setText(lVorVorurteilsListe.get(i).getTitel());
+   			}
+				
+			}catch(IndexOutOfBoundsException e)
 			{
-				vorVorurteile.get(i).setText(lVorVorurteilsListe.get(i).getTitel());
+				System.out.println("Es konnten keine weiteren Vorgesetzten Vorurteile gefunden werden");
 			}
+			
 	}
 	
 	private void anzeigenFakten2(int pFaktenID)
@@ -118,10 +130,18 @@ public class AnzeigeVorurteilsHierarchieController
 		{
 			lbFakten.setText("Fakten");
 			ArrayList<Fakt> lFaktenListe = Hierarchie.suchenUntergeordneteFakten(pFaktenID);
-			for(int i=0;i<3;i++)
+			
+			try
 			{
-				fakten.get(i+3).setText(lFaktenListe.get(i).getTitel());
+				for(int i=0;i<3;i++)
+				{
+					fakten.get(i+3).setText(lFaktenListe.get(i).getTitel());
+				}
+			}catch(IndexOutOfBoundsException e)
+			{
+				System.out.println("es wurden keine weiteren fakten gefunden");
 			}
+			
 		}
 		else
 		{

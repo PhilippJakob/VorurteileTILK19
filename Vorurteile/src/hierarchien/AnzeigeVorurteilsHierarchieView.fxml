@@ -20,15 +20,6 @@
             <Font name="System Italic" size="24.0" />
          </font>
       </Label>
-      <TextField fx:id="tfFakt1" editable="false" layoutX="420.0" layoutY="85.0" />
-      <TextField fx:id="tfFakt2" editable="false" layoutX="420.0" layoutY="110.0" />
-      <TextField fx:id="tfFakt3" editable="false" layoutX="420.0" layoutY="135.0" />
-      <TextField fx:id="tfFakt4" editable="false" layoutX="420.0" layoutY="165.0" />
-      <TextField fx:id="tfFakt5" editable="false" layoutX="420.0" layoutY="190.0" />
-      <TextField fx:id="tfFakt6" editable="false" layoutX="420.0" layoutY="215.0" />
-      <TextField fx:id="tfFakt7" editable="false" layoutX="420.0" layoutY="245.0" />
-      <TextField fx:id="tfFakt8" editable="false" layoutX="420.0" layoutY="270.0" />
-      <TextField fx:id="tfFakt9" editable="false" layoutX="420.0" layoutY="295.0" />
       <Label layoutX="27.0" layoutY="66.0" text="Vorgesetzte Vorurteile">
          <font>
             <Font size="13.0" />
@@ -44,5 +35,18 @@
             <Font size="13.0" />
          </font>
       </Label>
+      <VBox fx:id="vbFakten" alignment="CENTER" layoutX="414.0" layoutY="103.0" prefHeight="225.0" prefWidth="149.0">
+         <children>
+            <TextField fx:id="tfFakt4" editable="false" />
+            <TextField fx:id="tfFakt5" editable="false" />
+            <TextField fx:id="tfFakt6" editable="false" />
+            <TextField fx:id="tfFakt1" editable="false" />
+            <TextField fx:id="tfFakt2" editable="false" />
+            <TextField fx:id="tfFakt3" editable="false" />
+            <TextField fx:id="tfFakt7" editable="false" />
+            <TextField fx:id="tfFakt8" editable="false" />
+            <TextField fx:id="tfFakt9" editable="false" />
+         </children>
+      </VBox>
    </children>
 </AnchorPane>

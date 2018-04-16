@@ -26,8 +26,7 @@ public class Main extends Application
 			primaryStage.show();
 			controller.hinzufügenZuArrays();
 			
-			
-			controller.anzeigenVorurteil(1);
+			controller.anzeigenFakten(16);
 		}
 		catch(Exception e)
 		{
