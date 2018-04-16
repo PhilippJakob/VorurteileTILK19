@@ -22,6 +22,7 @@ import vorurteile.items.Vorurteil;
  * Geändert: 07.03.2018, Chantal Mielenz, Methode hinzugefügt
  * Geändert: 19.03.2018, Chantal Mielenz, Methode verändert / erweitert
  * Geändert: 21.03.2018, Florian Henderkes & Chantal Mielenz, Methoden suchenVorurteile und suchenVorurteileNachSuchwörter verändert / erweitert
+ * Geändert: 11.03.2018, Florian Henderkes & Chantal Mielenz, Metode verändert
  */
 
 public class SucheController 
@@ -37,7 +38,15 @@ public class SucheController
 
 	@FXML
 	private TableColumn<Vorurteil, String> tcVorurteilsliste;
-
+	
+	
+	/**
+	 * Bei betätigen des Suche Buttons "btSuche" wird diese Methode ausgeführt.
+	 * Bei Eingabe eines Satzes in der Suchleiste wird jedes Wort einzeln in der Datenbank gesucht und
+	 * passende Vorurteile in einer Tabelle angezeigt. Zu jedem Vorurteil werden passend noch alle Untergeordneten 
+	 * Vorurteile darunter angezeigt (2. Teil nicht funktional)
+	 * @param event
+	 */
 	@FXML
 	void suchenVorurteile(ActionEvent event)
 	{
