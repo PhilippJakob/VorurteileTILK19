@@ -33,6 +33,21 @@ public class Vorurteil
 		this.setHauptaussage(pHauptaussage);
 	}
 	
+	/**
+	 * Vergleicht dieses Voruteil mit einem anderem Vorurteil.
+	 * Zwei Vorurteile sind gleich, wenn diese die gleiche ID haben.
+	 * 
+	 * @author Lukas Markeffsky
+	 * 
+	 * @return {@code true}, wenn die ID dieses Vorurteils mit der des Anderen übereinstimmt.
+	 */
+	@Override public boolean equals(Object pZuVergleichendes)
+	{
+		return 
+			pZuVergleichendes instanceof Vorurteil
+			&& getID() == ((Vorurteil)pZuVergleichendes).getID();
+	}
+	
 	/** Getter & Setter **/
 
 	public int getID()
