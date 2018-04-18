@@ -43,12 +43,17 @@ public class AnzeigeVorurteilsHierarchieController
 	public void anzeigenVorurteil(int pVorurteilsID)
 	{
 		ArrayList<Vorurteil> lVorurteilsListe = Hierarchie.suchenVorurteil(pVorurteilsID);
-		vorurteile.get(0).setText(lVorurteilsListe.get(0).getTitel());
-		
-		anzeigenVorVorurteile2(lVorurteilsListe.get(0).getID());
-		anzeigenFakten2(lVorurteilsListe.get(0).getID());
+		try{
+			vorurteile.get(0).setText(lVorurteilsListe.get(0).getTitel());
+			
+			anzeigenVorVorurteile2(lVorurteilsListe.get(0).getID());
+			anzeigenFakten2(lVorurteilsListe.get(0).getID());
+			
+		}catch(IndexOutOfBoundsException e)
+		{
+			
+		}
 		ausblendenUngenutztesTextFeld();
-		
 	}
 
 	public void anzeigenVorVorurteile(int pVorVorurteilsID)
@@ -59,11 +64,17 @@ public class AnzeigeVorurteilsHierarchieController
       		{
       			vorVorurteile.get(i).setText(lVorVorurteilsListe.get(i).getTitel());
       		}
-      		anzeigenVorurteilÜberVorVorurteil(lVorVorurteilsListe.get(0).getID());
-      		anzeigenFakten2(lVorVorurteilsListe.get(0).getID());
 		}catch(IndexOutOfBoundsException e)
 		{
 			System.out.println("Es wurden keine Vorgesetzten Vorurteile gefunden");
+		}
+		
+		try
+		{
+			anzeigenVorurteilÜberVorVorurteil(lVorVorurteilsListe.get(0).getID());
+   		anzeigenFakten2(lVorVorurteilsListe.get(0).getID());
+		}catch(IndexOutOfBoundsException e)
+		{
 		}
 		
 		ausblendenUngenutztesTextFeld();
@@ -82,15 +93,18 @@ public class AnzeigeVorurteilsHierarchieController
 				vbFakten.getChildren().add(tf);
 			}
 			
-			anzeigenVorurteil2(lFaktenListe.get(0).getIDFakten().getIDFakten());
-			anzeigenVorVorurteile2(lFaktenListe.get(0).getIDFakten().getIDFakten());
-			ausblendenUngenutztesTextFeld();
-		}catch(IndexOutOfBoundsException e)
-		{
 			
+		}catch(IndexOutOfBoundsException e)
+		{		
 		}
 		
-		
+		try{
+			anzeigenVorurteil2(lFaktenListe.get(0).getIDFakten().getIDFakten());
+			anzeigenVorVorurteile2(lFaktenListe.get(0).getIDFakten().getIDFakten());
+		}catch(IndexOutOfBoundsException e)
+		{		
+		}
+		ausblendenUngenutztesTextFeld();
 	}
 
 	
