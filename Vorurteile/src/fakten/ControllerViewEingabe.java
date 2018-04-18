@@ -3,10 +3,6 @@
  */
 package fakten;
 
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.Statement;
-
 import javafx.event.ActionEvent;
 import javafx.scene.control.DatePicker;
 import javafx.fxml.FXML;
@@ -18,6 +14,9 @@ import javafx.scene.text.Text;
 public class ControllerViewEingabe
 	{
 
+	 @FXML
+    private Text txQuelle;
+
     @FXML
     private Button btSpeichern;
 
@@ -25,28 +24,43 @@ public class ControllerViewEingabe
     private TextField tfTitel;
 
     @FXML
+    private Text txMeldungen;
+
+    @FXML
     private Label txHinzufügen;
+
+    @FXML
+    private Button btWechselnHinzufügen;
 
     @FXML
     private Button btInternet;
 
     @FXML
     private Text txTitel;
-    
-    @FXML
-    private Text txMeldungen;
 
     @FXML
     private Text txDatum;
 
     @FXML
+    private Text txLink;
+
+    @FXML
     private Text txQuellenAussage;
+
+    @FXML
+    private TextField tfFaktid;
+
+    @FXML
+    private Button btWechselnSuchen;
 
     @FXML
     private Button btBuch;
 
     @FXML
-    private Text txQuelle;
+    private DatePicker dpDatum;
+
+    @FXML
+    private Button btLöschen;
 
     @FXML
     private TextField tfQuellenAussage;
@@ -55,13 +69,10 @@ public class ControllerViewEingabe
     private Text txAutor;
 
     @FXML
-    private Text txLink;
-
-    @FXML
-    private DatePicker dpDatum;
-
-    @FXML
     private TextField tfAutor;
+
+    @FXML
+    private Button btWechselnBearbeiten;
 
     @FXML
     private Button btAndere;
@@ -69,26 +80,19 @@ public class ControllerViewEingabe
     @FXML
     private TextField tfLink;
 
-    private String Quellentyp;
-
- 	@FXML
-   private Button btWechselnHinzufügen;
-
-   @FXML
-   private Button btWechselnBearbeiten;
-
-   @FXML
-   private Button btWechselnSuchen;
-
-   @FXML
-   private Button btWechselnLöschen;
+    private boolean istInternetquelle = false;
 
    @FXML
    void ändernOberfläche(ActionEvent event)
    {
 
    }
+   
+   @FXML
+   void entfernenFakt(ActionEvent event) {
 
+   }
+   
    @FXML
    void wechselnSceneHinzufügen(ActionEvent event)
    {
@@ -119,7 +123,9 @@ public class ControllerViewEingabe
 		{
 		   if(prüfenEingabe() ==true)
 		   {
-			Fakt lFakt = new Fakt(tfTitel.getText(),tfAutor.getText(),dpDatum.getValue(),getQuellentyp(),tfLink.getText(),tfQuellenAussage.getText());
+		   	// FIXME: im constructor istInternetquelle als boolean machen.
+			Fakt lFakt = new Fakt(tfTitel.getText(),tfAutor.getText(),dpDatum.getValue(),
+						String.valueOf(istInternetquelle),tfLink.getText(),tfQuellenAussage.getText());
          lFakt.anlegen();
 	   	txMeldungen.setStyle("-fx-fill: green");
 	   	txMeldungen.setText("Speichern erfolgreich");
@@ -138,7 +144,7 @@ public class ControllerViewEingabe
    	{
    		btAndere.setVisible(true);
    		btInternet.setVisible(false);
-   		setQuellentyp("Internet");
+   		istInternetquelle = true;
    		txQuelle.setText("Internetquelle");
    		txLink.setVisible(true);
    		tfLink.setVisible(true);
@@ -183,7 +189,7 @@ public class ControllerViewEingabe
    	{
    		btBuch.setVisible(false);
    		btInternet.setVisible(true);
-   		setQuellentyp("Buch");
+   		istInternetquelle = false;
    		txQuelle.setText("Buchquelle");
    		txLink.setVisible(false);
    		tfLink.setVisible(false);
@@ -194,20 +200,10 @@ public class ControllerViewEingabe
    	{
    		btBuch.setVisible(true);
    		btAndere.setVisible(false);
-   		setQuellentyp("Andere");
+   		istInternetquelle = false;
    		txQuelle.setText("Andere Quelle");
    		txLink.setVisible(false);
    		tfLink.setVisible(false) ;
    	}
-
-   public String getQuellentyp()
-		{
-			return Quellentyp;
-		}
-
-   public void setQuellentyp(String pQuellentyp)
-		{
-			Quellentyp = pQuellentyp;
-		}
 
 	}
