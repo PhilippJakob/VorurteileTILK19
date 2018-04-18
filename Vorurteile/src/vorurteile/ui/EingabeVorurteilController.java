@@ -5,6 +5,7 @@
  * | 07. März 2018: Nico Fliskowski "getVorurteil(); erstellenTabellen(); auswählenFakt(); nichtAuswählenFakt(); auswählenVorurteil(); nichtAuswählenVorurteil(); initialize();"
  * | 07. März 2018: Dimaa "speichernVorurteil() erstellt"
  * | 14. März 2018: Dimaa "speichernVorurteil() Fehler behoben 'java.util.ArrayList cannot be cast to javafx.collections.ObservableList'"
+ * | 15. April 2018: Nico Fliskowski "setzenFelder();"
  */
 
 package vorurteile.ui;
@@ -338,6 +339,10 @@ public class EingabeVorurteilController implements Initializable
    	}
    }
 
+   /**
+    * Schreib die Daten aus dem Objekt "ausgewähltes Vorurteil" auf
+    * @param pAusgewähltesVorurteil
+    */
    private void setzenFelder(Vorurteil pAusgewähltesVorurteil)
    {
    	tfTitel.setText(pAusgewähltesVorurteil.getTitel());
@@ -349,13 +354,12 @@ public class EingabeVorurteilController implements Initializable
    }
    
    /**
-    * Ruft nach Start des Programmes erstellenTabellen() auf.
+    * Ruft nach Start des Programmes folgende Befehle auf
     */
 	@Override
    public void initialize(URL location, ResourceBundle resources)
    {
    	erstellenTabellen();
-   	//bearbeitenVorurteil();
    	
    	//Ruft das Objekt "ausgewähltesVorurteil" aus dem PrototypController auf
    	Vorurteil lAusgewähltesVorurteil = PrototypController.getAusgewähltesVorurteil();

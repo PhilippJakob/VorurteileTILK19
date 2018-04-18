@@ -2,13 +2,8 @@
  * @author Nico Fliskowski, 14. März 2018
  * @description Dient der Anzeige von allen Vorurteilen in einer Tabelle.
  * @changelog
- * | 14. März 2018: Nico Fliskowski "getVorurteil(); erstellenTabellen(); initialize(); füllenTabelle();"
- */
-
-/**
- * Notiz von Nico - an Nico:
- * Für die nächste Stunde: Bei Klick auf "Bearbeiten" soll überprüft werden, ob ein Vorurteil ausgewählt worden ist.
- * Anschließend wird die Hauptoberfläche geöffnet (mit Parameterübergabe) und das Vorurteil soll bearbeitet werden können.
+ * | 14. März 2018: Nico Fliskowski "erstellenTabellen(); initialize(); füllenTabelle();"
+ * | 11. April 2018: Nico Fliskowski "getAusgewähltesVorurteil(); setAusgewähltesVorurteil(); btBearbeiten();"
  */
 
 package vorurteile.ui;

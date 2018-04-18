@@ -1,3 +1,10 @@
+/**
+ * @author Nico Fliskowski, 14. März 2018
+ * @description Dient der Anzeige von allen Vorurteilen in einer Tabelle.
+ * @changelog
+ * | 14. März 2018: Nico Fliskowski "FensterÖffnen();"
+ */
+
 package vorurteile.ui;
 
 import java.io.IOException;
@@ -10,8 +17,6 @@ import javafx.stage.Stage;
 public class FensterÖffnen extends Stage
 {
 	private Stage bühne;
-	
-	
 	
    public FensterÖffnen()
    {
