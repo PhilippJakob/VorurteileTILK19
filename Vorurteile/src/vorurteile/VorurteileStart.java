@@ -1,16 +1,12 @@
-//  ___________________________________________________________________________________________________________________
-//  | ####################################### |   Name VorurteileStart.java  | ###################################### |
-//  | ####################################### |Origin = Jonas N. Henle V 0.1 | ###################################### |
-//  | ####################################### |   @Author = Jonas N. Henle   | ###################################### |
-//  | ####################################### |        Version 0.1.3         | ###################################### |
-//  | ####################################### |     Date; 25.01.18   14:20   | ###################################### |
-//  | ####################################### |Group Vorurteile [Ben / Ohan] | ###################################### |
-//  |_________________________________________|______________________________|________________________________________|
+/**
+ * @author Jonas, 31. Januar 2018
+ * @description Startklasse der Vorurteile
+ */
 
 package vorurteile;
 
-
-import java.time.LocalDateTime;
+import java.util.Locale;
+import java.util.ResourceBundle;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -20,46 +16,76 @@ import javafx.scene.Scene;
 
 public class VorurteileStart extends Application
 {
-	private Stage bühne;
-	private AnchorPane pane;
-
-	@Override
-	public void start(Stage pPrimaryStage)
+	private static volatile VorurteileStart instanz;
+	private static Object object = new Object();
+	
+	public static VorurteileStart getInstance() 
 	{
-		FXMLLoader lLoader = new FXMLLoader();
+		if (VorurteileStart.instanz != null)
+		{
+			return VorurteileStart.instanz;
+		}
+		
+		synchronized (VorurteileStart.object) 
+		{
+			if (VorurteileStart.instanz == null)
+			{
+				VorurteileStart.instanz = new VorurteileStart();
+			}
+			
+			return VorurteileStart.instanz;
+		}
+	}
+	
+	public void Initialize(Stage pPrimaryStage)
+	{
 		this.setBühne(pPrimaryStage);
-		this.getBühne().setTitle("Hinzufügen eines Vorurteils");
 
 		try
 		{
-			lLoader.setLocation(VorurteileStart.class.getResource("ui/PrototypView.fxml"));
-			this.setPane(lLoader.load());
+			this.loadView(Locale.GERMAN);
 		}
 		catch(Exception e)
 		{
 			e.printStackTrace();
 		}
-
-		Scene lSzene = new Scene(this.getPane());
-		this.getBühne().setScene(lSzene);
-		this.getBühne().show();
-
-		/* Tutorial :) */
-
-		// Erhält alle Vorurteile mit dem Titel "Baum"
-		/*for (Vorurteil lVorurteil : VorurteilManager.getVorurteile("Baum"))
-		{
-			System.out.println(lVorurteil.getID());
-		}
-
-		// Erstellt ein Vorurteil
-		VorurteilManager.erstellenVorurteil("Rindenbaum", "Dimaa", LocalDateTime.now(), "Keine Ahnung?", "https://dimaa.vip/");*/
 	}
+	
+	private Stage bühne;
+	private AnchorPane pane = new AnchorPane();
 
-	public static void main(String[] args)
+	@Override
+	public void start(Stage pPrimaryStage)
 	{
-		launch(args);
+		VorurteileStart.getInstance().Initialize(pPrimaryStage);
 	}
+	
+	public void loadView(Locale pLocale)
+	{
+		ResourceBundle lBundle;
+		FXMLLoader lLoader = new FXMLLoader();
+			
+		try
+		{				
+			lBundle = ResourceBundle.getBundle("vorurteile/ui/resources/oberfläche", pLocale);
+			lLoader.setResources(lBundle);
+			lLoader.setLocation(this.getClass().getResource("ui/EingabeVorurteilView.fxml"));
+			this.setPane(lLoader.load(lLoader.getLocation().openStream()));
+				
+			Scene lSzene = new Scene(this.getPane());
+			this.getBühne().setScene(lSzene);
+			this.getBühne().show();
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+		}
+	}
+
+   public static void main(String[] args) 
+   {
+       launch(args);
+   }
 
 	/** Getter & Setter **/
 

@@ -15,6 +15,7 @@ package vorurteile.ui;
 
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Locale;
 import java.util.ResourceBundle;
 
 import javafx.collections.FXCollections;
@@ -28,6 +29,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import vorurteile.Vorurteil;
+import vorurteile.VorurteileStart;
 
 public class PrototypController implements Initializable
 {
@@ -102,7 +104,8 @@ public class PrototypController implements Initializable
     	{
     		setAusgewähltesVorurteil(lVorurteil);
     		
-    		new FensterÖffnen();
+    		//new FensterÖffnen();
+    		VorurteileStart.getInstance().loadView(Locale.GERMAN);
     	}
     	else
     	{
