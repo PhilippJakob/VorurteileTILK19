@@ -16,6 +16,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseEvent;
 import vorurteile.Vorurteil;
 import vorurteile.VorurteilManager;
 
@@ -29,6 +30,9 @@ import vorurteile.VorurteilManager;
 
 public class SucheController 
 {
+	int lRückgabeID;
+	String lRückgabeUrteil;
+	
 	@FXML
 	private TextField tfSuchleiste;
 
@@ -45,12 +49,8 @@ public class SucheController
 	/**
 	 * Bei betätigen des Suche Buttons "btSuche" wird diese Methode ausgeführt.
 	 * Bei Eingabe eines Satzes in der Suchleiste wird jedes Wort einzeln in der Datenbank gesucht und
-	 * passende Vorurteile in einer Tabelle angezeigt. 
-	 * 
-	 * TODO:
-	 * Zu jedem Vorurteil werden passend noch alle Untergeordneten 
+	 * passende Vorurteile in einer Tabelle angezeigt. Zu jedem Vorurteil werden passend noch alle Untergeordneten 
 	 * Vorurteile darunter angezeigt.
-	 * 
 	 * @param event
 	 */
 	@FXML
@@ -66,11 +66,11 @@ public class SucheController
 			String[] lSuchwörter = lSuche.split(" ");
 			for(String suchwort : lSuchwörter)
 			{
-				for(Vorurteil v : VorurteilManager.getVorurteile(suchwort))
+				for(Vorurteil gesuchtesVorurteil : VorurteilManager.getVorurteile(suchwort))
 				{
-					if(!lVorurteile.contains(v))
+					if(!lVorurteile.contains(gesuchtesVorurteil))
 					{
-						lVorurteile.add(v);
+						lVorurteile.add(gesuchtesVorurteil);
 //						System.out.println(v.getTitel());
 //						for(Vorurteil untergeordnetesVorurteil : Hierarchie.suchenUntergeordneteVorurteile(v.getID())){
 //							lVorurteile.add(untergeordnetesVorurteil);
@@ -97,4 +97,16 @@ public class SucheController
 			tvVorurteilsliste.setItems(lVorurteilsListe);
 		}
 	}
+	
+	
+	
+	@FXML
+    void auswählenVorurteil(MouseEvent event) {
+		int lVorurteilsID = tvVorurteilsliste.getSelectionModel().getSelectedItem().getID();    
+		String lVorurteilsTitel = tvVorurteilsliste.getSelectionModel().getSelectedItem().getTitel();
+		if(lVorurteilsTitel.startsWith("	")){
+			
+		}
+	}
+	
 }
