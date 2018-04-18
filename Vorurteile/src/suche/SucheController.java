@@ -5,6 +5,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import datenbank.Datenbankverbindung;
+import hierarchie.Hierarchie;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.ObservableSet;
@@ -44,8 +45,12 @@ public class SucheController
 	/**
 	 * Bei betätigen des Suche Buttons "btSuche" wird diese Methode ausgeführt.
 	 * Bei Eingabe eines Satzes in der Suchleiste wird jedes Wort einzeln in der Datenbank gesucht und
-	 * passende Vorurteile in einer Tabelle angezeigt. Zu jedem Vorurteil werden passend noch alle Untergeordneten 
-	 * Vorurteile darunter angezeigt (2. Teil nicht funktional)
+	 * passende Vorurteile in einer Tabelle angezeigt. 
+	 * 
+	 * TODO:
+	 * Zu jedem Vorurteil werden passend noch alle Untergeordneten 
+	 * Vorurteile darunter angezeigt.
+	 * 
 	 * @param event
 	 */
 	@FXML
@@ -60,42 +65,36 @@ public class SucheController
 			ObservableList<Vorurteil> lVorurteile = FXCollections.observableArrayList();
 			String[] lSuchwörter = lSuche.split(" ");
 			for(String suchwort : lSuchwörter)
-				for(Vorurteil v : VorurteilManager.getVorurteile(suchwort))
-					if(!(lVorurteile.contains(v)))
-						lVorurteile.add(v);
-			for(int i = 0; i < lVorurteile.size(); i++)
 			{
-				for(int j = i + 1; j < lVorurteile.size(); j++)
+				for(Vorurteil v : VorurteilManager.getVorurteile(suchwort))
 				{
-					if(lVorurteile.get(i).getTitel().equals(lVorurteile.get(j).getTitel()))
+					if(!lVorurteile.contains(v))
 					{
-						lVorurteile.remove(j);
+						lVorurteile.add(v);
+//						System.out.println(v.getTitel());
+//						for(Vorurteil untergeordnetesVorurteil : Hierarchie.suchenUntergeordneteVorurteile(v.getID())){
+//							lVorurteile.add(untergeordnetesVorurteil);
+//							System.out.println(untergeordnetesVorurteil.getTitel());
+//						}
 					}
+					
 				}
 			}
+			
+			
+			ObservableList<Vorurteil> lVorurteilsListe = FXCollections.observableArrayList();
+			
+			for(Vorurteil vorurteile : lVorurteile){
+				lVorurteilsListe.add(vorurteile);
+				for(Vorurteil untergeordnetesVorurteil : Hierarchie.suchenUntergeordneteVorurteile(vorurteile.getID())){
+					untergeordnetesVorurteil.setTitel("	" + untergeordnetesVorurteil.getTitel());
+					lVorurteilsListe.add(untergeordnetesVorurteil);
+				}
+				
+			}
+			
 			tcVorurteilsliste.setCellValueFactory(new PropertyValueFactory<Vorurteil, String>("titel"));
-			tvVorurteilsliste.setItems(lVorurteile);
+			tvVorurteilsliste.setItems(lVorurteilsListe);
 		}
 	}
-
-//    public static ObservableList<Vorurteil> suchenVorurteileNachSuchwort(String pSuchwort)
-//	{
-//		ObservableList<Vorurteil> lListeVorurteile = FXCollections.observableArrayList();
-//		try
-//		{
-//			Connection lVerbindung = Datenbankverbindung.getConnection();
-//			Statement lBefehl = lVerbindung.createStatement();
-//			ResultSet lErgebnis = lBefehl.executeQuery
-//					("SELECT vu.Titel, vu.ID_Vorurteile, vu.Autor, vu.Internetquelle_Ja_Nein, vu.Link FROM dbo_vorurteile.vorurteile vu WHERE vu.Titel LIKE '%" + pSuchwort + "%';");
-//			while(lErgebnis.next())
-//			{
-//				lListeVorurteile.add(new Vorurteil(lErgebnis.getInt("vu.ID_Vorurteile"), lErgebnis.getString("vu.Titel"), lErgebnis.getString("vu.Autor"), 0, lErgebnis.getString("vu.Internetquelle_Ja_Nein"), lErgebnis.getString("vu.Link")));
-//			}
-//		}
-//		catch(SQLException ex)
-//		{
-//			ex.printStackTrace();
-//		}
-//		return lListeVorurteile;
-//	}
 }
