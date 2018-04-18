@@ -4,47 +4,41 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 
-public class ControllerViewBearbeiten
+public class ControllerViewSuchen
 {
 
 	@FXML
    private Button btWechselnHinzufügen;
-
+   
    @FXML
    private Button btWechselnBearbeiten;
-
+   
    @FXML
    private Button btWechselnSuchen;
-
+   
    @FXML
    private Button btWechselnLöschen;
 
    @FXML
-   void ändernOberfläche(ActionEvent event)
+   void wechselnSceneHinzufügen(ActionEvent event) 
    {
-
+   	Main.wechselnSceneHinzufügen();
    }
-
+   
    @FXML
-   void wechselnSceneHinzufügen(ActionEvent event)
-   {
-  	 	Main.wechselnSceneHinzufügen();
-   }
-
-   @FXML
-   void wechselnSceneBearbeiten(ActionEvent event)
+   void wechselnSceneBearbeiten(ActionEvent event) 
    {
    	Main.wechselnSceneBearbeiten();
    }
-
+   
    @FXML
-   void wechselnSceneSuchen(ActionEvent event)
+   void wechselnSceneSuchen(ActionEvent event) 
    {
    	Main.wechselnSceneSuchen();
    }
-
+   
    @FXML
-   void wechselnSceneLöschen(ActionEvent event)
+   void wechselnSceneLöschen(ActionEvent event) 
    {
    	Main.wechselnSceneLöschen();
    }

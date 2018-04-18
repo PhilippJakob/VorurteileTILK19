@@ -7,11 +7,11 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="628.0" prefWidth="735.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fakten.ControllerViewBearbeiten">
+<AnchorPane prefHeight="628.0" prefWidth="735.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fakten.ControllerViewSuchen">
    <children>
       <Button fx:id="btWechselnHinzufügen" layoutX="419.0" layoutY="153.0" mnemonicParsing="false" onAction="#wechselnSceneHinzufügen" prefHeight="25.0" prefWidth="87.0" text="Hinzufügen" />
-      <Button fx:id="btWechselnBearbeiten" disable="true" layoutX="419.0" layoutY="182.0" mnemonicParsing="false" onAction="#wechselnSceneBearbeiten" prefHeight="25.0" prefWidth="87.0" text="Bearbeiten" />
-      <Button fx:id="btWechselnSuchen" layoutX="419.0" layoutY="211.0" mnemonicParsing="false" onAction="#wechselnSceneSuchen" prefHeight="25.0" prefWidth="87.0" text="Suchen" />
+      <Button fx:id="btWechselnBearbeiten" layoutX="419.0" layoutY="182.0" mnemonicParsing="false" onAction="#wechselnSceneBearbeiten" prefHeight="25.0" prefWidth="87.0" text="Bearbeiten" />
+      <Button fx:id="btWechselnSuchen" disable="true" layoutX="419.0" layoutY="211.0" mnemonicParsing="false" onAction="#wechselnSceneSuchen" prefHeight="25.0" prefWidth="87.0" text="Suchen" />
       <Button fx:id="btWechselnLöschen" layoutX="419.0" layoutY="240.0" mnemonicParsing="false" onAction="#wechselnSceneLöschen" prefHeight="25.0" prefWidth="87.0" text="Löschen" />
       <Text layoutX="441.0" layoutY="137.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Menü">
          <font>

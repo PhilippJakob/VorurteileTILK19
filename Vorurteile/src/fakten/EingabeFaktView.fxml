@@ -48,18 +48,18 @@
       <Button fx:id="btWechselnHinzufügen" disable="true" layoutX="419.0" layoutY="153.0" mnemonicParsing="false" onAction="#wechselnSceneHinzufügen" prefHeight="25.0" prefWidth="87.0" text="Hinzufügen" />
       <Button fx:id="btWechselnBearbeiten" layoutX="419.0" layoutY="182.0" mnemonicParsing="false" onAction="#wechselnSceneBearbeiten" prefHeight="25.0" prefWidth="87.0" text="Bearbeiten" />
       <Button fx:id="btWechselnSuchen" layoutX="419.0" layoutY="211.0" mnemonicParsing="false" onAction="#wechselnSceneSuchen" prefHeight="25.0" prefWidth="87.0" text="Suchen" />
-      <Button fx:id="btWechselnLöschen" layoutX="419.0" layoutY="240.0" mnemonicParsing="false" onAction="#wechselnSceneLöschen" prefHeight="25.0" prefWidth="87.0" text="Löschen" />
+      <Button fx:id="btLöschen" layoutX="419.0" layoutY="240.0" mnemonicParsing="false" onAction="#entfernenFakt" prefHeight="25.0" prefWidth="87.0" text="Löschen" />
       <Text layoutX="441.0" layoutY="137.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Menü">
          <font>
             <Font size="17.0" />
          </font>
       </Text>
-      <Text fx:id="txLink" layoutX="64.0" layoutY="480.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Link" wrappingWidth="43.396484375">
+      <Text fx:id="txLink" layoutX="64.0" layoutY="480.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Link" visible="false" wrappingWidth="43.396484375">
          <font>
             <Font size="17.0" />
          </font>
       </Text>
-      <TextField fx:id="tfLink" layoutX="64.0" layoutY="495.0" prefHeight="25.0" prefWidth="319.0" promptText="http://" />
+      <TextField fx:id="tfLink" layoutX="64.0" layoutY="495.0" prefHeight="25.0" prefWidth="319.0" promptText="http://" visible="false" />
       <DatePicker fx:id="dpDatum" layoutX="220.0" layoutY="145.0" promptText="tt-mm-jjjj" />
       <Button fx:id="btAndere" layoutX="322.0" layoutY="87.0" mnemonicParsing="false" onAction="#auswählenAndere" prefHeight="25.0" prefWidth="68.0" text="Andere" />
       <Button fx:id="btInternet" layoutX="322.0" layoutY="87.0" mnemonicParsing="false" onAction="#auswählenInternet" prefHeight="25.0" prefWidth="68.0" text="Internet" />
@@ -68,5 +68,7 @@
             <Font size="17.0" />
          </font>
       </Text>
+      <TextField fx:id="tfFaktid" layoutX="420.0" layoutY="289.0" prefHeight="25.0" prefWidth="43.0" />
+      <Text layoutX="420.0" layoutY="285.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Fakt ID" />
    </children>
 </AnchorPane>

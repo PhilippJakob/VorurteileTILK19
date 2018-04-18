@@ -92,25 +92,25 @@ public class ControllerViewEingabe
    @FXML
    void wechselnSceneHinzufügen(ActionEvent event)
    {
-  	 EingabeStart.wechselnSceneHinzufügen();
+  	   Main.wechselnSceneHinzufügen();
    }
 
    @FXML
    void wechselnSceneBearbeiten(ActionEvent event)
    {
-   	EingabeStart.wechselnSceneBearbeiten();
+   	Main.wechselnSceneBearbeiten();
    }
 
    @FXML
    void wechselnSceneSuchen(ActionEvent event)
    {
-   	EingabeStart.wechselnSceneSuchen();
+   	Main.wechselnSceneSuchen();
    }
 
    @FXML
    void wechselnSceneLöschen(ActionEvent event)
    {
-   	EingabeStart.wechselnSceneLöschen();
+   	Main.wechselnSceneLöschen();
    }
 
     //Methode zum Speichern der eingegebenen Daten.
@@ -146,7 +146,7 @@ public class ControllerViewEingabe
 
    public boolean prüfenEingabe()
    {
-   	if(tfTitel.getText().length() == 0 || tfQuellenAussage.getText().length() == 0)
+   	if(tfTitel.getText().length() == 0 || tfQuellenAussage.getText().length() == 0 || falschesDatum()== true )
    	{
    		return false;
    	}
@@ -155,8 +155,17 @@ public class ControllerViewEingabe
    		return true;
    	}
    }
+   
+   public boolean falschesDatum()
+   {
+   	if(dpDatum.getValue().toString().length() == 0)
+   	{
+   		return true;
+   	}
+   	   return false;
+   }
 
-   public boolean prüfenLink()
+  /* public boolean prüfenLink()
    {
    	if(tfLink.getText().startsWith("http"))
    	{
@@ -168,7 +177,7 @@ public class ControllerViewEingabe
    	}
 
    }
-
+*/
 	@FXML
    public void auswählenBuch(ActionEvent event)
    	{
