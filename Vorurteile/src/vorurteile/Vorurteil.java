@@ -9,7 +9,7 @@ package vorurteile;
 
 import java.time.LocalDateTime;
 
-public class Vorurteil implements Comparable
+public class Vorurteil
 {
 	private int id;
 	
@@ -31,17 +31,6 @@ public class Vorurteil implements Comparable
 		this.setLink(pLink);
 		this.setZeitstempel(pZeitstempel);
 		this.setHauptaussage(pHauptaussage);
-	}
-	
-	@Override
-    public String toString() {
-        return "'Titel: '" + titel + "', Autor: '" + autor + "', Veröffentlichungsdatum: '" + veröffentlichung + "', Quelle'" + internetquelle + "', Link: '" + link + "', Datum: '" + zeitstempel + "', Aussage: '" + hauptaussage;
-    }
-	
-	@Override
-	public int compareTo(Object arg0) {
-		Vorurteil other = (Vorurteil) arg0;
-		return this.titel.compareTo(other.titel);
 	}
 	
 	/** Getter & Setter **/
@@ -125,7 +114,4 @@ public class Vorurteil implements Comparable
 	{
 		hauptaussage = pHauptaussage;
 	}
-
-
-	
 }
