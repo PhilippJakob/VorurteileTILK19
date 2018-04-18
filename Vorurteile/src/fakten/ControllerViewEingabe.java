@@ -3,6 +3,8 @@ package fakten;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.time.LocalDate;
+import java.time.chrono.ChronoLocalDate;
 
 import javafx.event.ActionEvent;
 import javafx.scene.control.DatePicker;
@@ -71,60 +73,24 @@ public class ControllerViewEingabe
 
     private String Quellentyp;
 
- 	@FXML
-   private Button btWechselnHinzufügen;
-
-   @FXML
-   private Button btWechselnBearbeiten;
-
-   @FXML
-   private Button btWechselnSuchen;
-
-   @FXML
-   private Button btWechselnLöschen;
-
-   @FXML
-   void wechselnSceneHinzufügen(ActionEvent event)
-   {
-  	 EingabeStart.wechselnSceneHinzufügen();
-   }
-
-   @FXML
-   void wechselnSceneBearbeiten(ActionEvent event)
-   {
-   	EingabeStart.wechselnSceneBearbeiten();
-   }
-
-   @FXML
-   void wechselnSceneSuchen(ActionEvent event)
-   {
-   	EingabeStart.wechselnSceneSuchen();
-   }
-
-   @FXML
-   void wechselnSceneLöschen(ActionEvent event)
-   {
-   	EingabeStart.wechselnSceneLöschen();
-   }
-
-    //Methode zum Speichern der eingegebenen Daten.
 	@FXML
 	 public void speichernDaten(ActionEvent event)
-		{
-		   if(prüfenEingabe() ==true)
-		   {
+	{
+		   if(prüfenEingabe() ==true )
+		  {
+
 			Fakt lFakt = new Fakt(tfTitel.getText(),tfAutor.getText(),dpDatum.getValue(),getQuellentyp(),tfLink.getText(),tfQuellenAussage.getText());
          lFakt.anlegen();
 	   	txMeldungen.setText("Speichern erfolgreich");
 	   	txMeldungen.setVisible(true);
-
-		   }
+		  }
 		   else
-		   {
+		  {
 		   	txMeldungen.setText("Bitte tätigen sie eine Eingabe beim Titel und der Aussage");
 	   		txMeldungen.setVisible(true);
-		   }
-		}
+		  }
+	}
+	
    @FXML
    public void auswählenInternet(ActionEvent event)
    	{
@@ -132,13 +98,11 @@ public class ControllerViewEingabe
    		btInternet.setVisible(false);
    		setQuellentyp("Internet");
    		txQuelle.setText("Internetquelle");
-   		txLink.setVisible(true);
-   		tfLink.setVisible(true);
    	}
 
    public boolean prüfenEingabe()
    {
-   	if(tfTitel.getText().length() == 0 || tfQuellenAussage.getText().length() == 0)
+   	if(tfTitel.getText().length() == 0 || tfQuellenAussage.getText().length() == 0 || dpDatum.getValue())
    	{
    		return false;
    	}
@@ -148,19 +112,33 @@ public class ControllerViewEingabe
    	}
    }
 
-   public boolean prüfenLink()
+  /* public void istLinkKorrekt()
    {
-   	if(tfLink.getText().startsWith("http"))
+   	if(istGültigLink()==true)
    	{
+
+   	}
+   }
+
+   public boolean istGültigLink()
+   {
+   	if(istVorhandenLink()&& tfLink.getText().startsWith("http"))
+   	{
+
    		return true;
    	}
    	else
    	{
    		return false;
    	}
-
    }
 
+   public boolean istVorhandenLink()
+   {
+   	 return tfLink.getText().length() != 0;
+
+   }
+*/
 	@FXML
    public void auswählenBuch(ActionEvent event)
    	{
@@ -168,8 +146,6 @@ public class ControllerViewEingabe
    		btInternet.setVisible(true);
    		setQuellentyp("Buch");
    		txQuelle.setText("Buchquelle");
-   		txLink.setVisible(false);
-   		tfLink.setVisible(false);
    	}
 
    @FXML
@@ -179,8 +155,6 @@ public class ControllerViewEingabe
    		btAndere.setVisible(false);
    		setQuellentyp("Andere");
    		txQuelle.setText("Andere Quelle");
-   		txLink.setVisible(false);
-   		tfLink.setVisible(false);
    	}
 
    public String getQuellentyp()
@@ -192,5 +166,4 @@ public class ControllerViewEingabe
 		{
 			Quellentyp = pQuellentyp;
 		}
-
 	}

@@ -19,7 +19,7 @@ public class EingabeStart extends Application
 	 {
 		 try
 		 {
-			 AnchorPane lGrundPane = (AnchorPane)FXMLLoader.load(getClass().getResource("EingabeFaktView.fxml"));
+			 AnchorPane lGrundPane = (AnchorPane) FXMLLoader.load(getClass().getResource("EingabeFaktView.fxml"));
 			 Scene lScene = new Scene(lGrundPane,565,545);
 			 pGrundStage.setScene(lScene);
 			 pGrundStage.show();
