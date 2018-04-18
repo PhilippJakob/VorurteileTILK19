@@ -15,7 +15,8 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
-import vorurteile.items.Vorurteil;
+import vorurteile.Vorurteil;
+import vorurteile.VorurteilManager;
 
 /**
  * Angelegt: 05.03.2018, Chantal Mielenz
@@ -59,7 +60,7 @@ public class SucheController
 			ObservableList<Vorurteil> lVorurteile = FXCollections.observableArrayList();
 			String[] lSuchwörter = lSuche.split(" ");
 			for(String suchwort : lSuchwörter)
-				for(Vorurteil v : suchenVorurteileNachSuchwort(suchwort))
+				for(Vorurteil v : VorurteilManager.getVorurteile(suchwort))
 					if(!(lVorurteile.contains(v)))
 						lVorurteile.add(v);
 			for(int i = 0; i < lVorurteile.size(); i++)
@@ -77,24 +78,24 @@ public class SucheController
 		}
 	}
 
-    public static ObservableList<Vorurteil> suchenVorurteileNachSuchwort(String pSuchwort)
-	{
-		ObservableList<Vorurteil> lListeVorurteile = FXCollections.observableArrayList();
-		try
-		{
-			Connection lVerbindung = Datenbankverbindung.getConnection();
-			Statement lBefehl = lVerbindung.createStatement();
-			ResultSet lErgebnis = lBefehl.executeQuery
-					("SELECT vu.Titel, vu.ID_Vorurteile, vu.Autor, vu.Internetquelle_Ja_Nein, vu.Link FROM dbo_vorurteile.vorurteile vu WHERE vu.Titel LIKE '%" + pSuchwort + "%';");
-			while(lErgebnis.next())
-			{
-				lListeVorurteile.add(new Vorurteil(lErgebnis.getInt("vu.ID_Vorurteile"), lErgebnis.getString("vu.Titel"), lErgebnis.getString("vu.Autor"), 0, lErgebnis.getString("vu.Internetquelle_Ja_Nein"), lErgebnis.getString("vu.Link")));
-			}
-		}
-		catch(SQLException ex)
-		{
-			ex.printStackTrace();
-		}
-		return lListeVorurteile;
-	}
+//    public static ObservableList<Vorurteil> suchenVorurteileNachSuchwort(String pSuchwort)
+//	{
+//		ObservableList<Vorurteil> lListeVorurteile = FXCollections.observableArrayList();
+//		try
+//		{
+//			Connection lVerbindung = Datenbankverbindung.getConnection();
+//			Statement lBefehl = lVerbindung.createStatement();
+//			ResultSet lErgebnis = lBefehl.executeQuery
+//					("SELECT vu.Titel, vu.ID_Vorurteile, vu.Autor, vu.Internetquelle_Ja_Nein, vu.Link FROM dbo_vorurteile.vorurteile vu WHERE vu.Titel LIKE '%" + pSuchwort + "%';");
+//			while(lErgebnis.next())
+//			{
+//				lListeVorurteile.add(new Vorurteil(lErgebnis.getInt("vu.ID_Vorurteile"), lErgebnis.getString("vu.Titel"), lErgebnis.getString("vu.Autor"), 0, lErgebnis.getString("vu.Internetquelle_Ja_Nein"), lErgebnis.getString("vu.Link")));
+//			}
+//		}
+//		catch(SQLException ex)
+//		{
+//			ex.printStackTrace();
+//		}
+//		return lListeVorurteile;
+//	}
 }
