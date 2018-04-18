@@ -8,6 +8,7 @@ import hierarchie.Hierarchie;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.VBox;
 import vorurteile.items.Vorurteil;
 
 public class AnzeigeVorurteilsHierarchieController
@@ -21,11 +22,12 @@ public class AnzeigeVorurteilsHierarchieController
 	TextField tfVorVorurteil1, tfVorVorurteil2, tfVorVorurteil3;
 	@FXML
 	Label lbFakten;
+	@FXML
+	VBox vbFakten;
 
 
 	private ArrayList<TextField> vorVorurteile = new ArrayList<TextField>();
 	private ArrayList<TextField> vorurteile = new ArrayList<TextField>();
-	private ArrayList<TextField> fakten = new ArrayList<TextField>();
 
 	public void hinzufügenZuArrays()
 	{
@@ -34,16 +36,6 @@ public class AnzeigeVorurteilsHierarchieController
 		vorVorurteile.add(tfVorVorurteil3);
 
 		vorurteile.add(tfVorurteil1);
-
-		fakten.add(tfFakt1);
-		fakten.add(tfFakt2);
-		fakten.add(tfFakt3);
-		fakten.add(tfFakt4);
-		fakten.add(tfFakt5);
-		fakten.add(tfFakt6);
-		fakten.add(tfFakt7);
-		fakten.add(tfFakt8);
-		fakten.add(tfFakt9);
 	}
 
 	
@@ -79,15 +71,26 @@ public class AnzeigeVorurteilsHierarchieController
 
 	public void anzeigenFakten(int pFaktenID)
 	{
+		vbFakten.getChildren().clear();
 		ArrayList<Fakt> lFaktenListe = Hierarchie.suchenUntergeordneteFakten(pFaktenID);
-		for(int i = 0;i<3;i++)
+		try
 		{
-			fakten.get(i+3).setText(lFaktenListe.get(i).getTitel());
+			for(int i = 0;i<3;i++)
+			{
+				TextField tf = new TextField();
+				tf.setText(lFaktenListe.get(i).getTitel());
+				vbFakten.getChildren().add(tf);
+			}
+			
+			anzeigenVorurteil2(lFaktenListe.get(0).getIDFakten().getIDFakten());
+			anzeigenVorVorurteile2(lFaktenListe.get(0).getIDFakten().getIDFakten());
+			ausblendenUngenutztesTextFeld();
+		}catch(IndexOutOfBoundsException e)
+		{
+			
 		}
 		
-		anzeigenVorurteil2(lFaktenListe.get(0).getIDFakten().getIDFakten());
-		anzeigenVorVorurteile2(lFaktenListe.get(0).getIDFakten().getIDFakten());
-		ausblendenUngenutztesTextFeld();
+		
 	}
 
 	
@@ -125,6 +128,7 @@ public class AnzeigeVorurteilsHierarchieController
 	
 	private void anzeigenFakten2(int pFaktenID)
 	{
+		vbFakten.getChildren().clear();
 		ArrayList<Vorurteil> lUntergeordnetesVorurteilListe = Hierarchie.suchenUntergeordneteVorurteile(pFaktenID);
 		if(lUntergeordnetesVorurteilListe.isEmpty())
 		{
@@ -135,8 +139,11 @@ public class AnzeigeVorurteilsHierarchieController
 			{
 				for(int i=0;i<3;i++)
 				{
-					fakten.get(i+3).setText(lFaktenListe.get(i).getTitel());
+					TextField tf = new TextField();
+					tf.setText(lFaktenListe.get(i).getTitel());
+					vbFakten.getChildren().add(tf);
 				}
+				
 			}catch(IndexOutOfBoundsException e)
 			{
 				System.out.println("es wurden keine weiteren fakten gefunden");
@@ -147,9 +154,12 @@ public class AnzeigeVorurteilsHierarchieController
 		{
 			lbFakten.setText("Untergeordnete Vorurteile");
 			try{
+				
 				for(int i=0;i<3;i++)
 				{
-					fakten.get(i+3).setText(lUntergeordnetesVorurteilListe.get(i).getTitel());
+					TextField tf = new TextField();
+					tf.setText(lUntergeordnetesVorurteilListe.get(i).getTitel());
+					vbFakten.getChildren().add(tf);
 				}
 			}catch(IndexOutOfBoundsException e)
 			{
@@ -170,15 +180,6 @@ public class AnzeigeVorurteilsHierarchieController
 		}
 		
 		for(TextField tf:vorurteile)
-		{
-			tf.setVisible(true);
-			if(tf.getText().matches(""))
-			{
-				tf.setVisible(false);
-			}
-		}
-		
-		for(TextField tf:fakten)
 		{
 			tf.setVisible(true);
 			if(tf.getText().matches(""))
