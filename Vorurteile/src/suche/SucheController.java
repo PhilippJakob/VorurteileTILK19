@@ -31,7 +31,7 @@ import vorurteile.VorurteilManager;
 public class SucheController 
 {
 	int lRückgabeID;
-	String lRückgabeUrteil;
+	boolean lVorvorurteil;
 	
 	@FXML
 	private TextField tfSuchleiste;
@@ -102,11 +102,22 @@ public class SucheController
 	
 	@FXML
     void auswählenVorurteil(MouseEvent event) {
-		int lVorurteilsID = tvVorurteilsliste.getSelectionModel().getSelectedItem().getID();    
-		String lVorurteilsTitel = tvVorurteilsliste.getSelectionModel().getSelectedItem().getTitel();
-		if(lVorurteilsTitel.startsWith("	")){
+		if(event.getClickCount() == 2){
+			int lVorurteilsID = tvVorurteilsliste.getSelectionModel().getSelectedItem().getID();    
+			String lVorurteilsTitel = tvVorurteilsliste.getSelectionModel().getSelectedItem().getTitel();
+			lRückgabeID = lVorurteilsID;
+			if(lVorurteilsTitel.startsWith("	")){
+				lVorvorurteil = false;
+				
+			}else{
+				lVorvorurteil = true;
+				
+			}
 			
 		}
+		
+		
+		
 	}
 	
 }
