@@ -24,6 +24,7 @@ public class AnzeigeVorurteilsHierarchieController
 	Label lbFakten;
 	@FXML
 	VBox vbFakten;
+	
 
 
 	private ArrayList<TextField> vorVorurteile = new ArrayList<TextField>();
@@ -47,7 +48,7 @@ public class AnzeigeVorurteilsHierarchieController
 			vorurteile.get(0).setText(lVorurteilsListe.get(0).getTitel());
 			
 			anzeigenVorVorurteile2(lVorurteilsListe.get(0).getID());
-			anzeigenFakten2(lVorurteilsListe.get(0).getID());
+			anzeigenFakten2(lVorurteilsListe.get(0).getID(), false);
 			
 		}catch(IndexOutOfBoundsException e)
 		{
@@ -72,7 +73,7 @@ public class AnzeigeVorurteilsHierarchieController
 		try
 		{
 			anzeigenVorurteilÜberVorVorurteil(lVorVorurteilsListe.get(0).getID());
-   		anzeigenFakten2(lVorVorurteilsListe.get(0).getID());
+   		anzeigenFakten2(pVorVorurteilsID, true);
 		}catch(IndexOutOfBoundsException e)
 		{
 		}
@@ -86,23 +87,22 @@ public class AnzeigeVorurteilsHierarchieController
 		ArrayList<Fakt> lFaktenListe = Hierarchie.suchenUntergeordneteFakten(pFaktenID);
 		try
 		{
-			for(int i = 0;i<3;i++)
+			for(int i = 0;i<lFaktenListe.size();i++)
 			{
 				TextField tf = new TextField();
 				tf.setText(lFaktenListe.get(i).getTitel());
 				vbFakten.getChildren().add(tf);
 			}
-			
-			
 		}catch(IndexOutOfBoundsException e)
 		{		
 		}
 		
 		try{
-			anzeigenVorurteil2(lFaktenListe.get(0).getIDFakten().getIDFakten());
-			anzeigenVorVorurteile2(lFaktenListe.get(0).getIDFakten().getIDFakten());
+			anzeigenVorurteil2(pFaktenID);
+			anzeigenVorVorurteile2(pFaktenID);
 		}catch(IndexOutOfBoundsException e)
 		{		
+			e.printStackTrace();
 		}
 		ausblendenUngenutztesTextFeld();
 	}
@@ -125,60 +125,119 @@ public class AnzeigeVorurteilsHierarchieController
 	
 	private void anzeigenVorVorurteile2(int pVorVorurteilsID)
 	{
-			ArrayList<Vorurteil> lVorVorurteilsListe = Hierarchie.suchenÜbergeordneteVorurteile(pVorVorurteilsID);
-			try
+		ArrayList<Vorurteil> lVorurteilsListe = Hierarchie.suchenVorurteil(pVorVorurteilsID);
+		ArrayList<Vorurteil> lVorVorurteilsListe = Hierarchie.suchenÜbergeordneteVorurteile(lVorurteilsListe.get(0).getID());
+		
+		
+		try
+		{
+			for(int i=0;i<3;i++)
    		{
-				for(int i=0;i<3;i++)
-   			{
-   				vorVorurteile.get(i).setText(lVorVorurteilsListe.get(i).getTitel());
-   			}
-				
-			}catch(IndexOutOfBoundsException e)
-			{
-				System.out.println("Es konnten keine weiteren Vorgesetzten Vorurteile gefunden werden");
-			}
+   			vorVorurteile.get(i).setText(lVorVorurteilsListe.get(i).getTitel());
+   		}
+		}catch(IndexOutOfBoundsException e)
+		{
+			System.out.println("Es konnten keine weiteren Vorgesetzten Vorurteile gefunden werden");
+		}
+//			ArrayList<Vorurteil> lVorVorurteilsListe = Hierarchie.suchenÜbergeordneteVorurteile(pVorVorurteilsID);
+//			try
+//   		{
+//				for(int i=0;i<3;i++)
+//   			{
+//   				vorVorurteile.get(i).setText(lVorVorurteilsListe.get(i).getTitel());
+//   			}
+//				
+//			}catch(IndexOutOfBoundsException e)
+//			{
+//				System.out.println("Es konnten keine weiteren Vorgesetzten Vorurteile gefunden werden");
+//			}
 			
 	}
 	
-	private void anzeigenFakten2(int pFaktenID)
+	private void anzeigenFakten2(int pFaktenID, boolean überVorVorurteil)
 	{
 		vbFakten.getChildren().clear();
-		ArrayList<Vorurteil> lUntergeordnetesVorurteilListe = Hierarchie.suchenUntergeordneteVorurteile(pFaktenID);
-		if(lUntergeordnetesVorurteilListe.isEmpty())
+		if(überVorVorurteil)
 		{
-			lbFakten.setText("Fakten");
-			ArrayList<Fakt> lFaktenListe = Hierarchie.suchenUntergeordneteFakten(pFaktenID);
+			ArrayList<Vorurteil> lVorurteilsListe = Hierarchie.suchenVorurteil(pFaktenID);
 			
-			try
-			{
-				for(int i=0;i<3;i++)
-				{
-					TextField tf = new TextField();
-					tf.setText(lFaktenListe.get(i).getTitel());
-					vbFakten.getChildren().add(tf);
-				}
-				
-			}catch(IndexOutOfBoundsException e)
-			{
-				System.out.println("es wurden keine weiteren fakten gefunden");
-			}
+			ArrayList<Vorurteil> lUntergeordnetesVorurteilListe = Hierarchie.suchenUntergeordneteVorurteile(lVorurteilsListe.get(0).getID());
+   		if(lUntergeordnetesVorurteilListe.isEmpty())
+   		{
+   			lbFakten.setText("Fakten");
+   			ArrayList<Fakt> lFaktenListe = Hierarchie.suchenUntergeordneteFakten(lVorurteilsListe.get(0).getID());
+   			
+   			try
+   			{
+   				for(int i=0;i<lFaktenListe.size();i++)
+   				{
+   					TextField tf = new TextField();
+   					tf.setText(lFaktenListe.get(i).getTitel());
+   					vbFakten.getChildren().add(tf);
+   				}
+   				
+   			}catch(IndexOutOfBoundsException e)
+   			{
+   				System.out.println("es wurden keine weiteren fakten gefunden");
+   			}
+   			
+   		}
+   		else
+   		{
+   			lbFakten.setText("Untergeordnete Vorurteile");
+   			try{
+   				
+   				for(int i=0;i<lUntergeordnetesVorurteilListe.size();i++)
+   				{
+   					TextField tf = new TextField();
+   					tf.setText(lUntergeordnetesVorurteilListe.get(i).getTitel());
+   					vbFakten.getChildren().add(tf);
+   				}
+   			}catch(IndexOutOfBoundsException e)
+   			{
+   				System.out.println("keine weiteren untergeordenten Vorurteile gefunden");
+   			}
+   		}
 			
-		}
-		else
-		{
-			lbFakten.setText("Untergeordnete Vorurteile");
-			try{
-				
-				for(int i=0;i<3;i++)
-				{
-					TextField tf = new TextField();
-					tf.setText(lUntergeordnetesVorurteilListe.get(i).getTitel());
-					vbFakten.getChildren().add(tf);
-				}
-			}catch(IndexOutOfBoundsException e)
-			{
-				System.out.println("keine weiteren untergeordenten Vorurteile gefunden");
-			}
+		}else
+		{		
+   		ArrayList<Vorurteil> lUntergeordnetesVorurteilListe = Hierarchie.suchenUntergeordneteVorurteile(pFaktenID);
+   		if(lUntergeordnetesVorurteilListe.isEmpty())
+   		{
+   			lbFakten.setText("Fakten");
+   			ArrayList<Fakt> lFaktenListe = Hierarchie.suchenUntergeordneteFakten(pFaktenID);
+   			
+   			try
+   			{
+   				for(int i=0;i<lFaktenListe.size();i++)
+   				{
+   					TextField tf = new TextField();
+   					tf.setText(lFaktenListe.get(i).getTitel());
+   					vbFakten.getChildren().add(tf);
+   				}
+   				
+   			}catch(IndexOutOfBoundsException e)
+   			{
+   				System.out.println("es wurden keine weiteren fakten gefunden");
+   			}
+   			
+   		}
+   		else
+   		{
+   			lbFakten.setText("Untergeordnete Vorurteile");
+   			try{
+   				
+   				for(int i=0;i<lUntergeordnetesVorurteilListe.size();i++)
+   				{
+   					TextField tf = new TextField();
+   					tf.setText(lUntergeordnetesVorurteilListe.get(i).getTitel());
+   					vbFakten.getChildren().add(tf);
+   				}
+   			}catch(IndexOutOfBoundsException e)
+   			{
+   				System.out.println("keine weiteren untergeordenten Vorurteile gefunden");
+   			}
+   		}
 		}
 	}
 	
@@ -201,6 +260,12 @@ public class AnzeigeVorurteilsHierarchieController
 				tf.setVisible(false);
 			}
 		}
+	}
+	
+	
+	public void start()
+	{
+		
 	}
 	
 }
