@@ -1,29 +1,26 @@
 /**
  * @author Jonas N. Henle, 25.01.2018
  * @description Beschreibung: Dient der Eingabe von neuen Vorurteilen.
- * @changelog
- * | 07. März 2018: Nico Fliskowski "getVorurteil(); erstellenTabellen(); auswählenFakt(); nichtAuswählenFakt(); auswählenVorurteil(); nichtAuswählenVorurteil(); initialize();"
- * | 07. März 2018: Dimaa "speichernVorurteil() erstellt"
- * | 14. März 2018: Dimaa "speichernVorurteil() Fehler behoben 'java.util.ArrayList cannot be cast to javafx.collections.ObservableList'"
  */
 
 package vorurteile.ui;
 
 import java.net.URL;
-import java.nio.channels.ShutdownChannelGroupException;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 import java.util.ResourceBundle;
-
-import javax.swing.GroupLayout.Alignment;
 
 import com.mysql.jdbc.PreparedStatement;
 
+import fakten.Fakt;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Pos;
@@ -32,6 +29,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
+import javafx.scene.control.MenuButton;
+import javafx.scene.control.MenuItem;
 import javafx.scene.control.TabPane;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -40,18 +39,18 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
-import javafx.scene.text.Text;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import javafx.scene.image.ImageView;
 import javafx.stage.Window;
 import vorurteile.Verbinder;
 import vorurteile.Vorurteil;
 import vorurteile.VorurteilManager;
+import vorurteile.VorurteileStart;
 
 
 public class EingabeVorurteilController implements Initializable
 {
-
    @FXML
    private DatePicker dpDatum;
 
@@ -66,12 +65,21 @@ public class EingabeVorurteilController implements Initializable
    					btRefreshF, btVorurteilssuche, btVorurteilAuswählen, btVorurteilNichtAuswählen, btRefreshV;
 
 	@FXML
-   private TableView<Vorurteil> tvFaktenliste, tvFaktenlisteAusgewählt, tvVorurteilliste, tvVorurteillisteAusgewählt;
+   private TableView<Fakt> tvFaktenliste, tvFaktenlisteAusgewählt;
+	
+	@FXML
+   private TableView<Vorurteil>	tvVorurteilliste, tvVorurteillisteAusgewählt;
 
 	@FXML
-   private TableColumn<Vorurteil, String> tcTitelFaktenliste, tcTitelFaktenlisteAusgewählt, tcTitelVorurteilsliste,
-   													tcTitelVorurteilslisteAusgewählt;
+   private TableColumn<Fakt, String> tcTitelFaktenliste, tcTitelFaktenlisteAusgewählt;
+	
+	@FXML
+   private TableColumn<Vorurteil, String> tcTitelVorurteilsliste, tcTitelVorurteilslisteAusgewählt;
+	
 
+	@FXML
+	private MenuButton mbSprachenliste;
+	
 	@FXML
    private Label lbErrorF, lbSafeError, lbErrorV;
 
@@ -82,38 +90,64 @@ public class EingabeVorurteilController implements Initializable
    private TabPane tpFaktVorurteil;
 
 	/**
-	 * Erstellt eine observable List und gibt diese zurück.
+	 * Erstellt eine observable List für Vorurteile und gibt diese zurück.
 	 * @return lListe
 	 */
 	public ObservableList<Vorurteil> getVorurteil()
-   {
-   	ObservableList<Vorurteil> lListe = FXCollections.observableArrayList();
+	{
+		ObservableList<Vorurteil> lListe = FXCollections.observableArrayList();
+   		
+   		return lListe;
+   	}
 
+	/**
+	 * Erstellt eine observable List für Fakten und gibt diese zurück.
+	 * @return lListe
+	 */
+	public ObservableList<Fakt> getFakten()
+	{
+		ObservableList<Fakt> lListe = FXCollections.observableArrayList();
+		
 		return lListe;
-   }
-
-   /**
-    * Erstellt alle Tabellen, um die Items verwalten zu können.
-    */
-   private void erstellenTabellen()
-   {
-   	tcTitelFaktenliste.setCellValueFactory(new PropertyValueFactory<>("titel"));
-   	tvFaktenliste.setItems(getVorurteil());
-
-   	tcTitelFaktenlisteAusgewählt.setCellValueFactory(new PropertyValueFactory<>("titel"));
-   	tvFaktenlisteAusgewählt.setItems(getVorurteil());
-
-   	tcTitelVorurteilsliste.setCellValueFactory(new PropertyValueFactory<>("titel"));
-   	tvVorurteilliste.setItems(getVorurteil());
-
-   	tcTitelVorurteilslisteAusgewählt.setCellValueFactory(new PropertyValueFactory<>("titel"));
-   	tvVorurteillisteAusgewählt.setItems(getVorurteil());
-   }
+	}
+	
+	/**
+     * Erstellt alle Tabellen, um die Items verwalten zu können.
+     */
+	private void erstellenTabellen()
+	{
+	   	tcTitelFaktenliste.setCellValueFactory(new PropertyValueFactory<>("titel"));
+	   	tvFaktenliste.setItems(getFakten());
+	
+	   	tcTitelFaktenlisteAusgewählt.setCellValueFactory(new PropertyValueFactory<>("titel"));
+	   	tvFaktenlisteAusgewählt.setItems(getFakten());
+	
+	   	tcTitelVorurteilsliste.setCellValueFactory(new PropertyValueFactory<>("titel"));
+	   	tvVorurteilliste.setItems(getVorurteil());
+	
+	   	tcTitelVorurteilslisteAusgewählt.setCellValueFactory(new PropertyValueFactory<>("titel"));
+	   	tvVorurteillisteAusgewählt.setItems(getVorurteil());
+	}
 
 	@FXML
 	private void suchenFakt(ActionEvent event)
 	{
-
+		tvFaktenliste.getItems().clear();
+		String lTitel = tfFaktensuche.getText().trim();
+		Fakt lFakt = new Fakt(null, null, null, null, null,	null);
+		ResultSet lFakten = lFakt.suchenFakt("WHERE Titel LIKE '%"+ lTitel +"%'");
+		try
+		{
+			while(lFakten.next())
+			{
+				Fakt lFakto = new Fakt(lFakten.getInt(1), lFakten.getString(2), null, null, null, null, null);
+				tvFaktenliste.getItems().add(lFakto);
+			}
+		}
+		catch (SQLException e)
+		{
+			e.printStackTrace();
+		}
 	}
 
 	/**
@@ -125,7 +159,7 @@ public class EingabeVorurteilController implements Initializable
 	@FXML
 	private void auswählenFakt(ActionEvent event)
 	{
-		Vorurteil lFakt = tvFaktenliste.getSelectionModel().getSelectedItem();
+		Fakt lFakt = tvFaktenliste.getSelectionModel().getSelectedItem();
 
     	if(lFakt != null)
     	{
@@ -143,7 +177,8 @@ public class EingabeVorurteilController implements Initializable
 	@FXML
 	private void machenNichtAuswählenFakt(ActionEvent event)
 	{
-		Vorurteil lFakt = tvFaktenlisteAusgewählt.getSelectionModel().getSelectedItem();
+		Fakt
+		lFakt = tvFaktenlisteAusgewählt.getSelectionModel().getSelectedItem();
 
     	if(lFakt != null)
     	{
@@ -278,7 +313,6 @@ public class EingabeVorurteilController implements Initializable
       			 }
       			 catch (SQLException e)
       			 {
-      			 	 // TODO Auto-generated catch block
       				 e.printStackTrace();
       			 }
         	    }
@@ -349,12 +383,55 @@ public class EingabeVorurteilController implements Initializable
    }
    
    /**
+    * Ändert die Sprache des Programmes.
+    */
+   @FXML
+   private void auswählenSprache(ActionEvent event)
+   {
+   	this.mbSprachenliste.setText("BAUM");
+   }
+   
+   private void erstellenSprachauswahl()
+   {
+   	ImageView lBildDeutsch = new ImageView("http://www.geonames.org/flags/x/de.gif");
+   	ImageView lBildEnglisch = new ImageView("http://www.geonames.org/flags/x/uk.gif");
+   	
+   	lBildDeutsch.setFitHeight(12);
+   	lBildDeutsch.setFitWidth(16);
+   	
+   	lBildEnglisch.setFitHeight(12);
+   	lBildEnglisch.setFitWidth(16);
+   	
+   	MenuItem lSpracheDeutsch = new MenuItem("Deutsch", lBildDeutsch);
+   	MenuItem lSpracheEnglisch = new MenuItem("English", lBildEnglisch);
+
+   	lSpracheDeutsch.setOnAction(new EventHandler<ActionEvent>() 
+   	{
+          @Override
+          public void handle(ActionEvent event) 
+          {
+         	 VorurteileStart.getInstance().loadView(Locale.GERMAN);
+          }
+      });
+   	
+   	lSpracheEnglisch.setOnAction(new EventHandler<ActionEvent>() 
+   	{
+          @Override
+          public void handle(ActionEvent event) 
+          {
+         	 VorurteileStart.getInstance().loadView(Locale.ENGLISH);
+          }
+      });
+
+   	this.mbSprachenliste.getItems().addAll(lSpracheDeutsch, lSpracheEnglisch);
+   }
+
+   /**
     * Ruft nach Start des Programmes erstellenTabellen() auf.
     */
 	@Override
    public void initialize(URL location, ResourceBundle resources)
    {
-   	erstellenTabellen();
    	//bearbeitenVorurteil();
    	
    	//Ruft das Objekt "ausgewähltesVorurteil" aus dem PrototypController auf
@@ -362,8 +439,11 @@ public class EingabeVorurteilController implements Initializable
    	
    	if(lAusgewähltesVorurteil != null)
    	{
-   		setzenFelder(lAusgewähltesVorurteil);
+   		this.setzenFelder(lAusgewähltesVorurteil);
    	}
+   	
+   	this.erstellenTabellen();
+   	this.erstellenSprachauswahl();
    }
 
 	public void anzeigenSpeicherFenster(Window primaryStage)
