@@ -6,10 +6,7 @@
 package vorurteile.ui;
 
 import java.net.URL;
-<<<<<<< HEAD
 import java.sql.ResultSet;
-=======
->>>>>>> 0afb9e5480b84a4710f247ea6551c06fc8bfa92f
 import java.sql.SQLException;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
