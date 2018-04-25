@@ -1,5 +1,6 @@
 /*
  * angelegt von  Fin Pohle am 17.1.18
+ * Geändert: Chantal Mielenz, 25.04.18, anlegen des 2. Konstruktors von Fakt, anlegen der Methode suchenFaktenNachId um mit einer ID nach Fakten suchen zu können.
  */
 package fakten;
 
@@ -18,7 +19,7 @@ public class Fakt
     private String link;
     private LocalDate datum;
     private String aussage;
-    //private int IDFakten;
+    private int faktenID;
     Calendar ccalendar;
 
 
@@ -30,6 +31,17 @@ public class Fakt
 			this.autor = pAutor;
 			this.link = pLink;
 			this.datum = pDatum;
+			this.aussage = pAussage;
+	}
+	
+	public Fakt(int pFaktenID, String pTitel, String pAutor, LocalDate pDatum, boolean pIstInternetquelle, String pLink, String pAussage)
+	{		
+		
+			this.faktenID = pFaktenID;
+			this.titel = pTitel;
+			this.autor = pAutor;
+			this.datum = pDatum;
+			this.link = pLink;
 			this.aussage = pAussage;
 	}
 
@@ -58,7 +70,41 @@ public class Fakt
 		e.printStackTrace();
 	  }
 	}
+	
+	/**
+	 * Sucht Anhand einer FaktenID die weiteren Informationen zu dem Fakt aus der Datenbank und speichert diese in einer Liste
+	 * @param pFaktenID
+	 * @return
+	 */
+	public static List<Fakt> suchenFaktenNachId(String pFaktenID)
+	{
+		Connection lConnection = DatenbankVerbindungFakten.holen();
 
+		try
+		{
+			PreparedStatement lBefehl = lConnection.prepareStatement("SELECT * FROM dbo_vorurteile.fakten WHERE ID_Fakten LIKE ?");
+			lBefehl.setString(1, "%" + pFaktenID + "%");
+			
+			ResultSet lResult = lBefehl.executeQuery();
+			
+			ArrayList<Fakt> lFakten = new ArrayList<Fakt>();
+			
+			while (lResult.next())
+			{
+				lFakten.add(new Fakt(lResult.getInt("ID_Fakten"), lResult.getString("Titel"),lResult.getString("Autor"), lResult.getDate("Veröffentlichung").toLocalDate(), lResult.getBoolean("InternetQuelle_Ja_Nein"), lResult.getString("Link"), lResult.getString("Aussage") ));
+			}
+			
+			return lFakten;
+		}
+		catch (SQLException e)
+		{
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+
+			return null;
+		}
+	}
+	
 	public static List<Fakt> suchenFakten(String pTitel)
 	{
 		Connection lConnection = DatenbankVerbindungFakten.holen();
