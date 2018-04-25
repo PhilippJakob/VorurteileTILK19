@@ -76,7 +76,7 @@ public class Fakt
 	 * @param pFaktenID
 	 * @return
 	 */
-	public static List<Fakt> suchenFaktenNachId(String pFaktenID)
+	public static List<Fakt> suchenFaktenNachId(int pFaktenID)
 	{
 		Connection lConnection = DatenbankVerbindungFakten.holen();
 
