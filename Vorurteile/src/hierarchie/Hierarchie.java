@@ -95,7 +95,7 @@ public class Hierarchie
 			ResultSet lErgebnis = lBefehl.executeQuery("SELECT f.ID_Fakten FROM dbo_vorurteile.fakten f, dbo_vorurteile.verbindung_f_v ve, dbo_vorurteile.vorurteile vo WHERE vo.ID_Vorurteile = ve.ID_Vorurteile AND ve.ID_Fakten = f.ID_Fakten AND vo.ID_Vorurteile=" + pVorurteilID + ";");
 			while(lErgebnis.next())
 			{
-				lListeFakten.add(Fakt.suchenFaktenNachId(lErgebnis.getInt("f.ID_Fakten")));
+				lListeFakten.addAll(Fakt.suchenFaktenNachId(lErgebnis.getInt("f.ID_Fakten")));
 			}
 		}
 		catch(SQLException ex)
