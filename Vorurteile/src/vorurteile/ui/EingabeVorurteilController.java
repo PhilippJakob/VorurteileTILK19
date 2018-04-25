@@ -16,7 +16,7 @@ import java.util.ResourceBundle;
 
 import com.mysql.jdbc.PreparedStatement;
 
-import fakten.Fakt;
+//import fakten.Fakt;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -64,14 +64,14 @@ public class EingabeVorurteilController implements Initializable
    private Button btSpeichernVorurteil, btFaktensuche, btFaktHinzufügen, btFaktAuswählen, btFaktNichtAuswählen,
    					btRefreshF, btVorurteilssuche, btVorurteilAuswählen, btVorurteilNichtAuswählen, btRefreshV;
 
-	@FXML
-   private TableView<Fakt> tvFaktenliste, tvFaktenlisteAusgewählt;
+//	@FXML
+//   private TableView<Fakt> tvFaktenliste, tvFaktenlisteAusgewählt;
 	
 	@FXML
    private TableView<Vorurteil>	tvVorurteilliste, tvVorurteillisteAusgewählt;
 
-	@FXML
-   private TableColumn<Fakt, String> tcTitelFaktenliste, tcTitelFaktenlisteAusgewählt;
+//	@FXML
+//   private TableColumn<Fakt, String> tcTitelFaktenliste, tcTitelFaktenlisteAusgewählt;
 	
 	@FXML
    private TableColumn<Vorurteil, String> tcTitelVorurteilsliste, tcTitelVorurteilslisteAusgewählt;
@@ -104,23 +104,23 @@ public class EingabeVorurteilController implements Initializable
 	 * Erstellt eine observable List für Fakten und gibt diese zurück.
 	 * @return lListe
 	 */
-	public ObservableList<Fakt> getFakten()
-	{
-		ObservableList<Fakt> lListe = FXCollections.observableArrayList();
-		
-		return lListe;
-	}
+//	public ObservableList<Fakt> getFakten()
+//	{
+//		ObservableList<Fakt> lListe = FXCollections.observableArrayList();
+//		
+//		return lListe;
+//	}
 	
 	/**
      * Erstellt alle Tabellen, um die Items verwalten zu können.
      */
 	private void erstellenTabellen()
 	{
-	   	tcTitelFaktenliste.setCellValueFactory(new PropertyValueFactory<>("titel"));
-	   	tvFaktenliste.setItems(getFakten());
-	
-	   	tcTitelFaktenlisteAusgewählt.setCellValueFactory(new PropertyValueFactory<>("titel"));
-	   	tvFaktenlisteAusgewählt.setItems(getFakten());
+//	   	tcTitelFaktenliste.setCellValueFactory(new PropertyValueFactory<>("titel"));
+//	   	tvFaktenliste.setItems(getFakten());
+//	
+//	   	tcTitelFaktenlisteAusgewählt.setCellValueFactory(new PropertyValueFactory<>("titel"));
+//	   	tvFaktenlisteAusgewählt.setItems(getFakten());
 	
 	   	tcTitelVorurteilsliste.setCellValueFactory(new PropertyValueFactory<>("titel"));
 	   	tvVorurteilliste.setItems(getVorurteil());
@@ -132,22 +132,22 @@ public class EingabeVorurteilController implements Initializable
 	@FXML
 	private void suchenFakt(ActionEvent event)
 	{
-		tvFaktenliste.getItems().clear();
-		String lTitel = tfFaktensuche.getText().trim();
-		Fakt lFakt = new Fakt(null, null, null, null, null,	null);
-		ResultSet lFakten = lFakt.suchenFakt("WHERE Titel LIKE '%"+ lTitel +"%'");
-		try
-		{
-			while(lFakten.next())
-			{
-				Fakt lFakto = new Fakt(lFakten.getInt(1), lFakten.getString(2), null, null, null, null, null);
-				tvFaktenliste.getItems().add(lFakto);
-			}
-		}
-		catch (SQLException e)
-		{
-			e.printStackTrace();
-		}
+//		tvFaktenliste.getItems().clear();
+//		String lTitel = tfFaktensuche.getText().trim();
+//		Fakt lFakt = new Fakt(null, null, null, null, null,	null);
+//		ResultSet lFakten = lFakt.suchenFakt("WHERE Titel LIKE '%"+ lTitel +"%'");
+//		try
+//		{
+//			while(lFakten.next())
+//			{
+//				Fakt lFakto = new Fakt(lFakten.getInt(1), lFakten.getString(2), null, null, null, null, null);
+//				tvFaktenliste.getItems().add(lFakto);
+//			}
+//		}
+//		catch (SQLException e)
+//		{
+//			e.printStackTrace();
+//		}
 	}
 
 	/**
@@ -159,13 +159,13 @@ public class EingabeVorurteilController implements Initializable
 	@FXML
 	private void auswählenFakt(ActionEvent event)
 	{
-		Fakt lFakt = tvFaktenliste.getSelectionModel().getSelectedItem();
-
-    	if(lFakt != null)
-    	{
-	    	tvFaktenliste.getItems().remove(lFakt);
-	    	tvFaktenlisteAusgewählt.getItems().add(lFakt);
-    	}
+//		Fakt lFakt = tvFaktenliste.getSelectionModel().getSelectedItem();
+//
+//    	if(lFakt != null)
+//    	{
+//	    	tvFaktenliste.getItems().remove(lFakt);
+//	    	tvFaktenlisteAusgewählt.getItems().add(lFakt);
+//    	}
 	}
 
 	/**
@@ -177,14 +177,13 @@ public class EingabeVorurteilController implements Initializable
 	@FXML
 	private void machenNichtAuswählenFakt(ActionEvent event)
 	{
-		Fakt
-		lFakt = tvFaktenlisteAusgewählt.getSelectionModel().getSelectedItem();
-
-    	if(lFakt != null)
-    	{
-	    	tvFaktenlisteAusgewählt.getItems().remove(lFakt);
-	    	tvFaktenliste.getItems().add(lFakt);
-    	}
+//		Fakt lFakt = tvFaktenlisteAusgewählt.getSelectionModel().getSelectedItem();
+//
+//    	if(lFakt != null)
+//    	{
+//	    	tvFaktenlisteAusgewählt.getItems().remove(lFakt);
+//	    	tvFaktenliste.getItems().add(lFakt);
+//    	}
 	}
 
 	@FXML
@@ -337,8 +336,8 @@ public class EingabeVorurteilController implements Initializable
 
      	/* 「Fakt verknüpfen」 Tab */
      	this.tfFaktensuche.clear();
-     	this.tvFaktenliste.getItems().clear();
-     	this.tvFaktenlisteAusgewählt.getItems().clear();
+//     	this.tvFaktenliste.getItems().clear();
+//     	this.tvFaktenlisteAusgewählt.getItems().clear();
 
      	/* 「Vorurteil verknüpfen」 Tab */
      	this.tfVorurteilssuche.clear();
