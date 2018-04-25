@@ -20,7 +20,8 @@ public class Fakt
     private String link;
     private LocalDate datum;
     private String aussage;
-    private int IDFakten;
+    private String IDFakten;
+    private int idFakten;
     Calendar ccalendar;
 
 
@@ -37,13 +38,18 @@ public class Fakt
 
 	public Fakt(int pID, String pTitel, String pAutor, LocalDate pDatum, String pQuellenTyp, String pLink, String pAussage)
 	{
-		   this.IDFakten = pID;
+		   this.idFakten = pID;
 			this.titel = pTitel;
 			this.quellenTyp = pQuellenTyp;
 			this.autor = pAutor;
 			this.link = pLink;
 			this.datum = pDatum;
 			this.aussage = pAussage;
+	}
+	
+	public Fakt(String pIDFakten)
+	{
+		this.IDFakten = pIDFakten;
 	}
 
 
@@ -94,6 +100,27 @@ public class Fakt
 			e.printStackTrace();
 
 			return null;
+		}
+	};
+	
+	public void entfernenFakt()
+	{
+		Connection lConnection = DatenbankVerbindungFakten.holen();
+		Statement lBefehl;
+
+		try
+		{
+			lBefehl = lConnection.createStatement();
+
+		   lBefehl.execute("DELETE FROM dbo_vorurteile.verbindung_f_v WHERE ID_Fakten='"+IDFakten+"'");
+		   lBefehl.execute("DELETE FROM dbo_vorurteile.fakten WHERE ID_Fakten='"+IDFakten+"'");
+			
+		}
+		catch (SQLException e)
+		{
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+
 		}
 	};
 

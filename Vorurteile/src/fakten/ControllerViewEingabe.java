@@ -17,6 +17,8 @@ import javafx.scene.text.Text;
 
 public class ControllerViewEingabe
 	{
+	  @FXML
+	    private Button btLöschen;
 
     @FXML
     private Button btSpeichern;
@@ -82,6 +84,10 @@ public class ControllerViewEingabe
 
    @FXML
    private Button btWechselnLöschen;
+   
+   @FXML
+   private TextField tfFaktID;
+   
 
    @FXML
    void ändernOberfläche(ActionEvent event)
@@ -133,7 +139,16 @@ public class ControllerViewEingabe
 	   		txMeldungen.setVisible(true);
 		   }
 		}
-   @FXML
+	
+	@FXML
+   void entfernenFakt(ActionEvent event)
+	{
+    Fakt lFakt = new Fakt(tfFaktID.getText());
+    lFakt.entfernenFakt();
+    
+   }
+  
+	@FXML
    public void auswählenInternet(ActionEvent event)
    	{
    		btAndere.setVisible(true);

@@ -23,8 +23,8 @@ public class Main extends Application
     	 mainObject = this;
     	 primaryStage = pPrimaryStage;
     	 auswahlSuchen = 		new Scene(FXMLLoader.load(getClass().getResource	("AuswahlSuchenView.fxml"		)));
-    	 auswahlHinzufügen = new Scene(FXMLLoader.load(getClass().getResource	("EingabeFaktView.fxml"	)));
-    	 auswahlBearbeiten = new Scene(FXMLLoader.load(getClass().getResource	("BearbeitenFaktView.fxml"	)));
+    	 auswahlHinzufügen = new Scene(FXMLLoader.load(getClass().getResource	("EingabeFaktView.fxml"			)));
+    	 auswahlBearbeiten = new Scene(FXMLLoader.load(getClass().getResource	("BearbeitenFaktView.fxml"		)));
     	 auswahlLöschen = 	new Scene(FXMLLoader.load(getClass().getResource	("AuswahlLöschenView.fxml"		)));
     	 primaryStage.setScene(auswahlHinzufügen);
     	 primaryStage.show();
