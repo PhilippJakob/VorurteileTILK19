@@ -282,13 +282,13 @@ public class EingabeVorurteilController implements Initializable
                    e.printStackTrace();
                 }
                }
-
+             anzeigenSpeicherFenster(null);
              this.leerenEingaben();
       }
 //   	{
 //   		lVorurteil.getID() ==
 //   	}
-      anzeigenSpeicherFenster(null);
+
    }
 
    /**
