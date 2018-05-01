@@ -2,7 +2,7 @@
  * @author Nico Fliskowski, 14. März 2018
  * @description Dient der Anzeige von allen Vorurteilen in einer Tabelle.
  * @changelog
- * | 14. März 2018: Nico Fliskowski "getVorurteil(); erstellenTabellen(); initialize(); füllenTabelle();"
+ * | 14. März 2018: Nico Fliskowski "getVorurteil(); erstellenTabellen(); initialize(); btBearbeiten(); füllenTabelle();"
  */
 
 /**
@@ -33,16 +33,16 @@ public class PrototypController implements Initializable
 {
 	@FXML
    private Label lbError;
-	
+
    @FXML
    private TableView<Vorurteil> tvVorurteilliste;
 
    @FXML
    private TableColumn<Vorurteil, String> tcTitelVorurteilsliste;
-   
+
    @FXML
    private Button btBearbeiten;
-   
+
    /**
 	 * Erstellt eine observable List und gibt diese zurück.
 	 * @return lListe
@@ -53,7 +53,7 @@ public class PrototypController implements Initializable
 
 		return lListe;
    }
-	
+
 	/**
     * Erstellt eine Tabelle, um die Items verwalten zu können.
     */
@@ -73,12 +73,12 @@ public class PrototypController implements Initializable
 		erstellenTabelle();
 		füllenTabelle();
 	}
-	
+
 	/**
-	 * 
+	 *
 	 */
 	private static Vorurteil ausgewähltesVorurteil = null;
-	
+
 	public static Vorurteil getAusgewähltesVorurteil()
 	{
 		return ausgewähltesVorurteil;
@@ -101,7 +101,7 @@ public class PrototypController implements Initializable
     	if(lVorurteil != null)
     	{
     		setAusgewähltesVorurteil(lVorurteil);
-    		
+
     		new FensterÖffnen();
     	}
     	else
@@ -109,14 +109,14 @@ public class PrototypController implements Initializable
     		lbError.setText("Erst auswählen");
     	}
    }
-	
+
 	/**
     * Liest die Datenbank aus und füllt die Tabelle mit allen Vorurteilen
     */
    private void füllenTabelle()
    {
 		ArrayList<Vorurteil> lVorurteile = vorurteile.VorurteilManager.getVorurteile("");
-		
+
 		for(Vorurteil lVorurteil : lVorurteile)
 		{
 			tvVorurteilliste.getItems().add(lVorurteil);
