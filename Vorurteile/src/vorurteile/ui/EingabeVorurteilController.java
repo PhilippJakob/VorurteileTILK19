@@ -1,6 +1,8 @@
 /**
  * @author Jonas N. Henle, 25.01.2018
  * @description Beschreibung: Dient der Eingabe von neuen Vorurteilen.
+ * @changelog
+ * | 14. März 2018: Nico Fliskowski "getVorurteil(); getFakten(); erstellenTabellen(); suchenFakt(); auswählenFakt(); machenNichtAuswählenFakt(); suchenVorurteil(); auswählenVorurteil(); machenNichtAuswählenVorurteil(); setzenFelder(); initialize(); füllenTabelle();"
  */
 
 package vorurteile.ui;
@@ -66,20 +68,20 @@ public class EingabeVorurteilController implements Initializable
 
 	@FXML
    private TableView<Fakt> tvFaktenliste, tvFaktenlisteAusgewählt;
-	
+
 	@FXML
    private TableView<Vorurteil>	tvVorurteilliste, tvVorurteillisteAusgewählt;
 
 	@FXML
    private TableColumn<Fakt, String> tcTitelFaktenliste, tcTitelFaktenlisteAusgewählt;
-	
+
 	@FXML
    private TableColumn<Vorurteil, String> tcTitelVorurteilsliste, tcTitelVorurteilslisteAusgewählt;
-	
+
 
 	@FXML
 	private MenuButton mbSprachenliste;
-	
+
 	@FXML
    private Label lbErrorF, lbSafeError, lbErrorV;
 
@@ -96,7 +98,7 @@ public class EingabeVorurteilController implements Initializable
 	public ObservableList<Vorurteil> getVorurteil()
 	{
 		ObservableList<Vorurteil> lListe = FXCollections.observableArrayList();
-   		
+
    		return lListe;
    	}
 
@@ -107,10 +109,10 @@ public class EingabeVorurteilController implements Initializable
 	public ObservableList<Fakt> getFakten()
 	{
 		ObservableList<Fakt> lListe = FXCollections.observableArrayList();
-		
+
 		return lListe;
 	}
-	
+
 	/**
      * Erstellt alle Tabellen, um die Items verwalten zu können.
      */
@@ -118,13 +120,13 @@ public class EingabeVorurteilController implements Initializable
 	{
 	   	tcTitelFaktenliste.setCellValueFactory(new PropertyValueFactory<>("titel"));
 	   	tvFaktenliste.setItems(getFakten());
-	
+
 	   	tcTitelFaktenlisteAusgewählt.setCellValueFactory(new PropertyValueFactory<>("titel"));
 	   	tvFaktenlisteAusgewählt.setItems(getFakten());
-	
+
 	   	tcTitelVorurteilsliste.setCellValueFactory(new PropertyValueFactory<>("titel"));
 	   	tvVorurteilliste.setItems(getVorurteil());
-	
+
 	   	tcTitelVorurteilslisteAusgewählt.setCellValueFactory(new PropertyValueFactory<>("titel"));
 	   	tvVorurteillisteAusgewählt.setItems(getVorurteil());
 	}
@@ -381,7 +383,7 @@ public class EingabeVorurteilController implements Initializable
    	tfQuelle.setText(pAusgewähltesVorurteil.getLink());
    	cbLink.setSelected(pAusgewähltesVorurteil.getInternetquelle());
    }
-   
+
    /**
     * Ändert die Sprache des Programmes.
     */
@@ -390,34 +392,34 @@ public class EingabeVorurteilController implements Initializable
    {
    	this.mbSprachenliste.setText("BAUM");
    }
-   
+
    private void erstellenSprachauswahl()
    {
    	ImageView lBildDeutsch = new ImageView("http://www.geonames.org/flags/x/de.gif");
    	ImageView lBildEnglisch = new ImageView("http://www.geonames.org/flags/x/uk.gif");
-   	
+
    	lBildDeutsch.setFitHeight(12);
    	lBildDeutsch.setFitWidth(16);
-   	
+
    	lBildEnglisch.setFitHeight(12);
    	lBildEnglisch.setFitWidth(16);
-   	
+
    	MenuItem lSpracheDeutsch = new MenuItem("Deutsch", lBildDeutsch);
    	MenuItem lSpracheEnglisch = new MenuItem("English", lBildEnglisch);
 
-   	lSpracheDeutsch.setOnAction(new EventHandler<ActionEvent>() 
+   	lSpracheDeutsch.setOnAction(new EventHandler<ActionEvent>()
    	{
           @Override
-          public void handle(ActionEvent event) 
+          public void handle(ActionEvent event)
           {
          	 VorurteileStart.getInstance().loadView(Locale.GERMAN);
           }
       });
-   	
-   	lSpracheEnglisch.setOnAction(new EventHandler<ActionEvent>() 
+
+   	lSpracheEnglisch.setOnAction(new EventHandler<ActionEvent>()
    	{
           @Override
-          public void handle(ActionEvent event) 
+          public void handle(ActionEvent event)
           {
          	 VorurteileStart.getInstance().loadView(Locale.ENGLISH);
           }
@@ -433,15 +435,15 @@ public class EingabeVorurteilController implements Initializable
    public void initialize(URL location, ResourceBundle resources)
    {
    	//bearbeitenVorurteil();
-   	
+
    	//Ruft das Objekt "ausgewähltesVorurteil" aus dem PrototypController auf
    	Vorurteil lAusgewähltesVorurteil = PrototypController.getAusgewähltesVorurteil();
-   	
+
    	if(lAusgewähltesVorurteil != null)
    	{
    		this.setzenFelder(lAusgewähltesVorurteil);
    	}
-   	
+
    	this.erstellenTabellen();
    	this.erstellenSprachauswahl();
    }
